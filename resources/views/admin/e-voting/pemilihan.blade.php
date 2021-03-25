@@ -6,7 +6,7 @@
 @section('title-3', 'Pemilihan')
 
 @section('describ')
-    Ini adalah halaman pemilihan untuk admin
+    Ini adalah halaman Pemilihan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-vote-yea')
@@ -60,8 +60,8 @@
         </div>
     </div>
 
-    {{-- Modal --}}
-    @include('admin.e-voting.modals._pemilihan')
+{{-- Modal --}}
+@include('admin.e-voting.modals._pemilihan')
 @endsection
 
 {{-- addons css --}}
