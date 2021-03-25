@@ -29,7 +29,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>No. KK</th>
+                                        <th>No.KK</th>
                                         <th>Kepala Keluarga</th>
                                         <th>Alamat</th>
                                         <th>Desa/Kelurahan</th>
