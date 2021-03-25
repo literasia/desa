@@ -4,12 +4,12 @@
 @section('title-2', 'Library')
 @section('title-3', 'Library')
 @section('describ')
-    Ini adalah halaman library untuk superadmin
+    Ini adalah halaman Library untuk superadmin
 @endsection
 @section('icon-l', 'icon-book-open')
 @section('icon-r', 'icon-home')
 @section('link')
-    {{ route('superadmin.library') }}
+    {{ route('superadmin.library.tambah-baru') }}
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@
 </div>
 
 {{-- Modal --}}
-@include('superadmin.modals._tambah-baru')
+@include('superadmin.library.modals._tambah-baru')
 @endsection
 
 {{-- addons css --}}
@@ -73,58 +73,20 @@
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: "{{ route('superadmin.library') }}",
-                },
-                columns: [
-                {
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'deskripsi',
-                    name: 'deskripsi'
-                },
-                {
-                    data: 'penulis',
-                    name: 'penulis'
-                },
-                {
-                    data: 'penerbit',
-                    name: 'penerbit'
-                },
-                {
-                    data: 'tahun_terbit',
-                    name: 'tahun_terbit'
-                },
-                {
-                    data: 'tingkat',
-                    name: 'tingkat'
-                },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
-                ],
-                columnDefs: [
-                {
-                    render: function (data, type, full, meta) {
-                        return "<div class='text-wrap width-200'>" + data + "</div>";
-                    },
-                    targets: 2
-                }
-                ]
-            });
+            $('#order-table').DataTable();
 
             $('#add').on('click', function () {
                 $('#modal-library').modal('show');
+            });
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
             });
         });
     </script>

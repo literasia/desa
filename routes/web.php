@@ -4,169 +4,242 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace('Siswa')
-    ->name('siswa.')
-    ->group(function () {
-        Route::get('/siswa', 'SiswaController@index')
-            ->name('index');
-        //evoting
-        Route::get('/siswa/e-voting', 'EVoting\EVotingController@index')
-            ->name('e-voting.e-voting');
-
-        Route::get('/siswa/kalender', 'Kalender\KalenderAkademikController@index')
-            ->name('kalender.kalender-akademik');
-
-        Route::get('/siswa/pengumuman', 'Pengumuman\PengumumanController@index')
-             ->name('pengumuman.pengumuman');
-
-        Route::get('/siswa/pelanggaran', 'Pelanggaran\SiswaController@index')
-             ->name('pelanggaran.pelanggaran');
-
-        Route::get('/siswa/perpustakaan', 'Perpustakaan\PerpustakaanController@index')
-             ->name('perpustakaan.perpustakaan');
-        
-        Route::get('/siswa/cbt', 'Cbt\CbtSiswaController@index')
-             ->name('cbt.cbt-siswa');
-        
-        Route::get('/siswa/elearning', 'Elearning\ElearningSiswaController@index')
-             ->name('elearning.elearning-siswa');
-
-        Route::get('/siswa/leaderboard', 'Leaderboard\LeaderboardSiswaController@index')
-             ->name('leaderboard.leaderboard-siswa');
-
-        Route::get('/siswa/nilai', 'Nilai\NilaiSiswaController@index')
-             ->name('nilai.nilai-siswa');
-
-        Route::get('/siswa/forum', 'Forum\ForumSiswaController@index')
-             ->name('forum.forum-siswa');
-
-        Route::get('/siswa/logout', 'Logout\LogoutSiswaController@index')
-             ->name('logout.logout-siswa');
-      
-});
-    
-Route::namespace('Orangtua')
-    ->name('orangtua.')
-    ->group(function () {
-        Route::get('/orangtua', 'OrangtuaController@index')
-            ->name('index');
-        
-        Route::get('/orangtua/pelanggaran', 'Pelanggaran\OrangtuaController@index')
-            ->name('pelanggaran.pelanggaran');
-        
-        Route::get('/orangtua/kalender', 'Kalender\KalenderAkademikController@index')
-            ->name('kalender.kalender-akademik');
-
-        Route::get('/orangtua/pengumuman', 'Pengumuman\PengumumanController@index')
-             ->name('pengumuman.pengumuman');
-
-        Route::get('/orangtua/absensi', 'Absensi\AbsensiController@index')
-             ->name('absensi.absensi');
-
-        Route::get('/orangtua/nilai', 'Nilai\NilaiOrangtuaController@index')
-             ->name('nilai.nilai-orangtua');
-
-      
-});    
-
 Route::namespace('Superadmin')
     ->name('superadmin.')
     ->middleware(['auth', 'auth.superadmin'])
     ->group(function () {
         Route::get('/superadmin', 'SuperadminController@index')
             ->name('index');
-        Route::get('/superadmin/list-sekolah', 'ListSekolahController@index')
-            ->name('list-sekolah');
-        Route::post('/superadmin/list-sekolah', 'ListSekolahController@store');
-        Route::get('/superadmin/list-sekolah/{id}', 'ListSekolahController@edit');
-        Route::post('/superadmin/list-sekolah/update', 'ListSekolahController@update')
-            ->name('list-sekolah-update');
-        Route::get('/superadmin/list-sekolah/hapus/{id}', 'ListSekolahController@destroy');
+
+        // List Desa
+        Route::namespace('ListDesa')
+            ->group(function () {
+                Route::get('/superadmin/list-desa/list-desa', 'ListDesaController@index')
+                    ->name('list-desa.list-desa');
+                Route::post('/superadmin/list-desa/list-desa', 'ListDesaController@store');
+                Route::get('/superadmin/list-desa/list-desa/{id}', 'ListDesaController@edit');
+                Route::post('/superadmin/list-desa/list-desa/update', 'ListDesaController@update')
+                    ->name('list-desa.list-desa-update');
+                Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
+            });
+
+        // Slider
+        Route::namespace('Slider')
+            ->group(function () {
+                Route::get('/superadmin/slider/slider', 'SliderController@index')
+                    ->name('slider.slider');
+                Route::post('/superadmin/slider/slider', 'SliderController@store')
+                    ->name('slider.slider.store');
+                Route::put('/superadmin/slider/slider', 'SliderController@update')
+                    ->name('slider.slider.update');
+            });
+
+        // Berita
+        Route::namespace('Berita')
+            ->group(function () {
+
+                // Berita
+                Route::get('/superadmin/berita/berita', 'BeritaController@index')
+                    ->name('berita.berita');
+                Route::post('/superadmin/berita/berita', 'BeritaController@store');
+                Route::get('/superadmin/berita/berita/{id}', 'BeritaController@edit');
+                Route::post('/superadmin/berita/berita/update', 'BeritaController@update')
+                    ->name('berita.berita-update');
+                Route::get('/superadmin/berita/berita/hapus/{id}', 'BeritaController@destroy');
+
+                // Kategori Berita
+                Route::get('/superadmin/berita/kategori-berita', 'KategoriBeritaController@index')
+                    ->name('berita.kategori-berita');
+                Route::post('/superadmin/berita/kategori-berita', 'KategoriBeritaController@store');
+                Route::get('/superadmin/berita/kategori-berita/{id}', 'KategoriBeritaController@edit');
+                Route::post('/superadmin/berita/kategori-berita/update', 'KategoriBeritaController@update')
+                    ->name('berita.kategori-berita-update');
+                Route::get('/superadmin/berita/kategori-berita/hapus/{id}', 'KategoriBeritaController@destroy');
+            });
         
 
-            // Referensi
-            Route::namespace('Referensi')
-                ->group(function () {
-                    // Jenis Kelamin
-                    Route::get('/superadmin/referensi/jenis-kelamin', 'JenisKelaminController@index')
-                        ->name('referensi.jenis-kelamin');
-                    Route::post('/superadmin/referensi/jenis-kelamin', 'JenisKelaminController@store');
-                    Route::get('/superadmin/referensi/jenis-kelamin/{id}', 'JenisKelaminController@edit');
-                    Route::post('/superadmin/referensi/jenis-kelamin/update', 'JenisKelaminController@update')
-                        ->name('referensi.jenis-kelamin-update');
-                    Route::get('/superadmin/referensi/jenis-kelamin/hapus/{id}', 'JenisKelaminController@destroy');
+        // Referensi
+        Route::namespace('Referensi')
+            ->group(function () {
+                // Jenis Kelamin
+                Route::get('/superadmin/referensi/jenis-kelamin', 'JenisKelaminController@index')
+                    ->name('referensi.jenis-kelamin');
+                Route::post('/superadmin/referensi/jenis-kelamin', 'JenisKelaminController@store');
+                Route::get('/superadmin/referensi/jenis-kelamin/{id}', 'JenisKelaminController@edit');
+                Route::post('/superadmin/referensi/jenis-kelamin/update', 'JenisKelaminController@update')
+                    ->name('referensi.jenis-kelamin-update');
+                Route::get('/superadmin/referensi/jenis-kelamin/hapus/{id}', 'JenisKelaminController@destroy');
 
-                    // Agama
-                    Route::get('/superadmin/referensi/agama', 'AgamaController@index')
-                        ->name('referensi.agama');
-                    Route::post('/superadmin/referensi/agama', 'AgamaController@store');
-                    Route::get('/superadmin/referensi/agama/{id}', 'AgamaController@edit');
-                    Route::post('/superadmin/referensi/agama/update', 'AgamaController@update')
-                        ->name('referensi.agama-update');
-                    Route::get('/superadmin/referensi/agama/hapus/{id}', 'AgamaController@destroy');
+                // Agama
+                Route::get('/superadmin/referensi/agama', 'AgamaController@index')
+                    ->name('referensi.agama');
+                Route::post('/superadmin/referensi/agama', 'AgamaController@store');
+                Route::get('/superadmin/referensi/agama/{id}', 'AgamaController@edit');
+                Route::post('/superadmin/referensi/agama/update', 'AgamaController@update')
+                    ->name('referensi.agama-update');
+                Route::get('/superadmin/referensi/agama/hapus/{id}', 'AgamaController@destroy');
 
-                    // Status Nikah
-                    Route::get('/superadmin/referensi/status-nikah', 'StatusNikahController@index')
-                        ->name('referensi.status-nikah');
-                    Route::post('/superadmin/referensi/status-nikah', 'StatusNikahController@store');
-                    Route::get('/superadmin/referensi/status-nikah/{id}', 'StatusNikahController@edit');
-                    Route::post('/superadmin/referensi/status-nikah/update', 'StatusNikahController@update')
-                        ->name('referensi.status-nikah-update');
-                    Route::get('/superadmin/referensi/status-nikah/hapus/{id}', 'StatusNikahController@destroy');
+                // Status Nikah
+                Route::get('/superadmin/referensi/status-nikah', 'StatusNikahController@index')
+                    ->name('referensi.status-nikah');
+                Route::post('/superadmin/referensi/status-nikah', 'StatusNikahController@store');
+                Route::get('/superadmin/referensi/status-nikah/{id}', 'StatusNikahController@edit');
+                Route::post('/superadmin/referensi/status-nikah/update', 'StatusNikahController@update')
+                    ->name('referensi.status-nikah-update');
+                Route::get('/superadmin/referensi/status-nikah/hapus/{id}', 'StatusNikahController@destroy');
 
-                    // Provinsi
-                    Route::get('/superadmin/referensi/provinsi', 'ProvinsiController@index')
-                        ->name('referensi.provinsi');
-                    Route::post('/superadmin/referensi/provinsi', 'ProvinsiController@store');
-                    Route::get('/superadmin/referensi/provinsi/{id}', 'ProvinsiController@edit');
-                    Route::post('/superadmin/referensi/provinsi/update', 'ProvinsiController@update')
-                        ->name('referensi.provinsi-update');
-                    Route::get('/superadmin/referensi/provinsi/hapus/{id}', 'ProvinsiController@destroy');
+                // Provinsi
+                Route::get('/superadmin/referensi/provinsi', 'ProvinsiController@index')
+                    ->name('referensi.provinsi');
+                Route::post('/superadmin/referensi/provinsi', 'ProvinsiController@store');
+                Route::get('/superadmin/referensi/provinsi/{id}', 'ProvinsiController@edit');
+                Route::post('/superadmin/referensi/provinsi/update', 'ProvinsiController@update')
+                    ->name('referensi.provinsi-update');
+                Route::get('/superadmin/referensi/provinsi/hapus/{id}', 'ProvinsiController@destroy');
 
-                    // Kabupaten/Kota
-                    Route::get('/superadmin/referensi/kabupaten-kota', 'KabupatenKotaController@index')
-                        ->name('referensi.kabupaten-kota');
-                    Route::post('/superadmin/referensi/kabupaten-kota', 'KabupatenKotaController@store');
-                    Route::get('/superadmin/referensi/kabupaten-kota/{id}', 'KabupatenKotaController@edit');
-                    Route::post('/superadmin/referensi/kabupaten-kota/update', 'KabupatenKotaController@update')
-                        ->name('referensi.kabupaten-kota-update');
-                    Route::get('/superadmin/referensi/kabupaten-kota/hapus/{id}', 'KabupatenKotaController@destroy');
+                // Kabupaten/Kota
+                Route::get('/superadmin/referensi/kabupaten-kota', 'KabupatenKotaController@index')
+                    ->name('referensi.kabupaten-kota');
+                Route::post('/superadmin/referensi/kabupaten-kota', 'KabupatenKotaController@store');
+                Route::get('/superadmin/referensi/kabupaten-kota/{id}', 'KabupatenKotaController@edit');
+                Route::post('/superadmin/referensi/kabupaten-kota/update', 'KabupatenKotaController@update')
+                    ->name('referensi.kabupaten-kota-update');
+                Route::get('/superadmin/referensi/kabupaten-kota/hapus/{id}', 'KabupatenKotaController@destroy');
 
-                    // Kecamatan
-                    Route::get('/superadmin/referensi/kecamatan', 'KecamatanController@index')
-                        ->name('referensi.kecamatan');
-                    Route::post('/superadmin/referensi/kecamatan', 'KecamatanController@store');
-                    Route::get('/superadmin/referensi/kecamatan/{id}', 'KecamatanController@edit');
-                    Route::post('/superadmin/referensi/kecamatan/update', 'KecamatanController@update')
-                        ->name('referensi.kecamatan-update');
-                    Route::get('/superadmin/referensi/kecamatan/hapus/{id}', 'KecamatanController@destroy');
+                // Kecamatan
+                Route::get('/superadmin/referensi/kecamatan', 'KecamatanController@index')
+                    ->name('referensi.kecamatan');
+                Route::post('/superadmin/referensi/kecamatan', 'KecamatanController@store');
+                Route::get('/superadmin/referensi/kecamatan/{id}', 'KecamatanController@edit');
+                Route::post('/superadmin/referensi/kecamatan/update', 'KecamatanController@update')
+                    ->name('referensi.kecamatan-update');
+                Route::get('/superadmin/referensi/kecamatan/hapus/{id}', 'KecamatanController@destroy');
 
-                    // Suku
-                    Route::get('/superadmin/referensi/suku', 'SukuController@index')
-                        ->name('referensi.suku');
-                    Route::post('/superadmin/referensi/suku', 'SukuController@store');
-                    Route::get('/superadmin/referensi/suku/{id}', 'SukuController@edit');
-                    Route::post('/superadmin/referensi/suku/update', 'SukuController@update')
-                        ->name('referensi.suku-update');
-                    Route::get('/superadmin/referensi/suku/hapus/{id}', 'SukuController@destroy');
-                });
+                // Suku
+                Route::get('/superadmin/referensi/suku', 'SukuController@index')
+                    ->name('referensi.suku');
+                Route::post('/superadmin/referensi/suku', 'SukuController@store');
+                Route::get('/superadmin/referensi/suku/{id}', 'SukuController@edit');
+                Route::post('/superadmin/referensi/suku/update', 'SukuController@update')
+                    ->name('referensi.suku-update');
+                Route::get('/superadmin/referensi/suku/hapus/{id}', 'SukuController@destroy');
+        });
 
-            // Library Setting
-            Route::namespace('Library')
-                ->group(function () {
-                    Route::get('/superadmin/library/setting', 'SettingController@index')
-                        ->name('library-setting');
-                    Route::post('/superadmin/library/setting/tipe', 'SettingController@tipeStore')
-                        ->name('library-tipe');
-                    Route::get('/superadmin/library/setting/tipe/{id}', 'SettingController@editTipe');
-                    Route::put('/superadmin/library/setting/tipe/update', 'SettingController@updateTipe')
-                        ->name('library-tipe-update');
-                    Route::delete('/superadmin/library/tipe/delete/{id}', 'SettingController@deleteTipe')
-                        ->name('library-tipe-delete');
+        // Library Setting
+        Route::namespace('Library')
+            ->group(function () {
+                Route::get('/superadmin/library/setting', 'SettingController@index')
+                    ->name('library.setting');
+                Route::post('/superadmin/library/setting/tipe', 'SettingController@tipeStore')
+                    ->name('library-tipe');
+                Route::get('/superadmin/library/setting/tipe/{id}', 'SettingController@editTipe');
+                Route::put('/superadmin/library/setting/tipe/update', 'SettingController@updateTipe')
+                    ->name('library-tipe-update');
+                Route::delete('/superadmin/library/tipe/delete/{id}', 'SettingController@deleteTipe')
+                    ->name('library-tipe-delete');
 
-                    Route::get('/superadmin/library', 'TambahController@index')
-                        ->name('library');
-                });
+                Route::get('/superadmin/library/tambah-baru', 'TambahController@index')
+                    ->name('library.tambah-baru');
+            });
+    });
+
+Route::namespace('Desa')
+    ->name('desa.')
+    ->group(function () {
+        Route::get('/desa', 'DesaController@index')
+            ->name('index');
+
+        Route::namespace('DataPenduduk')
+            ->group(function () {
+                Route::get('/desa/data-penduduk/keluarga', 'KeluargaController@index')
+                    ->name('data-penduduk.keluarga');
+                Route::get('/desa/data-penduduk/penduduk', 'PendudukController@index')
+                    ->name('data-penduduk.penduduk');
+                Route::get('/desa/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
+                    ->name('data-penduduk.penduduk.input-data-penduduk');
+            });
+
+        Route::namespace('Kampanye')
+            ->group(function () {
+            Route::get('/desa/kampanye', 'KampanyeController@index')
+                ->name('kampanye.kampanye');
+            });
+
+        Route::namespace('Kalender')
+            ->group(function () {
+            Route::get('/desa/kalender', 'KalenderController@index')
+                ->name('kalender.kalender');
+            });
+
+        Route::namespace('Kegiatan')
+            ->group(function () {
+            Route::get('/desa/kegiatan', 'KegiatanController@index')
+                ->name('kegiatan.kegiatan');
+            });
+
+        Route::namespace('Pengumuman')
+            ->group(function () {
+            Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
+                ->name('pengumuman.pengumuman');
+            });
+
+        Route::namespace('Pelanggaran')
+            ->group(function () {
+            Route::get('/desa/pelanggaran', 'PelanggaranDesaController@index')
+                 ->name('pelanggaran.pelanggaran');
+            });
+        
+        Route::namespace('Pengaduan')
+            ->group(function () {
+            Route::get('/desa/pengaduan', 'PengaduanDesaController@index')
+                 ->name('pengaduan.pengaduan');
+            });
+
+        Route::namespace('Referensi')
+            ->group(function () {
+                Route::get('/desa/referensi/bagian-pegawai', 'BagianPegawaiController@index')
+                    ->name('referensi.bagian-pegawai');
+                Route::get('/desa/referensi/status-pegawai', 'StatusPegawaiController@index')
+                    ->name('referensi.status-pegawai');
+                Route::get('/desa/referensi/golongan', 'GolonganController@index')
+                    ->name('referensi.golongan');
+                Route::get('/desa/referensi/pengaturan-hak-akses', 'PengaturanHakAksesController@index')
+                    ->name('referensi.pengaturan-hak-akses');
+            });
+
+        Route::namespace('Absensi')
+            ->group(function () {
+                Route::get('/desa/absensi', 'AbsensiDesaController@index')
+                     ->name('absensi.absensi');
+            });
+
+        Route::namespace('Administrasi')
+            ->group(function () {
+                Route::get('/desa/administrasi/permohonan-pembuatan-ktp', 'PembuatanKTPController@index')
+                    ->name('administrasi.permohonan-pembuatan-ktp');
+                Route::get('/desa/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
+                    ->name('administrasi.surat-keterangan-lahir');
+                Route::get('/desa/administrasi/perubahan-kk', 'PerubahanKKController@index')
+                    ->name('administrasi.perubahan-kk');
+                Route::get('/desa/administrasi/surat-kematian', 'SuratKematianController@index')
+                    ->name('administrasi.surat-kematian');
+                Route::get('/desa/administrasi/izin-usaha', 'IzinUsahaController@index')
+                    ->name('administrasi.izin-usaha');
+                Route::get('/desa/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
+                    ->name('administrasi.keterangan-tidak-mampu');
+            });
+
+        Route::namespace('Potensi')
+            ->group(function () {
+                Route::get('/desa/potensi', 'Potensi\PotensiDesaController@index')
+                    ->name('potensi.potensi'); 
+            });
+
+        Route::namespace('Struktur')
+            ->group(function () {
+            Route::get('/desa/struktur', 'Struktur\StrukturDesaController@index')
+                ->name('struktur.struktur');
+            });     
     });
 
 Route::namespace('Admin')
