@@ -101,7 +101,7 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-penduduk').modal('show');
+                $('#modal-keluarga').modal('show');
             });
         });
     </script>

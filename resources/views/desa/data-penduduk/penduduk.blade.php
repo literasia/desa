@@ -119,13 +119,4 @@
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#order-table').DataTable();
-
-            $('#add').on('click', function () {
-                $('#modal-penduduk').modal('show');
-            });
-        });
-    </script>
 @endpush

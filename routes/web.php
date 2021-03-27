@@ -167,7 +167,7 @@ Route::namespace('Desa')
 
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/desa/kalender', 'KalenderController@index')
+            Route::get('/desa/kalender', 'KalenderDesaController@index')
                 ->name('kalender.kalender');
             });
 
@@ -181,12 +181,6 @@ Route::namespace('Desa')
             ->group(function () {
             Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
-            });
-
-        Route::namespace('Pelanggaran')
-            ->group(function () {
-            Route::get('/desa/pelanggaran', 'PelanggaranDesaController@index')
-                 ->name('pelanggaran.pelanggaran');
             });
         
         Route::namespace('Pengaduan')
@@ -231,14 +225,20 @@ Route::namespace('Desa')
 
         Route::namespace('Potensi')
             ->group(function () {
-                Route::get('/desa/potensi', 'Potensi\PotensiDesaController@index')
+                Route::get('/desa/potensi', 'PotensiDesaController@index')
                     ->name('potensi.potensi'); 
             });
 
         Route::namespace('Struktur')
             ->group(function () {
-            Route::get('/desa/struktur', 'Struktur\StrukturDesaController@index')
+            Route::get('/desa/struktur', 'StrukturDesaController@index')
                 ->name('struktur.struktur');
+            }); 
+
+        Route::namespace('Perpustakaan')
+            ->group(function () {
+            Route::get('/desa/perpustakaan', 'PerpustakaanController@index')
+                ->name('perpustakaan.perpustakaan');
             });     
     });
 

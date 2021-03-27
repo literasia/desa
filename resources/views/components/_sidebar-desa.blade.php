@@ -173,8 +173,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="{{ request()->is('desa/pengaduan') ? 'active' : '' }}">
-                    <a href="{{ route('desa.pengaduan.pengaduan') }}" class="waves-effect waves-dark">
+                <li class="{{ request()->is('desa/perpustakaan') ? 'active' : '' }}">
+                    <a href="{{ route('desa.perpustakaan.perpustakaan') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-book-open"></i>
                         </span>

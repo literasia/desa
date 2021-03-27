@@ -34,12 +34,14 @@
                                         <th>Hari</th>
                                         <th>Tanggal</th>
                                         <th>Jam</th>
-                                        <th>Kegiatan</th>
+                                        <th>Tempat</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
+                                        <td></td>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
