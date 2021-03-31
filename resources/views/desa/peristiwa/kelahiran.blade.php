@@ -27,7 +27,7 @@
                         <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                             <thead>
                             <tr>
-                                        <th>No</th>
+                                        <th>No.</th>
                                         <th>Nama</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
