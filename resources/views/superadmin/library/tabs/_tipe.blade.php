@@ -7,8 +7,7 @@
 
                 {{-- Form tambah --}}
                 <div id="tambah-div">
-                    <form id="form-tipe" method="POST" action="{{ route('superadmin.library-tipe') }}">
-                        @csrf
+                    <form id="form-tipe" method="POST" action="">
                         <div class="row">
                             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
                                 <div class="form-group">
@@ -26,16 +25,12 @@
                 {{-- Form update --}}
                 <button id="batal" class="btn btn-danger btn-sm shadow-sm mb-3">Batal</button>
                 <div id="update-div">
-                    <form id="form-tipe-update" method="POST" action="{{ route('superadmin.library-tipe-update') }}">
-                        @method('PUT')
-                        @csrf
+                    <form id="form-tipe-update" method="POST" action="">
                         <div class="row">
                             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
                                 <div class="form-group">
                                     <input type="text" name="tipe" id="tipe-update" class="form-control" placeholder="Tipe">
-                                    @error('tipe')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <span class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
@@ -59,20 +54,16 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        @foreach ($tipes as $key => $tipe)
                             <tr>
-                                <td>{{ ++$key }}</td>
-                                <td>{{ $tipe->name }}</td>
+                                <td></td>
+                                <td></td>
                                 <td>
-                                    <form action="{{ route('superadmin.library-tipe-delete', $tipe->id) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="button" class="btn btn-sm btn-info shadow-sm" id="edit-tipe" data-id="{{ $tipe->id }}"><i class="fa fa-pencil-alt"></i></button>
+                                    <form action="" method="POST">
+                                        <button type="button" class="btn btn-sm btn-info shadow-sm" id="edit-tipe" data-id=""><i class="fa fa-pencil-alt"></i></button>
                                         <button type="submit" class="btn btn-sm btn-danger shadow-sm"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>

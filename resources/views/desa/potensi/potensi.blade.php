@@ -29,14 +29,32 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Usaha</th>
+                                        <th>Kategori</th>
                                         <th>Pemilik Usaha</th>
                                         <th>Alamat Usaha</th>
                                         <th>No. Telp</th>
+                                        <th>Foto KTP</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="" class="text-success"><i class="fa fa-check-circle mr-2"></i>Uploaded</a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-secondary btn-sm">Approve</a>
+                                            <!-- <a href="" class="btn btn-success btn-sm">Approved</a> -->
+                                        </td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -58,6 +76,11 @@
     <style>
         .btn i {
             margin-right: 0px;
+        }
+
+        .btn-secondary {
+            background-color: #cecece;
+            border-color: #cecece;
         }
     </style>
 @endpush

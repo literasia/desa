@@ -1,7 +1,7 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Referensi | Status Pegawai')
+@section('title', 'Struktur Desa | Status Pegawai')
 @section('title-2', 'Status Pegawai')
 @section('title-3', 'Status Pegawai')
 
@@ -54,7 +54,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Status Guru</th>
+                                        <th>Status Pegawai</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>

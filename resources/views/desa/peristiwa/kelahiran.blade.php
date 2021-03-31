@@ -26,17 +26,18 @@
                     <div class="dt-responsive table-responsive">
                         <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
-                                    <th>Penulis</th>
-                                    <th>Penerbit</th>
-                                    <th>Tahun Terbit</th>
-                                    <th>Tingkat</th>
-                                    <!-- <th>Lama Pinjam</th> -->
-                                    <th>Actions</th>
-                                </tr>
+                            <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Agama</th>
+                                        <th>Alamat</th>
+                                        <th>Nama Ayah</th>
+                                        <th>Nama Ibu</th>
+                                        <th>Actions</th>
+                                    </tr>
                             </thead>
                             <tbody>
                             </tbody>

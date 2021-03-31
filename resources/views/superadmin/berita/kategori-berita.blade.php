@@ -1,19 +1,19 @@
-@extends('layouts.desa')
+@extends('layouts.superadmin')
 
 {{-- config 1 --}}
-@section('title', 'Referensi | Status Pegawai')
-@section('title-2', 'Status Pegawai')
-@section('title-3', 'Status Pegawai')
+@section('title', 'Berita | Kategori Berita')
+@section('title-2', 'Kategori Berita')
+@section('title-3', 'Kategori Berita')
 
 @section('describ')
-    Ini adalah halaman Status Pegawai untuk admin
+    Ini adalah halaman kategori berita untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-list-alt')
+@section('icon-l', 'icon-people')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.status-pegawai') }}
+    {{ route('superadmin.berita.kategori-berita') }}
 @endsection
 
 {{-- main content --}}
@@ -23,12 +23,12 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-status">
+                        <form id="form-kategori-berita">
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="status_pegawai">Status Pegawai</label>
-                                        <input type="text" name="status_pegawai" id="status_pegawai" class="form-control form-control-sm" placeholder="Status Pegawai">
+                                        <label for="kategori_berita">Kategori Berita</label>
+                                        <input type="text" name="kategori_berita" id="kategori_berita" class="form-control form-control-sm">
                                     </div>
                                 </div>
                             </div>
@@ -36,8 +36,8 @@
                                 <div class="col">
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                                    <input type="submit" class="btn btn-sm btn-outline-success" value="Simpan" id="btn">
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -50,11 +50,11 @@
                 <div class="card-body">
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Status Guru</th>
+                                        <th>Kategori</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -108,7 +108,9 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
-        });
+            $('#order-table').DataTable({
+
+            });
+
     </script>
 @endpush

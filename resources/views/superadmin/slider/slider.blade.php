@@ -1,19 +1,19 @@
-@extends('layouts.desa')
+@extends('layouts.superadmin')
 
 {{-- config 1 --}}
-@section('title', ' Kampanye | Kampanye')
-@section('title-2', 'Kampanye')
-@section('title-3', 'Kampanye')
+@section('title', 'Slider')
+@section('title-2', 'Slider')
+@section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman Kampanye untuk admin
+    Ini adalah halaman slider untuk Superadmin
 @endsection
 
-@section('icon-l', 'fa fa-bullhorn')
+@section('icon-l', 'icon-list')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.kampanye.kampanye') }}
+    {{ route('superadmin.slider') }}
 @endsection
 
 {{-- main content --}}
@@ -22,29 +22,32 @@
         <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <div class="card-block pt-0">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
-                        <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
+                    <div class="card-block">
+                        <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
+                        <div class="dt-responsive table-responsive mt-3">
+                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Foto</th>
-                                        <th>Nama Paslon</th>
+                                        <th>#</th>
+                                        <th>Judul</th>
                                         <th>Keterangan</th>
-                                        <th>Action</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Kabupaten</th>
+                                        <th>Sekolah</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
+                                        <td><img src="" width="100px"></td>
                                         <td></td>
-                                        <td></td>                                        
                                         <td></td>
                                         <td></td>
-                                        <td>
-                                            <button type="button" class="btn btn-mini btn-info shadow-sm"><i class="fa fa-pencil-alt"></i></button>
-                                            <button type="button" class="btn btn-mini btn-danger shadow-sm"><i class="fa fa-trash"></i></button>
-                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -54,9 +57,23 @@
             </div>
         </div>
     </div>
-    
-{{-- Modal --}}
-@include('desa.kampanye.modals._kampanye')
+
+    <div id="confirmModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 {{-- addons css --}}
@@ -64,6 +81,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <!-- Select 2 css -->
     <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
@@ -93,8 +111,21 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-kampanye').modal('show');
+                $('#modal-slider').modal('show');
             });
+
+            $('#sekolah').select2();
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
         });
     </script>
 @endpush

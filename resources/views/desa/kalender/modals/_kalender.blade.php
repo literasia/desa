@@ -1,6 +1,5 @@
 <div id="addEvent" class="modal fade modal-flex" role="dialog">
     <form id="addFormEvent" method="post" action="">
-        @csrf
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -61,7 +60,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-sm btn-outline-success" style="margin-right: 10px;" id="btnEvent">Simpan</button>
+                    <button type="submit" class="btn btn-sm btn-success" id="btnEvent">Simpan</button>
                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                     <div id="deleteEvent" class="text-left"></div>
                 </div>

@@ -1,24 +1,24 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', ' Kampanye | Kampanye')
-@section('title-2', 'Kampanye')
-@section('title-3', 'Kampanye')
+@section('title', 'Wisata Desa')
+@section('title-2', 'Wisata Desa')
+@section('title-3', 'Wisata Desa')
 
 @section('describ')
-    Ini adalah halaman Kampanye untuk admin
+    Ini adalah halaman Wisata Desa untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-bullhorn')
+@section('icon-l', 'fa fa-map-marker-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.kampanye.kampanye') }}
+    {{ route('desa.wisata-desa.wisata-desa') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
-    <div class="row">
+<div class="row">
         <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -29,22 +29,27 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Foto</th>
-                                        <th>Nama Paslon</th>
+                                        <th>Nama Tempat</th>
+                                        <th>Alamat</th>
+                                        <th>Waktu Buka</th>
+                                        <th>Alamat Usaha</th>
+                                        <th>Jenis Wisata</th>
+                                        <th>Nomor Telp.</th>
                                         <th>Keterangan</th>
-                                        <th>Action</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
                                         <td></td>
-                                        <td></td>                                        
                                         <td></td>
                                         <td></td>
-                                        <td>
-                                            <button type="button" class="btn btn-mini btn-info shadow-sm"><i class="fa fa-pencil-alt"></i></button>
-                                            <button type="button" class="btn btn-mini btn-danger shadow-sm"><i class="fa fa-trash"></i></button>
-                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -54,9 +59,6 @@
             </div>
         </div>
     </div>
-    
-{{-- Modal --}}
-@include('desa.kampanye.modals._kampanye')
 @endsection
 
 {{-- addons css --}}
@@ -64,17 +66,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
-    <!-- Select 2 css -->
-    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
-        }
-
-        .select2-container {
-            width: 100% !important;
-            padding: 0;
         }
     </style>
 @endpush
@@ -85,15 +80,23 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-    <!-- Select 2 js -->
-    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-kampanye').modal('show');
+                $('#modal-wisata').modal('show');
+            });
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
             });
         });
     </script>

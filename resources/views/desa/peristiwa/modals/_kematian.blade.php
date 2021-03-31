@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Tambah Pelanggaran
+                    Penduduk meninggal
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -11,6 +11,20 @@
             </div>
             <div class="modal-body">
                 <form action="">
+                <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="no.kk">No. KK</label>
+                        <input type="text" name="No. KK" id="No. KK" class="form-control form-control-sm" placeholder="No. KK">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="NIK"><Nav>NIK</Nav></label>
+                        <input type="text" name="NIK" id="NIK" class="form-control form-control-sm" placeholder="NIK">
+                    </div>
+                </div>
+            </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -18,34 +32,6 @@
                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control form-control-sm" placeholder="Nama Lengkap">
                             </div>
                         </div>  
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="nip">NIP</label>
-                                <input id="nip" name="nip" class="form-control form-control-sm" type="text" placeholder="NIP" />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input id="nik" name="nik" class="form-control form-control-sm" type="text" placeholder="NIK" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="gelar_depan">Gelar Depan</label>
-                                <input id="gelar_depan" name="gelar_depan" class="form-control form-control-sm" type="text" placeholder="Gelar Depan" />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="gelar_belakang">Gelar Belakang</label>
-                                <input id="gelar_belakang" name="gelar_belakang" class="form-control form-control-sm" type="text" placeholder="Gelar Belakang" />
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col">
@@ -60,7 +46,21 @@
                                 <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Kematian</label>
+                                <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="nama_pegawai">Sebab Kematian</label>
+                                <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control form-control-sm" placeholder="Nama Lengkap">
+                            </div>
+                        </div>  
+                    </div>                    
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -160,117 +160,7 @@
                                 <input type="text" name="rw" id="rw" class="form-control form-control-sm" placeholder="RW">
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="kode_pos">Kode Pos</label>
-                                <input type="text" name="kode_pos" id="kode_pos" class="form-control form-control-sm" placeholder="Kode Pos">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="no_telepon_rumah">No. Telp Rumah</label>
-                                <input type="text" name="no_telepon_rumah" id="no_telepon_rumah" class="form-control form-control-sm" placeholder="No. Telp Rumah">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="no_telepon">No. Telp</label>
-                                <input type="text" name="no_telepon" id="no_telepon" class="form-control form-control-sm" placeholder="No. Telp">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="email" name="email" id="email" class="form-control form-control-sm" placeholder="E-Mail">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control form-control-sm" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="Password">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="foto">Foto Pegawai</label>
-                                <input type="file" name="foto" id="foto" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <h5>Informasi Pekerjaan</h5>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="tanggal_mulai">Tanggal Mulai:</label>
-                                <input id="tanggal_mulai" name="tanggal_mulai" class="form-control form-control-sm" type="text" placeholder="Tanggal Mulai Tugas" readonly />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="bagian_pegawai">Bagian Pegawai</label>
-                                <select name="bagian_pegawai" id="bagian_pegawai" class="form-control form-control-sm">
-                                    <option value="">-- Bagian Pegawai --</option>
-                                    <option value="Guru/Tenaga Pendidik">Guru/Tenaga Pendidik</option>
-                                    <option value="Teknisi">Teknisi</option>
-                                    <option value="Laboran">Laboran</option>
-                                    <option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="tahun_ajaran">Tahun Ajaran</label>
-                                <select name="tahun_ajaran" id="tahun_ajaran" class="form-control form-control-sm">
-                                    <option value="">-- Tahun Ajaran --</option>
-                                    <option value="2017/2018">2017/2018</option>
-                                    <option value="2018/2019">2018/2019</option>
-                                    <option value="2019/2020">2019/2020</option>
-                                    <option value="2020/2021">2020/2021</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="semester">Semester</label>
-                                <select name="semester" id="semester" class="form-control form-control-sm">
-                                    <option value="">-- Semester --</option>
-                                    <option value="Ganjil">Ganjil</option>
-                                    <option value="Genap">Genap</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="jenjang">Jenjang</label>
-                                <select name="jenjang" id="jenjang" class="form-control form-control-sm">
-                                    <option value="">-- Jenjang --</option>
-                                    <option value="SD">SD</option>
-                                    <option value="SMP">SMP</option>
-                                    <option value="SMA">SMA</option>
-                                    <option value="SMK">SMK</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                                  
                 </form>
             </div>
             <div class="modal-footer">

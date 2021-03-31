@@ -1,21 +1,53 @@
-@extends('layouts.desa')
+@extends('layouts.superadmin')
 
 {{-- config 1 --}}
-@section('title', 'Pelanggaran | Pelanggaran')
-@section('title-2', 'Pelanggaran')
-@section('title-3', 'Pelanggaran')
+@section('title', 'Berita')
+@section('title-2', 'Berita')
+@section('title-3', 'Berita')
 
 @section('describ')
-    Ini adalah halaman pelanggaran untuk desa
+    Ini adalah halaman Berita untuk Superadmin
 @endsection
 
-@section('icon-l', 'icon-bell')
+@section('icon-l', 'icon-list')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.pelanggaran.pelanggaran') }}
+    {{ route('superadmin.berita.berita') }}
 @endsection
 
+{{-- main content --}}
+@section('content')
+<div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="card-block pt-0">
+                        <div class="dt-responsive table-responsive">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                <thead class="text-left">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>Kategori</th>
+                                        <th>Isi</th>
+                                        <th>Thumbnail</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Modal --}}
+    @include('superadmin.berita.modals._berita')
+@endsection
 
 {{-- addons css --}}
 @push('css')
@@ -42,7 +74,7 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-pesan').modal('show');
+                $('#modal-berita').modal('show');
             });
 
             $('#start_date').dateDropper({

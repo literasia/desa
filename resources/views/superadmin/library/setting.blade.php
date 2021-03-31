@@ -4,12 +4,12 @@
 @section('title-2', 'Library Setting')
 @section('title-3', 'Library Setting')
 @section('describ')
-    Ini adalah halaman library setting untuk superadmin
+    Ini adalah halaman Library Setting untuk superadmin
 @endsection
 @section('icon-l', 'icon-settings')
 @section('icon-r', 'icon-home')
 @section('link')
-    {{ route('superadmin.library-setting') }}
+    {{ route('superadmin.library.setting') }}
 @endsection
 
 @section('content')

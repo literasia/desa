@@ -1,7 +1,7 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Struktur Desa')
+@section('title', 'Struktur Desa | Struktur Desa')
 @section('title-2', 'Struktur Desa')
 @section('title-3', 'Struktur Desa')
 
@@ -9,7 +9,7 @@
     Ini adalah halaman Struktur Desa untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-key')
+@section('icon-l', 'fa fa-project-diagram')
 @section('icon-r', 'icon-home')
 
 @section('link')

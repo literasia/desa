@@ -1,104 +1,149 @@
-<div class="modal fade modal-flex" id="modal-pindah" tabindex="-1" role="dialog">
+  <div class="modal fade modal-flex" id="modal-pindah" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Tambah Pesan
+                    Nomor Kartu Keluarga
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form-pesan">
-                    @csrf
+                <form action="">
                     <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Judul</label>
-                            <input type="text" name="judul" id="judul" class="form-control form-control-sm" placeholder="Judul">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-4">
-                           <label>Pengaturan Pesan : </label>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="Yes" name="notifikasi" checked>
-                                    Notifikasi Pesan
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                </label>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="nama_pegawai">Nama Lengkap Pemohon</label>
+                                <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control form-control-sm" placeholder="Nama Lengkap">
                             </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="Yes" name="dashboard">
-                                    Dashboard Notifikasi
-                                    <span class="form-check-sign">
-                                        <span class="check"></span>
-                                    </span>
-                                </label>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tempat_lahir">Tempat Lahir</label>
+                                <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm" placeholder="Tempat Lahir">
                             </div>
-                          </div>
-                          <div class="col-md-2">
-                              <label>Set Waktu : </label>
-                              <div class="form-check">
-                                  <label class="form-check-label">
-                                      <input class="form-check-input" type="radio" name="message_time" value="Permanen" checked>
-                                      Permanen
-                                      <span class="circle">
-                                          <span class="check"></span>
-                                      </span>
-                                  </label>
-                              </div>
-                              <div class="form-check">
-                                  <label class="form-check-label">
-                                      <input class="form-check-input" type="radio" name="message_time" value="Using Time">
-                                      Jangka Waktu
-                                      <span class="circle">
-                                          <span class="check"></span>
-                                      </span>
-                                  </label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                                <label>Pengaturan Jangka Waktu : </label>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label for="start_date" class="bmd-label-floating">Start Date</label>
-                                       <input type="text" class="form-control form-control-sm" id="start_date" name="start_date" readonly disabled>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label for="end_date" class="bmd-label-floating">End Date</label>
-                                       <input type="text" class="form-control form-control-sm" id="end_date" name="end_date" readonly disabled>
-                                    </div>
-                                  </div>
-                                </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <label>Pesan :</label>
-                          <div class="form-group">
-                            <textarea class="form-control form-control-sm" name="message" id="message" rows="10" placeholder="Pesan"></textarea>
-                          </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="text-right">
-                            <button type="submit" class="btn btn-sm btn-outline-success">Simpan</button>
-                            <button class="btn btn-sm btn-warning" type="reset" for="resetBtn">Reset</button>
-                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
-                          </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
+                            </div>
                         </div>
-                      </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Pindah</label>
+                                <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="jenis_kelamin">Jenis Kelamin</label>
+                                <select name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm">
+                                    <option value="">-- Jenis Kelamin --</option>
+                                    <option value="L">Laki-Laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="agama">Agama</label>
+                                <select name="agama" id="agama" class="form-control form-control-sm">
+                                    <option value="">-- Agama --</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Kristen Protestan">Kristen Protestan</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Kristen Katolik">Kristen Katolik</option>
+                                    <option value="Konghuchu">Konghuchu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="status">Status Menikah</label>
+                                <select name="status" id="status" class="form-control form-control-sm">
+                                    <option value="">-- Status Menikah --</option>
+                                    <option value="Menikah">Menikah</option>
+                                    <option value="Belum Menikah">Belum Menikah</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="alamat_tinggal">Alamat Perpindahn</label>
+                                <textarea name="alamat_tinggal" id="alamat_tinggal" cols="10" rows="3" class="form-control form-control-sm" placeholder="Alamat Tinggal"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="provinsi">Provinsi</label>
+                                <select name="provinsi" id="provinsi" class="form-control form-control-sm">
+                                    <option value="">-- Provinsi --</option>
+                                    <option value="Aceh">Aceh</option>
+                                    <option value="Sumatera Utara">Sumatera Utara</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="kabupaten">Kabupaten</label>
+                                <select name="kabupaten" id="kabupaten" class="form-control form-control-sm">
+                                    <option value="">-- Kabupaten --</option>
+                                    <option value="Langkat">Langkat</option>
+                                    <option value="Deli Serdang">Deli Serdang</option>
+                                    <option value="Medan">Medan</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="kecamatan">Kecamatan</label>
+                                <select name="kecamatan" id="kecamatan" class="form-control form-control-sm">
+                                    <option value="">-- Kecamatan --</option>
+                                    <option value="Besitang">Besitang</option>
+                                    <option value="Medan Kota">Medan Kota</option>
+                                    <option value="Medan Selayang">Medan Selayang</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="dusun">Dusun</label>
+                                <input type="text" name="dusun" id="dusun" class="form-control form-control-sm" placeholder="Dusun">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="rt">RT</label>
+                                <input type="text" name="rt" id="rt" class="form-control form-control-sm" placeholder="RT">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="rw">RW</label>
+                                <input type="text" name="rw" id="rw" class="form-control form-control-sm" placeholder="RW">
+                            </div>
+                        </div>
+                    </div>                  
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-sm btn-outline-success">Simpan</button>
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </div>

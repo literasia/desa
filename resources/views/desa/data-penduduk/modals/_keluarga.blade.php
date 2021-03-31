@@ -1,4 +1,4 @@
- <div class="modal fade modal-flex" id="modal-penduduk" tabindex="-1" role="dialog">
+ <div class="modal fade modal-flex" id="modal-keluarga" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header p-4">
@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body p-4">
-                <form>
+                <form id="form-keluarga">
                     <div class="form-group row px-3">
                         <label for="no_kk">No. KK</label>
                         <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="No. KK">
@@ -350,7 +350,7 @@
                     </div>
                 </form>
             <div class="modal-footer pb-0">
-                <button type="submit" id="btn-submit" class="btn btn-sm btn-outline-success">Simpan</button>
+                <button type="submit" id="btn-submit" class="btn btn-sm btn-success">Simpan</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
             </div>
         </div>

@@ -28,13 +28,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
-                                    <th>Penulis</th>
-                                    <th>Penerbit</th>
-                                    <th>Tahun Terbit</th>
-                                    <th>Tingkat</th>
-                                    <!-- <th>Lama Pinjam</th> -->
+                                    <th>Nomor Kartu Keluarga</th>
+                                    <th>Nama Penduduk</th>
+                                    <th>Alamat</th>
+                                    <th>Alamat Pindah</th>                                    
+                                    <th>Keterangan</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

@@ -28,14 +28,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
-                                    <th>Penulis</th>
-                                    <th>Penerbit</th>
-                                    <th>Tahun Terbit</th>
-                                    <th>Tingkat</th>
-                                    <!-- <th>Lama Pinjam</th> -->
-                                    <th>Actions</th>
+                                    <th>Penduduk Meninggal</th>
+                                    <th>Tanggal Kematian</th>
+                                    <th>Penyebab Kematian</th>                                 
                                 </tr>
                             </thead>
                             <tbody>

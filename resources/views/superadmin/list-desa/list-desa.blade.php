@@ -1,15 +1,15 @@
 @extends('layouts.superadmin')
 
-@section('title', 'Library')
-@section('title-2', 'Library')
-@section('title-3', 'Library')
+@section('title', 'List Desa')
+@section('title-2', 'List Desa')
+@section('title-3', 'List Desa')
 @section('describ')
-    Ini adalah halaman Library untuk superadmin
+    Ini adalah halaman List Desa untuk superadmin
 @endsection
-@section('icon-l', 'icon-book-open')
+@section('icon-l', 'icon-home')
 @section('icon-r', 'icon-home')
 @section('link')
-    {{ route('superadmin.library.tambah-baru') }}
+    {{ route('superadmin.list-desa.list-desa') }}
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
     <div class="col-xl-12">
         <div class="card shadow">
             <div class="card-header">
-                <h5>Library</h5>
+                <h5>List Desa</h5>
             </div>
             <div class="card-body">
                 <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
@@ -27,12 +27,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
-                                    <th>Penulis</th>
-                                    <th>Penerbit</th>
-                                    <th>Tahun Terbit</th>
-                                    <th>Tingkat</th>
+                                    <th>ID Desa</th>
+                                    <th>Nama Desa</th>
+                                    <th>Alamat</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -48,7 +45,24 @@
 </div>
 
 {{-- Modal --}}
-@include('superadmin.library.modals._tambah-baru')
+@include('superadmin.list-desa.modals._tambah-desa')
+
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Konfirmasi</h4>
+            </div>
+            <div class="modal-body">
+                <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 {{-- addons css --}}
@@ -76,7 +90,7 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-library').modal('show');
+                $('#modal-administrasi').modal('show');
             });
 
             $('#start_date').dateDropper({
