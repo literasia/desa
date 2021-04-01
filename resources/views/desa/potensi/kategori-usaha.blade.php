@@ -54,7 +54,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Kategori Usaha</th>
+                                        <th>Kategori</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
