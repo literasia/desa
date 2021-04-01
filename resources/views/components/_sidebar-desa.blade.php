@@ -161,7 +161,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('desa/peristiwa/peristiwa') || request()->is('desa/peristiwa/jenis-usaha') || request()->is('desa/peristiwa/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('desa/peristiwa/kelahiran') || request()->is('desa/peristiwa/kematian') || request()->is('desa/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="icon-chart"></i></span>
                         <span class="pcoded-mtext">Peristiwa</span>
