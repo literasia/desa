@@ -18,7 +18,7 @@
 
 {{-- main content --}}
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -29,18 +29,25 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Tempat Lahir</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Agama</th>
+                                        <th>No. Telepon</th>
                                         <th>Alamat</th>
-                                        <th>Nama Ayah</th>
-                                        <th>Nama Ibu</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <label class="badge badge-danger">Baruk Masuk</label>
+                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
+                                            <label class="badge badge-success">Selesai</label> -->
+                                        </td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -74,20 +81,6 @@
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();
-
-            $('#add').on('click', function () {
-                $('#modal-administrasi').modal('show');
-            });
-
-            $('#start_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
-
-            $('#end_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
         });
     </script>
 @endpush

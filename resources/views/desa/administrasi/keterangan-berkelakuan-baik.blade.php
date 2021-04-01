@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Administrasi Desa | Surat Kematian')
-@section('title-2', 'Surat Kematian')
-@section('title-3', 'Surat Kematian')
+@section('title', 'Administrasi Desa | Keterangan Berkelakuan Baik')
+@section('title-2', 'Keterangan Berkelakuan Baik')
+@section('title-3', 'Keterangan Berkelakuan Baik')
 
 @section('describ')
-    Ini adalah halaman Surat Kematian untuk admin
+    Ini adalah halaman Keterangan Berkelakuan Baik untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.surat-kematian') }}
+    {{ route('desa.administrasi.keterangan-berkelakuan-baik') }}
 @endsection
 
 {{-- main content --}}
