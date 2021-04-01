@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Referensi | Status Pegawai')
-@section('title-2', 'Status Pegawai')
-@section('title-3', 'Status Pegawai')
+@section('title', 'Struktur Desa | Pegawai')
+@section('title-2', 'Pegawai')
+@section('title-3', 'Pegawai')
 
 @section('describ')
-    Ini adalah halaman Status Pegawai untuk admin
+    Ini adalah halaman Pegawai untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.status-pegawai') }}
+    {{ route('desa.struktur.pegawai') }}
 @endsection
 
 {{-- main content --}}
@@ -27,8 +27,8 @@
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="status_pegawai">Status Pegawai</label>
-                                        <input type="text" name="status_pegawai" id="status_pegawai" class="form-control form-control-sm" placeholder="Status Pegawai">
+                                        <label for="pegawai">Pegawai</label>
+                                        <input type="text" name="pegawai" id="pegawai" class="form-control form-control-sm" placeholder="Pegawai">
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,8 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Status Guru</th>
+                                        <th>Nama Pegawai</th>
+                                        <th>NIK</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>

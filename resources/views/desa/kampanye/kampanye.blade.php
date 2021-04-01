@@ -9,7 +9,7 @@
     Ini adalah halaman Kampanye untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-users')
+@section('icon-l', 'fa fa-bullhorn')
 @section('icon-r', 'icon-home')
 
 @section('link')

@@ -25,14 +25,8 @@
                     <div class="card-block">
                         <div class="alert alert-info">
                             <span>
-                                <strong>Perhatian!</strong>
-                                <p class="lead">
-                                    <ul>
-                                        <li>
-                                            Isikan golongan sesuai dengan golongan jabatan
-                                        </li>
-                                    </ul>
-                                </p>
+                                <strong>Perhatian!</strong><br>
+                                <small>Isikan golongan sesuai dengan golongan jabatan</small>
                             </span>
                         </div>
                         <form id="form-golongan">
@@ -49,7 +43,7 @@
                                 <div class="col">
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-outline-success" value="Simpan" id="btn">
+                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
                                     <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
@@ -119,4 +113,9 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#order-table').DataTable();
+        });
+    </script>
 @endpush

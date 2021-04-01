@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Referensi | Status Pegawai')
-@section('title-2', 'Status Pegawai')
-@section('title-3', 'Status Pegawai')
+@section('title', 'Struktur Desa | Golongan')
+@section('title-2', 'Golongan')
+@section('title-3', 'Golongan')
 
 @section('describ')
-    Ini adalah halaman Status Pegawai untuk admin
+    Ini adalah halaman Golongan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.status-pegawai') }}
+    {{ route('desa.referensi.golongan') }}
 @endsection
 
 {{-- main content --}}
@@ -23,12 +23,19 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-status">
+                        <div class="alert alert-info">
+                            <span>
+                                <strong>Perhatian!</strong><br>
+                                <small>Isikan golongan sesuai dengan golongan jabatan</small>
+                            </span>
+                        </div>
+                        <form id="form-golongan">
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="status_pegawai">Status Pegawai</label>
-                                        <input type="text" name="status_pegawai" id="status_pegawai" class="form-control form-control-sm" placeholder="Status Pegawai">
+                                        <label for="golongan">Golongan</label>
+                                        <input type="text" name="golongan" id="golongan" class="form-control form-control-sm" placeholder="Golongan">
+                                        <span id="form_result" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +61,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Status Guru</th>
+                                        <th>Golongan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
