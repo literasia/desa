@@ -102,8 +102,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label class="badge badge-warning">1</label>
-                                    <img id="previewImg2" />
-                                    <input type="file" name="" class="upload2">
+]                                    <input type="file" name="" class="upload2">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="badge badge-warning">2</label>
