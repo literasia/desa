@@ -100,11 +100,6 @@ $('#calendar').fullCalendar({
             selectable: true,
             // displayEventTime: true,
             eventSources: [
-
-                // your event source
-               
-                // any other event sources...
-
             ],
             select: function(start, end, allDay) {
                 $("#addEvent").modal("show");
@@ -118,10 +113,7 @@ $('#calendar').fullCalendar({
                 $("#addEvent #start_clock").val("");
                 $("#addEvent #end_clock").val("");
                 $("#deleteEvent").html("");
-
-
             },
-
             eventClick: function(event) {
                 $("#addEvent").modal("show");
                 $("#addEvent .modal-title").text("Edit Event");
@@ -132,10 +124,8 @@ $('#calendar').fullCalendar({
                 $("#addEvent #end_date").val($.fullCalendar.formatDate(event.end, 'YYYY-MM-DD'));
                 $("#addEvent #start_clock").val(event.start.format("hh:mm"));
                 $("#addEvent #end_clock").val(event.end.format("hh:mm"));
-
                 var id_event = '<input type="hidden" id="id_event" name="id_event" value="' + event.id + '">';
                 $("#input_hidden").html(id_event);
-
                 var button_delete = '<button type="button" class="btn btn-sm btn-outline-danger" onclick=del_event(' + event.id + ')>Hapus Event</button>';
                 $("#deleteEvent").html(button_delete);
                 // var class_name;
@@ -150,10 +140,8 @@ $('#calendar').fullCalendar({
                 // } else if (event.className == "event-green") {
                 //  class_name = 'Diharapkan Datang';
                 // }
-
                 // $("#prioritas option[value='" + class_name + "']").prop("selected", true);
             }
-
         });
 </script>
 @endpush

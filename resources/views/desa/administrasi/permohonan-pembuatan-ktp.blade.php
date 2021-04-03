@@ -18,7 +18,7 @@
 
 {{-- main content --}}
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -44,8 +44,6 @@
             </div>
         </div>
     </div>
-    {{-- Modal --}}
-    @include('desa.administrasi.modals._administrasi')
 @endsection
 
 {{-- addons css --}}
@@ -71,20 +69,6 @@
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();
-
-            $('#add').on('click', function () {
-                $('#modal-administrasi').modal('show');
-            });
-
-            $('#start_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
-
-            $('#end_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
         });
     </script>
 @endpush

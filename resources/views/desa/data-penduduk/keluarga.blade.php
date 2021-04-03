@@ -33,27 +33,12 @@
                                         <th>Kepala Keluarga</th>
                                         <th>Alamat</th>
                                         <th>Desa/Kelurahan</th>
-                                        <th>Kecamatan</th>
-                                        <th>Kabupaten</th>
-                                        <th>Provinsi</th>
+                                        <th>Aplikasi</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <button type="button" class="btn btn-mini btn-info shadow-sm"><i class="fa fa-pencil-alt"></i></button>
-                                            <button type="button" class="btn btn-mini btn-danger shadow-sm"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                   
                                 </tbody>
                             </table>
                         </div>

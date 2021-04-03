@@ -168,7 +168,7 @@ Route::namespace('Desa')
         // Administrasi
         Route::namespace('Administrasi')
             ->group(function () {
-                Route::get('/desa/administrasi/permohonan-pembuatan-ktp', 'PembuatanKTPController@index')
+                Route::get('/desa/administrasi/permohonan-pembuatan-ktp', 'PermohonanKTPController@index')
                     ->name('administrasi.permohonan-pembuatan-ktp');
                 Route::get('/desa/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
                     ->name('administrasi.surat-keterangan-lahir');
@@ -180,17 +180,17 @@ Route::namespace('Desa')
                     ->name('administrasi.izin-usaha');
                 Route::get('/desa/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan-tidak-mampu');
-                Route::get('/desa/administrasi/permohonan-skck', 'PembuatanKTPController@index')
+                Route::get('/desa/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
-                Route::get('/desa/administrasi/keterangan-pindah', 'SuratKeteranganLahirController@index')
+                Route::get('/desa/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
-                Route::get('/desa/administrasi/keterangan-domisili', 'PerubahanKKController@index')
+                Route::get('/desa/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
                     ->name('administrasi.keterangan-domisili');
-                Route::get('/desa/administrasi/keterangan-berkelakuan-baik', 'SuratKematianController@index')
+                Route::get('/desa/administrasi/keterangan-berkelakuan-baik', 'KeteranganBerkelakuanBaikController@index')
                     ->name('administrasi.keterangan-berkelakuan-baik');
-                Route::get('/desa/administrasi/keterangan-ahli-waris', 'IzinUsahaController@index')
+                Route::get('/desa/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
                     ->name('administrasi.keterangan-ahli-waris');
-                Route::get('/desa/administrasi/keterangan-tanah', 'KeteranganTidakMampuController@index')
+                Route::get('/desa/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
                     ->name('administrasi.keterangan-tanah');
             });
 

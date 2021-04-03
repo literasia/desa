@@ -315,33 +315,6 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                             <div class="form-group">
-                                <label for="kecamatan">Kecamatan</label>
-                                <select class="form-control" id="kecamatan" name="kecamatan">
-                                    <option value="">-- Kecamatan --</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="kabupaten">Kabupaten</label>
-                                <select class="form-control" id="kabupaten" name="kabupaten">
-                                    <option value="">-- Kabupaten --</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="provinsi">Provinsi</label>
-                                <select class="form-control" id="provinsi" name="provinsi">
-                                    <option value="">-- Provinsi --</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="kode_pos">Kode Pos</label>
                                 <input type="text" class="form-control" id="kode_pos" name="kode_pos" placeholder="Kode Pos">
