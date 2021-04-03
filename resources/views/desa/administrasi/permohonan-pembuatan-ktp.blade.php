@@ -29,14 +29,13 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>No. KK</th>
                                         <th>No. Telepon</th>
+                                        <th>Alamat</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
                                 </tbody>
                             </table>
                         </div>

@@ -31,14 +31,14 @@
                                         <th>No</th>
                                         <th>Foto</th>
                                         <th>Nama Paslon</th>
-                                        <th>Keterangan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
                                         <td></td>
-                                        <td></td>                                        
+                                        <td></td>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>

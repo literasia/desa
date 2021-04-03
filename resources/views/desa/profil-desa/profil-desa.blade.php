@@ -24,9 +24,10 @@
                 <div class="card-body">
                     <div class="card-block">
                         <div class="col-12 text-center">
-                            <img id="img-profile" src="#"/>
-                            <input type="file" onchange="displayImg(this);" />
-                            <button class="btn btn-primary rounded mt-3">Pilih Gambar</button>
+                            <h4 class="mb-4">Foto Profil Desa</h4>
+                            <img id="previewImg" />
+                            <label for="file" class="sr-only">Pilih Gambar</label>
+                            <input type="file" id="file" class="upload">
                         </div>
                     </div>
                 </div>
@@ -41,33 +42,23 @@
                             <div class="form-group row">
                                 <label for="nama_desa" class="col-sm-4 col-form-label">Nama Desa</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Password">
+                                    <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Nama Desa">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="nama_kepala_desa" class="col-sm-4 col-form-label">Kepala Desa</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="nama_kepala_desa" name="nama_kepala_desa" placeholder="Password">
+                                    <input type="text" class="form-control" id="nama_kepala_desa" name="nama_kepala_desa" placeholder="Kepala Desa">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="alamat_desa" class="col-sm-4 col-form-label">Alamat</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="alamat_desa" name="alamat_desa" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="notelp_desa" class="col-sm-4 col-form-label">No. Telepon</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="notelp_desa" name="notelp_desa" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="Keterangan" class="col-sm-4 col-form-label ">Keterangan</label>
-                                    <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" id="Keterangan" name="Keterangan" placeholder="Alamat" cols="10" rows="3"></textarea> 
-                                </div>
-                            </div>                                       
                             <div class="row">
                                 <div class="col-12 text-right">
                                     <a href="" class="btn btn-success">Simpan</a>  
@@ -89,8 +80,6 @@
                 </div>
             </div>
         </div>
-    </div>    
-    
 @endsection
 
 {{-- addons css --}}
@@ -104,12 +93,36 @@
             margin-right: 0px;
         }
 
-        input[type='file'] {
+        .previewImg {
             display: none;
         }
 
-        #img-profile {
-            display: none;
+        #file {
+            visibility: hidden;
+            width: 1px;
+            height: 1px;
+        }
+
+        .btn-upload {
+            background: #00bcbe;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            border-radius: .25rem;
+            color: #fff;
+            padding: .375rem .75rem;
+        }
+
+        .btn-upload:hover, .btn-upload:active, .btn-upload:focus {
+            background: #00a2a4;
+            cursor: pointer;
+        }
+            
+        .file-selected {
+            font-size: 10px;
+            text-align: center;
+            width: 100%;
+            display: block;
+            margin-top: 5px;
         }
     </style>
 @endpush
@@ -121,25 +134,57 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script type="text/javascript">
-        $('button').on('click', function(){
-           $('input').trigger('click'); 
+        $('#file').each(function() {
+            // get label text
+            var label = $(this).parents('.form-group').find('label').text();
+            label = (label) ? label : 'Pilih Gambar';
+
+            // wrap the file input
+            $(this).wrap('<div class="input-file"></div>');
+            // display label
+            $(this).before('<span class="btn-upload">'+label+'</span>');
+            // we will display selected file here
+            $(this).before('<span class="file-selected"></span>');
+
+            // file input change listener 
+            $(this).change(function(e){
+                // Get this file input value
+                var val = $(this).val();
+                
+                // Let's only show filename.
+                // By default file input value is a fullpath, something like 
+                // C:\fakepath\Nuriootpa1.jpg depending on your browser.
+                var filename = val.replace(/^.*[\\\/]/, '');
+
+                // Display the filename
+                $(this).siblings('.file-selected').text(filename);
+            });
+        });
+
+        // Open the file browser when our custom button is clicked.
+        $('.input-file .btn-upload').click(function() {
+            $(this).siblings('#file').trigger('click');
         });
     </script>
     <script type="text/javascript">
-        function displayImg(input) {
-            if (input.files && input.files[0]) {
+         $(document).on("change",".upload",function(){
+            previewFile($(this))
+        })
+
+        function previewFile(inputFile){
+            var file = inputFile[0].files[0];
+            if(file){
                 var reader = new FileReader();
+     
+                reader.onload = function(){
+                    $("#previewImg").attr("src", reader.result);
+                }
+     
+                reader.readAsDataURL(file);
 
-                reader.onload = function (e) {
-                    $('#img-profile')
-                        .attr('src', e.target.result)
-                        .width(200)
-                };
-
-                reader.readAsDataURL(input.files[0]);
-
-                document.getElementById("img-profile").style.display = "inline-block";
-                document.getElementById("img-profile").style.backgroundPosition = "center";
+                document.getElementById("previewImg").style.display = "inline-block";
+                document.getElementById("previewImg").style.width = "200px";
+                document.getElementById("previewImg").style.marginBottom = "30px";
             }
         }
     </script>

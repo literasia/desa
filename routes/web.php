@@ -232,9 +232,15 @@ Route::namespace('Desa')
             Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
             });
-        
-            // Peristiwa
-            Route::namespace('Peristiwa')
+
+        // Perpustakaan
+        Route::namespace('Perpustakaan')
+            ->group(function () {
+            Route::get('/desa/perpustakaan', 'PerpustakaanController@index')
+                ->name('perpustakaan.perpustakaan');
+            });
+
+        Route::namespace('Peristiwa')
             ->group(function () {
                 Route::get('/desa/peristiwa/kelahiran', 'KelahiranController@index')
                     ->name('peristiwa.kelahiran');
@@ -242,13 +248,6 @@ Route::namespace('Desa')
                     ->name('peristiwa.kematian');
                 Route::get('/desa/peristiwa/pindah', 'PindahController@index')
                     ->name('peristiwa.pindah');
-            });
-
-        // Perpustakaan
-        Route::namespace('Perpustakaan')
-            ->group(function () {
-            Route::get('/desa/perpustakaan', 'PerpustakaanController@index')
-                ->name('perpustakaan.perpustakaan');
             }); 
 
         // Potensi
@@ -287,6 +286,8 @@ Route::namespace('Desa')
             ->group(function () {
                 Route::get('/desa/struktur/struktur', 'StrukturDesaController@index')
                     ->name('struktur.struktur');
+                Route::get('/desa/struktur/pegawai', 'PegawaiController@index')
+                    ->name('struktur.pegawai');
                 Route::get('/desa/struktur/golongan', 'GolonganController@index')
                     ->name('struktur.golongan');
                 Route::get('/desa/struktur/jabatan', 'JabatanController@index')

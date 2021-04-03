@@ -29,7 +29,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('desa/struktur/struktur') || request()->is('desa/struktur/jabatan') || request()->is('desa/struktur/golongan') || request()->is('desa/struktur/status-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('desa/struktur/struktur') || request()->is('desa/struktur/pegawai') || request()->is('desa/struktur/jabatan') || request()->is('desa/struktur/golongan') || request()->is('desa/struktur/status-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-project-diagram"></i></span>
                         <span class="pcoded-mtext">Struktur Desa</span>
@@ -38,6 +38,11 @@
                         <li class="{{ request()->is('desa/struktur/struktur') ? 'active' : '' }}">
                             <a href="{{ route('desa.struktur.struktur') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Struktur</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('desa/struktur/pegawai') ? 'active' : '' }}">
+                            <a href="{{ route('desa.struktur.pegawai') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Pegawai</span>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/struktur/jabatan') ? 'active' : '' }}">
@@ -133,10 +138,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('desa/peristiwa/peristiwa') || request()->is('desa/peristiwa/jenis-usaha') || request()->is('desa/peristiwa/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                        <span class="pcoded-mtext">peristiwa</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="{{ request()->is('desa/peristiwa/kelahiran') ? 'active' : '' }}">
@@ -179,29 +180,6 @@
                         </span>
                         <span class="pcoded-mtext">Pengumuman</span>
                     </a>
-                </li>
-                <li class="@if (request()->is('desa/potensi/potensi') || request()->is('desa/potensi/jenis-usaha') || request()->is('desa/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                        <span class="pcoded-mtext">Potensi Desa</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('desa/potensi/potensi') ? 'active' : '' }}">
-                            <a href="{{ route('desa.potensi.potensi') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Potensi Desa</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('desa/potensi/jenis-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('desa.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Jenis Usaha</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('desa/potensi/kategori-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('desa.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori Usaha</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="{{ request()->is('desa/kampanye') ? 'active' : '' }}">
                      <a href="{{ route('desa.kampanye.kampanye') }}" class="waves-effect waves-dark">
