@@ -69,6 +69,17 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">   
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Borobudur_Temple.jpg/320px-Borobudur_Temple.jpg " />
+                </div>
+                <div class="col">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Borobudur_Temple.jpg/320px-Borobudur_Temple.jpg" />
+                </div>
+                <div class="col">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Borobudur_Temple.jpg/320px-Borobudur_Temple.jpg" />
+                </div>
+            </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card shadow-sm">
                 <div class="card-body">
