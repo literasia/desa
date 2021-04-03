@@ -36,7 +36,14 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Syafri Maradu Manurung</td>
+                                        <td>274987254635727598253</td>
+                                        <td>081376214008</td>
+                                        <td>Perjaka</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
