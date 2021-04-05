@@ -1,7 +1,7 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Kalender ')
+@section('title', 'Kalender | Kalender ')
 @section('title-2', 'Kalender ')
 @section('title-3', 'Kalender ')
 

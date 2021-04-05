@@ -11,29 +11,6 @@ Route::namespace('Superadmin')
         Route::get('/superadmin', 'SuperadminController@index')
             ->name('index');
 
-        // Berita
-        Route::namespace('Berita')
-            ->group(function () {
-
-                // Berita
-                Route::get('/superadmin/berita/berita', 'BeritaController@index')
-                    ->name('berita.berita');
-                Route::post('/superadmin/berita/berita', 'BeritaController@store');
-                Route::get('/superadmin/berita/berita/{id}', 'BeritaController@edit');
-                Route::post('/superadmin/berita/berita/update', 'BeritaController@update')
-                    ->name('berita.berita-update');
-                Route::get('/superadmin/berita/berita/hapus/{id}', 'BeritaController@destroy');
-
-                // Kategori Berita
-                Route::get('/superadmin/berita/kategori-berita', 'KategoriBeritaController@index')
-                    ->name('berita.kategori-berita');
-                Route::post('/superadmin/berita/kategori-berita', 'KategoriBeritaController@store');
-                Route::get('/superadmin/berita/kategori-berita/{id}', 'KategoriBeritaController@edit');
-                Route::post('/superadmin/berita/kategori-berita/update', 'KategoriBeritaController@update')
-                    ->name('berita.kategori-berita-update');
-                Route::get('/superadmin/berita/kategori-berita/hapus/{id}', 'KategoriBeritaController@destroy');
-            });
-
         // Library Setting
         Route::namespace('Library')
             ->group(function () {
@@ -129,17 +106,6 @@ Route::namespace('Superadmin')
                     ->name('referensi.suku-update');
                 Route::get('/superadmin/referensi/suku/hapus/{id}', 'SukuController@destroy');
         });
-        
-        // Slider
-        Route::namespace('Slider')
-            ->group(function () {
-                Route::get('/superadmin/slider/slider', 'SliderController@index')
-                    ->name('slider.slider');
-                Route::post('/superadmin/slider/slider', 'SliderController@store')
-                    ->name('slider.slider.store');
-                Route::put('/superadmin/slider/slider', 'SliderController@update')
-                    ->name('slider.slider.update');
-            });
 
         // Library Setting
         Route::namespace('Library')
@@ -192,6 +158,16 @@ Route::namespace('Desa')
                     ->name('administrasi.keterangan-ahli-waris');
                 Route::get('/desa/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
                     ->name('administrasi.keterangan-tanah');
+            });
+
+        // Berita
+        Route::namespace('Berita')
+            ->group(function () {
+
+                Route::get('/desa/berita/berita', 'BeritaController@index')
+                    ->name('berita.berita');
+                Route::get('/desa/berita/kategori-berita', 'KategoriBeritaController@index')
+                    ->name('berita.kategori-berita');
             });
 
         // Data Penduduk
@@ -279,6 +255,13 @@ Route::namespace('Desa')
                     ->name('referensi.golongan');
                 Route::get('/desa/referensi/pengaturan-hak-akses', 'PengaturanHakAksesController@index')
                     ->name('referensi.pengaturan-hak-akses');
+            });
+
+        // Slider
+        Route::namespace('Slider')
+            ->group(function () {
+                Route::get('/desa/slider/slider', 'SliderController@index')
+                    ->name('slider.slider');
             });
 
         // Struktur

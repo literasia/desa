@@ -161,6 +161,34 @@
                         </li>
                     </ul>
                 </li>
+                <li class="@if (request()->is('desa/berita/berita') || request()->is('desa/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="#" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-newspaper"></i>
+                        </span>
+                        <span class="pcoded-mtext">Berita</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('desa/berita/berita') ? 'active' : '' }}">
+                            <a href="{{ route('desa.berita.berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Berita</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('desa/berita/kategori-berita') ? 'active' : '' }}">
+                            <a href="{{ route('desa.berita.kategori-berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ request()->is('desa/slider/slider') ? 'active' : '' }}">
+                    <a href="{{ route('desa.slider.slider') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-gitlab"></i>
+                        </span>
+                        <span class="pcoded-mtext">Slider</span>
+                    </a>
+                </li>
                 <li class="@if (request()->is('desa/peristiwa/kelahiran') || request()->is('desa/peristiwa/kematian') || request()->is('desa/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="icon-chart"></i></span>
