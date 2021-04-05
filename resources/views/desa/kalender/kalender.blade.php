@@ -100,9 +100,6 @@ $('#calendar').fullCalendar({
             selectable: true,
             // displayEventTime: true,
             eventSources: [
-                // your event source
-               
-                // any other event sources...
             ],
             select: function(start, end, allDay) {
                 $("#addEvent").modal("show");
