@@ -47,6 +47,14 @@
                         <span class="pcoded-mtext">List Desa</span>
                     </a>
                 </li>
+                <li class="{{ request()->is('superadmin/kalender') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.kalender.kalender') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <span class="pcoded-mtext">Kalender</span>
+                    </a>
+                </li>
                 <li class="@if (request()->is('superadmin/library/tambah-baru') || request()->is('superadmin/library/setting')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">

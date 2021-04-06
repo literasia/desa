@@ -63,6 +63,13 @@ Route::namespace('Superadmin')
                 Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
             });
 
+         // Kalender
+         Route::namespace('Kalender')
+         ->group(function () {
+         Route::get('/superadmin/kalender', 'KalenderSuperadminController@index')
+             ->name('kalender.kalender');
+         });
+
         // Referensi
         Route::namespace('Referensi')
             ->group(function () {

@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.superadmin')
 
 {{-- config 1 --}}
 @section('title', 'Kalender ')
@@ -13,14 +13,14 @@ Ini adalah halaman kalender untuk desa
 @section('icon-r', 'icon-home')
 
 @section('link')
-{{ route('desa.kalender.kalender') }}
+{{ route('superadmin.kalender.kalender') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
 
 
-@include('desa.kalender.modals._kalender')
+@include('superadmin.kalender.modals._kalender')
 
 <div class="row">
     <div class="col-xl-12">
