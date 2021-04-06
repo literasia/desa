@@ -78,7 +78,7 @@
                     <ul class="pcoded-submenu">
                         <li class="{{ request()->is('desa/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.permohonan-pembuatan-ktp') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext m-1">Permohonan Pembuatan KTP</span>
+                                <span class="pcoded-mtext">Permohonan Pembuatan KTP</span>
                                 <label class="badge badge-danger m-0">1</label>
                                 <label class="badge badge-warning m-0">1</label>
                             </a>
