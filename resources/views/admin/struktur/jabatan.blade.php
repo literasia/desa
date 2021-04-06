@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Referensi | Bagian Pegawai')
-@section('title-2', 'Bagian Pegawai')
-@section('title-3', 'Bagian Pegawai')
+@section('title', 'Struktur Desa | Jabatan')
+@section('title-2', 'Jabatan')
+@section('title-3', 'Jabatan')
 
 @section('describ')
-    Ini adalah halaman Bagian Pegawai untuk admin
+    Ini adalah halaman Jabatan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.bagian-pegawai') }}
+    {{ route('desa.struktur.jabatan') }}
 @endsection
 
 {{-- main content --}}
@@ -23,13 +23,12 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-pegawai">
+                        <form id="form-status">
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="pegawai">Bagian Pegawai</label>
-                                        <input type="text" name="pegawai" id="pegawai" class="form-control form-control-sm mb-4">
-                                        <span id="form_result" class="text-danger"></span>
+                                        <label for="jabatan">Jabatan</label>
+                                        <input type="text" name="jabatan" id="jabatan" class="form-control form-control-sm" placeholder="Jabatan">
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +37,7 @@
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
                                     <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
+                                    <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -55,7 +54,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Bagian Pegawai</th>
+                                        <th>Jabatan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
