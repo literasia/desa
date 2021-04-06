@@ -83,7 +83,9 @@
                         </li>
                         <li class="{{ request()->is('desa/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.surat-keterangan-lahir') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Surat Lahir</span>
+                                <span class="pcoded-mtext mr-1">Surat Lahir</span>
+                                <label class="badge badge-danger">1</label>
+                                <label class="badge badge-warning">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/perubahan-kk') ? 'active' : '' }}">
