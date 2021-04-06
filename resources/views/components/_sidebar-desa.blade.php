@@ -79,65 +79,144 @@
                         <li class="{{ request()->is('desa/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.permohonan-pembuatan-ktp') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Permohonan Pembuatan KTP</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.surat-keterangan-lahir') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Surat Lahir</span>
+                                <span class="pcoded-mtext mr-1">Surat Lahir</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/perubahan-kk') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.perubahan-kk') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Perubahan Kartu Keluarga</span>
+                                <span class="pcoded-mtext m-1">Perubahan Kartu Keluarga</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/surat-kematian') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.surat-kematian') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Surat Kematian</span>
+                                <span class="pcoded-mtext m-1">Surat Kematian</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/izin-usaha') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.izin-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Izin Usaha</span>
+                                <span class="pcoded-mtext m-1">Izin Usaha</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.keterangan-tidak-mampu') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keterangan Tidak Mampu</span>
+                                <span class="pcoded-mtext m-1">Keterangan Tidak Mampu</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/permohonan-skck') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.permohonan-skck') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Permohonan SKCK</span>
+                                <span class="pcoded-mtext m-1">Permohonan SKCK</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/keterangan-pindah') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.keterangan-pindah') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keterangan Pindah</span>
+                                <span class="pcoded-mtext m-1">Keterangan Pindah</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/keterangan-domisili') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keterangan Domisili</span>
+                                <span class="pcoded-mtext m-1">Keterangan Domisili</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/keterangan-berkelakuan-baik') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.keterangan-berkelakuan-baik') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keterangan Berkelakuan Baik</span>
+                                <span class="pcoded-mtext m-1">Keterangan Berkelakuan Baik</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/keterangan-ahli-waris') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.keterangan-ahli-waris') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keterangan Ahli Waris</span>
+                                <span class="pcoded-mtext m-1">Keterangan Ahli Waris</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('desa/administrasi/keterangan-tanah') ? 'active' : '' }}">
                             <a href="{{ route('desa.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keterangan Tanah</span>
+                                <span class="pcoded-mtext m-1">Keterangan Tanah</span>
+                                <label class="badge badge-danger m-0">1</label>
+                                <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li class="@if (request()->is('desa/potensi/potensi') || request()->is('desa/potensi/jenis-usaha') || request()->is('desa/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-mtext">Potensi Desa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('desa/potensi/potensi') ? 'active' : '' }}">
+                            <a href="{{ route('desa.potensi.potensi') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Potensi Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('desa/potensi/jenis-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('desa.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Usaha</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('desa/potensi/kategori-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('desa.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori Usaha</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="@if (request()->is('desa/berita/berita') || request()->is('desa/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="#" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-newspaper"></i>
+                        </span>
+                        <span class="pcoded-mtext">Berita</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('desa/berita/berita') ? 'active' : '' }}">
+                            <a href="{{ route('desa.berita.berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Berita</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('desa/berita/kategori-berita') ? 'active' : '' }}">
+                            <a href="{{ route('desa.berita.kategori-berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ request()->is('desa/slider/slider') ? 'active' : '' }}">
+                    <a href="{{ route('desa.slider.slider') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-gitlab"></i>
+                        </span>
+                        <span class="pcoded-mtext">Slider</span>
+                    </a>
+                </li>
+                <li class="@if (request()->is('desa/peristiwa/kelahiran') || request()->is('desa/peristiwa/kematian') || request()->is('desa/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-mtext">Peristiwa</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="{{ request()->is('desa/peristiwa/kelahiran') ? 'active' : '' }}">
