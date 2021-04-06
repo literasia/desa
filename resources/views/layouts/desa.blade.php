@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <head>
     {{-- meta --}}
     @include('components._meta')
@@ -11,7 +14,7 @@
     <div class="loader-bg">
         <div class="loader-bar"></div>
     </div>
-    
+
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
@@ -42,8 +45,9 @@
             </div>
         </div>
     </div>
-    
+
     {{-- Script --}}
     @include('components._script')
 </body>
+
 </html>
