@@ -60,7 +60,7 @@
                         <span class="pcoded-mtext">Profil Desa</span>
                     </a>
                 </li>
-                <li class="@if (request()->is('desa/administrasi/permohonan-pembuatan-ktp') || request()->is('desa/administrasi/surat-keterangan-lahir') || request()->is('desa/administrasi/perubahan-kk') || request()->is('desa/administrasi/surat-kematian') || request()->is('desa/administrasi/izin-usaha') || request()->is('desa/administrasi/keterangan-tidak-mampu') || request()->is('desa/administrasi/permohonan-skck') || request()->is('desa/administrasi/keterangan-pindah') || request()->is('desa/administrasi/keterangan-domisili') || request()->is('desa/administrasi/keterangan-berkelakuan-baik') || request()->is('desa/administrasi/keterangan-ahli-waris') || request()->is('desa/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('desa/administrasi/permohonan-pembuatan-ktp') || request()->is('desa/administrasi/surat-keterangan-lahir') || request()->is('desa/administrasi/perubahan-kk') || request()->is('desa/administrasi/surat-kematian') || request()->is('desa/administrasi/izin-usaha') || request()->is('desa/administrasi/keterangan-tidak-mampu') || request()->is('desa/administrasi/permohonan-skck') || request()->is('desa/administrasi/keterangan-pindah') || request()->is('desa/administrasi/keterangan-domisili') || request()->is('desa/administrasi/keterangan-ahli-waris') || request()->is('desa/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-archive"></i></span>
                         <span class="pcoded-mtext">Administrasi</span>
@@ -144,15 +144,6 @@
                                     <label class="notification-label-danger"></label>
                                     <label class="notification-label-warning mr-2"></label>
                                     Keterangan Domisili
-                                </span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('desa/administrasi/keterangan-berkelakuan-baik') ? 'active' : '' }}">
-                            <a href="{{ route('desa.administrasi.keterangan-berkelakuan-baik') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
-                                    Ket. Berkelakuan Baik
                                 </span>
                             </a>
                         </li>
