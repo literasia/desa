@@ -1,66 +1,54 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Referensi | Bagian Pegawai')
-@section('title-2', 'Bagian Pegawai')
-@section('title-3', 'Bagian Pegawai')
+@section('title', 'Slider | Slider')
+@section('title-2', 'Slider')
+@section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman Bagian Pegawai untuk admin
+    Ini adalah halaman slider untuk Superadmin
 @endsection
 
-@section('icon-l', 'fa fa-list-alt')
+@section('icon-l', 'icon-list')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.bagian-pegawai') }}
+    {{ route('desa.slider.slider') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-pegawai">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="form-group">
-                                        <label for="pegawai">Bagian Pegawai</label>
-                                        <input type="text" name="pegawai" id="pegawai" class="form-control form-control-sm mb-4">
-                                        <span id="form_result" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="hidden" name="hidden_id" id="hidden_id">
-                                    <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
+                        <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
+                        <div class="dt-responsive table-responsive mt-3">
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Bagian Pegawai</th>
+                                        <th>#</th>
+                                        <th>Judul</th>
+                                        <th>Keterangan</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Kabupaten</th>
+                                        <th>Sekolah</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td><img src="" width="100px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -94,9 +82,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <!-- Select 2 css -->
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
+        }
+
+        .select2-container {
+            width: 100% !important;
+            padding: 0;
         }
     </style>
 @endpush
@@ -107,9 +103,29 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();
+
+            $('#add').on('click', function () {
+                $('#modal-slider').modal('show');
+            });
+
+            $('#sekolah').select2();
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
         });
     </script>
 @endpush

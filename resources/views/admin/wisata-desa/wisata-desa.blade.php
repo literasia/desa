@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Struktur Desa | Pegawai')
-@section('title-2', 'Pegawai')
-@section('title-3', 'Pegawai')
+@section('title', 'Wisata Desa')
+@section('title-2', 'Wisata Desa')
+@section('title-3', 'Wisata Desa')
 
 @section('describ')
-    Ini adalah halaman Pegawai untuk admin
+    Ini adalah halaman Wisata Desa untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-project-diagram')
+@section('icon-l', 'fa fa-map-marker-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.pegawai') }}
+    {{ route('desa.wisata-desa.wisata-desa') }}
 @endsection
 
 {{-- main content --}}
@@ -23,22 +23,34 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block pt-0">
-                        <div class="dt-responsive table-responsive">
                         <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
+                        <div class="dt-responsive table-responsive">
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>NIK</th>
-                                        <th>NIP</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
+                                        <th>Nama Tempat</th>
+                                        <th>Alamat</th>
+                                        <th>Waktu Buka</th>
+                                        <th>Alamat Usaha</th>
+                                        <th>Jenis Wisata</th>
+                                        <th>Nomor Telp.</th>
+                                        <th>Keterangan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -47,8 +59,6 @@
             </div>
         </div>
     </div>
-    {{-- Modal --}}
-    @include('desa.struktur.modals._pegawai')
 @endsection
 
 {{-- addons css --}}
@@ -76,7 +86,17 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-pegawai').modal('show');
+                $('#modal-wisata').modal('show');
+            });
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
             });
         });
     </script>

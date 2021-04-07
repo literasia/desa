@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Struktur Desa | Pegawai')
-@section('title-2', 'Pegawai')
-@section('title-3', 'Pegawai')
+@section('title', 'Potensi Desa')
+@section('title-2', 'Potensi Desa')
+@section('title-3', 'Potensi Desa')
 
 @section('describ')
-    Ini adalah halaman Pegawai untuk admin
+    Ini adalah halaman Potensi Desa untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-project-diagram')
+@section('icon-l', 'icon-chart')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.pegawai') }}
+    {{ route('desa.potensi.potensi') }}
 @endsection
 
 {{-- main content --}}
@@ -24,21 +24,39 @@
                 <div class="card-body">
                     <div class="card-block pt-0">
                         <div class="dt-responsive table-responsive">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>NIK</th>
-                                        <th>NIP</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
+                                        <th>Nama Usaha</th>
+                                        <th>Kategori</th>
+                                        <th>Pemilik Usaha</th>
+                                        <th>Alamat Usaha</th>
+                                        <th>No. Telp</th>
+                                        <th>No. WhatsApp</th>
+                                        <th>Foto KTP</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="" class="text-success"><i class="fa fa-check-circle mr-2"></i>Uploaded</a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-secondary btn-sm">Approve</a>
+                                            <!-- <a href="" class="btn btn-success btn-sm">Approved</a> -->
+                                        </td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -48,7 +66,7 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('desa.struktur.modals._pegawai')
+    @include('desa.potensi.modals._potensi')
 @endsection
 
 {{-- addons css --}}
@@ -60,6 +78,11 @@
     <style>
         .btn i {
             margin-right: 0px;
+        }
+
+        .btn-secondary {
+            background-color: #cecece;
+            border-color: #cecece;
         }
     </style>
 @endpush
@@ -76,7 +99,17 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-pegawai').modal('show');
+                $('#modal-potensi').modal('show');
+            });
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
             });
         });
     </script>

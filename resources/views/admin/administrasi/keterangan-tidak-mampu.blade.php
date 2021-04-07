@@ -1,44 +1,53 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Struktur Desa | Pegawai')
-@section('title-2', 'Pegawai')
-@section('title-3', 'Pegawai')
+@section('title', 'Administrasi Desa | Keterangan Tidak Mampu')
+@section('title-2', 'Keterangan Tidak Mampu')
+@section('title-3', 'Keterangan Tidak Mampu')
 
 @section('describ')
-    Ini adalah halaman Pegawai untuk admin
+    Ini adalah halaman Keterangan Tidak Mampu untuk admin
 @endsection
 
-@section('icon-l', 'fa fa-project-diagram')
+@section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.pegawai') }}
+    {{ route('desa.administrasi.keterangan-tidak-mampu') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block pt-0">
                         <div class="dt-responsive table-responsive">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>NIK</th>
-                                        <th>NIP</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
+                                        <th>No. Telepon</th>
+                                        <th>Alamat</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <label class="badge badge-danger">Baruk Masuk</label>
+                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
+                                            <label class="badge badge-success">Selesai</label> -->
+                                        </td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -47,8 +56,6 @@
             </div>
         </div>
     </div>
-    {{-- Modal --}}
-    @include('desa.struktur.modals._pegawai')
 @endsection
 
 {{-- addons css --}}
@@ -74,10 +81,6 @@
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();
-
-            $('#add').on('click', function () {
-                $('#modal-pegawai').modal('show');
-            });
         });
     </script>
 @endpush

@@ -1,19 +1,19 @@
 @extends('layouts.desa')
 
 {{-- config 1 --}}
-@section('title', 'Struktur Desa | Pegawai')
-@section('title-2', 'Pegawai')
-@section('title-3', 'Pegawai')
+@section('title', 'Struktur Desa | Struktur Desa')
+@section('title-2', 'Struktur Desa')
+@section('title-3', 'Struktur Desa')
 
 @section('describ')
-    Ini adalah halaman Pegawai untuk admin
+    Ini adalah halaman Struktur Desa untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-project-diagram')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.pegawai') }}
+    {{ route('desa.struktur.struktur') }}
 @endsection
 
 {{-- main content --}}
@@ -30,10 +30,10 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>NIK</th>
-                                        <th>NIP</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
+                                        <th>Jabatan</th>
+                                        <th>Golongan</th>
+                                        <th>Status</th>
+                                        <th>Keterangan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -48,7 +48,7 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('desa.struktur.modals._pegawai')
+    @include('desa.struktur.modals._struktur')
 @endsection
 
 {{-- addons css --}}
@@ -76,7 +76,17 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-pegawai').modal('show');
+                $('#modal-struktur').modal('show');
+            });
+
+            $('#start_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
+            });
+
+            $('#end_date').dateDropper({
+                theme: 'leaf',
+                format: 'd-m-Y'
             });
         });
     </script>

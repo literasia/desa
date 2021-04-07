@@ -45,7 +45,6 @@
             </div>
         </div>
     </div>
-
     {{-- Script --}}
     @include('components._script')
 </body>
