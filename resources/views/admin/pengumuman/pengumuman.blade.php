@@ -114,6 +114,7 @@ Ini adalah halaman Pengumuman untuk admin
 <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
 <script>
     $(document).ready(function() {
         $('#order-table').DataTable({
@@ -196,12 +197,12 @@ Ini adalah halaman Pengumuman untuk admin
 
             if ($('#button').hasClass('add')) {
                 url = "{{ route('admin.pengumuman.pesan-add') }}";
-                text = "Data sukses ditambahkan";
+                text = "Data berhasil ditambahkan";
             }
 
             if ($('#button').hasClass('edit')) {
                 url = "{{ route('admin.pengumuman.pesan-update') }}";
-                text = "Data sukses diupdate";
+                text = "Data berhasil diupdate";
             }
             console.log($(this).serialize());
             $.ajax({
@@ -221,7 +222,7 @@ Ini adalah halaman Pengumuman untuk admin
                     }
 
                     if (data.success) {
-                        toastr.success(text);
+                        Swal.fire('Success!!',text,'success' );
                         $('#title').removeClass('is-invalid');
                         $('#message').removeClass('is-invalid');
                         $('#modal-pesan').modal('hide');
@@ -260,7 +261,6 @@ Ini adalah halaman Pengumuman untuk admin
                         .addClass('btn-outline-info edit')
                         .html('Update');
                     $('#modal-pesan').modal('show');
-                    console.log('oke');
                 }
 
             });
@@ -284,7 +284,7 @@ Ini adalah halaman Pengumuman untuk admin
                     setTimeout(function() {
                         $('#confirmModal').modal('hide');
                         $('#order-table').DataTable().ajax.reload();
-                        toastr.success('Data berhasil dihapus');
+                        Swal.fire('Success!!','Data berhasil dihapus','success' );
                     }, 1000);
                 }
             });

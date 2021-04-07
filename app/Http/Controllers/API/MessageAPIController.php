@@ -13,6 +13,6 @@ class MessageAPIController extends Controller
     {
         $pesan = Message::join('users', 'users.village_id', 'messages.village_id')->where('users.village_id', $village_id)->get('messages.*');
 
-        return response()->json(ApiResponse::success($pesan, 'Pengambilan data berhasil'));
+        return response()->json(ApiResponse::success($pesan, 'Success get data'));
     }
 }

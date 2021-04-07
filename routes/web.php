@@ -215,6 +215,7 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengaduan', 'PengaduanDesaController@index')
                  ->name('pengaduan.pengaduan');
+            Route::get('/admin/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
             });
 
         // Pengumuman

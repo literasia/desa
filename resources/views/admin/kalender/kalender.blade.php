@@ -78,16 +78,13 @@ Ini adalah halaman kalender untuk desa
 
 {{-- addons js --}}
 @push('js')
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script> --}}
 <script type="text/javascript" src="{{ asset('bower_components/moment/js/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/sweetalert/js/sweetalert.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/fullcalendar/js/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
-{{-- <script src="https://sekolah.schlrr.com/assets/js/js/fullcalendar.min.js"></script> --}}
-{{-- <script src="{{ asset('assets/js/vertical/vertical-layout.min.js') }}"></script> --}}
 <script src="{{ asset('assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
 <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
@@ -267,8 +264,16 @@ Ini adalah halaman kalender untuk desa
                 processData: false,
                 success: function(data) {
                     if (data.success) {
-                        toastr.success('Sukses!');
-                        location.reload();
+                        Swal.fire({
+                           title: 'Success!!',
+                            text: 'Event berhasil ditambah',
+                            icon: 'success',
+                            confirmButtonText: 'Ok' }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    }
+                            });
+                        
                         $("#addEvent").modal("hide");
                         $("#title").val('');
                         $("#addEvent .modal-title").text("Tambah Event");
@@ -311,8 +316,15 @@ Ini adalah halaman kalender untuk desa
                 setTimeout(function() {
                     $('#addEvent').modal('hide');
 
-                    toastr.success('Data berhasil diubah');
-                    location.reload();
+                    Swal.fire({
+                           title: 'Success!!',
+                            text: 'Event berhasil diupdate',
+                            icon: 'success',
+                            confirmButtonText: 'Ok' }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    }
+                            });
                 }, 1000);
             }
         });
@@ -339,8 +351,15 @@ Ini adalah halaman kalender untuk desa
                             $('#confirmModal').modal('hide');
                             $('#addEvent').modal('hide');
                             // $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
-                            location.reload();
+                            Swal.fire({
+                            title: 'Success!!',
+                            text: 'Event berhasil dihapus',
+                            icon: 'success',
+                            confirmButtonText: 'Ok' }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                    }
+                            });
                         }, 1000);
                     }
 
