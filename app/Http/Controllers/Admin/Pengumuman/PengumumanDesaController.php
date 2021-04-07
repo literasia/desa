@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Pengumuman;
+namespace App\Http\Controllers\Admin\Pengumuman;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class PengumumanDesaController extends Controller
 {
     public function index() {
-        return view('desa.pengumuman.pengumuman');
+        return view('admin.pengumuman.pengumuman');
     }
 }

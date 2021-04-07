@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Slider;
+namespace App\Http\Controllers\Admin\Slider;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,6 +11,6 @@ use Carbon\Carbon;
 class SliderController extends Controller
 {
     public function index(Request $request){
-    	return view('desa.slider.slider');
+    	return view('admin.slider.slider');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\WisataDesa;
+namespace App\Http\Controllers\Admin\WisataDesa;
 
 use Validator;
 use App\Models\Pegawai;
@@ -11,6 +11,6 @@ use App\Http\Controllers\Controller;
 class WisataDesaController extends Controller
 {
     public function index() {
-        return view('desa.wisata-desa.wisata-desa');
+        return view('admin.wisata-desa.wisata-desa');
     }
 }

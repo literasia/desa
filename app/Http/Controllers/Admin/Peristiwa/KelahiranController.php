@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Peristiwa;
+namespace App\Http\Controllers\Admin\Peristiwa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class KelahiranController extends Controller
 {
     public function index() {
-        return view('desa.peristiwa.kelahiran');
+        return view('admin.peristiwa.kelahiran');
     }
 }

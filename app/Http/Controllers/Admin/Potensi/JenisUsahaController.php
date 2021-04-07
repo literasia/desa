@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Potensi;
+namespace App\Http\Controllers\Admin\Potensi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class JenisUsahaController extends Controller
 {
     public function index() {
-        return view('desa.potensi.jenis-usaha');
+        return view('admin.potensi.jenis-usaha');
     }
 }

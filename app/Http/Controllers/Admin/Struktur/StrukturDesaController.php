@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Struktur;
+namespace App\Http\Controllers\Admin\Struktur;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class StrukturDesaController extends Controller
 {
     public function index() {
-        return view('desa.struktur.struktur');
+        return view('admin.struktur.struktur');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Struktur;
+namespace App\Http\Controllers\Admin\Struktur;
 
 use Validator;
 use Illuminate\Http\Request;
@@ -10,6 +10,6 @@ use App\Http\Controllers\Controller;
 class PegawaiController extends Controller
 {
     public function index() {
-        return view('desa.struktur.pegawai');
+        return view('admin.struktur.pegawai');
     }
 }
