@@ -23,12 +23,13 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-kategori-berita">
+                        <form id="form-news-category">
+                        @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="kategori_berita">Kategori Berita</label>
-                                        <input type="text" name="kategori_berita" id="kategori_berita" class="form-control form-control-sm">
+                                        <label for="news_category">Kategori Berita</label>
+                                        <input type="text" name="news_category" id="news_category" class="form-control form-control-sm">
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
                                     <input type="submit" class="btn btn-sm btn-outline-success" value="Simpan" id="btn">
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -109,8 +110,108 @@
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable({
-
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.berita.kategori-berita') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
             });
+
+            $('#form-news-category').on('submit', function (event) {
+                event.preventDefault();
+
+                var url = '';
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.berita.kategori-berita') }}";
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.berita.kategori-berita-update') }}";
+                }
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#news_category').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            toastr.success('Sukses!');
+                            $('#news_category').removeClass('is-invalid');
+                            $('#form-news-category')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/berita/kategori-berita/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#news_category').val(data.news_category.name);
+                        $('#hidden_id').val(data.news_category.id);
+                        $('#action').val('edit');
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/berita/kategori-berita/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            toastr.success('Data berhasil dihapus');
+                        }, 1000);
+                    }
+                });
+            });
+
+        });
 
     </script>
 @endpush
