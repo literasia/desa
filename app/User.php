@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Village;
 
 class User extends Authenticatable
 {
@@ -44,7 +45,8 @@ class User extends Authenticatable
         return null !== $this->roles()->where('name', $role)->first();
     }
 
-    public function sekolah() {
-        return $this->belongsTo('App\Models\Sekolah');
+    public function village()
+    {
+        return $this->belongsTo(Village::class);
     }
 }

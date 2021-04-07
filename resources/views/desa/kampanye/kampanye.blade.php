@@ -31,8 +31,6 @@
                                         <th>No</th>
                                         <th>Foto</th>
                                         <th>Nama Paslon</th>
-                                        <th>Visi</th>
-                                        <th>Misi</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

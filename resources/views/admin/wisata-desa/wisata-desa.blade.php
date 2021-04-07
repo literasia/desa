@@ -31,8 +31,8 @@
                                         <th>No</th>
                                         <th>Nama Tempat</th>
                                         <th>Alamat</th>
-                                        <th>Hari Buka</th>
-                                        <th>Jam Buka</th>
+                                        <th>Waktu Buka</th>
+                                        <th>Alamat Usaha</th>
                                         <th>Jenis Wisata</th>
                                         <th>Nomor Telp.</th>
                                         <th>Keterangan</th>
@@ -59,8 +59,6 @@
             </div>
         </div>
     </div>
-{{-- Modal --}}
-    @include('admin.wisata-desa.modals._wisata')
 @endsection
 
 {{-- addons css --}}
@@ -69,7 +67,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-clockpicker.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
@@ -84,7 +81,6 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();

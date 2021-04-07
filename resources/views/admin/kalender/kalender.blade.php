@@ -6,7 +6,7 @@
 @section('title-3', 'Kalender ')
 
 @section('describ')
-Ini adalah halaman kalender untuk desa
+Ini adalah halaman kalender untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-calendar')

@@ -6,7 +6,7 @@
 @section('title-3', 'Pengaturan Hak Akses')
 
 @section('describ')
-    Ini adalah halaman pengaturan hak akses untuk admin
+    Ini adalah halaman Pengaturan Hak Akses untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
@@ -24,42 +24,107 @@
                 <div class="card-body">
                     <div class="card-block">
                         <div class="toolbar">
-                            <h6>Keterangan :</h6>
-                            <ol>
+                            <h5 class="mb-3">Keterangan</h5>
+                            <ol class="pl-3">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <li>KA : Kalender</li>
-                                        <li>SE : Sekolah</li>
-                                        <li>PEL : Pelajaran</li>
-                                        <li>PD : Peserta Didik</li>
-                                        <li>AB : Absensi</li>
-                                        <li>DN : Daftar Nilai</li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KA</label></span>
+                                            <span> : Kalender</span>
+                                        </li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SE</label></span>
+                                            <span> : Sekolah</span>
+                                        </li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PEL</label></span>
+                                            <span> : Pelajaran</span>
+                                        </li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PD</label></span>
+                                            <span> : Peserta Didik</span>
+                                        </li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">AB</label></span>
+                                            <span> : Absensi</span>
+                                        </li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">DN</label></span>
+                                            <span> : Daftar Nilai</span>
+                                        </li>
                                     </div>
                                     <div class="col-md-4">
-                                        <li>PLG : Pelanggaran</li>
-                                        <li>TE : Template</li>
-                                        <li>LU : Log User</li>
-                                        <li>R : Referensi</li>
-                                        <li>BT : Buku Tamu</li>
-                                        <li>KO : Konsultasi</li>
+                                        <li>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PLG</label></span>
+                                            <span> : Pelanggaran</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">TE</label></span>
+                                            <span> : Template</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">LU</label></span>
+                                            <span> : Log User</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">R</label></span>
+                                            <span> : Referensi</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BT</label></span>
+                                            <span> : Buku Tamu</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KO</label></span>
+                                            <span> : Konsultasi</span>
+                                        </li>
                                     </div>
                                     <div class="col-md-4">
-                                        <li>PER : Perpustakaan</li>
-                                        <li>KE : Keuangan</li>
-                                        <li>S&P : Sarana & Prasarana</li>
-                                        <li>PMB : Penerimaan Murid Baru</li>
-                                        <li>USBK : Ujian Sekolah Berbasis Komputer</li>
-                                        <li>EVO : E-voting</li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PER</label></span>
+                                            <span> : Perpustakaan</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KE</label></span>
+                                            <span> : Keuangan</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">S&P</label></span>
+                                            <span> : Sarana & Prasarana</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PMB</label></span>
+                                            <span> : Penerimaan Murid Baru</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">USBK</label></span>
+                                            <span> : Ujian Sekolah Berbasis Komputer</span>
+                                        </li>
+                                        <li>
+
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">EVO</label></span>
+                                            <span> : E-voting</span>
+                                        </li>
                                     </div>
                                 </div>
                             </ol>
                         </div>
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead>
                                     <tr class="text-left">
                                     <th>Nama</th>
-                                    <th title="Kalender">KA</th>
+                                    <th title="Kalender" >KA</th>
                                     <th title="Sekolah">SE</th>
                                     <th title="Pelajaran">PEL</th>
                                     <th title="Peserta Didik">PD</th>
@@ -974,6 +1039,14 @@
     <style>
         .btn i {
             margin-right: 0px;
+        }
+        .access-label {
+            width: 3.6rem;
+        }
+        .badge {
+            border-radius: 5px!important;
+            display: inline-block;
+            width: 3.5rem;
         }
     </style>
 @endpush

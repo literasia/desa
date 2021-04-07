@@ -257,6 +257,26 @@
                         <span class="pcoded-mtext">Kalender</span>
                     </a>
                 </li>
+
+                <li class="@if (request()->is('desa/kalender/kegiatan-desa') || request()->is('desa/kalender/kategori')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-calendar"></i></span>
+                        <span class="pcoded-mtext">Kalender</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('desa/kalender/kegiatan-desa') ? 'active' : '' }}">
+                            <a href="{{ route('desa.kalender.kegiatan-desa') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kegiatan Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('desa/kalender/kategori') ? 'active' : '' }}">
+                            <a href="{{ route('desa.kalender.kategori') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="{{ request()->is('desa/pengumuman') ? 'active' : '' }}">
                      <a href="{{ route('desa.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -306,9 +326,3 @@
         </div>
     </div>
 </nav>
-
-@push('css')
-<style type="text/css">
-    
-</style>
-@endpush
