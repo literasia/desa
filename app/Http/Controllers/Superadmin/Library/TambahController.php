@@ -12,5 +12,6 @@ use App\Http\Controllers\Controller;
 class TambahController extends Controller
 {
     public function index(Request $request) {
+        return view('superadmin.library.tambah-baru');
     }
 }

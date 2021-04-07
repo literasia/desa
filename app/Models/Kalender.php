@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kalender extends Model
 {
-    use SoftDeletes;
+    //
     protected $fillable = [
-        'sekolah_id','title', 'start_date', 'end_date', 'start_clock', 'end_clock', 'prioritas',
+        'villages_id', 'title', 'start_date', 'end_date', 'start_clock', 'end_clock', 'priority',
     ];
     protected $table = "kalenders";
     protected $guarded = [];
