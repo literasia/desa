@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', ' Kampanye | Kampanye')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.kampanye.kampanye') }}
+    {{ route('admin.kampanye.kampanye') }}
 @endsection
 
 {{-- main content --}}
@@ -56,7 +56,7 @@
     </div>
     
 {{-- Modal --}}
-@include('desa.kampanye.modals._kampanye')
+@include('admin.kampanye.modals._kampanye')
 @endsection
 
 {{-- addons css --}}

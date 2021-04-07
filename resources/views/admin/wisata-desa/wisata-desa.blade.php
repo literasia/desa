@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Wisata Desa')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.wisata-desa.wisata-desa') }}
+    {{ route('admin.wisata-desa.wisata-desa') }}
 @endsection
 
 {{-- main content --}}

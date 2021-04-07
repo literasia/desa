@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa | Jenis Usaha')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.potensi.jenis-usaha') }}
+    {{ route('admin.potensi.jenis-usaha') }}
 @endsection
 
 {{-- main content --}}

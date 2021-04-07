@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Struktur Desa | Jabatan')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.jabatan') }}
+    {{ route('admin.struktur.jabatan') }}
 @endsection
 
 {{-- main content --}}

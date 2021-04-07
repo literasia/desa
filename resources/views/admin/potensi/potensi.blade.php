@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.potensi.potensi') }}
+    {{ route('admin.potensi.potensi') }}
 @endsection
 
 {{-- main content --}}
@@ -66,7 +66,7 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('desa.potensi.modals._potensi')
+    @include('admin.potensi.modals._potensi')
 @endsection
 
 {{-- addons css --}}

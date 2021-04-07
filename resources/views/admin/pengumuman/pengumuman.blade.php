@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Pengumuman | Pengumuman')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.pengumuman.pengumuman') }}
+    {{ route('admin.pengumuman.pengumuman') }}
 @endsection
 
 {{-- main content --}}
@@ -49,7 +49,7 @@
     </div>
 
     {{-- Modal --}}
-    @include('desa.pengumuman.modals._pesan')
+    @include('admin.pengumuman.modals._pesan')
 @endsection
 
 {{-- addons css --}}

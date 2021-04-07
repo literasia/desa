@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Struktur Desa | Struktur Desa')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.struktur') }}
+    {{ route('admin.struktur.struktur') }}
 @endsection
 
 {{-- main content --}}
@@ -48,7 +48,7 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('desa.struktur.modals._struktur')
+    @include('admin.struktur.modals._struktur')
 @endsection
 
 {{-- addons css --}}

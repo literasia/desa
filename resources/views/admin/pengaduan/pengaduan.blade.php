@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Penguaduan | Pengaduan Desa')
@@ -6,16 +6,17 @@
 @section('title-3', 'Pengumuman Desa')
 
 @section('describ')
-    Ini adalah halaman Pengaduan untuk desa
+    Ini adalah halaman Pengaduan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-comment-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.pengaduan.pengaduan') }}
+    {{ route('admin.pengaduan.pengaduan') }}
 @endsection
 
+@section('content')
 <div class="row">
         <div class="col-xl-12">
             <div class="card shadow-sm">

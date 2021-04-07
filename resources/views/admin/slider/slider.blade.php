@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Slider | Slider')
@@ -6,14 +6,14 @@
 @section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman slider untuk Superadmin
+    Ini adalah halaman slider untuk admin
 @endsection
 
 @section('icon-l', 'icon-list')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.slider.slider') }}
+    {{ route('admin.slider.slider') }}
 @endsection
 
 {{-- main content --}}

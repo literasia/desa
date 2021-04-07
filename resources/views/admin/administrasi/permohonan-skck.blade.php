@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Permohonan SKCK')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.permohonan-skck') }}
+    {{ route('admin.administrasi.permohonan-skck') }}
 @endsection
 
 {{-- main content --}}

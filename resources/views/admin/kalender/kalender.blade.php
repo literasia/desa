@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Kalender | Kalender ')
@@ -6,21 +6,21 @@
 @section('title-3', 'Kalender ')
 
 @section('describ')
-Ini adalah halaman kalender untuk desa
+Ini adalah halaman kalender untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-calendar')
 @section('icon-r', 'icon-home')
 
 @section('link')
-{{ route('desa.kalender.kalender') }}
+{{ route('admin.kalender.kalender') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
 
 
-@include('desa.kalender.modals._kalender')
+@include('admin.kalender.modals._kalender')
 
 <div class="row">
     <div class="col-xl-12">

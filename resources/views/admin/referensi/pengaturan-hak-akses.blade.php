@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Referensi | Pengaturan Hak Akses')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.pengaturan-hak-akses') }}
+    {{ route('admin.referensi.pengaturan-hak-akses') }}
 @endsection
 
 {{-- main content --}}

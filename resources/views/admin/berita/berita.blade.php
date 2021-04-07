@@ -6,7 +6,7 @@
 @section('title-3', 'Berita')
 
 @section('describ')
-    Ini adalah halaman Berita untuk Superadmin
+    Ini adalah halaman Berita untuk admin
 @endsection
 
 @section('icon-l', 'icon-list')
