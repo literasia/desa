@@ -152,8 +152,6 @@ Route::namespace('Desa')
                     ->name('administrasi.keterangan-pindah');
                 Route::get('/desa/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
                     ->name('administrasi.keterangan-domisili');
-                Route::get('/desa/administrasi/keterangan-berkelakuan-baik', 'KeteranganBerkelakuanBaikController@index')
-                    ->name('administrasi.keterangan-berkelakuan-baik');
                 Route::get('/desa/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
                     ->name('administrasi.keterangan-ahli-waris');
                 Route::get('/desa/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
