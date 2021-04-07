@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.desa')
 
 {{-- config 1 --}}
 @section('title', 'Referensi | Bagian Pegawai')
@@ -6,14 +6,14 @@
 @section('title-3', 'Bagian Pegawai')
 
 @section('describ')
-    Ini adalah halaman bagian pegawai untuk admin
+    Ini adalah halaman Bagian Pegawai untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.referensi.bagian-pegawai') }}
+    {{ route('desa.referensi.bagian-pegawai') }}
 @endsection
 
 {{-- main content --}}
@@ -24,12 +24,11 @@
                 <div class="card-body">
                     <div class="card-block">
                         <form id="form-pegawai">
-                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
                                         <label for="pegawai">Bagian Pegawai</label>
-                                        <input type="text" name="pegawai" id="pegawai" class="form-control form-control-sm" placeholder="Bagian Pegawai">
+                                        <input type="text" name="pegawai" id="pegawai" class="form-control form-control-sm mb-4">
                                         <span id="form_result" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -38,7 +37,7 @@
                                 <div class="col">
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-outline-success" value="Simpan" id="btn">
+                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
                                     <button type="reset" class="btn btn-sm btn-danger">Batal</button>
                                 </div>
                             </div>
@@ -52,7 +51,7 @@
                 <div class="card-body">
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
@@ -110,112 +109,7 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: "{{ route('admin.referensi.bagian-pegawai') }}",
-                },
-                columns: [
-                {
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
-                },
-                {
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
-                ]
-            });
-
-            $('#form-pegawai').on('submit', function (event) {
-                event.preventDefault();
-                var url = '';
-
-                if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.referensi.bagian-pegawai') }}";
-                    text = "Data sukses ditambahkan";
-                }
-                
-                if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.referensi.bagian-pegawai-update') }}";
-                    text = "Data sukses diupdate";
-                }
-
-                $.ajax({
-                    url: url,
-                    method: 'POST',
-                    dataType: 'JSON',
-                    data: $(this).serialize(),
-                    success: function (data) {
-                        var html = '';
-                        if (data.errors) {
-                            // for (var count = 0; count <= data.errors.length; count++) {
-                            html = data.errors[0];
-                            // }
-                            $('#pegawai').addClass('is-invalid');
-                            toastr.error(html);
-                        }
-
-                        if (data.success) {
-                            toastr.success('Data sukses ditambahkan');
-                            $('#pegawai').removeClass('is-invalid');
-                            $('#form-pegawai')[0].reset();
-                            $('#action').val('add');
-                            $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
-                                .val('Simpan');
-                            $('#order-table').DataTable().ajax.reload();
-                        }
-                        $('#form_result').html(html);
-                    }
-                });
-            });
-
-            $(document).on('click', '.edit', function () {
-                var id = $(this).attr('id');
-                $.ajax({
-                    url: '/admin/referensi/bagian-pegawai/'+id,
-                    dataType: 'JSON',
-                    success: function (data) {
-                        console.log(data.pegawai);
-                        $('#pegawai').val(data.pegawai.name);
-                        $('#hidden_id').val(data.pegawai.id);
-                        $('#action').val('edit');
-                        $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
-                            .val('Update');
-                    }
-                });
-            });
-
-            var user_id;
-            $(document).on('click', '.delete', function () {
-                user_id = $(this).attr('id');
-                $('#ok_button').text('Hapus');
-                $('#confirmModal').modal('show');
-            });
-
-            $('#ok_button').click(function () {
-                $.ajax({
-                    url: '/admin/referensi/bagian-pegawai/hapus/'+user_id,
-                    beforeSend: function () {
-                        $('#ok_button').text('Menghapus...');
-                    }, success: function (data) {
-                        setTimeout(function () {
-                            $('#confirmModal').modal('hide');
-                            $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
-                        }, 1000);
-                    }
-                });
-            });
+            $('#order-table').DataTable();
         });
     </script>
 @endpush

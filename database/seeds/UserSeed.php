@@ -28,6 +28,7 @@ class UserSeed extends Seeder
         ]);
 
         $admins = User::create([
+            'village_id' => '1212260003',
             'name'      => 'Admin',
             'username'  => 'admin',
             'password'  => bcrypt('admin'),
