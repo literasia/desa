@@ -29,7 +29,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('admin/struktur/struktur') || request()->is('admin/struktur/pegawai') || request()->is('admin/struktur/jabatan') || request()->is('admin/struktur/golongan') || request()->is('admin/struktur/status-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/struktur/struktur') || request()->is('admin/struktur/pegawai') || request()->is('admin/struktur/jabatan') || request()->is('admin/struktur/status-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-project-diagram"></i></span>
                         <span class="pcoded-mtext">Struktur Desa</span>
@@ -48,11 +48,6 @@
                         <li class="{{ request()->is('admin/struktur/jabatan') ? 'active' : '' }}">
                             <a href="{{ route('admin.struktur.jabatan') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Jabatan</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/struktur/golongan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.struktur.golongan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Golongan</span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/struktur/status-pegawai') ? 'active' : '' }}">
