@@ -195,8 +195,11 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/admin/kalender', 'KalenderDesaController@index')
+                Route::get('/admin/kalender', 'KalenderDesaController@index')
                 ->name('kalender.kalender');
+            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
+            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
+            Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
             });
 
 
@@ -219,6 +222,13 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
+                Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
+                ->name('pengumuman.pengumuman');
+            Route::post('/desa/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+            Route::get('/desa/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+            Route::post('/desa/pengumuman/pesan/update', 'PengumumanDesaController@update')
+                ->name('pengumuman.pesan-update');
+            Route::get('/desa/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
             });
 
         // Perpustakaan
@@ -414,12 +424,6 @@ Route::namespace('Admin')
                 Route::get('/admin/referensi/tingkatan-kelas/hapus/{id}', 'TingkatanKelasController@destroy');
             });
 
-        // Kalender
-        Route::namespace('Kalender')
-            ->group(function () {
-                Route::get('/admin/kalender/kalender-akademik', 'KalenderAkademikController@index')
-                    ->name('kalender.kalender-akademik');
-            });
 
         // Pengumuman
 

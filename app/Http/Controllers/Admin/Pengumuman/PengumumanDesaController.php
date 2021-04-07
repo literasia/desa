@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Pengumuman;
+namespace App\Http\Controllers\Admin\Pengumuman;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
+use App\Models\Admin\Message;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Validator;
@@ -13,7 +13,7 @@ class PengumumanDesaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Message::where('village_id', 1101010001);
+            $data = Message::where('village_id', auth()->user()->village->id);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
@@ -25,7 +25,7 @@ class PengumumanDesaController extends Controller
                 ->make(true);
         }
         // $data = Pesan::where('user_id', Auth::id())->get();
-        return view('desa.pengumuman.pengumuman',);
+        return view('admin.pengumuman.pengumuman',);
         // return $data;
     }
 
@@ -81,7 +81,7 @@ class PengumumanDesaController extends Controller
             'end_date' => $request->input('end_date'),
             'message' => $request->input('message'),
             'status' => 'Aktif',
-            'village_id' => 1101010001
+            'village_id' => auth()->user()->village->id
         ]);
 
         return response()
