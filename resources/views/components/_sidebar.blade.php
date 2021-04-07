@@ -69,27 +69,27 @@
                         <li class="{{ request()->is('admin/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.permohonan-pembuatan-ktp') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Permohonan KTP
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.surat-keterangan-lahir') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Surat Lahir
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/perubahan-kk') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.perubahan-kk') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Perubahan KK
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
@@ -105,63 +105,63 @@
                         <li class="{{ request()->is('admin/administrasi/izin-usaha') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.izin-usaha') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Izin Usaha
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-tidak-mampu') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Ket. Tidak Mampu
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/permohonan-skck') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.permohonan-skck') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Permohonan SKCK
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-pindah') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-pindah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Pindah
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-domisili') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Domisili
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-ahli-waris') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-ahli-waris') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Ahli Waris
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tanah') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Tanah
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
