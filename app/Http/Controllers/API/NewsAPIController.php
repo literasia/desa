@@ -12,7 +12,7 @@ use App\User;
 class NewsAPIController extends Controller
 {
 
-    public function index($id,Request $req) {
+    public function index($village_id,Request $req) {
         $data = $req->all();
 
         // $validator = Validator::make($data, [
@@ -45,7 +45,7 @@ class NewsAPIController extends Controller
         //     default:
         //         $libraries = $libraries;
         // }
-        $berita = $berita->where('village_id', $id)->orderBy('create_date', 'desc')->limit(30)->get();
+        $berita = $berita->where('village_id', $village_id)->orderBy('create_date', 'desc')->limit(30)->get();
         return response()->json(ApiResponse::success($berita));
     }
 }

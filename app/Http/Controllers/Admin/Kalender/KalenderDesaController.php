@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Kalender;
+namespace App\Http\Controllers\Admin\Kalender;
 
 use App\Models\Kalender;
 use App\Http\Controllers\Controller;
@@ -20,7 +20,7 @@ class KalenderDesaController extends Controller
 
         $events = json_encode($datas);
 
-        return view('desa.kalender.kalender', compact('events'));
+        return view('admin.kalender.kalender', compact('events'));
     }
     public function store(Request $request)
     {

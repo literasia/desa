@@ -203,8 +203,13 @@ Route::namespace('Admin')
         // Kampanye
         Route::namespace('Kampanye')
             ->group(function () {
-            Route::get('/admin/kampanye', 'KampanyeController@index')
+                Route::get('/admin/kampanye/kampanye', 'CampaignController@index')
                 ->name('kampanye.kampanye');
+                Route::post('/admin/kampanye/kampanye', 'CampaignController@store');
+                Route::get('/admin/kampanye/kampanye/{id}', 'CampaignController@edit');
+                Route::post('/admin/kampanye/kampanye/update', 'CampaignController@update')
+                    ->name('kampanye.kampanye-update');
+                Route::get('/admin/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
             });
 
         // Pengaduan

@@ -83,12 +83,13 @@
 
 {{-- addons js --}}
 @push('js')
-    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script>
+<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+<script>
         $(document).ready(function () {
 
             $('#add').on('click', function () {
@@ -136,7 +137,7 @@
                 event.preventDefault();
 
                 var url = '';
-                if ($('#judul').val() == 'add') {
+                if ($('#action').val() == 'add') {
                     url = "{{ route('admin.berita.berita') }}";
                 }
 
@@ -145,6 +146,8 @@
                 }
 
                 var formData = new FormData($('#form-news')[0]);
+
+                $('#btn').prop('disabled', true);
 
                 $.ajax({
                     url: url,
@@ -162,11 +165,21 @@
                         }
 
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            // toastr.success('Sukses!');
+
+                            if ($('#action').val() == 'add') {
+                                Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
+                            }
+
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
+                            }
+                            
                             $('#modal-berita').modal('hide');
                             $('#title').removeClass('is-invalid');
                             $('#form-news')[0].reset();
                             $('#action').val('add');
+                            $('#btn').prop('disabled', false);
                             $('#btn')
                                 .removeClass('btn-outline-info')
                                 .addClass('btn-outline-success')
@@ -215,7 +228,8 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
+                            // toastr.success('Data berhasil dihapus');
+                            Swal.fire('Sukses!', 'Data berhasi dihapus!', 'success');
                         }, 1000);
                     }
                 });

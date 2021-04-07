@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Permohonan SKCK')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.permohonan-skck') }}
+    {{ route('admin.administrasi.permohonan-skck') }}
 @endsection
 
 {{-- main content --}}
@@ -36,18 +36,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <label class="badge badge-danger">Baruk Masuk</label>
-                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                            <label class="badge badge-success">Selesai</label> -->
-                                        </td>
-                                        <td></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>

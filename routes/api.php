@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('API')
     ->group(function (){
-        Route::get('news/{id}', 'NewsAPIController@index');
+        Route::get('news/{village_id}', 'NewsAPIController@index');
     });

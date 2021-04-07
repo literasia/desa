@@ -123,7 +123,6 @@ class NewsController extends Controller
                 'image'         => $data->image,
                 'create_date'   => $data->create_date,
             ]);
-        dd($data);
     }
 
     /**

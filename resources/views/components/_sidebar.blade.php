@@ -50,16 +50,6 @@
                                 <span class="pcoded-mtext">Jabatan</span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/struktur/golongan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.struktur.golongan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Golongan</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/struktur/status-pegawai') ? 'active' : '' }}">
-                            <a href="{{ route('admin.struktur.status-pegawai') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Status Pegawai</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="{{ request()->is('admin/profil-desa') ? 'active' : '' }}">
@@ -135,13 +125,6 @@
                         <li class="{{ request()->is('admin/administrasi/keterangan-domisili') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext m-1">Keterangan Domisili</span>
-                                <label class="badge badge-danger m-0">1</label>
-                                <label class="badge badge-warning m-0">1</label>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/administrasi/keterangan-berkelakuan-baik') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan-berkelakuan-baik') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext m-1">Keterangan Berkelakuan Baik</span>
                                 <label class="badge badge-danger m-0">1</label>
                                 <label class="badge badge-warning m-0">1</label>
                             </a>
