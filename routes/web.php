@@ -11,29 +11,6 @@ Route::namespace('Superadmin')
         Route::get('/superadmin', 'SuperadminController@index')
             ->name('index');
 
-        // Berita
-        Route::namespace('Berita')
-            ->group(function () {
-
-                // Berita
-                Route::get('/superadmin/berita/berita', 'BeritaController@index')
-                    ->name('berita.berita');
-                Route::post('/superadmin/berita/berita', 'BeritaController@store');
-                Route::get('/superadmin/berita/berita/{id}', 'BeritaController@edit');
-                Route::post('/superadmin/berita/berita/update', 'BeritaController@update')
-                    ->name('berita.berita-update');
-                Route::get('/superadmin/berita/berita/hapus/{id}', 'BeritaController@destroy');
-
-                // Kategori Berita
-                Route::get('/superadmin/berita/kategori-berita', 'KategoriBeritaController@index')
-                    ->name('berita.kategori-berita');
-                Route::post('/superadmin/berita/kategori-berita', 'KategoriBeritaController@store');
-                Route::get('/superadmin/berita/kategori-berita/{id}', 'KategoriBeritaController@edit');
-                Route::post('/superadmin/berita/kategori-berita/update', 'KategoriBeritaController@update')
-                    ->name('berita.kategori-berita-update');
-                Route::get('/superadmin/berita/kategori-berita/hapus/{id}', 'KategoriBeritaController@destroy');
-            });
-
         // Library Setting
         Route::namespace('Library')
             ->group(function () {
@@ -62,13 +39,6 @@ Route::namespace('Superadmin')
                     ->name('list-desa.list-desa-update');
                 Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
             });
-
-         // Kalender
-         Route::namespace('Kalender')
-         ->group(function () {
-         Route::get('/superadmin/kalender', 'KalenderSuperadminController@index')
-             ->name('kalender.kalender');
-         });
 
         // Referensi
         Route::namespace('Referensi')
@@ -136,17 +106,6 @@ Route::namespace('Superadmin')
                     ->name('referensi.suku-update');
                 Route::get('/superadmin/referensi/suku/hapus/{id}', 'SukuController@destroy');
         });
-        
-        // Slider
-        Route::namespace('Slider')
-            ->group(function () {
-                Route::get('/superadmin/slider/slider', 'SliderController@index')
-                    ->name('slider.slider');
-                Route::post('/superadmin/slider/slider', 'SliderController@store')
-                    ->name('slider.slider.store');
-                Route::put('/superadmin/slider/slider', 'SliderController@update')
-                    ->name('slider.slider.update');
-            });
 
         // Library Setting
         Route::namespace('Library')
@@ -175,7 +134,7 @@ Route::namespace('Desa')
         // Administrasi
         Route::namespace('Administrasi')
             ->group(function () {
-                Route::get('/desa/administrasi/permohonan-pembuatan-ktp', 'PembuatanKTPController@index')
+                Route::get('/desa/administrasi/permohonan-pembuatan-ktp', 'PermohonanKTPController@index')
                     ->name('administrasi.permohonan-pembuatan-ktp');
                 Route::get('/desa/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
                     ->name('administrasi.surat-keterangan-lahir');
@@ -187,18 +146,26 @@ Route::namespace('Desa')
                     ->name('administrasi.izin-usaha');
                 Route::get('/desa/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan-tidak-mampu');
-                Route::get('/desa/administrasi/permohonan-skck', 'PembuatanKTPController@index')
+                Route::get('/desa/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
-                Route::get('/desa/administrasi/keterangan-pindah', 'SuratKeteranganLahirController@index')
+                Route::get('/desa/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
-                Route::get('/desa/administrasi/keterangan-domisili', 'PerubahanKKController@index')
+                Route::get('/desa/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
                     ->name('administrasi.keterangan-domisili');
-                Route::get('/desa/administrasi/keterangan-berkelakuan-baik', 'SuratKematianController@index')
-                    ->name('administrasi.keterangan-berkelakuan-baik');
-                Route::get('/desa/administrasi/keterangan-ahli-waris', 'IzinUsahaController@index')
+                Route::get('/desa/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
                     ->name('administrasi.keterangan-ahli-waris');
-                Route::get('/desa/administrasi/keterangan-tanah', 'KeteranganTidakMampuController@index')
+                Route::get('/desa/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
                     ->name('administrasi.keterangan-tanah');
+            });
+
+        // Berita
+        Route::namespace('Berita')
+            ->group(function () {
+
+                Route::get('/desa/berita/berita', 'BeritaController@index')
+                    ->name('berita.berita');
+                Route::get('/desa/berita/kategori-berita', 'KategoriBeritaController@index')
+                    ->name('berita.kategori-berita');
             });
 
         // Data Penduduk
@@ -239,9 +206,15 @@ Route::namespace('Desa')
             Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
             });
-        
-            // Peristiwa
-            Route::namespace('Peristiwa')
+
+        // Perpustakaan
+        Route::namespace('Perpustakaan')
+            ->group(function () {
+            Route::get('/desa/perpustakaan', 'PerpustakaanController@index')
+                ->name('perpustakaan.perpustakaan');
+            });
+
+        Route::namespace('Peristiwa')
             ->group(function () {
                 Route::get('/desa/peristiwa/kelahiran', 'KelahiranController@index')
                     ->name('peristiwa.kelahiran');
@@ -249,13 +222,6 @@ Route::namespace('Desa')
                     ->name('peristiwa.kematian');
                 Route::get('/desa/peristiwa/pindah', 'PindahController@index')
                     ->name('peristiwa.pindah');
-            });
-
-        // Perpustakaan
-        Route::namespace('Perpustakaan')
-            ->group(function () {
-            Route::get('/desa/perpustakaan', 'PerpustakaanController@index')
-                ->name('perpustakaan.perpustakaan');
             }); 
 
         // Potensi
@@ -289,17 +255,22 @@ Route::namespace('Desa')
                     ->name('referensi.pengaturan-hak-akses');
             });
 
+        // Slider
+        Route::namespace('Slider')
+            ->group(function () {
+                Route::get('/desa/slider/slider', 'SliderController@index')
+                    ->name('slider.slider');
+            });
+
         // Struktur
         Route::namespace('Struktur')
             ->group(function () {
                 Route::get('/desa/struktur/struktur', 'StrukturDesaController@index')
                     ->name('struktur.struktur');
-                Route::get('/desa/struktur/golongan', 'GolonganController@index')
-                    ->name('struktur.golongan');
+                Route::get('/desa/struktur/pegawai', 'PegawaiController@index')
+                    ->name('struktur.pegawai');
                 Route::get('/desa/struktur/jabatan', 'JabatanController@index')
                     ->name('struktur.jabatan');
-                Route::get('/desa/struktur/status-pegawai', 'StatusPegawaiController@index')
-                    ->name('struktur.status-pegawai');
             }); 
 
         // Wisata Desa

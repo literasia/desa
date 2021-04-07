@@ -30,12 +30,21 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="Keterangan">Keterangan</label>
-                                <textarea type="text" class="form-control" id="Keterangan" name="Keterangan" placeholder="Alamat" cols="10" rows="3"></textarea> 
+                                <label for="visi">Visi</label>
+                                <textarea type="text" class="form-control" id="visi" name="visi" placeholder="Alamat" cols="10" rows="3"></textarea> 
                             </div>
                         </div>
                     </div>
-                    
+
+                     <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="misi">Misi</label>
+                                <textarea type="text" class="form-control" id="misi" name="misi" placeholder="Alamat" cols="10" rows="3"></textarea> 
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">

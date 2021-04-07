@@ -11,34 +11,6 @@
                         <span class="pcoded-mtext">Dashboard</span>
                     </a>
                 </li>
-                <li class="@if (request()->is('superadmin/berita/berita') || request()->is('superadmin/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-newspaper"></i>
-                        </span>
-                        <span class="pcoded-mtext">Berita</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('superadmin/berita/berita') ? 'active' : '' }}">
-                            <a href="{{ route('superadmin.berita.berita') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Berita</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('superadmin/berita/kategori-berita') ? 'active' : '' }}">
-                            <a href="{{ route('superadmin.berita.kategori-berita') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="{{ request()->is('superadmin/slider/slider') ? 'active' : '' }}">
-                    <a href="{{ route('superadmin.slider.slider') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="feather icon-gitlab"></i>
-                        </span>
-                        <span class="pcoded-mtext">Slider</span>
-                    </a>
-                </li>
                 <li class="{{ request()->is('superadmin/list-desa/list-desa') ? 'active' : '' }}">
                     <a href="{{ route('superadmin.list-desa.list-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -47,18 +19,9 @@
                         <span class="pcoded-mtext">List Desa</span>
                     </a>
                 </li>
-                <li class="{{ request()->is('superadmin/kalender') ? 'active' : '' }}">
-                    <a href="{{ route('superadmin.kalender.kalender') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                        <span class="pcoded-mtext">Kalender</span>
-                    </a>
-                </li>
                 <li class="@if (request()->is('superadmin/library/tambah-baru') || request()->is('superadmin/library/setting')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
-                            <i class="icon-book-open"></i>
                         </span>
                         <span class="pcoded-mtext">Library</span>
                     </a>

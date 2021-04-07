@@ -33,6 +33,7 @@
                                         <th>Pemilik Usaha</th>
                                         <th>Alamat Usaha</th>
                                         <th>No. Telp</th>
+                                        <th>No. WhatsApp</th>
                                         <th>Foto KTP</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -40,6 +41,7 @@
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
