@@ -104,8 +104,8 @@ Route::namespace('admin')
                 Route::get('/admin/referensi/suku/{id}', 'SukuController@edit');
                 Route::post('/admin/referensi/suku/update', 'SukuController@update')
                     ->name('referensi.suku-update');
-                Route::get('/admin/referensi/suku/hapus/{id}', 'SukuController@destroy');
-        });
+                Route::get('/superadmin/referensi/suku/hapus/{id}', 'SukuController@destroy');
+            });
 
         // Library Setting
         Route::namespace('Library')
@@ -199,13 +199,14 @@ Route::namespace('Admin')
                 ->name('kalender.kalender');
             });
 
+
         // Kampanye
         Route::namespace('Kampanye')
             ->group(function () {
             Route::get('/admin/kampanye', 'KampanyeController@index')
                 ->name('kampanye.kampanye');
             });
-        
+
         // Pengaduan
         Route::namespace('Pengaduan')
             ->group(function () {
@@ -235,7 +236,7 @@ Route::namespace('Admin')
                     ->name('peristiwa.kematian');
                 Route::get('/admin/peristiwa/pindah', 'PindahController@index')
                     ->name('peristiwa.pindah');
-            }); 
+            });
 
         // Potensi
         Route::namespace('Potensi')
@@ -421,11 +422,7 @@ Route::namespace('Admin')
             });
 
         // Pengumuman
-        Route::namespace('Pengumuman')
-            ->group(function () {
-                Route::get('/admin/pengumuman/pesan', 'PesanController@index')
-                    ->name('pengumuman.pesan');
-            });
+
     });
 
 Auth::routes();
