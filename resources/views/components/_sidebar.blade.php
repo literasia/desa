@@ -29,7 +29,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('admin/struktur/struktur') || request()->is('admin/struktur/pegawai') || request()->is('admin/struktur/jabatan') || request()->is('admin/struktur/golongan') || request()->is('admin/struktur/status-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/struktur/struktur') || request()->is('admin/struktur/pegawai') || request()->is('admin/struktur/jabatan') || request()->is('admin/struktur/status-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-project-diagram"></i></span>
                         <span class="pcoded-mtext">Struktur Desa</span>
@@ -60,7 +60,7 @@
                         <span class="pcoded-mtext">Profil Desa</span>
                     </a>
                 </li>
-                <li class="@if (request()->is('admin/administrasi/permohonan-pembuatan-ktp') || request()->is('admin/administrasi/surat-keterangan-lahir') || request()->is('admin/administrasi/perubahan-kk') || request()->is('admin/administrasi/surat-kematian') || request()->is('admin/administrasi/izin-usaha') || request()->is('admin/administrasi/keterangan-tidak-mampu') || request()->is('admin/administrasi/permohonan-skck') || request()->is('admin/administrasi/keterangan-pindah') || request()->is('admin/administrasi/keterangan-domisili') || request()->is('admin/administrasi/keterangan-berkelakuan-baik') || request()->is('admin/administrasi/keterangan-ahli-waris') || request()->is('admin/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/administrasi/permohonan-pembuatan-ktp') || request()->is('admin/administrasi/surat-keterangan-lahir') || request()->is('admin/administrasi/perubahan-kk') || request()->is('admin/administrasi/surat-kematian') || request()->is('admin/administrasi/izin-usaha') || request()->is('admin/administrasi/keterangan-tidak-mampu') || request()->is('admin/administrasi/permohonan-skck') || request()->is('admin/administrasi/keterangan-pindah') || request()->is('admin/administrasi/keterangan-domisili') || request()->is('admin/administrasi/keterangan-ahli-waris') || request()->is('admin/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-archive"></i></span>
                         <span class="pcoded-mtext">Administrasi</span>
