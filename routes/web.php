@@ -284,12 +284,9 @@ Route::namespace('Admin')
                     ->name('struktur.struktur');
                 Route::get('/admin/struktur/pegawai', 'PegawaiController@index')
                     ->name('struktur.pegawai');
-                Route::get('/admin/struktur/golongan', 'GolonganController@index')
-                    ->name('struktur.golongan');
-                Route::get('/admin/struktur/jabatan', 'JabatanController@index')
+                Route::get('/desa/struktur/jabatan', 'JabatanController@index')
                     ->name('struktur.jabatan');
-                Route::get('/admin/struktur/status-pegawai', 'StatusPegawaiController@index')
-                    ->name('struktur.status-pegawai');
+
             }); 
 
         // Wisata Desa
