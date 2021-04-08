@@ -88,8 +88,15 @@ Route::namespace('Admin')
                     ->name('administrasi.izin_usaha');
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan_tidak_mampu');
+              
+                //SKCK
                 Route::get('/admin/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
+                Route::get('/admin/administrasi/permohonan-skck/{id}', 'PermohonanSKCKController@edit');
+                Route::post('/admin/administrasi/permohonan-skck/update', 'PermohonanSKCKController@update')
+                    ->name('administrasi.permohonan-skck-update');
+                Route::get('/admin/administrasi/permohonan-skck/hapus/{id}', 'PermohonanSKCKController@destroy');
+                
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
@@ -148,8 +155,13 @@ Route::namespace('Admin')
         // Kampanye
         Route::namespace('Kampanye')
             ->group(function () {
-            Route::get('/admin/kampanye', 'KampanyeController@index')
+                Route::get('/admin/kampanye/kampanye', 'CampaignController@index')
                 ->name('kampanye.kampanye');
+                Route::post('/admin/kampanye/kampanye', 'CampaignController@store');
+                Route::get('/admin/kampanye/kampanye/{id}', 'CampaignController@edit');
+                Route::post('/admin/kampanye/kampanye/update', 'CampaignController@update')
+                    ->name('kampanye.kampanye-update');
+                Route::get('/admin/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
             });
 
         // Pengaduan
@@ -196,10 +208,27 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('/admin/potensi/potensi', 'PotensiDesaController@index')
                     ->name('potensi.potensi');
+                Route::get('/admin/potensi/hapus/{id}', 'PotensiDesaController@destroy');
+                Route::post('/admin/potensi/potensi/update/{id}', 'PotensiDesaController@update');
+
+                //Jenis Usaha
                 Route::get('/admin/potensi/jenis-usaha', 'JenisUsahaController@index')
                     ->name('potensi.jenis-usaha');
+                Route::post('/admin/potensi/jenis-usaha', 'JenisUsahaController@store');
+                Route::post('/admin/potensi/jenis-usaha/update', 'JenisUsahaController@update')
+                    ->name('potensi.jenis-usaha.update');
+                Route::get('/admin/potensi/jenis-usaha/edit/{id}', 'JenisUsahaController@edit');
+                Route::get('/admin/potensi/jenis-usaha/hapus/{id}', 'JenisUsahaController@destroy');
+
+
+                //Kategori Usaha
                 Route::get('/admin/potensi/kategori-usaha', 'KategoriUsahaController@index')
-                    ->name('potensi.kategori-usaha'); 
+                ->name('potensi.kategori-usaha'); 
+                Route::post('/admin/potensi/kategori-usaha', 'KategoriUsahaController@store');
+                Route::post('/admin/potensi/kategori-usaha/update', 'KategoriUsahaController@update')
+                ->name('potensi.category.update'); 
+                Route::get('/admin/potensi/kategori-usaha/edit/{id}', 'KategoriUsahaController@edit');
+                Route::get('/admin/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy'); 
             });
 
         // Profil
@@ -227,6 +256,12 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('/admin/slider/slider', 'SliderController@index')
                     ->name('slider.slider');
+                Route::post('/admin/slider', 'SliderController@store')
+                    ->name('slider.store');
+                Route::put('/admin/slider', 'SliderController@update')
+                    ->name('slider.update');
+                Route::delete('/admin/slider/{id}', 'SliderController@destroy')
+                    ->name('slider.destroy');
             });
 
         // Struktur
@@ -280,8 +315,13 @@ Route::namespace('Admin')
         // Wisata Desa
         Route::namespace('WisataDesa')
             ->group(function () {
-                Route::get('/admin/wisata-desa', 'WisataDesaController@index')
+                Route::get('/admin/wisata-desa', 'VillageTourController@index')
                     ->name('wisata-desa.wisata-desa'); 
+                Route::post('/admin/wisata-desa', 'VillageTourController@store');
+                Route::get('/admin/wisata-desa/wisata-desa/{id}', 'VillageTourController@edit');
+                Route::post('/admin/wisata-desa/wisata-desa/update', 'VillageTourController@update')
+                    ->name('wisata-desa.wisata-desa-update');
+                Route::get('/admin/wisata-desa/wisata-desa/hapus/{id}', 'VillageTourController@destroy');
             });
     });
 

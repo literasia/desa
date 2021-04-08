@@ -16,7 +16,6 @@ class SuratKeteranganLahirController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }
-
         return view('admin.administrasi.surat-keterangan-lahir');
     }
 }

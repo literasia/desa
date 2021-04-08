@@ -33,16 +33,12 @@
                                         <th>Keterangan</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
-                                        <th>Kabupaten</th>
-                                        <th>Sekolah</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
                                         <td><img src="" width="100px"></td>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -74,6 +70,7 @@
             </div>
         </div>
     </div>
+    @include('admin.slider._slider')
 @endsection
 
 {{-- addons css --}}
@@ -111,7 +108,13 @@
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-slider').modal('show');
+                Swal.fire(
+                  'Good job!',
+                  'You clicked the button!',
+                  'success'
+                );
+                document.getElementById("form-slider").reset();
+                // $('#modal-slider').modal('show');
             });
 
             $('#sekolah').select2();
@@ -124,6 +127,95 @@
             $('#end_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
+            });
+
+            $('#form-slider').on('submit', function (event) {
+                event.preventDefault();
+
+                var url = method = '';
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.slider.store') }}";
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.slider.update') }}";
+                }
+
+                var formData = new FormData($('#form-slider')[0]);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#title').addClass('is-invalid');
+                            // toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            toastr.success('Sukses!');
+                            $('#modal-slider').modal('hide');
+                            $('#title').removeClass('is-invalid');
+                            $('#form-news')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: "",
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#action').val('edit');
+                        $('#title').val(data.name);
+                        $('#category').val(data.category);
+                        $('#content').val(data.content);
+                        $('#create_date').val(data.create_date);
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                        $('#modal-berita').modal('show');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/slider/destroy/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            toastr.success('Data berhasil dihapus');
+                        }, 1000);
+                    }
+                });
             });
 
         });

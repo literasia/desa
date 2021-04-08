@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.desa')
 
 {{-- config 1 --}}
 @section('title', 'Profil Desa | Profil Desa')
@@ -28,7 +28,7 @@
                                 <h4 class="mb-4">Foto Profil Desa</h4>
                                 <img id="previewImg" />
                                 <label for="file" class="sr-only"></i>Pilih Gambar</label>
-                                <input type="file" id="file" class="upload">
+                                <input type="file" name="photo" id="file" class="upload">
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             <div class="form-group row">
                                 <label for="nama_desa" class="col-sm-4 col-form-label">Nama Desa</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Nama Desa">
+                                    <input type="text" class="form-control" id="nama_desa" value="{{ auth()->user()->village->name }}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -88,17 +88,58 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <h4 class="mb-3">Upload Galeri</h4>
+                        <h4 class="mb-3">Upload Galeri <h5 style="color:#999;margin-bottom:30px;">(maks 6)</h5></h4>
                         <form>
                             <div class="row">
-                                <div class="col-md-4 mb-2">
-                                    <input type="file" id="file-input" multiple />
-                                    <small class="text-muted d-block mt-2">max. 3MB</small>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">1</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery1" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <input type="file" name="gallery[]" id="gallery1" class="gallery">
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">2</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery2" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery2" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery2" class="gallery">
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">3</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery3" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery3" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery3" class="gallery">
                                 </div>
                             </div>
-                             <div class="row">
-                                <div class="col-md-12">
-                                    <div id="thumb-output"></div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">4</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery4" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery4" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery4" class="gallery">
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">5</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery5" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery5" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery5" class="gallery">
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">6</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery6" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery6" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery6" class="gallery">
                                 </div>
                             </div>
                             <div class="row">
@@ -116,7 +157,7 @@
                 <div class="card-body">
                     <div class="card-block">
                     <h4>Peta</h4>
-                        <div class="col-md-12 text-center google-maps">
+                        <div class="col-12 text-center">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106412.05412244878!2d110.911941207651!3d-7.622584068974703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a18aeeb6a8c19%3A0x4027a76e35302c0!2sKaranganyar%2C%20Kec.%20Karanganyar%2C%20Kabupaten%20Karanganyar%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1617097890130!5m2!1sid!2sid" width="800" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                            
                         </div>
                     </div>
@@ -141,7 +182,7 @@
             display: none;
         }
 
-        #file {
+        #file, #gallery1, #gallery2, #gallery3, #gallery4, #gallery5, #gallery6 {
             visibility: hidden;
             width: 1px;
             height: 1px;
@@ -169,27 +210,11 @@
             margin-top: 5px;
         }
 
-        .thumb{
-            margin: 10px 20px 0 0;
-            width: 200px;
-            padding: 20px;
-            -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
-            box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
-            border-radius: .25rem;
-        }
-
-        .google-maps {
-            position: relative;
-            padding-bottom: 75%; 
-            height: 0;
-            overflow: hidden;
-        }
-        .google-maps iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
+        .file-selected2, .file-selected3, .file-selected4 {
+            font-size: 10px;
+            width: 100%;
+            display: block;
+            margin-top: 5px;
         }
     </style>
 @endpush
@@ -232,6 +257,41 @@
         $('.input-file .btn-upload').click(function() {
             $(this).siblings('#file').trigger('click');
         });
+
+        $('.gallery').change(function(){
+            _this = $(this);
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                  $('#thumb-'+_this.attr("id")).attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]); // convert to base64 string
+            }
+        });
+
+        $('.gallery').each(function() {
+            var label = $(this).parents('.form-group').find('label').text();
+            label = (label) ? label : 'Pilih Gambar';
+            target = $(this).attr("id");
+            $(this).wrap('<div class="inputfile"></div>');
+            $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
+            $(this).before('<span class="file-selected"></span>');
+
+            $(this).change(function(e){
+                var val = $(this).val();
+               
+                var filename = val.replace(/^.*[\\\/]/, '');
+
+                $(this).siblings('.file-selected').text(filename);
+            });
+        });
+
+
+        $('.btn-upload').click(function() {
+            target = $(this).attr("target");
+            $("#"+target).trigger('click');
+        });
     </script>
     <script type="text/javascript">
         $(document).on("change",".upload",function(){
@@ -254,31 +314,5 @@
                 document.getElementById("previewImg").style.marginBottom = "30px";
             }
         }
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#file-input').on('change', function(){ //on file input change
-                if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-                {
-                    var data = $(this)[0].files; //this file data
-                    
-                    $.each(data, function(index, file){ //loop though each file
-                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-                            var fRead = new FileReader(); //new filereader
-                            fRead.onload = (function(file){ //trigger function on successful read
-                            return function(e) {
-                                var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
-                                $('#thumb-output').append(img); //append image to output element
-                            };
-                            })(file);
-                            fRead.readAsDataURL(file); //URL representing the file's data.
-                        }
-                    });
-                    
-                }else{
-                    alert("Your browser doesn't support File API!"); //if File API is absent
-                }
-            });
-        });
     </script>
 @endpush

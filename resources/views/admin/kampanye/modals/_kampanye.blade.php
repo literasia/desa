@@ -10,19 +10,20 @@
                 </button>
             </div>
             <div class="modal-body p-4">
-                <form id="form-kampanye">
+                <form id="form-campaign" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="nama_calon">Nama Calon</label>
-                                <input type="text" name="nama_calon" id="nama_calon" class="form-control form-control-sm">
+                                <label for="candidate">Nama Calon</label>
+                                <input type="text" name="candidate" id="candidate" class="form-control form-control-sm">
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="form-group">
-                                <label for="nama_calon_wakil">Nama Calon Wakil</label>
-                                <input type="text" name="nama_calon_wakil" id="nama_calon_wakil" class="form-control form-control-sm">
+                                <label for="deputy_candidate">Nama Calon Wakil</label>
+                                <input type="text" name="deputy_candidate" id="deputy_candidate" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -30,8 +31,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="visi">Visi</label>
-                                <textarea type="text" class="form-control" id="visi" name="visi" placeholder="Alamat" cols="10" rows="3"></textarea> 
+                                <label for="vision">Visi</label>
+                                <textarea type="text" class="form-control" id="vision" name="vision" placeholder="Visi" cols="10" rows="3"></textarea> 
                             </div>
                         </div>
                     </div>
@@ -39,8 +40,8 @@
                      <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="misi">Misi</label>
-                                <textarea type="text" class="form-control" id="misi" name="misi" placeholder="Alamat" cols="10" rows="3"></textarea> 
+                                <label for="mission">Misi</label>
+                                <textarea type="text" class="form-control" id="mission" name="mission" placeholder="Misi" cols="10" rows="3"></textarea> 
                             </div>
                         </div>
                     </div>
@@ -48,9 +49,9 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="upload">Foto</label>
-                                <input type="file" name="foto" id="foto" accept="image/*" value="" autocomplete="off">
-                                <label for="foto" class="mt-1">
+                                <label for="image">Foto</label>
+                                <input type="file" name="image" id="image" accept="image/*" value="" autocomplete="off">
+                                <label for="image" class="mt-1">
                                     Foto:
                                     <small class="text-muted">max. 3MB</small>
                                 </label>

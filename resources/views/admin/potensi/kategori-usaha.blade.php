@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.potensi.jenis-usaha') }}
+    {{ route('admin.potensi.kategori-usaha') }}
 @endsection
 
 {{-- main content --}}
@@ -24,6 +24,7 @@
                 <div class="card-body">
                     <div class="card-block">
                         <form id="form-status">
+                        @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
@@ -36,8 +37,8 @@
                                 <div class="col">
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                                    <input type="submit" class="btn-outline-info btn btn-sm btn-success" value="Simpan" id="btn" />
+                                    <button type="reset" class="btn btn-sm btn-danger reset" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -106,9 +107,125 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
     <script>
-        $(document).ready(function () {
-            $('#order-table').DataTable();
-        });
+         $(document).ready(function () {
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.potensi.kategori-usaha') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'category_name',
+                    name: 'category_name'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
+
+        $('.reset').on('click', function(e) {
+            e.preventDefault();
+            $('#kategori_usaha').removeClass('is-invalid');
+                            $('#form-status')[0].reset();
+            $('#action').val('add');
+            $('#btn').removeClass('btn-outline-info')
+                    .addClass('btn-outline-success')
+                    .val('Simpan');
+        })
+
+        $('#form-status').on('submit', function (event) {
+                event.preventDefault();
+                var url = '';
+                var text = "Data sukses ditambahkan";
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.potensi.kategori-usaha') }}";
+                    text = "Data sukses ditambahkan";
+                   
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.potensi.category.update') }}";
+                    text = "Data sukses diupdate";
+                }
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        var html = '';
+                        if (data.errors) {
+                            // for (var count = 0; count <= data.errors.length; count++) {
+                            html = data.errors[0];
+                            // 
+                            $('#kategori_usaha').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            Swal.fire('Success!!',text,'success' );  
+                            $('#kategori_usaha').removeClass('is-invalid');
+                            $('#form-status')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/potensi/kategori-usaha/edit/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        console.log(data.data.category_name)
+                        $('#kategori_usaha').val(data.data.category_name);
+                        $('#hidden_id').val(data.data.id);
+                        $('#action').val('edit');
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/potensi/kategori-usaha/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Success!!','Data berhasil dihapus','success' );
+                        }, 1000);
+                    }
+                });
+            });
+         });      
     </script>
 @endpush

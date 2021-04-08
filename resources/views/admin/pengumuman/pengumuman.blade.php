@@ -155,7 +155,6 @@ Ini adalah halaman Pengumuman untuk admin
         });
 
         $('#add').on('click', function() {
-            console.log('oke');
             $('.modal-title').html('Tambah Pesan');
             $('#title').val('');
             $('#message').val('');
@@ -204,7 +203,6 @@ Ini adalah halaman Pengumuman untuk admin
                 url = "{{ route('admin.pengumuman.pesan-update') }}";
                 text = "Data berhasil diupdate";
             }
-            console.log($(this).serialize());
             $.ajax({
                 url: url,
                 method: 'POST',
