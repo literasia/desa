@@ -213,18 +213,9 @@ Route::namespace('Admin')
             //Kalender
             Route::get('/admin/kalender/kalender', 'KalenderDesaController@index')
                 ->name('kalender.kalender');
-            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-events');
-            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-events');
+            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
+            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
             Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
-
-            // Kegiatan Desa
-            Route::get('/admin/kalender/kegiatan-desa', 'KegiatanDesaController@index')
-                ->name('kalender.kegiatan-desa');
-
-            //Kategori Desa
-            Route::get('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
-                ->name('kalender.kategori-kegiatan');
-            });
 
 
         // Kampanye
