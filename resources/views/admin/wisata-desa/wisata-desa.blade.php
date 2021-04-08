@@ -73,14 +73,20 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
                 $('#modal-wisata').modal('show');
+            });
+
+            $('.clockpicker').clockpicker({
+                donetext: 'Done',
+                autoclose: true
             });
 
             $('#start_date').dateDropper({

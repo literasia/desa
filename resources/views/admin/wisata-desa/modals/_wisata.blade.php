@@ -14,8 +14,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="nama_tempat">Nama Tempat</label>
-                                <input type="text" name="nama_tempat" id="nama_tempat" class="form-control form-control-sm">
+                                <label for="name">Nama Tempat</label>
+                                <input type="text" name="name" id="name" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -23,15 +23,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" id="alamat" class="form-control form-control-sm">
+                                <label for="address">Alamat</label>
+                                <textarea name="address" id="address" cols="10" rows="3" class="form-control form-control-sm" placeholder="Keterangan"></textarea>
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="form-group">
-                                <label for="hari_buka">Hari Buka</label>
-                                <select name="hari_buka" id="hari_buka" class="form-control form-control-sm">
+                                <label for="day_open">Hari Buka</label>
+                                <select name="day_open" id="day_open" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
                                     <option value="senin">Senin</option>
                                     <option value="selasa">Selasa</option>
@@ -48,14 +48,14 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="jam_buka">Jam Buka</label>
-                                <input type="text" name="jam_buka" id="jam_buka" class="form-control form-control-sm clockpicker" readonly>
+                                <label for="time_opening">Jam Buka</label>
+                                <input type="text" name="time_opening" id="time_opening" class="form-control form-control-sm clockpicker" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="jam_tutup">Jam Tutup</label>
-                                <input type="text" name="jam_tutup" id="jam_tutup" class="form-control form-control-sm clockpicker" readonly>
+                                <label for="time_closing">Jam Tutup</label>
+                                <input type="text" name="time_closing" id="time_closing" class="form-control form-control-sm clockpicker" readonly>
                             </div>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="jenis_wisata">Jenis Wisata</label>
-                                <select name="jenis_wisata" id="jenis_wisata" class="form-control form-control-sm">
+                                <label for="travel_type">Jenis Wisata</label>
+                                <select name="travel_type" id="travel_type" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
                                     <option value="kuliner">Kuliner</option>
                                     <option value="alam">Alam</option>
@@ -81,8 +81,8 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="no_telp">No. Telepon</label>
-                                <input type="text" name="no_telp" id="no_telp" class="form-control form-control-sm">
+                                <label for="no_phone">No. Telepon</label>
+                                <input type="text" name="no_phone" id="no_phone" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -90,8 +90,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <textarea name="keterangan" id="keterangan" cols="10" rows="3" class="form-control form-control-sm" placeholder="Keterangan"></textarea>
+                                <label for="information">Keterangan</label>
+                                <textarea name="information" id="information" cols="10" rows="3" class="form-control form-control-sm" placeholder="Keterangan"></textarea>
                             </div>
                         </div>
                     </div>
