@@ -19,7 +19,7 @@ Ini adalah halaman Kegiatan Desa untuk admin
 {{-- main content --}}
 @section('content')
 
-@include('admin.kalender.modals._kalender')
+@include('admin.kalender.modals._kegiatan-desa')
 
 <div class="row">
     <div class="col-xl-12">

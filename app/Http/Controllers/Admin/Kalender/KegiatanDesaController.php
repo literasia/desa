@@ -20,7 +20,7 @@ class KegiatanDesaController extends Controller
 
         $events = json_encode($datas);
 
-        return view('admin.kalender.kalender', compact('events'));
+        return view('admin.kalender.kegiatan-desa', compact('events'));
     }
     public function store(Request $request)
     {

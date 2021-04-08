@@ -17,12 +17,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
-                                        <label id="nama_kegiatan" class="bmd-label-floating">Nama Kegiatan</label>
-                                        <input type="text" name="nama_kegiatan" id="nama_kegiatan" class="form-control">
+                                        <label id="title" class="bmd-label-floating">Nama Kegiatan</label>
+                                        <input type="text" name="title" id="title" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                             <div class="row">
+                             {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
                                         <label id="jenis_kegiatan" class="bmd-label-floating">Jenis Kegiatan</label>
@@ -31,7 +31,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
@@ -60,22 +60,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
                                         <label id="keterangan" class="bmd-label-floating">Keterangan</label>
                                         <textarea type="text" name="keterangan" id="keterangan" class="form-control"></textarea>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> --}}
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
                                         <label id="lokasi" class="bmd-label-floating">Lokasi</label>
                                         <input type="text" name="lokasi" id="lokasi" class="form-control">
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
                                     <option selected="true" disabled>Prioritas</option>
