@@ -19,7 +19,6 @@ Ini adalah halaman kalender untuk desa
 {{-- main content --}}
 @section('content')
 
-
 @include('admin.kalender.modals._kalender')
 
 <div class="row">
@@ -68,7 +67,6 @@ Ini adalah halaman kalender untuk desa
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.print.css') }}" media='print'>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}">
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" /> --}}
 <style>
     .btn i {
         margin-right: 0px;
@@ -162,7 +160,6 @@ Ini adalah halaman kalender untuk desa
                 $("#addEvent #end_clock").val("");
                 $("#deleteEvent").html("");
             },
-
             eventClick: function(event) {
                 $("#addEvent").modal("show");
                 $("#addEvent .modal-title").text("Edit Event");
