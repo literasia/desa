@@ -18,7 +18,6 @@ class ComplaintAPIController extends Controller
 
         return response()->json(ApiResponse::success($complaint, 'Success get data'));
     }
-
     public function addComplaint(Request $request, $village_id, $user_id)
     {
         $rules = [
