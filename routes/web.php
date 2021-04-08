@@ -146,8 +146,15 @@ Route::namespace('Admin')
                     ->name('administrasi.izin-usaha');
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan-tidak-mampu');
+
+                //SKCK
                 Route::get('/admin/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
+                Route::get('/admin/administrasi/permohonan-skck/{id}', 'PermohonanSKCKController@edit');
+                Route::post('/admin/administrasi/permohonan-skck/update', 'PermohonanSKCKController@update')
+                    ->name('administrasi.permohonan-skck-update');
+                Route::get('/admin/administrasi/permohonan-skck/hapus/{id}', 'PermohonanSKCKController@destroy');
+                
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
@@ -195,16 +202,24 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/admin/kalender', 'KalenderDesaController@index')
+                Route::get('/admin/kalender', 'KalenderDesaController@index')
                 ->name('kalender.kalender');
+            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
+            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
+            Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
             });
 
 
         // Kampanye
         Route::namespace('Kampanye')
             ->group(function () {
-            Route::get('/admin/kampanye', 'KampanyeController@index')
+                Route::get('/admin/kampanye/kampanye', 'CampaignController@index')
                 ->name('kampanye.kampanye');
+                Route::post('/admin/kampanye/kampanye', 'CampaignController@store');
+                Route::get('/admin/kampanye/kampanye/{id}', 'CampaignController@edit');
+                Route::post('/admin/kampanye/kampanye/update', 'CampaignController@update')
+                    ->name('kampanye.kampanye-update');
+                Route::get('/admin/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
             });
 
         // Pengaduan
@@ -212,6 +227,7 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengaduan', 'PengaduanDesaController@index')
                  ->name('pengaduan.pengaduan');
+            Route::get('/admin/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
             });
 
         // Pengumuman
@@ -219,6 +235,13 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
+                Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
+                ->name('pengumuman.pengumuman');
+            Route::post('/desa/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+            Route::get('/desa/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+            Route::post('/desa/pengumuman/pesan/update', 'PengumumanDesaController@update')
+                ->name('pengumuman.pesan-update');
+            Route::get('/desa/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
             });
 
         // Perpustakaan
@@ -420,12 +443,6 @@ Route::namespace('Admin')
                 Route::get('/admin/referensi/tingkatan-kelas/hapus/{id}', 'TingkatanKelasController@destroy');
             });
 
-        // Kalender
-        Route::namespace('Kalender')
-            ->group(function () {
-                Route::get('/admin/kalender/kalender-akademik', 'KalenderAkademikController@index')
-                    ->name('kalender.kalender-akademik');
-            });
 
         // Pengumuman
 

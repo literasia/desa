@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Administrasi;
+namespace App\Http\Controllers\Admin\Administrasi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class IzinUsahaController extends Controller
 {
     public function index() {
-        return view('desa.administrasi.izin-usaha');
+        return view('admin.administrasi.izin-usaha');
     }
 }
