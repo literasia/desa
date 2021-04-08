@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Kalender;
 
-use App\Models\Kalender;
+use App\Models\Admin\Kalender;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class KegiatanDesaController extends Controller
     {
         $datas = [];
 
-        $data = Kalender::where('village_id', 1101010001)->orderBy('created_at')->get();
+        $data = Kalender::where('village_id', auth()->user()->village->id)->orderBy('created_at')->get();
         foreach ($data as $d) {
             $datas[] = (object) array('id' => $d->id, 'title' => $d->title, 'start' => $d->start_date . " " . $d->start_clock, 'end' => $d->end_date . " " . $d->end_clock, 'className' => $d->priority);
         }
@@ -37,7 +37,7 @@ class KegiatanDesaController extends Controller
             $prioritas = "bg-success";
         }
         Kalender::create([
-            'village_id' => 1101010001,
+            'village_id' => auth()->user()->village->id,
             'title'        => $request->title,
             'start_date'    => $request->start_date,
             'end_date'    => $request->end_date,
@@ -68,7 +68,7 @@ class KegiatanDesaController extends Controller
     public function update(Request $request, $id)
     {
 
-        $check = Kalender::select('prioritas')->whereId($id)->get();
+        $check = Kalender::select('priority')->whereId($id)->get();
 
 
         if ($request->prioritas == "Sangat Penting") {
@@ -82,7 +82,7 @@ class KegiatanDesaController extends Controller
         } else if ($request->prioritas == "Tidak Diwajibkan Datang") {
             $prioritas = "bg-success";
         } else {
-            $prioritas = $check[0]->prioritas;
+            $prioritas = $check[0]->priority;
         }
         $update = Kalender::whereId($id)->update([
             'title'        => $request->title,

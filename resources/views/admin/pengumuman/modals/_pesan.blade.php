@@ -11,7 +11,11 @@
       </div>
       <div class="modal-body p-4">
         <form id="form-pesan" action="">
+          @csrf
+
           <div class="row">
+            <input type="hidden" name="hidden_id" id="hidden_id" class="form-control form-control-sm">
+
             <div class="col-md-12">
               <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating">Judul</label>
@@ -96,7 +100,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <button class="btn btn-sm btn-warning mr-3" type="reset" for="resetBtn">Reset</button>
                 <div>
-                  <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+                  <button type="submit" id="button" class="btn btn-sm btn-success">Simpan</button>
                   <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                 </div>
               </div>
