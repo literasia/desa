@@ -274,6 +274,12 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('/admin/slider/slider', 'SliderController@index')
                     ->name('slider.slider');
+                Route::post('/admin/slider', 'SliderController@store')
+                    ->name('slider.store');
+                Route::put('/admin/slider', 'SliderController@update')
+                    ->name('slider.update');
+                Route::delete('/admin/slider/{id}', 'SliderController@destroy')
+                    ->name('slider.destroy');
             });
 
         // Struktur

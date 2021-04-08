@@ -24,7 +24,7 @@
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
                     {{-- [ navigation menu ] start --}}
-                    @include('components._sidebar-desa')
+                    @include('components._sidebar')
 
                     <div class="pcoded-content">
                         {{-- [ breadcrumb ] start --}}
