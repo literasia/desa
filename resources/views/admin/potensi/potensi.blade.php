@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.potensi.potensi') }}
+    {{ route('admin.potensi.potensi') }}
 @endsection
 
 {{-- main content --}}
@@ -29,7 +29,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Usaha</th>
-                                        <th>Kategori</th>
+                                        <th>Kategori Usaha</th>
+                                        <th>Jenis Usaha</th>
                                         <th>Pemilik Usaha</th>
                                         <th>Alamat Usaha</th>
                                         <th>No. Telp</th>
@@ -40,23 +41,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="" class="text-success"><i class="fa fa-check-circle mr-2"></i>Uploaded</a>
-                                        </td>
-                                        <td>
-                                            <a href="" class="btn btn-secondary btn-sm">Approve</a>
-                                            <!-- <a href="" class="btn btn-success btn-sm">Approved</a> -->
-                                        </td>
-                                        <td></td>
-                                    </tr>
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -66,7 +51,38 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('desa.potensi.modals._potensi')
+    <div id="confirmModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button1" id="btn-delete" class="delete_btn btn btn-sm btn-outline-danger">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="confirmModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin mengupdate data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button2" id="btn-update" class="update_btn btn btn-sm btn-outline-danger">Approve</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 {{-- addons css --}}
@@ -94,23 +110,115 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>   
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
-
-            $('#add').on('click', function () {
-                $('#modal-potensi').modal('show');
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.potensi.potensi') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'business_name',
+                    name: 'business_name'
+                },
+                {
+                    data: 'business_category',
+                    name: 'business_category'
+                },
+                {
+                    data: 'business_type',
+                    name: 'business_type'
+                },
+                {
+                    data: 'business_owner',
+                    name: 'business_owner'
+                },
+                {
+                    data: 'business_address',
+                    name: 'business_address'
+                },
+                {
+                    data: 'no_phone',
+                    name: 'no_phone'
+                },
+                {
+                    data: 'no_whatsapp',
+                    name: 'no_whatsapp'
+                },
+                {
+                    data: 'image_ktp',
+                    name: 'image_ktp'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
             });
 
-            $('#start_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
+            var update_id = '';
+            $(document).on('click', '.update', function (e) {
+                update_id = $(this).attr('id');
+                console.log(update_id);
+               
+               
+                $('#confirmModal2').modal('show');
             });
 
-            $('#end_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
+    
+            $('.update_btn').click(function () {
+                $.ajax({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                    url: '/admin/potensi/potensi/update/'+update_id,
+                    beforeSend: function () {
+                        $('#btn-update').text('Mengupdate...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal2').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Success!!','Data berhasil diapprove','success' );
+                        }, 1000);
+                    }
+                });
             });
+
+
+            var delete_id;
+            $(document).on('click', '.delete', function () {
+                delete_id = $(this).attr('id');
+                
+                $('#confirmModal1').modal('show');
+            });
+
+            $('.delete_btn').click(function () {
+                $.ajax({
+                    url: '/admin/potensi/hapus/'+delete_id,
+                    beforeSend: function () {
+                        $('#btn-delete').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal1').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Success!!','Data berhasil dihapus','success' );
+                        }, 1000);
+                    }
+                });
+            });
+
         });
     </script>
 @endpush

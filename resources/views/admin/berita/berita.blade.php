@@ -6,7 +6,7 @@
 @section('title-3', 'Berita')
 
 @section('describ')
-    Ini adalah halaman Berita untuk Superadmin
+    Ini adalah halaman Berita untuk admin
 @endsection
 
 @section('icon-l', 'icon-list')
@@ -89,6 +89,8 @@
 <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+
 <script>
         $(document).ready(function () {
 
@@ -161,7 +163,11 @@
                         if (data.errors) {
                             html = data.errors[0];
                             $('#title').addClass('is-invalid');
+                            $('#category').addClass('is-invalid');
+                            $('#content').addClass('is-invalid');
+                            $('#create_date').addClass('is-invalid');
                             toastr.error(html);
+                            $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
@@ -177,6 +183,9 @@
                             
                             $('#modal-berita').modal('hide');
                             $('#title').removeClass('is-invalid');
+                            $('#category').removeClass('is-invalid');
+                            $('#content').removeClass('is-invalid');
+                            $('#create_date').removeClass('is-invalid');
                             $('#form-news')[0].reset();
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
@@ -187,6 +196,10 @@
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
+                    },
+                    error: function(errors){
+                        toastr.error('Error');
+                        $('#btn').prop('disabled', false);
                     }
                 });
             });

@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Struktur Desa | Struktur Desa')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.struktur') }}
+    {{ route('admin.struktur.struktur') }}
 @endsection
 
 {{-- main content --}}
@@ -48,7 +48,24 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('desa.struktur.modals._struktur')
+    @include('admin.struktur.modals._struktur')
+
+    <div id="confirmModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 {{-- addons css --}}
@@ -71,14 +88,9 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+
     <script>
-        $(document).ready(function () {
-            $('#order-table').DataTable();
-
-            $('#add').on('click', function () {
-                $('#modal-struktur').modal('show');
-            });
-
+        $(document).ready(function() {
             $('#start_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
@@ -87,6 +99,207 @@
             $('#end_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // get employee Json
+            function getEmployeData() {
+                $.ajax({
+                    url: '/admin/struktur/get_employee',
+                    dataType: 'JSON',
+                    success: function (employees) {
+                        employees.forEach(employee => {    
+                            $("#employee-id").append(new Option(`${employee.name}`, `${employee.id}`));
+                        });
+                    }
+                });
+            }
+
+            // get positions json
+            function getPositionData() {
+                $.ajax({
+                    url: '/admin/struktur/get_position',
+                    dataType: 'JSON',
+                    success: function (positions) {
+                        positions.forEach(position => {    
+                            $("#position-id").append(new Option(`${position.name}`, `${position.id}`));
+                        });
+                    }
+                });
+            }
+
+            // get village structures
+            function getVillageStructure(){
+                $.ajax({
+                    url: '/admin/struktur/get_village_structure',
+                    dataType: 'JSON',
+                    success: function (villageStructures) {
+                        if (villageStructures.length > 0) {
+                            villageStructures.forEach(villageStructure => {    
+                                $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
+                            });   
+                        }
+                    }
+                });
+            }
+
+            getEmployeData();
+            getVillageStructure();
+            getPositionData();
+
+            // Show Modal
+            $('#add').on('click', function () {
+                $('#modal-struktur').modal('show');
+            });
+
+            // Show DataTables
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.struktur.struktur') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'employee_id',
+                    name: 'employee_id'
+                },
+                {
+                    data: 'position_id',
+                    name: 'position_id'
+                },
+                {
+                    data: 'level',
+                    name: 'level'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
+                    data: 'description',
+                    name: 'description'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
+
+            // Event Submit
+            $('#form-struktur').on('submit', function (event) {
+                event.preventDefault();
+
+                let url = '';
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.struktur.struktur.store') }}";
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.struktur.struktur.update') }}";
+                }
+
+                let formData = new FormData($('#form-struktur')[0]);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#title').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            toastr.success('Sukses!');
+                            $('#modal-struktur').modal('hide');
+                            $('#title').removeClass('is-invalid');
+                            $('#form-struktur')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                        $('#parent-id')
+                            .find('option')
+                            .remove()
+                            .end()
+                            .append('<option value="">Pilih</option>')
+                            .val('Pilih');
+                        getVillageStructure();
+                    }
+                });
+            });
+
+            // Get data show to inputs
+            $(document).on('click', '.edit', function () {
+                let id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/struktur/struktur/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#action').val('edit');                        
+                        $('#employee-id').val(data.employee_id);
+                        $('#position-id').val(data.position_id);
+                        $('#status').val(data.status);
+                        $('#level').val(data.level);
+                        $('#parent-id').val(data.parent_id);
+                        $('#description').val(data.description);
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                        $('#modal-struktur').modal('show');
+                    }
+                });
+            });
+
+            // Even Delete
+            let user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/struktur/struktur/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            $('#parent-id')
+                                .find('option')
+                                .remove()
+                                .end()
+                                .append('<option value="">Pilih</option>')
+                                .val('Pilih');
+                            getVillageStructure();
+                            toastr.success('Data berhasil dihapus');
+                        }, 1000);
+                    }
+                });
             });
         });
     </script>

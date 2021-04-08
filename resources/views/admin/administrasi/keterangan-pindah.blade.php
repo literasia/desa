@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Keterangan Pindah')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.keterangan-pindah') }}
+    {{ route('admin.administrasi.keterangan-pindah') }}
 @endsection
 
 {{-- main content --}}

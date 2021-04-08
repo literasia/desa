@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Perubahan Kartu Keluarga')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.perubahan-kk') }}
+    {{ route('admin.administrasi.perubahan-kk') }}
 @endsection
 
 {{-- main content --}}

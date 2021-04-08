@@ -10,6 +10,15 @@ use Validator;
 
 class ComplaintAPIController extends Controller
 {
+
+
+    public function getComplaint($village_id,$user_id)
+    {
+        $complaint = Complaint::where('complaint.user_id', $user_id)->where('complaint.village_id', $village_id)->get();
+
+        return response()->json(ApiResponse::success($complaint, 'Success get data'));
+    }
+
     public function addComplaint(Request $request, $village_id, $user_id)
     {
         $rules = [

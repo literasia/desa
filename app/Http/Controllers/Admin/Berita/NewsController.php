@@ -10,7 +10,6 @@ use App\Models\Admin\NewsCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-
 class NewsController extends Controller
 {   
     private $rules = [
@@ -29,9 +28,9 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
-        $data = News::latest()->get();
+        $data = News::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
-            $data = News::latest()->get();
+            $data = News::where('village_id', auth()->user()->village->id)->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
@@ -139,14 +138,12 @@ class NewsController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator->errors()->all())->withInput();
         }
-        // dd($data['hidden_id']);
 
         $berita = News::findOrFail($data['hidden_id']);
         $data['image'] = null;
         if ($req->file('image')) {
             $data['image'] = $req->file('image')->store('berita', 'public');
         }
-
 
         News::whereId($data['hidden_id'])->update([
             'village_id' => auth()->user()->village->id,

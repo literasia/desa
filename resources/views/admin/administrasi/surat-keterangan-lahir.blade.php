@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Surat Keterangan Lahir')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.surat-keterangan-lahir') }}
+    {{ route('admin.administrasi.surat_keterangan_lahir') }}
 @endsection
 
 {{-- main content --}}
@@ -32,22 +32,21 @@
                                         <th>No. Telepon</th>
                                         <th>Alamat</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
+                                    {{-- <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <label class="badge badge-danger">Baruk Masuk</label>
-                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                            <label class="badge badge-success">Selesai</label> -->
+                                            <label class="badge badge-warning">Sedang Diproses</label>
+                                            <label class="badge badge-success">Selesai</label> 
                                         </td>
                                         <td></td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
@@ -80,7 +79,36 @@
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+             // Show DataTables
+             $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.administrasi.surat_keterangan_lahir') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'phone_number',
+                    name: 'phone_number'
+                },
+                {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                }
+                ]
+            });
         });
     </script>
 @endpush

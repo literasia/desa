@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Peristiwa | Pindah')
@@ -6,14 +6,14 @@
 @section('title-3', 'Pindah')
 
 @section('describ')
-    Ini adalah halaman Pindah Penduduk untuk desa
+    Ini adalah halaman Pindah Penduduk untuk admin
 @endsection
 
 @section('icon-l', 'icon-bell')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.peristiwa.pindah') }}
+    {{ route('admin.peristiwa.pindah') }}
 @endsection
 
 @section('content')
@@ -47,7 +47,7 @@
 </div>
 
 {{-- Modal --}}
-    @include('desa.peristiwa.modals._pindah')
+    @include('admin.peristiwa.modals._pindah')
 @endsection
     
 {{-- addons css --}}

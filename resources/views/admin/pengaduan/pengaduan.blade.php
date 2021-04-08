@@ -6,7 +6,7 @@
 @section('title-3', 'Pengumuman Desa')
 
 @section('describ')
-    Ini adalah halaman Pengaduan untuk desa
+    Ini adalah halaman Pengaduan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-comment-alt')
