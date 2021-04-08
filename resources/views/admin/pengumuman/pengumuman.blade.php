@@ -241,7 +241,7 @@ Ini adalah halaman Pengumuman untuk admin
             var id = $(this).attr('id');
 
             $.ajax({
-                url: '/desa/pengumuman/pesan/' + id,
+                url: '/admin/pengumuman/pesan/' + id,
                 dataType: 'JSON',
                 success: function(data) {
 
@@ -274,7 +274,7 @@ Ini adalah halaman Pengumuman untuk admin
 
         $('#ok_button').click(function() {
             $.ajax({
-                url: '/desa/pengumuman/pesan/hapus/' + user_id,
+                url: '/admin/pengumuman/pesan/hapus/' + user_id,
                 beforeSend: function() {
                     $('#ok_button').text('Menghapus...');
                 },

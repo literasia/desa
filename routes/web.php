@@ -242,13 +242,11 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
-                Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
-                ->name('pengumuman.pengumuman');
-            Route::post('/desa/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
-            Route::get('/desa/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
-            Route::post('/desa/pengumuman/pesan/update', 'PengumumanDesaController@update')
+            Route::post('/admin/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+            Route::get('/admin/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+            Route::post('/admin/pengumuman/pesan/update', 'PengumumanDesaController@update')
                 ->name('pengumuman.pesan-update');
-            Route::get('/desa/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
+            Route::get('/admin/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
             });
 
         // Perpustakaan

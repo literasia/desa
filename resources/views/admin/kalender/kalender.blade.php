@@ -67,6 +67,7 @@ Ini adalah halaman kalender untuk desa
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.print.css') }}" media='print'>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}">
+
 <style>
     .btn i {
         margin-right: 0px;
@@ -88,20 +89,20 @@ Ini adalah halaman kalender untuk desa
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // $('.clockpicker').clockpicker({
-        //     donetext: 'Done',
-        //     autoclose: true
-        // });
+        $('.clockpicker').clockpicker({
+            donetext: 'Done',
+            autoclose: true
+        });
 
-        // $('#start_date').dateDropper({
-        //     theme: 'leaf',
-        //     format: 'd-m-Y'
-        // });
+        $('#start_date').dateDropper({
+            theme: 'leaf',
+            format: 'd-m-Y'
+        });
 
-        // $('#end_date').dateDropper({
-        //     theme: 'leaf',
-        //     format: 'd-m-Y'
-        // });
+        $('#end_date').dateDropper({
+            theme: 'leaf',
+            format: 'd-m-Y'
+        });
 
         // $('#external-events .fc-event').each(function() {
 
