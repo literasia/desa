@@ -52,7 +52,7 @@
                                     <option value="Sangat Penting">Sangat Penting</option>
                                     <option value="Penting">Penting</option>
                                     <option value="Wajib Datang">Wajib Datang</option>
-                                    <option value="Tidak Diwajibkan Datang">Tidak Diwajibkan Datang</option>
+                                    <option value="Tidak Diwajibkan Datang">Tidak Wajibkan Datang</option>
                                     <option value="Diharapkan Datang">Diharapkan Datang</option>
                                 </select>
                             </div>

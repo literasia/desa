@@ -49,14 +49,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_start_clock" class="bmd-label-floating">Jam Mulai</label>
-                                        <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker">
+                                        <label id="label_start_clock" class="bmd-label-floating">Start At</label>
+                                        <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_end_clock" class="bmd-label-floating">Jam Berakhir</label>
-                                        <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker">
+                                        <label id="label_end_clock" class="bmd-label-floating">End At</label>
+                                        <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                     <option value="Sangat Penting">Sangat Penting</option>
                                     <option value="Penting">Penting</option>
                                     <option value="Wajib Datang">Wajib Datang</option>
-                                    <option value="Tidak Diwajibkan Datang">Tidak Diwajibkan Datang</option>
+                                    <option value="Tidak Diwajibkan Datang">Tidak Wajibkan Datang</option>
                                     <option value="Diharapkan Datang">Diharapkan Datang</option>
                                 </select>
                             </div>
