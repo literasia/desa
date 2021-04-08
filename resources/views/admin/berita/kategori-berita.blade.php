@@ -95,6 +95,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <style>
         .btn i {
             margin-right: 0px;
@@ -157,6 +158,7 @@
                             html = data.errors[0];
                             $('#news_category').addClass('is-invalid');
                             toastr.error(html);
+                            $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
@@ -180,6 +182,10 @@
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
+                    },
+                    error: function(errors){
+                        toastr.error('Error');
+                        $('#btn').prop('disabled', false);
                     }
                 });
             });

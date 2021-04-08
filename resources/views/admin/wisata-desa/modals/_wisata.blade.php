@@ -10,12 +10,13 @@
                 </button>
             </div>
             <div class="modal-body p-4">
-                <form id="form-wisata">
+                <form id="form-tour">
+                    @csrf
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="name">Nama Tempat</label>
-                                <input type="text" name="name" id="name" class="form-control form-control-sm">
+                                <input type="text" name="name" id="name" class="form-control form-control-sm" placeholder="Nama Tempat">
                             </div>
                         </div>
                     </div>
@@ -24,7 +25,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="address">Alamat</label>
-                                <textarea name="address" id="address" cols="10" rows="3" class="form-control form-control-sm" placeholder="Keterangan"></textarea>
+                                <input type="text" name="address" id="address" class="form-control form-control-sm" placeholder="Alamat">
                             </div>
                         </div>
 
@@ -33,13 +34,13 @@
                                 <label for="day_open">Hari Buka</label>
                                 <select name="day_open" id="day_open" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
-                                    <option value="senin">Senin</option>
-                                    <option value="selasa">Selasa</option>
-                                    <option value="rabu">Rabu</option>
-                                    <option value="kamis">Kamis</option>
-                                    <option value="jumat">Jum'at</option>
-                                    <option value="sabtu">Sabtu</option>
-                                    <option value="minggu">Minggu</option>
+                                    <option value="monday">Senin</option>
+                                    <option value="tuesday">Selasa</option>
+                                    <option value="wednesday">Rabu</option>
+                                    <option value="thursday">Kamis</option>
+                                    <option value="friday">Jum'at</option>
+                                    <option value="saturday">Sabtu</option>
+                                    <option value="sunday">Minggu</option>
                                 </select>
                             </div>
                         </div>
@@ -63,8 +64,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="travel_type">Jenis Wisata</label>
-                                <select name="travel_type" id="travel_type" class="form-control form-control-sm">
+                                <label for="tour_type">Jenis Wisata</label>
+                                <select name="tour_type" id="tour_type" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
                                     <option value="kuliner">Kuliner</option>
                                     <option value="alam">Alam</option>
@@ -82,7 +83,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="no_phone">No. Telepon</label>
-                                <input type="text" name="no_phone" id="no_phone" class="form-control form-control-sm">
+                                <input type="text" name="no_phone" id="no_phone" class="form-control form-control-sm" placeholder="No. Telepon">
                             </div>
                         </div>
                     </div>

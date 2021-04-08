@@ -321,8 +321,13 @@ Route::namespace('Admin')
         // Wisata Desa
         Route::namespace('WisataDesa')
             ->group(function () {
-                Route::get('/admin/wisata-desa', 'WisataDesaController@index')
+                Route::get('/admin/wisata-desa', 'VillageTourController@index')
                     ->name('wisata-desa.wisata-desa'); 
+                Route::post('/admin/wisata-desa', 'VillageTourController@store');
+                Route::get('/admin/wisata-desa/wisata-desa/{id}', 'VillageTourController@edit');
+                Route::post('/admin/wisata-desa/wisata-desa/update', 'VillageTourController@update')
+                    ->name('wisata-desa.wisata-desa-update');
+                Route::get('/admin/wisata-desa/wisata-desa/hapus/{id}', 'VillageTourController@destroy');
             });
     });
 

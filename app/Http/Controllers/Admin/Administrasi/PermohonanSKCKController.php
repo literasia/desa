@@ -16,7 +16,7 @@ class PermohonanSKCKController extends Controller
     {
         $data = SKCK::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
-            $data = SKCK::latest()->get();
+            $data = SKCK::where('village_id', auth()->user()->village->id)->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
