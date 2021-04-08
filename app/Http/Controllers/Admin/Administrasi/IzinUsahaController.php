@@ -16,7 +16,6 @@ class IzinUsahaController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }
-
         return view('admin.administrasi.izin-usaha');
     }
 }

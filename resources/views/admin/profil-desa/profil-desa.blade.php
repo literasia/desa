@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.profil-desa.profil-desa') }}
+    {{ route('admin.profil-desa.profil-desa') }}
 @endsection
 
 {{-- main content --}}
@@ -28,7 +28,7 @@
                                 <h4 class="mb-4">Foto Profil Desa</h4>
                                 <img id="previewImg" />
                                 <label for="file" class="sr-only"></i>Pilih Gambar</label>
-                                <input type="file" id="file" class="upload">
+                                <input type="file" name="photo" id="file" class="upload">
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             <div class="form-group row">
                                 <label for="nama_desa" class="col-sm-4 col-form-label">Nama Desa</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Nama Desa">
+                                    <input type="text" class="form-control" id="nama_desa" value="{{ auth()->user()->village->name }}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -88,23 +88,58 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <h4 class="mb-3">Upload Galeri</h4>
+                        <h4 class="mb-3">Upload Galeri <h5 style="color:#999;margin-bottom:30px;">(maks 6)</h5></h4>
                         <form>
                             <div class="row">
                                 <div class="col-md-4">
                                     <span class="badge badge-warning mb-4">1</span>
-                                    <label for="file2" class="sr-only">Pilih Gambar</label>
-                                    <input type="file" id="file2" class="upload2">
+                                    <div class="card">
+                                        <img id="thumb-gallery1" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <input type="file" name="gallery[]" id="gallery1" class="gallery">
                                 </div>
                                 <div class="col-md-4">
                                     <span class="badge badge-warning mb-4">2</span>
-                                    <label for="file3" class="sr-only">Pilih Gambar</label>
-                                    <input type="file" id="file3" class="upload3">
+                                    <div class="card">
+                                        <img id="thumb-gallery2" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery2" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery2" class="gallery">
                                 </div>
                                 <div class="col-md-4">
                                     <span class="badge badge-warning mb-4">3</span>
-                                    <label for="file4" class="sr-only">Pilih Gambar</label>
-                                    <input type="file" id="file4" class="upload4">
+                                    <div class="card">
+                                        <img id="thumb-gallery3" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery3" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery3" class="gallery">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">4</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery4" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery4" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery4" class="gallery">
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">5</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery5" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery5" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery5" class="gallery">
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-warning mb-4">6</span>
+                                    <div class="card">
+                                        <img id="thumb-gallery6" style="max-height:300px;max-width:100%;border:#eee solid 1px;" class="thumb_gallery">
+                                    </div>
+                                    <label for="gallery6" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" name="gallery[]" id="gallery6" class="gallery">
                                 </div>
                             </div>
                             <div class="row">
@@ -147,7 +182,7 @@
             display: none;
         }
 
-        #file, #file2, #file3, #file4 {
+        #file, #gallery1, #gallery2, #gallery3, #gallery4, #gallery5, #gallery6 {
             visibility: hidden;
             width: 1px;
             height: 1px;
@@ -223,71 +258,39 @@
             $(this).siblings('#file').trigger('click');
         });
 
+        $('.gallery').change(function(){
+            _this = $(this);
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                  $('#thumb-'+_this.attr("id")).attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]); // convert to base64 string
+            }
+        });
 
-        $('#file2').each(function() {
+        $('.gallery').each(function() {
             var label = $(this).parents('.form-group').find('label').text();
             label = (label) ? label : 'Pilih Gambar';
-
-            $(this).wrap('<div class="input-file2"></div>');
-            $(this).before('<span class="btn-upload">'+label+'</span>');
-            $(this).before('<span class="file-selected2"></span>');
+            target = $(this).attr("id");
+            $(this).wrap('<div class="inputfile"></div>');
+            $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
+            $(this).before('<span class="file-selected"></span>');
 
             $(this).change(function(e){
                 var val = $(this).val();
                
                 var filename = val.replace(/^.*[\\\/]/, '');
 
-                $(this).siblings('.file-selected2').text(filename);
+                $(this).siblings('.file-selected').text(filename);
             });
         });
 
 
-        $('.input-file2 .btn-upload').click(function() {
-            $(this).siblings('#file2').trigger('click');
-        });
-
-
-        $('#file3').each(function() {
-            var label = $(this).parents('.form-group').find('label').text();
-            label = (label) ? label : 'Pilih Gambar';
-
-            $(this).wrap('<div class="input-file3"></div>');
-            $(this).before('<span class="btn-upload">'+label+'</span>');
-            $(this).before('<span class="file-selected3"></span>');
-
-            $(this).change(function(e){
-                var val = $(this).val();
-               
-                var filename = val.replace(/^.*[\\\/]/, '');
-
-                $(this).siblings('.file-selected3').text(filename);
-            });
-        });
-
-        $('.input-file3 .btn-upload').click(function() {
-            $(this).siblings('#file3').trigger('click');
-        });
-
-
-        $('#file4').each(function() {
-            var label = $(this).parents('.form-group').find('label').text();
-            label = (label) ? label : 'Pilih Gambar';
-
-            $(this).wrap('<div class="input-file4"></div>');
-            $(this).before('<span class="btn-upload">'+label+'</span>');
-            $(this).before('<span class="file-selected4"></span>');
-
-            $(this).change(function(e){
-                var val = $(this).val();
-               
-                var filename = val.replace(/^.*[\\\/]/, '');
-
-                $(this).siblings('.file-selected4').text(filename);
-            });
-        });
-
-        $('.input-file4 .btn-upload').click(function() {
-            $(this).siblings('#file4').trigger('click');
+        $('.btn-upload').click(function() {
+            target = $(this).attr("target");
+            $("#"+target).trigger('click');
         });
     </script>
     <script type="text/javascript">
