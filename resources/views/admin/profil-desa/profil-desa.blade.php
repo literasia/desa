@@ -44,7 +44,7 @@
                             <div class="form-group row">
                                 <label for="nama_desa" class="col-sm-4 col-form-label">Nama Desa</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="nama_desa" id="nama_desa" placeholder="Nama Desa">
+                                    <input type="text" class="form-control" id="nama_desa" value="{{ auth()->user()->village->name }}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -217,6 +217,41 @@
                 // $(this).siblings('.file-selected').text(filename);
             });
         });
+        $('.btn-upload').click(function() {
+            target = $(this).attr("target");
+            $("#"+target).trigger('click');
+        });
+
+        $('.gallery').change(function(){
+            _this = $(this);
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                  $('#thumb-'+_this.attr("id")).attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]); // convert to base64 string
+            }
+        });
+
+        $('.gallery').each(function() {
+            var label = $(this).parents('.form-group').find('label').text();
+            label = (label) ? label : 'Pilih Gambar';
+            target = $(this).attr("id");
+            $(this).wrap('<div class="inputfile"></div>');
+            $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
+            $(this).before('<span class="file-selected"></span>');
+
+            $(this).change(function(e){
+                var val = $(this).val();
+               
+                var filename = val.replace(/^.*[\\\/]/, '');
+
+                $(this).siblings('.file-selected').text(filename);
+            });
+        });
+
+
         $('.btn-upload').click(function() {
             target = $(this).attr("target");
             $("#"+target).trigger('click');

@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.jabatan') }}
+    {{ route('admin.struktur.jabatan') }}
 @endsection
 
 {{-- main content --}}
@@ -23,12 +23,13 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-status">
+                        <form id="form-jabatan">
+                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="jabatan">Jabatan</label>
-                                        <input type="text" name="jabatan" id="jabatan" class="form-control form-control-sm" placeholder="Jabatan">
+                                        <label for="name">Jabatan</label>
+                                        <input type="text" name="name" id="name" class="form-control form-control-sm" placeholder="Jabatan">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +109,114 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.struktur.jabatan') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
+
+            $('#form-jabatan').on('submit', function (event) {
+                console.log('tes');
+                event.preventDefault();
+
+                var url = '';
+                if ($('#judul').val() == 'add') {
+                    url = "{{ route('admin.struktur.jabatan.store') }}";
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.struktur.jabatan.update') }}";
+                }
+
+                var formData = new FormData($('#form-jabatan')[0]);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#title').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            toastr.success('Sukses!');
+                            $('#modal-jabatan').modal('hide');
+                            $('#title').removeClass('is-invalid');
+                            $('#form-jabatan')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/struktur/jabatan/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#action').val('edit');
+                        $('#name').val(data.name);
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                        $('#modal-jabatan').modal('show');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/struktur/jabatan/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            toastr.success('Data berhasil dihapus');
+                        }, 1000);
+                    }
+                });
+            });
         });
     </script>
 @endpush

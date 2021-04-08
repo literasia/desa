@@ -17,12 +17,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
-                                        <label id="nama_kegiatan" class="bmd-label-floating">Nama Kegiatan</label>
-                                        <input type="text" name="nama_kegiatan" id="nama_kegiatan" class="form-control">
+                                        <label id="title" class="bmd-label-floating">Nama Kegiatan</label>
+                                        <input type="text" name="title" id="title" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                             <div class="row">
+                             {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
                                         <label id="jenis_kegiatan" class="bmd-label-floating">Jenis Kegiatan</label>
@@ -31,7 +31,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
@@ -49,33 +49,33 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_start_clock" class="bmd-label-floating">Jam Mulai</label>
-                                        <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker">
+                                        <label id="label_start_clock" class="bmd-label-floating">Start At</label>
+                                        <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_end_clock" class="bmd-label-floating">Jam Berakhir</label>
-                                        <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker">
+                                        <label id="label_end_clock" class="bmd-label-floating">End At</label>
+                                        <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker" readonly>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
                                         <label id="keterangan" class="bmd-label-floating">Keterangan</label>
                                         <textarea type="text" name="keterangan" id="keterangan" class="form-control"></textarea>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> --}}
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group bmd-form-group">
                                         <label id="lokasi" class="bmd-label-floating">Lokasi</label>
                                         <input type="text" name="lokasi" id="lokasi" class="form-control">
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
                                     <option selected="true" disabled>Prioritas</option>

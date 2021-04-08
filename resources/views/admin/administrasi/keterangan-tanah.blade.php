@@ -35,20 +35,7 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <label class="badge badge-danger">Baruk Masuk</label>
-                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                            <label class="badge badge-success">Selesai</label> -->
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
+                                <tbody class="text-left"></tbody>
                             </table>
                         </div>
                     </div>
@@ -80,7 +67,40 @@
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+            // Show DataTables
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.struktur.pegawai') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'nip',
+                    name: 'nip'
+                },
+                {
+                    data: 'username',
+                    name: 'username'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
         });
     </script>
 @endpush

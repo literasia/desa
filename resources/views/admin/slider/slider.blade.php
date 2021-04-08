@@ -6,7 +6,7 @@
 @section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman slider untuk admin
+    Ini adalah halaman slider untuk Admin Desa
 @endsection
 
 @section('icon-l', 'icon-list')
@@ -28,27 +28,17 @@
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
-                                        <th>#</th>
+                                        <th>No.</th>
+                                        <th></th>
                                         <th>Judul</th>
                                         <th>Keterangan</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
-                                        <th>Kabupaten</th>
-                                        <th>Sekolah</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td><img src="" width="100px"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -74,6 +64,7 @@
             </div>
         </div>
     </div>
+    @include('admin.slider._slider')
 @endsection
 
 {{-- addons css --}}
@@ -106,11 +97,55 @@
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+            // $('#order-table').DataTable();
+            $("#order-table").DataTable({
+                processing: false,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.slider.slider') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'image',
+                    name: 'image'
+                },
+                {
+                    data: 'title',
+                    name: 'title'
+                },
+                {
+                    data: 'description',
+                    name: 'description'
+                },
+                {
+                    data: 'start_date',
+                    name: 'start_date'
+                },
+                {
+                    data: 'end_date',
+                    name: 'end_date'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
 
             $('#add').on('click', function () {
+                $('#action').val('add');
+                $('#btn')
+                .removeClass('btn-outline-success')
+                .addClass('btn-outline-info')
+                .val('Simpan');
+                $('#form-slider')[0].reset();
                 $('#modal-slider').modal('show');
             });
 
@@ -124,6 +159,99 @@
             $('#end_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
+            });
+
+            $('#form-slider').on('submit', function (event) {
+                event.preventDefault();
+
+                var url = method = '';
+                
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.slider.store') }}";
+                    message = "Slider berhasil ditambahkan";
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.slider.update') }}";
+                    message = "Slider berhasil diedit";
+                }
+
+                var formData = new FormData($('#form-slider')[0]);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#title').addClass('is-invalid');
+                            // toastr.error(html);
+                            Swal.fire('Error!', html, 'danger');
+                        }
+
+                        if (data.success) {
+                            // toastr.success('Sukses!');
+                            Swal.fire('Sukses!', message, 'success');
+                            $('#modal-slider').modal('hide');
+                            $('#title').removeClass('is-invalid');
+                            $('#form-slider')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: "/admin/slider/"+id,
+                    success: function (data) {
+                        $('#action').val('edit');
+                        $('#title').val(data.title);
+                        $('#description').val(data.description);
+                        $('#start_date').val(data.start_date);
+                        $('#end_date').val(data.end_date);
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                        $('#modal-slider').modal('show');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/slider/destroy/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Sukses!', "Slider Berhasil Dihapus", 'success');
+                        }, 1000);
+                    }
+                });
             });
 
         });

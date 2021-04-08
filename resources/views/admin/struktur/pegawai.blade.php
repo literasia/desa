@@ -32,8 +32,8 @@
                                         <th>Nama</th>
                                         <th>NIK</th>
                                         <th>NIP</th>
+                                        <th>Foto</th>
                                         <th>Username</th>
-                                        <th>Password</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -47,7 +47,25 @@
             </div>
         </div>
     </div>
+    
     {{-- Modal --}}
+    <div id="confirmModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @include('admin.struktur.modals._pegawai')
 @endsection
 
@@ -73,10 +91,144 @@
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
-
+            // Show Modal
             $('#add').on('click', function () {
                 $('#modal-pegawai').modal('show');
+            });
+
+            // Show DataTables
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.struktur.pegawai') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'nip',
+                    name: 'nip'
+                },
+                {
+                    data: 'photo',
+                    name: 'photo'
+                },
+                {
+                    data: 'username',
+                    name: 'username'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
+
+            // Event Submit
+            $('#form-pegawai').on('submit', function (event) {
+                event.preventDefault();
+
+                let url = '';
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.struktur.pegawai.store') }}";
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.struktur.pegawai.update') }}";
+                }
+
+                let formData = new FormData($('#form-pegawai')[0]);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#title').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            toastr.success('Sukses!');
+                            $('#modal-pegawai').modal('hide');
+                            $('#title').removeClass('is-invalid');
+                            $('#form-pegawai')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            // Get datas show on inputs
+            $(document).on('click', '.edit', function () {
+                let id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/struktur/pegawai/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#action').val('edit');
+                        $('#name').val(data.name);
+                        $('#nik').val(data.nik);
+                        $('#nip').val(data.nip);
+                        $('#username').val(data.username);
+                        $('#password').val(data.password);
+                        $('#password-confirmation').val(data.password);
+                        $('#password-group').css('display', 'none');
+                        $('#password-confirmation-group').css('display', 'none');
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                        $('#modal-pegawai').modal('show');
+                    }
+                });
+            });
+
+            // Even Delete
+            let user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/struktur/pegawai/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            toastr.success('Data berhasil dihapus');
+                        }, 1000);
+                    }
+                });
             });
         });
     </script>
