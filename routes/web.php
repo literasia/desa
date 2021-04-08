@@ -273,10 +273,27 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('/admin/potensi/potensi', 'PotensiDesaController@index')
                     ->name('potensi.potensi');
+                Route::get('/admin/potensi/hapus/{id}', 'PotensiDesaController@destroy');
+                Route::post('/admin/potensi/potensi/update/{id}', 'PotensiDesaController@update');
+
+                //Jenis Usaha
                 Route::get('/admin/potensi/jenis-usaha', 'JenisUsahaController@index')
                     ->name('potensi.jenis-usaha');
+                Route::post('/admin/potensi/jenis-usaha', 'JenisUsahaController@store');
+                Route::post('/admin/potensi/jenis-usaha/update', 'JenisUsahaController@update')
+                    ->name('potensi.jenis-usaha.update');
+                Route::get('/admin/potensi/jenis-usaha/edit/{id}', 'JenisUsahaController@edit');
+                Route::get('/admin/potensi/jenis-usaha/hapus/{id}', 'JenisUsahaController@destroy');
+
+
+                //Kategori Usaha
                 Route::get('/admin/potensi/kategori-usaha', 'KategoriUsahaController@index')
-                    ->name('potensi.kategori-usaha'); 
+                ->name('potensi.kategori-usaha'); 
+                Route::post('/admin/potensi/kategori-usaha', 'KategoriUsahaController@store');
+                Route::post('/admin/potensi/kategori-usaha/update', 'KategoriUsahaController@update')
+                ->name('potensi.category.update'); 
+                Route::get('/admin/potensi/kategori-usaha/edit/{id}', 'KategoriUsahaController@edit');
+                Route::get('/admin/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy'); 
             });
 
         // Profil

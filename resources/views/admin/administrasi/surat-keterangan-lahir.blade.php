@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Surat Keterangan Lahir')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.surat-keterangan-lahir') }}
+    {{ route('admin.administrasi.surat-keterangan-lahir') }}
 @endsection
 
 {{-- main content --}}
