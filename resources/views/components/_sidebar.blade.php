@@ -67,14 +67,14 @@
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="{{ request()->is('admin/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.permohonan-pembuatan-ktp') }}" class="waves-effect waves-dark">
+                            <a href="{{ route('admin.administrasi.permohonan_pembuatan_ktp') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Permohonan Pembuatan KTP</span>
                                 <label class="badge badge-danger m-0">1</label>
                                 <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.surat-keterangan-lahir') }}" class="waves-effect waves-dark">
+                            <a href="{{ route('admin.administrasi.surat_keterangan_lahir') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext mr-1">Surat Lahir</span>
                                 <label class="badge badge-danger m-0">1</label>
                                 <label class="badge badge-warning m-0">1</label>
@@ -95,14 +95,14 @@
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/izin-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.izin-usaha') }}" class="waves-effect waves-dark">
+                            <a href="{{ route('admin.administrasi.izin_usaha') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext m-1">Izin Usaha</span>
                                 <label class="badge badge-danger m-0">1</label>
                                 <label class="badge badge-warning m-0">1</label>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan-tidak-mampu') }}" class="waves-effect waves-dark">
+                            <a href="{{ route('admin.administrasi.keterangan_tidak_mampu') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext m-1">Keterangan Tidak Mampu</span>
                                 <label class="badge badge-danger m-0">1</label>
                                 <label class="badge badge-warning m-0">1</label>

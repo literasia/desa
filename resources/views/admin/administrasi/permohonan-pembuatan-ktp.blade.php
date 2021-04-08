@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Permohonan Pembuatan KTP')
@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.administrasi.permohonan-pembuatan-ktp') }}
+    {{ route('admin.administrasi.permohonan_pembuatan_ktp') }}
 @endsection
 
 {{-- main content --}}
@@ -32,7 +32,6 @@
                                         <th>No. Telepon</th>
                                         <th>Alamat</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -68,7 +67,36 @@
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+             // Show DataTables
+             $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.administrasi.permohonan_pembuatan_ktp') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'number_phone',
+                    name: 'number_phone'
+                },
+                {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                }
+                ]
+            });
         });
     </script>
 @endpush

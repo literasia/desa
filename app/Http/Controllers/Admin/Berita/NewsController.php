@@ -10,7 +10,6 @@ use App\Models\Admin\NewsCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-
 class NewsController extends Controller
 {   
     private $rules = [
@@ -139,14 +138,12 @@ class NewsController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator->errors()->all())->withInput();
         }
-        // dd($data['hidden_id']);
 
         $berita = News::findOrFail($data['hidden_id']);
         $data['image'] = null;
         if ($req->file('image')) {
             $data['image'] = $req->file('image')->store('berita', 'public');
         }
-
 
         News::whereId($data['hidden_id'])->update([
             'village_id' => auth()->user()->village->id,
