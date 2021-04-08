@@ -94,6 +94,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <style>
         .btn i {
             margin-right: 0px;
@@ -134,6 +136,8 @@
             $('#form-news-category').on('submit', function (event) {
                 event.preventDefault();
 
+                $('#btn').prop('disabled', true);
+
                 var url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.berita.kategori-berita') }}";
@@ -154,13 +158,23 @@
                             html = data.errors[0];
                             $('#news_category').addClass('is-invalid');
                             toastr.error(html);
+                            $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            // toastr.success('Sukses!');
+                            if ($('#action').val() == 'add') {
+                                Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
+                            }
+
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
+                            }
+                            
                             $('#news_category').removeClass('is-invalid');
                             $('#form-news-category')[0].reset();
                             $('#action').val('add');
+                            $('#btn').prop('disabled', false);
                             $('#btn')
                                 .removeClass('btn-outline-info')
                                 .addClass('btn-outline-success')
@@ -168,6 +182,10 @@
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
+                    },
+                    error: function(errors){
+                        toastr.error('Error');
+                        $('#btn').prop('disabled', false);
                     }
                 });
             });
@@ -205,7 +223,8 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
+                            // toastr.success('Data berhasil dihapus');
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });

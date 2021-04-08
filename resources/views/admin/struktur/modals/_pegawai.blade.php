@@ -68,7 +68,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="modal-footer">
                         <input type="hidden" name="hidden_id" id="hidden_id">
                         <input type="hidden" id="action" val="add">
