@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.struktur.struktur') }}
+    {{ route('admin.struktur.struktur') }}
 @endsection
 
 {{-- main content --}}
