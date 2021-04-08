@@ -136,7 +136,7 @@
                 event.preventDefault();
 
                 var url = '';
-                if ($('#judul').val() == 'add') {
+                if ($('#action').val() == 'add') {
                     url = "{{ route('admin.berita.berita') }}";
                 }
 

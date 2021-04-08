@@ -76,18 +76,18 @@ Route::namespace('Admin')
         // Administrasi
         Route::namespace('Administrasi')
             ->group(function () {
-                Route::get('adminadministrasi/permohonan-pembuatan-ktp', 'PermohonanKTPController@index')
-                    ->name('administrasi.permohonan-pembuatan-ktp');
+                Route::get('admin/administrasi/permohonan-pembuatan-ktp', 'PermohonanKTPController@index')
+                    ->name('administrasi.permohonan_pembuatan_ktp');
                 Route::get('/admin/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
-                    ->name('administrasi.surat-keterangan-lahir');
+                    ->name('administrasi.surat_keterangan_lahir');
                 Route::get('/admin/administrasi/perubahan-kk', 'PerubahanKKController@index')
                     ->name('administrasi.perubahan-kk');
                 Route::get('/admin/administrasi/surat-kematian', 'SuratKematianController@index')
                     ->name('administrasi.surat-kematian');
                 Route::get('/admin/administrasi/izin-usaha', 'IzinUsahaController@index')
-                    ->name('administrasi.izin-usaha');
+                    ->name('administrasi.izin_usaha');
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
-                    ->name('administrasi.keterangan-tidak-mampu');
+                    ->name('administrasi.keterangan_tidak_mampu');
                 Route::get('/admin/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
@@ -232,12 +232,48 @@ Route::namespace('Admin')
         // Struktur
         Route::namespace('Struktur')
             ->group(function () {
+                // Struktur Desa
                 Route::get('/admin/struktur/struktur', 'StrukturDesaController@index')
-                    ->name('struktur.struktur');
+                                                                    ->name('struktur.struktur');
+                Route::post('/admin/struktur/struktur', 'StrukturDesaController@store')
+                                                                    ->name('struktur.struktur.store');                                            
+                Route::get('/admin/struktur/struktur/{id}', 'StrukturDesaController@edit')
+                                                                    ->name('struktur.struktur.edit');
+                Route::post('/admin/struktur/struktur/update', 'StrukturDesaController@update')
+                                                                    ->name('struktur.struktur.update');
+                Route::get('/admin/struktur/struktur/hapus/{id}', 'StrukturDesaController@destroy')
+                                                                    ->name('struktur.struktur.delete');
+                // route get some data for modals structures
+                Route::get('/admin/struktur/get_employee', 'StrukturDesaController@getEmployee')
+                                                                    ->name('struktur.struktur.get_employee');
+                Route::get('/admin/struktur/get_position', 'StrukturDesaController@getPosition')
+                                                                    ->name('struktur.struktur.get_position');
+                Route::get('/admin/struktur/get_village_structure', 'StrukturDesaController@getVillageStructure')
+                                                                    ->name('struktur.struktur.get_village_structure');
+                                                            
+                // Pegawai
                 Route::get('/admin/struktur/pegawai', 'PegawaiController@index')
-                    ->name('struktur.pegawai');
-                Route::get('/desa/struktur/jabatan', 'JabatanController@index')
-                    ->name('struktur.jabatan');
+                                                                    ->name('struktur.pegawai');
+                Route::post('/admin/struktur/pegawai', 'PegawaiController@store')
+                                                                    ->name('struktur.pegawai.store');                                            
+                Route::get('/admin/struktur/pegawai/{id}', 'PegawaiController@edit')
+                                                                    ->name('struktur.pegawai.edit');
+                Route::post('/admin/struktur/pegawai/update', 'PegawaiController@update')
+                                                                    ->name('struktur.pegawai.update');
+                Route::get('/admin/struktur/pegawai/hapus/{id}', 'PegawaiController@destroy')
+                                                                    ->name('struktur.pegawai.delete');
+
+                // Jabatan
+                Route::get('/admin/struktur/jabatan', 'JabatanController@index')
+                                                                    ->name('struktur.jabatan');
+                Route::post('/admin/struktur/jabatan', 'JabatanController@store')
+                                                                    ->name('struktur.jabatan.store');                                            
+                Route::get('/admin/struktur/jabatan/{id}', 'JabatanController@edit')
+                                                                    ->name('struktur.jabatan.edit');
+                Route::post('/admin/struktur/jabatan/update', 'JabatanController@update')
+                                                                    ->name('struktur.jabatan.update');
+                Route::get('/admin/struktur/jabatan/hapus/{id}', 'JabatanController@destroy')
+                                                                    ->name('struktur.jabatan.delete');
 
             }); 
 

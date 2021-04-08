@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.keterangan-tidak-mampu') }}
+    {{ route('admin.administrasi.keterangan_tidak_mampu') }}
 @endsection
 
 {{-- main content --}}
@@ -32,23 +32,9 @@
                                         <th>No. Telepon</th>
                                         <th>Alamat</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <label class="badge badge-danger">Baruk Masuk</label>
-                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                            <label class="badge badge-success">Selesai</label> -->
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
+                                <tbody class="text-left"></tbody>
                             </table>
                         </div>
                     </div>
@@ -80,7 +66,36 @@
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+              // Show DataTables
+              $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.administrasi.keterangan_tidak_mampu') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'phone_number',
+                    name: 'phone_number'
+                },
+                {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                }
+                ]
+            });
         });
     </script>
 @endpush
