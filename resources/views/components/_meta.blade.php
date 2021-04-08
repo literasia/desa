@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="{{ asset('bower_components/chartist/css/chartist.css') }}" type="text/css" media="all">
 {{-- Style.css --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/widget.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
 

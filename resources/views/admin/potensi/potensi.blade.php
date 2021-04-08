@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Potensi Desa')
+@section('title', 'Potensi Desa | Potensi Desa')
 @section('title-2', 'Potensi Desa')
 @section('title-3', 'Potensi Desa')
 
@@ -30,6 +30,7 @@
                                         <th>No</th>
                                         <th>Nama Usaha</th>
                                         <th>Kategori</th>
+                                        <th>Jenis Usaha</th>
                                         <th>Pemilik Usaha</th>
                                         <th>Alamat Usaha</th>
                                         <th>No. Telp</th>
@@ -41,6 +42,7 @@
                                 </thead>
                                 <tbody class="text-left">
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -65,8 +67,6 @@
             </div>
         </div>
     </div>
-    {{-- Modal --}}
-    @include('admin.potensi.modals._potensi')
 @endsection
 
 {{-- addons css --}}
