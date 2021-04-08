@@ -6,7 +6,7 @@
 @section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman slider untuk Superadmin
+    Ini adalah halaman slider untuk Admin Desa
 @endsection
 
 @section('icon-l', 'icon-list')
@@ -28,7 +28,8 @@
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
-                                        <th>#</th>
+                                        <th>No.</th>
+                                        <th></th>
                                         <th>Judul</th>
                                         <th>Keterangan</th>
                                         <th>Start Date</th>
@@ -37,14 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td><img src="" width="100px"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -103,18 +97,56 @@
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+            // $('#order-table').DataTable();
+            $("#order-table").DataTable({
+                processing: false,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.slider.slider') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'image',
+                    name: 'image'
+                },
+                {
+                    data: 'title',
+                    name: 'title'
+                },
+                {
+                    data: 'description',
+                    name: 'description'
+                },
+                {
+                    data: 'start_date',
+                    name: 'start_date'
+                },
+                {
+                    data: 'end_date',
+                    name: 'end_date'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
 
             $('#add').on('click', function () {
-                Swal.fire(
-                  'Good job!',
-                  'You clicked the button!',
-                  'success'
-                );
-                document.getElementById("form-slider").reset();
-                // $('#modal-slider').modal('show');
+                $('#action').val('add');
+                $('#btn')
+                .removeClass('btn-outline-success')
+                .addClass('btn-outline-info')
+                .val('Simpan');
+                $('#form-slider')[0].reset();
+                $('#modal-slider').modal('show');
             });
 
             $('#sekolah').select2();
@@ -133,12 +165,15 @@
                 event.preventDefault();
 
                 var url = method = '';
+                
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.slider.store') }}";
+                    message = "Slider berhasil ditambahkan";
                 }
 
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.slider.update') }}";
+                    message = "Slider berhasil diedit";
                 }
 
                 var formData = new FormData($('#form-slider')[0]);
@@ -156,13 +191,15 @@
                             html = data.errors[0];
                             $('#title').addClass('is-invalid');
                             // toastr.error(html);
+                            Swal.fire('Error!', html, 'danger');
                         }
 
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            // toastr.success('Sukses!');
+                            Swal.fire('Sukses!', message, 'success');
                             $('#modal-slider').modal('hide');
                             $('#title').removeClass('is-invalid');
-                            $('#form-news')[0].reset();
+                            $('#form-slider')[0].reset();
                             $('#action').val('add');
                             $('#btn')
                                 .removeClass('btn-outline-info')
@@ -178,20 +215,19 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: "",
-                    dataType: 'JSON',
+                    url: "/admin/slider/"+id,
                     success: function (data) {
                         $('#action').val('edit');
-                        $('#title').val(data.name);
-                        $('#category').val(data.category);
-                        $('#content').val(data.content);
-                        $('#create_date').val(data.create_date);
+                        $('#title').val(data.title);
+                        $('#description').val(data.description);
+                        $('#start_date').val(data.start_date);
+                        $('#end_date').val(data.end_date);
                         $('#hidden_id').val(data.id);
                         $('#btn')
                             .removeClass('btn-outline-success')
                             .addClass('btn-outline-info')
                             .val('Update');
-                        $('#modal-berita').modal('show');
+                        $('#modal-slider').modal('show');
                     }
                 });
             });
@@ -212,7 +248,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
+                            Swal.fire('Sukses!', "Slider Berhasil Dihapus", 'success');
                         }, 1000);
                     }
                 });
