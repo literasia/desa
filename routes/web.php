@@ -195,8 +195,10 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/admin/kalender/kalender', 'KalenderController@index')
-                ->name('kalender.kalender');
+            Route::get('/admin/kalender/kegiatan-desa', 'KegiatanDesaController@index')
+                ->name('kalender.kegiatan-desa');
+            Route::get('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
+                ->name('kalender.kategori-kegiatan');
             });
 
 

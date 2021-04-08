@@ -1,25 +1,25 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Kalender | Kalender ')
-@section('title-2', 'Kalender ')
-@section('title-3', 'Kalender ')
+@section('title', 'Kalender | Kegiatan Desa ')
+@section('title-2', 'Kegiatan Desa ')
+@section('title-3', 'Kegiatan Desa ')
 
 @section('describ')
-Ini adalah halaman kalender untuk admin
+Ini adalah halaman Kegiatan Desa untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-calendar')
 @section('icon-r', 'icon-home')
 
 @section('link')
-{{ route('admin.kalender.kalender') }}
+{{ route('admin.kalender.kegiatan-desa') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
 
-@include('admin.kalender.modals._kalender')
+@include('admin.kalender.modals._kegiatan-desa')
 
 <div class="row">
     <div class="col-xl-12">
@@ -102,7 +102,7 @@ $('#calendar').fullCalendar({
             ],
             select: function(start, end, allDay) {
                 $("#addEvent").modal("show");
-                $("#addEvent .modal-title").text("Tambah Event");
+                $("#addEvent .modal-title").text("Kegiatan Desa");
                 $("#addEvent #title").val("");
                 $("#addEvent form").attr("action", "tambah");
                 $("#addEvent form").removeAttr("data-id");
@@ -115,7 +115,7 @@ $('#calendar').fullCalendar({
             },
             eventClick: function(event) {
                 $("#addEvent").modal("show");
-                $("#addEvent .modal-title").text("Edit Event");
+                $("#addEvent .modal-title").text("Edit Kegiatan Desa");
                 $("#addEvent form").attr("action", "update");
                 $("#addEvent #btnEvent").text("Update");
                 $("#addEvent #title").val(event.title);

@@ -96,9 +96,9 @@
                         <li class="{{ request()->is('admin/administrasi/surat-kematian') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.surat-kematian') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Surat Kematian
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
@@ -249,13 +249,25 @@
                         <span class="pcoded-mtext">Wisata Desa</span>
                     </a>
                 </li>
-                <li class="{{ request()->is('admin/kalender') ? 'active' : '' }}">
-                    <a href="{{ route('admin.kalender.kalender') }}" class="waves-effect waves-dark">
+                <li class="@if (request()->is('admin/kalender/kegiatan-desa')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-calendar"></i>
                         </span>
                         <span class="pcoded-mtext">Kalender</span>
                     </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kalender.kegiatan-desa') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kegiatan Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/kalender/kategori-kegiatan') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kalender.kategori-kegiatan') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori Kegiatan</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
                      <a href="{{ route('admin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
