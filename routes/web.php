@@ -135,7 +135,7 @@ Route::namespace('admin')
 Route::namespace('Admin')
     ->name('admin.')
     ->group(function () {
-        Route::get('/admin', 'Admin/Controller@index')
+        Route::get('/admin', 'AdminController@index')
             ->name('index');
 
         // Administrasi
@@ -209,11 +209,11 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-                Route::get('/admin/kalender', 'KalenderDesaController@index')
-                ->name('kalender.kalender');
-            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
-            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
-            Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
+            Route::get('/admin/kalender', 'KegiatanDesaController@index')
+            ->name('kalender.kalender');
+            Route::post('/admin/kalender/tambah', 'KegiatanDesaController@store')->name('kalender.tambah-event');
+            Route::post('/admin/kalender/update/{id}', 'KegiatanDesaController@update')->name('kalender.edit-event');
+            Route::get('/admin/kalender/hapus/{id}', 'KegiatanDesaController@destroy');
             });
 
 

@@ -1,19 +1,19 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Struktur Desa | Golongan')
-@section('title-2', 'Golongan')
-@section('title-3', 'Golongan')
+@section('title', 'Kalender | Kategori Kegiatan')
+@section('title-2', 'Kategori Kegiatan')
+@section('title-3', 'Kategori Kegiatan')
 
 @section('describ')
-    Ini adalah halaman Golongan untuk admin
+    Ini adalah halaman Kategori Kegiatan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.referensi.golongan') }}
+    {{ route('admin.kalender.kategori-kegiatan') }}
 @endsection
 
 {{-- main content --}}
@@ -23,19 +23,12 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <div class="alert alert-info">
-                            <span>
-                                <strong>Perhatian!</strong><br>
-                                <small>Isikan golongan sesuai dengan golongan jabatan</small>
-                            </span>
-                        </div>
-                        <form id="form-golongan">
+                        <form id="form-status">
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="golongan">Golongan</label>
-                                        <input type="text" name="golongan" id="golongan" class="form-control form-control-sm" placeholder="Golongan">
-                                        <span id="form_result" class="text-danger"></span>
+                                        <label for="kategori_kegiatan">Kategori Kegiatan</label>
+                                        <input type="text" name="kategori_kegiatan" id="kategori_kegiatan" class="form-control form-control-sm" placeholder="Kategori Kegiatan Desa">
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +54,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Golongan</th>
+                                        <th>Kategori Kegiatan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>

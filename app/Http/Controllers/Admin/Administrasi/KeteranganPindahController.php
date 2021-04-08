@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class KeteranganPindahController extends Controller
 {
     public function index() {
-        return view('desa.administrasi.keterangan-pindah');
+        return view('admin.administrasi.keterangan-pindah');
     }
 }

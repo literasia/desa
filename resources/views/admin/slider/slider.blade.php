@@ -6,7 +6,7 @@
 @section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman slider untuk Superadmin
+    Ini adalah halaman slider untuk admin
 @endsection
 
 @section('icon-l', 'icon-list')

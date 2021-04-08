@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 
-class KalenderDesaController extends Controller
+class KegiatanDesaController extends Controller
 {
     public function index(Request $request)
     {
@@ -20,7 +20,7 @@ class KalenderDesaController extends Controller
 
         $events = json_encode($datas);
 
-        return view('admin.kalender.kalender', compact('events'));
+        return view('admin.kalender.kegiatan-desa', compact('events'));
     }
     public function store(Request $request)
     {

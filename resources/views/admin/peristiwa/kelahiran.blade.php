@@ -1,4 +1,4 @@
-@extends('layouts.desa')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Peristiwa | Kelahiran')
@@ -6,14 +6,14 @@
 @section('title-3', 'Kelahiran')
 
 @section('describ')
-    Ini adalah halaman Kelahiran untuk desa
+    Ini adalah halaman Kelahiran untuk admin
 @endsection
 
 @section('icon-l', 'icon-bell')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('desa.peristiwa.kelahiran') }}
+    {{ route('admin.peristiwa.kelahiran') }}
 @endsection
 
 @section('content')
@@ -50,7 +50,7 @@
 </div>
 
 {{-- Modal --}}
-    @include('desa.peristiwa.modals._kelahiran')
+    @include('admin.peristiwa.modals._kelahiran')
 @endsection
     
 {{-- addons css --}}

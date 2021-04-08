@@ -306,9 +306,3 @@
         </div>
     </div>
 </nav>
-
-@push('css')
-<style type="text/css">
-    
-</style>
-@endpush

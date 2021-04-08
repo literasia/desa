@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Desa\Referensi;
+namespace App\Http\Controllers\Admin\Referensi;
 
 use Validator;
 use App\Models\Pegawai;
@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class PengaturanHakAksesController extends Controller
 {
-    public function index(Request $request) {
-        return view('desa.referensi.pengaturan-hak-akses');
+    public function index() {
+        return view('admin.referensi.pengaturan-hak-akses');
     }
 }
