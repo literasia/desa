@@ -146,8 +146,15 @@ Route::namespace('Admin')
                     ->name('administrasi.izin-usaha');
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan-tidak-mampu');
+
+                //SKCK
                 Route::get('/admin/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
+                Route::get('/admin/administrasi/permohonan-skck/{id}', 'PermohonanSKCKController@edit');
+                Route::post('/admin/administrasi/permohonan-skck/update', 'PermohonanSKCKController@update')
+                    ->name('administrasi.permohonan-skck-update');
+                Route::get('/admin/administrasi/permohonan-skck/hapus/{id}', 'PermohonanSKCKController@destroy');
+                
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
