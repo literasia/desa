@@ -134,6 +134,7 @@ Route::namespace('admin')
 
 Route::namespace('Admin')
     ->name('admin.')
+    ->middleware(['auth', 'auth.admin'])
     ->group(function () {
         Route::get('/admin', 'AdminController@index')
             ->name('index');
@@ -321,9 +322,10 @@ Route::namespace('Admin')
                     ->name('slider.slider');
                 Route::post('/admin/slider', 'SliderController@store')
                     ->name('slider.store');
-                Route::put('/admin/slider', 'SliderController@update')
+                Route::get('/admin/slider/{id}', 'SliderController@edit')->name('slider.edit');
+                Route::post('/admin/slider/update', 'SliderController@update')
                     ->name('slider.update');
-                Route::delete('/admin/slider/{id}', 'SliderController@destroy')
+                Route::get('/admin/slider/destroy/{id}', 'SliderController@destroy')
                     ->name('slider.destroy');
             });
 

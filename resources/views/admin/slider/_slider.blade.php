@@ -11,6 +11,7 @@
             </div>
             <div class="modal-body">
                 <form id="form-slider" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -44,11 +45,11 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <input type="file" class="form-control form-control" name="image" id="image" accept="image/*" value="" autocomplete="off">
                                 <label for="image" class="mt-1">
                                     Foto:
                                     <small class="text-muted">max. 3MB</small>
                                 </label>
+                                <input type="file" class="form-control form-control" name="image" id="image" accept="image/*" value="" autocomplete="off">
                             </div>
                         </div>
                     </div>

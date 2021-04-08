@@ -37,4 +37,5 @@ Route::namespace('API')
         Route::get('tour/{village_id}','VillageTourAPIController@getVillageTour');
         Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
         Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
+    	  Route::get('slider/{village_id}', 'SliderController@index');
     });
