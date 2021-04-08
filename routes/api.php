@@ -19,10 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('API')
     ->group(function (){
-        Route::get('news/{id}', 'NewsAPIController@index');
+        Route::get('news/{village_id}', 'NewsAPIController@index');
         Route::get('calendar/{village_id}', 'CalendarAPIController@getCalendar');
         Route::get('message/{village_id}','MessageAPIController@getMessage');
-
+      
         //Complaint
         Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
         Route::get('get-complaint/{village_id}/{user_id}', 'ComplaintAPIController@getComplaint');
@@ -33,6 +33,8 @@ Route::namespace('API')
         Route::get('get-category/{village_id}', 'CategoryBusinessAPIController@getCategoryBusiness');
         Route::get('get-types/{village_id}', 'BusinessTypeAPIController@getBusinessType');
 
-
-
+        Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
+        Route::get('tour/{village_id}','VillageTourAPIController@getVillageTour');
+        Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
+        Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
     });

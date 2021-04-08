@@ -1,64 +1,60 @@
-<div class="modal fade modal-flex" id="modal-kampanye" tabindex="-1" role="dialog">
+<div class="modal fade modal-flex" id="modal-pegawai" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header p-4">
                 <h4 class="modal-title">
-                    Tambah Pemilihan
+                    Tambah Pegawai
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4">
-                <form id="form-campaign" enctype="multipart/form-data">
-                    @csrf
+                <form id="form-pegawai">
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="candidate">Nama Calon</label>
-                                <input type="text" name="candidate" id="candidate" class="form-control form-control-sm">
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="deputy_candidate">Nama Calon Wakil</label>
-                                <input type="text" name="deputy_candidate" id="deputy_candidate" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="vision">Visi</label>
-                                <textarea type="text" class="form-control" id="vision" name="vision" placeholder="Visi" cols="10" rows="3"></textarea> 
-                            </div>
-                        </div>
-                    </div>
-
-                     <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="mission">Misi</label>
-                                <textarea type="text" class="form-control" id="mission" name="mission" placeholder="Misi" cols="10" rows="3"></textarea> 
+                                <label for="nama">Nama</label>
+                                <input type="text" name="nama" id="nama" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col">
                             <div class="form-group">
-                                <label for="image">Foto</label>
-                                <input type="file" name="image" id="image" accept="image/*" value="" autocomplete="off">
-                                <label for="image" class="mt-1">
-                                    Foto:
-                                    <small class="text-muted">max. 3MB</small>
-                                </label>
+                                <label for="nik">NIK</label>
+                                <input type="text" name="nik" id="nik" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" name="nip" id="nip" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" name="password" id="password" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="password_confirmation">Konfirmasi Password</label>
+                                <input type="text" name="password_confirmation" id="password_confirmation" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal-footer">
                         <input type="hidden" name="hidden_id" id="hidden_id">
                         <input type="hidden" id="action" val="add">

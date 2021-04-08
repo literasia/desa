@@ -40,6 +40,13 @@ Route::namespace('admin')
                 Route::get('/admin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
             });
 
+         // Kalender
+         Route::namespace('Kalender')
+         ->group(function () {
+         Route::get('/superadmin/kalender', 'KalenderSuperadminController@index')
+             ->name('kalender.kalender');
+         });
+
         // Referensi
         Route::namespace('Referensi')
             ->group(function () {
@@ -146,8 +153,15 @@ Route::namespace('Admin')
                     ->name('administrasi.izin-usaha');
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan-tidak-mampu');
+
+                //SKCK
                 Route::get('/admin/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
                     ->name('administrasi.permohonan-skck');
+                Route::get('/admin/administrasi/permohonan-skck/{id}', 'PermohonanSKCKController@edit');
+                Route::post('/admin/administrasi/permohonan-skck/update', 'PermohonanSKCKController@update')
+                    ->name('administrasi.permohonan-skck-update');
+                Route::get('/admin/administrasi/permohonan-skck/hapus/{id}', 'PermohonanSKCKController@destroy');
+                
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
@@ -206,8 +220,13 @@ Route::namespace('Admin')
         // Kampanye
         Route::namespace('Kampanye')
             ->group(function () {
-            Route::get('/admin/kampanye', 'KampanyeController@index')
+                Route::get('/admin/kampanye/kampanye', 'CampaignController@index')
                 ->name('kampanye.kampanye');
+                Route::post('/admin/kampanye/kampanye', 'CampaignController@store');
+                Route::get('/admin/kampanye/kampanye/{id}', 'CampaignController@edit');
+                Route::post('/admin/kampanye/kampanye/update', 'CampaignController@update')
+                    ->name('kampanye.kampanye-update');
+                Route::get('/admin/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
             });
 
         // Pengaduan
@@ -319,8 +338,13 @@ Route::namespace('Admin')
         // Wisata Desa
         Route::namespace('WisataDesa')
             ->group(function () {
-                Route::get('/admin/wisata-desa', 'WisataDesaController@index')
+                Route::get('/admin/wisata-desa', 'VillageTourController@index')
                     ->name('wisata-desa.wisata-desa'); 
+                Route::post('/admin/wisata-desa', 'VillageTourController@store');
+                Route::get('/admin/wisata-desa/wisata-desa/{id}', 'VillageTourController@edit');
+                Route::post('/admin/wisata-desa/wisata-desa/update', 'VillageTourController@update')
+                    ->name('wisata-desa.wisata-desa-update');
+                Route::get('/admin/wisata-desa/wisata-desa/hapus/{id}', 'VillageTourController@destroy');
             });
     });
 

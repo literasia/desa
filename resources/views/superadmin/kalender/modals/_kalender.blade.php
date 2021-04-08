@@ -19,6 +19,22 @@
                                 <input type="text" name="title" id="title" class="form-control">
                             </div>
                             <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
+                                    <option selected="true" disabled>Provinsi</option>                                    
+                                </select>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
+                                    <option selected="true" disabled>Kabupaten</option>                                    
+                                </select>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
                                         <label id="label_start_date" class="bmd-label-floating">Start Date</label>
