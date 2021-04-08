@@ -69,99 +69,99 @@
                         <li class="{{ request()->is('admin/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.permohonan-pembuatan-ktp') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Permohonan KTP
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.surat-keterangan-lahir') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Surat Lahir
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/perubahan-kk') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.perubahan-kk') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Perubahan KK
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/surat-kematian') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.surat-kematian') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Surat Kematian
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/izin-usaha') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.izin-usaha') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Izin Usaha
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-tidak-mampu') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Ket. Tidak Mampu
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/permohonan-skck') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.permohonan-skck') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Permohonan SKCK
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-pindah') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-pindah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Pindah
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-domisili') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Domisili
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-ahli-waris') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-ahli-waris') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Ahli Waris
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tanah') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
-                                    <label class="notification-label-danger"></label>
-                                    <label class="notification-label-warning mr-2"></label>
                                     Keterangan Tanah
+                                    <label class="notification-label-danger ml-2"></label>
+                                    <label class="notification-label-warning"></label>
                                 </span>
                             </a>
                         </li>
@@ -249,13 +249,30 @@
                         <span class="pcoded-mtext">Wisata Desa</span>
                     </a>
                 </li>
-                <li class="{{ request()->is('admin/kalender') ? 'active' : '' }}">
-                    <a href="{{ route('admin.kalender.kalender') }}" class="waves-effect waves-dark">
+                <li class="@if (request()->is('admin/kalender/kalender') || request()->is('admin/kalender/kegiatan-desa') || request()->is('admin/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-calendar"></i>
                         </span>
                         <span class="pcoded-mtext">Kalender</span>
                     </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/kalender/kalender') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kalender.kalender') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kalender</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kalender.kegiatan-desa') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kegiatan Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/kalender/kategori-kegiatan') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kalender.kategori-kegiatan') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori Kegiatan</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
                      <a href="{{ route('admin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">

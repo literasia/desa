@@ -59,6 +59,8 @@
             </div>
         </div>
     </div>
+    {{-- Modal --}}
+    @include('admin.wisata-desa.modals._wisata')
 @endsection
 
 {{-- addons css --}}

@@ -20,4 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('API')
     ->group(function (){
         Route::get('news/{id}', 'NewsAPIController@index');
+        Route::get('calendar/{village_id}', 'CalendarAPIController@getCalendar');
+        Route::get('message/{village_id}','MessageAPIController@getMessage');
+        Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
     });

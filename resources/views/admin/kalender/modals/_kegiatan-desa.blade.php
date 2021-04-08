@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        Tambah
+                        Kegiatan Desa
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -14,20 +14,34 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div id="input_hidden"></div>
-                            <div class="form-group bmd-form-group">
-                                <label id="label_title" class="bmd-label-floating">Event Title</label>
-                                <input type="text" name="title" id="title" class="form-control">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group bmd-form-group">
+                                        <label id="nama_kegiatan" class="bmd-label-floating">Nama Kegiatan</label>
+                                        <input type="text" name="nama_kegiatan" id="nama_kegiatan" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group bmd-form-group">
+                                        <label id="jenis_kegiatan" class="bmd-label-floating">Jenis Kegiatan</label>
+                                        <select name="jenis_kegiatan" id="jenis_kegiatan" class="form-control">
+                                            <option value="">--Pilih--</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_start_date" class="bmd-label-floating">Start Date</label>
+                                        <label id="label_start_date" class="bmd-label-floating">Tanggal Mulai</label>
                                         <input type="date" name="start_date" id="start_date" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_end_date" class="bmd-label-floating">End Date</label>
+                                        <label id="label_end_date" class="bmd-label-floating">Tanggal Berakhir</label>
                                         <input type="date" name="end_date" id="end_date" class="form-control">
                                     </div>
                                 </div>
@@ -35,14 +49,30 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_start_clock" class="bmd-label-floating">Start At</label>
+                                        <label id="label_start_clock" class="bmd-label-floating">Jam Mulai</label>
                                         <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
-                                        <label id="label_end_clock" class="bmd-label-floating">End At</label>
+                                        <label id="label_end_clock" class="bmd-label-floating">Jam Berakhir</label>
                                         <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group bmd-form-group">
+                                        <label id="keterangan" class="bmd-label-floating">Keterangan</label>
+                                        <textarea type="text" name="keterangan" id="keterangan" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group bmd-form-group">
+                                        <label id="lokasi" class="bmd-label-floating">Lokasi</label>
+                                        <input type="text" name="lokasi" id="lokasi" class="form-control">
                                     </div>
                                 </div>
                             </div>

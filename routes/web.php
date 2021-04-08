@@ -195,8 +195,22 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/admin/kalender/kalender', 'KalenderController@index')
+
+            //Kalender
+            Route::get('/admin/kalender/kalender', 'KalenderDesaController@index')
                 ->name('kalender.kalender');
+            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-events');
+            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-events');
+            Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
+
+            // Kegiatan Desa
+            Route::get('/admin/kalender/kegiatan-desa', 'KegiatanDesaController@index')
+                ->name('kalender.kegiatan-desa');
+
+            //Kategori Desa
+            Route::get('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
+                ->name('kalender.kategori-kegiatan');
+            
             });
 
 
@@ -212,6 +226,7 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengaduan', 'PengaduanDesaController@index')
                  ->name('pengaduan.pengaduan');
+            Route::get('/admin/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
             });
 
         // Pengumuman
@@ -219,6 +234,13 @@ Route::namespace('Admin')
             ->group(function () {
             Route::get('/admin/pengumuman', 'PengumumanDesaController@index')
                 ->name('pengumuman.pengumuman');
+                Route::get('/desa/pengumuman', 'PengumumanDesaController@index')
+                ->name('pengumuman.pengumuman');
+            Route::post('/desa/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+            Route::get('/desa/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+            Route::post('/desa/pengumuman/pesan/update', 'PengumumanDesaController@update')
+                ->name('pengumuman.pesan-update');
+            Route::get('/desa/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
             });
 
         // Perpustakaan
