@@ -6,27 +6,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Utils\ApiResponse;
 use Illuminate\Support\Facades\Storage;
-use App\Models\SKCK;
+use App\Models\Domicile;
 use Validator;
 
-class SKCKAPIController extends Controller
+class DomicileAPIController extends Controller
 {
 
-    public function getSKCK($village_id,Request $req) {
+    public function getDomicile($village_id,Request $req) {
         $data = $req->all();
 
-        $skck = SKCK::query();
+        $domisili =Domicile::query();
 
         $q = $req->query('q');
-        $skck->when($q, function($query) use ($q) {
+        $domisili->when($q, function($query) use ($q) {
             return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
         });
 
-        $skck = $skck->where('village_id', $village_id)->get();
-        return response()->json(ApiResponse::success($skck));
+        $domisili = $domisili->where('village_id', $village_id)->get();
+        return response()->json(ApiResponse::success($domisili));
     }
 
-    public function addSKCK(Request $request, $village_id, $user_id)
+    public function addDomicile(Request $request, $village_id, $user_id)
     {
         $rules = [
             'name'  => 'required|max:100',
@@ -59,10 +59,10 @@ class SKCKAPIController extends Controller
 
         $data['image'] = null;
         if ($request->file('image')) {
-            $data['image'] = $request->file('image')->store('skck', 'public');
+            $data['image'] = $request->file('image')->store('domisili', 'public');
         }
 
-        $skck = SKCK::create([
+        $domisili = Domicile::create([
             "user_id" => $user_id,
             "village_id" => $village_id,
             "name" => $request->name,
@@ -73,6 +73,6 @@ class SKCKAPIController extends Controller
             "status" => $request->status
         ]);
 
-        return response()->json(ApiResponse::success($skck, 'Success add data'));
+        return response()->json(ApiResponse::success($domisili, 'Success add data'));
     }
 }

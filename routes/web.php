@@ -8,7 +8,7 @@ Route::namespace('admin')
     ->name('admin.')
     ->middleware(['auth', 'auth.admin'])
     ->group(function () {
-        Route::get('/admin', 'adminController@index')
+        Route::get('/admin', 'AdminController@index')
             ->name('index');
 
         // Library Setting
@@ -165,10 +165,24 @@ Route::namespace('Admin')
                 
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
+
+                // Domisili
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
                     ->name('administrasi.keterangan-domisili');
-                Route::get('/desa/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
+                Route::get('/admin/administrasi/keterangan-domisili/{id}', 'KeteranganDomisiliController@edit');
+                Route::post('/admin/administrasi/keterangan-domisili/update', 'KeteranganDomisiliController@update')
+                    ->name('administrasi.keterangan-domisili-update');
+                Route::get('/admin/administrasi/keterangan-domisili/hapus/{id}', 'KeteranganDomisiliController@destroy');
+                
+                // Ahli Waris
+                Route::get('/admin/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
                     ->name('administrasi.keterangan-ahli-waris');
+                Route::get('/admin/administrasi/keterangan-ahli-waris/{id}', 'KeteranganAhliWarisController@edit');
+                Route::post('/admin/administrasi/keterangan-ahli-waris/update', 'KeteranganAhliWarisController@update')
+                    ->name('administrasi.keterangan-ahli-waris-update');
+                Route::get('/admin/administrasi/keterangan-ahli-waris/hapus/{id}', 'KeteranganAhliWarisController@destroy');
+
+                
                 Route::get('/admin/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
                     ->name('administrasi.keterangan-tanah');
             });

@@ -29,25 +29,16 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
+                                        <th>NIK</th>
                                         <th>No. Telepon</th>
                                         <th>Alamat</th>
+                                        <th>Foto KTP</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <label class="badge badge-danger">Baruk Masuk</label>
-                                            <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                            <label class="badge badge-success">Selesai</label> -->
-                                        </td>
-                                        <td></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -56,6 +47,25 @@
             </div>
         </div>
     </div>
+
+    <div id="confirmModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@include('admin.administrasi.modals._domicile')
 @endsection
 
 {{-- addons css --}}
@@ -78,9 +88,135 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.administrasi.keterangan-domisili') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'no_phone',
+                    name: 'no_phone'
+                },
+                {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'image',
+                    name: 'image'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
+
+            $('#form-domicile').on('submit', function (event) {
+                event.preventDefault();
+
+                var url = '';
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.administrasi.keterangan-domisili-update') }}";
+                }
+
+                $('#btn').prop('disabled', true);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#status').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            // toastr.success('Sukses!');
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
+                            }
+                            $('#modal-domicile').modal('hide');
+                            $('#status').removeClass('is-invalid');
+                            $('#form-domicile')[0].reset();
+                            $('#action').val('add');
+                            $('#btn').prop('disabled', false);
+                            $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/administrasi/keterangan-domisili/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#action').val('edit');
+                        $('#status').val(data.status);
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
+                            .val('Update');
+                        $('#modal-domicile').modal('show');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/administrasi/keterangan-domisili/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Sukses!', 'Data berhasi dihapus!', 'success');
+                        }, 1000);
+                    }
+                });
+            });
+
         });
     </script>
 @endpush
