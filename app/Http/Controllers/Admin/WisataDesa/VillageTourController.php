@@ -124,6 +124,7 @@ class VillageTourController extends Controller
 
         return response()
             ->json([
+                'id'            => $data->id,
                 'name'          => $data->name,
                 'address'       => $data->address,
                 'day_open'      => $data->day_open,
@@ -152,7 +153,7 @@ class VillageTourController extends Controller
             'time_closing'  => 'required|max:30',
             'tour_type'     => 'required|max:30',
             'no_phone'      => 'required|max:13',
-            'information'   => 'required|max:50',
+            'information'   => 'nullable|max:50',
         ];
  
         $message = [
@@ -163,7 +164,6 @@ class VillageTourController extends Controller
             'time_closing.required' => 'Kolom ini tidak boleh kosong',
             'tour_type.required'    => 'Kolom ini tidak boleh kosong',
             'no_phone.required'     => 'Kolom ini tidak boleh kosong',
-            'information.nullable'
         ];
 
        $validator = Validator::make($request->all(), $rules, $message);

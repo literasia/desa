@@ -74,6 +74,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
@@ -84,15 +85,32 @@
 
 {{-- addons js --}}
 @push('js')
-    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+     <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             // Show Modal
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Pegawai');
+                $('#action').val('add');
+                $('#name').val('');
+                $('#nik').val('');
+                $('#nip').val('');
+                $('#username').val('');
+                $('#password').val('');
+                $('#password-confirmation').val('');
+                $('#password-group').css('display', 'block');
+                $('#password-confirmation-group').css('display', 'block');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-pegawai').modal('show');
             });
 
@@ -166,14 +184,16 @@
                         }
 
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            Swal.fire(
+                            'Sukses!',
+                            'Data berhasil ditambahkan!',
+                            'success'
+                            )
                             $('#modal-pegawai').modal('hide');
                             $('#title').removeClass('is-invalid');
                             $('#form-pegawai')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -189,6 +209,7 @@
                     url: '/admin/struktur/pegawai/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        $('.modal-title').html('Edit Pegawai');
                         $('#action').val('edit');
                         $('#name').val(data.name);
                         $('#nik').val(data.nik);
@@ -200,8 +221,8 @@
                         $('#password-confirmation-group').css('display', 'none');
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-pegawai').modal('show');
                     }
@@ -225,7 +246,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
+                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });

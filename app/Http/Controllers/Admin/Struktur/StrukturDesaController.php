@@ -20,11 +20,9 @@ class StrukturDesaController extends Controller
 
 
     public function index(Request $request) {
+        $data = VillageStructure::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
-            $villageStructures = VillageStructure::latest()
-                                                   ->with('employee')
-                                                   ->with('position')
-                                                   ->get();
+            $villageStructures = VillageStructure::where('village_id', auth()->user()->village->id)->get();
             
             return DataTables::of($villageStructures)
                 ->addColumn('action', function ($villageStructures) {

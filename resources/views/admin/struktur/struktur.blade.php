@@ -152,6 +152,18 @@
 
             // Show Modal
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Struktur Desa');
+                $('#action').val('add');                        
+                $('#employee-id').val('');
+                $('#position-id').val('');
+                $('#status').val('');
+                $('#level').val('');
+                $('#parent-id').val('');
+                $('#description').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-struktur').modal('show');
             });
 
@@ -225,14 +237,18 @@
                         }
 
                         if (data.success) {
-                            toastr.success('Sukses!');
+                             Swal.fire(
+                            'Sukses!',
+                            'Data berhasil ditambahkan!',
+                            'success'
+                            )
                             $('#modal-struktur').modal('hide');
                             $('#title').removeClass('is-invalid');
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -255,6 +271,7 @@
                     url: '/admin/struktur/struktur/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        $('.modal-title').html('Edit Struktur Desa');
                         $('#action').val('edit');                        
                         $('#employee-id').val(data.employee_id);
                         $('#position-id').val(data.position_id);
@@ -264,8 +281,8 @@
                         $('#description').val(data.description);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-struktur').modal('show');
                     }
@@ -296,7 +313,7 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            toastr.success('Data berhasil dihapus');
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });

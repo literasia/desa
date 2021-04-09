@@ -6,7 +6,7 @@
 @section('title-3', 'Jabatan')
 
 @section('describ')
-    Ini adalah halaman jabatan untuk admin
+    Ini adalah halaman Jabatan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-project-diagram')
@@ -29,7 +29,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
+                                        <th>Jabatan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -67,10 +67,15 @@
 
 {{-- addons css --}}
 @push('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
+    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <style>
         .btn i {
             margin-right: 0px;
@@ -88,6 +93,13 @@
         $(document).ready(function () {
             // Show Modal
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Jabatan');
+                $('#action').val('add');
+                $('#name').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-jabatan').modal('show');
             });
 
@@ -145,14 +157,18 @@
                         }
 
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            Swal.fire(
+                            'Sukses!',
+                            'Data berhasil ditambahkan!',
+                            'success'
+                            )
                             $('#modal-jabatan').modal('hide');
                             $('#title').removeClass('is-invalid');
                             $('#form-jabatan')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -168,12 +184,13 @@
                     url: '/admin/struktur/jabatan/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        $('.modal-title').html('Edit Jabatan');
                         $('#action').val('edit');
                         $('#name').val(data.name);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-jabatan').modal('show');
                     }
@@ -197,7 +214,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });
