@@ -26,8 +26,8 @@
                         <div class="col-12 text-center">
                             <div class="form-group">
                                 <h4 class="mb-4">Foto Profil Desa</h4>
-                                <img id="thumb_gallery1" />
-                                <label for="gallery1" class="sr-only"></i>Pilih Gambar</label>
+                                <img id="thumb_gallery" />
+                                <label for="gallery1" class="sr-only">Pilih Gambar</label>
                                 <input type="file" id="gallery1" class="gallery">
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                         <form>
                             <div class="form-group row">
                                 <div class="col-md-4 mb-2">
-                                    <label for="gallery2" class="sr-only"></i>Pilih Gambar</label>
+                                    <label for="gallery2" class="sr-only">Pilih Gambar</label>
                                     <input type="file" id="gallery2" class="gallery" multiple />
                                     <small class="text-muted d-block">max. 3MB</small>
                                 </div>
@@ -143,7 +143,7 @@
             margin-right: 0px;
         }
 
-        #thumb_gallery1 {
+        #thumb_gallery {
             display: none;
         }
  
@@ -172,7 +172,7 @@
             display: block;
             margin-top: 5px;
         }
-        .thumb_pict{
+        .thumb_pict {
             margin: 10px 20px 0 0;
             width: 200px;
             padding: 20px;
