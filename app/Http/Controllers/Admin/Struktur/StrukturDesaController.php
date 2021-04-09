@@ -11,11 +11,10 @@ use App\Models\{VillageStructure, Employee, Position};
 class StrukturDesaController extends Controller
 {
     private $rules = [
-        'name' => ['required'],
-        'nik' => ['required'],
-        'nip' => ['required'],
-        'username' => ['required'],
-        'password' => ['required'],
+        'employee_id' => ['required'],
+        'position_id' => ['required'],
+        'status' => ['required'],
+        'description' => ['required'],
     ];
 
 
@@ -45,10 +44,10 @@ class StrukturDesaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-        // $validator = Validator::make($data, $this->rules);
-        // if ($validator->fails()) {
-        //     return back()->withErrors($validator->errors()->all())->withInput();
-        // }
+        $validator = Validator::make($data, $this->rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors()->all())->withInput();
+        }
 
         VillageStructure::create([
             'village_id' => auth()->user()->village->id,
@@ -90,10 +89,10 @@ class StrukturDesaController extends Controller
     public function update(Request $request) {
         $data = $request->all();
 
-        // $validator = Validator::make($data, $this->rules);
-        // if ($validator->fails()) {
-        //     return back()->withErrors($validator->errors()->all())->withInput();
-        // }
+        $validator = Validator::make($data, $this->rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors()->all())->withInput();
+        }
 
         $employee = VillageStructure::findOrFail($data['hidden_id']);
 

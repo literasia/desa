@@ -190,7 +190,12 @@
                             'success'
                             )
                             $('#modal-pegawai').modal('hide');
-                            $('#title').removeClass('is-invalid');
+                            $('#name').removeClass('is-invalid');
+                            $('#nik').removeClass('is-invalid');
+                            $('#nip').removeClass('is-invalid');
+                            $('#username').removeClass('is-invalid');
+                            $('#password').removeClass('is-invalid');
+                            $('#password_confirmation').removeClass('is-invalid');
                             $('#form-pegawai')[0].reset();
                             $('#action').val('add');
                             $('#btn')
