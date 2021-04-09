@@ -53,8 +53,8 @@ Route::namespace('API')
         Route::get('get-heir/{village_id}', 'HeirAPIController@getHeir');
 
         //Slider
-    	Route::get('slider/{village_id}', 'SliderController@index');
-
+    	  Route::get('slider/{village_id}', 'SliderController@index');
+        
         //Domisili
         Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');
         Route::get('get-domicile/{village_id}', 'DomicileAPIController@getDomicile');
