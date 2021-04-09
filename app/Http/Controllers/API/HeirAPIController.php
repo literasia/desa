@@ -6,27 +6,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Utils\ApiResponse;
 use Illuminate\Support\Facades\Storage;
-use App\Models\SKCK;
+use App\Models\Heir;
 use Validator;
 
-class SKCKAPIController extends Controller
+class HeirAPIController extends Controller
 {
 
-    public function getSKCK($village_id,Request $req) {
+    public function getHeir($village_id,Request $req) {
         $data = $req->all();
 
-        $skck = SKCK::query();
+        $heir =Heir::query();
 
         $q = $req->query('q');
-        $skck->when($q, function($query) use ($q) {
+        $heir->when($q, function($query) use ($q) {
             return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
         });
 
-        $skck = $skck->where('village_id', $village_id)->get();
-        return response()->json(ApiResponse::success($skck));
+        $heir = $heir->where('village_id', $village_id)->get();
+        return response()->json(ApiResponse::success($heir));
     }
 
-    public function addSKCK(Request $request, $village_id, $user_id)
+    public function addHeir(Request $request, $village_id, $user_id)
     {
         $rules = [
             'name'  => 'required|max:100',
@@ -59,10 +59,10 @@ class SKCKAPIController extends Controller
 
         $data['image'] = null;
         if ($request->file('image')) {
-            $data['image'] = $request->file('image')->store('skck', 'public');
+            $data['image'] = $request->file('image')->store('ahli waris', 'public');
         }
 
-        $skck = SKCK::create([
+        $heir = Heir::create([
             "user_id" => $user_id,
             "village_id" => $village_id,
             "name" => $request->name,
@@ -73,6 +73,6 @@ class SKCKAPIController extends Controller
             "status" => $request->status
         ]);
 
-        return response()->json(ApiResponse::success($skck, 'Success add data'));
+        return response()->json(ApiResponse::success($heir, 'Success add data'));
     }
 }

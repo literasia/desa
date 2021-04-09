@@ -89,10 +89,10 @@ Ini adalah halaman kalender untuk desa
 <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        // $('.clockpicker').clockpicker({
-        //     donetext: 'Done',
-        //     autoclose: true
-        // });
+        $('.clockpicker').clockpicker({
+            donetext: 'Done',
+            autoclose: true
+        });
         // $('#start_date').dateDropper({
         //     theme: 'leaf',
         //     format: 'd-m-Y'

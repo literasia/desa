@@ -41,28 +41,45 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="" class="text-success"><i class="fa fa-check-circle mr-2"></i>Uploaded</a>
-                                        </td>
-                                        <td>
-                                            <a href="" class="btn btn-secondary btn-sm">Approve</a>
-                                            <!-- <a href="" class="btn btn-success btn-sm">Approved</a> -->
-                                        </td>
-                                        <td></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal --}}
+    <div id="confirmModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button1" id="btn-delete" class="delete_btn btn btn-sm btn-outline-danger">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="confirmModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Konfirmasi</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 align="center" id="confirm">Apakah anda yakin ingin mengupdate data ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="ok_button2" id="btn-update" class="update_btn btn btn-sm btn-outline-danger">Approve</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
                 </div>
             </div>
         </div>
