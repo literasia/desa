@@ -88,6 +88,8 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
 
     <script>
         $(document).ready(function() {
@@ -103,6 +105,7 @@
         });
     </script>
 
+    
     <script>
         $(document).ready(function () {
             // get employee Json
@@ -141,6 +144,8 @@
                             villageStructures.forEach(villageStructure => {    
                                 $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
                             });   
+                        }else{
+                            $('#parent-id-group').css('display', 'none');
                         }
                     }
                 });
@@ -237,12 +242,25 @@
                         }
 
                         if (data.success) {
-                             Swal.fire(
-                            'Sukses!',
-                            'Data berhasil ditambahkan!',
-                            'success'
-                            )
+                            
+                            if ($('#action').val() == 'add') {
+                                Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
+                            }
+
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
+                            }
+
+                            Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
                             $('#modal-struktur').modal('hide');
+                            $('#parent-id-group').css('display', 'block');
+                            $('#parent-id')
+                                .find('option')
+                                .remove()
+                                .end()
+                                .append('<option value="">Pilih</option>')
+                                .val('Pilih');
+                            getVillageStructure();
                             $('#title').removeClass('is-invalid');
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
@@ -253,13 +271,6 @@
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
-                        $('#parent-id')
-                            .find('option')
-                            .remove()
-                            .end()
-                            .append('<option value="">Pilih</option>')
-                            .val('Pilih');
-                        getVillageStructure();
                     }
                 });
             });
@@ -313,7 +324,9 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
+                            // toastr.success('Data berhasil dihapus');                            
                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
+
                         }, 1000);
                     }
                 });
