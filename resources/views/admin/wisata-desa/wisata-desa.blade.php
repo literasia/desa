@@ -101,6 +101,20 @@
         $(document).ready(function () {
 
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Wisata Desa');
+                $('#action').val('add');
+                $('#name').val('');
+                $('#address').val('');
+                $('#day_open').val('');
+                $('#time_opening').val('');
+                $('#time_closing').val('');
+                $('#tour_type').val('');
+                $('#no_phone').val('');
+                $('#information').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-wisata').modal('show');
             });
 
@@ -216,8 +230,6 @@
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -236,6 +248,7 @@
                     url: '/admin/wisata-desa/wisata-desa/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        $('.modal-title').html('Edit Wisata Desa')
                         $('#action').val('edit');
                         $('#name').val(data.name);
                         $('#address').val(data.address);
@@ -247,8 +260,8 @@
                         $('#information').val(data.information);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-wisata').modal('show');
                     }

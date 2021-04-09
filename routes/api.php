@@ -19,8 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('API')
     ->group(function (){
+        //News
         Route::get('news/{village_id}', 'NewsAPIController@index');
+
+        //Calendar
         Route::get('calendar/{village_id}', 'CalendarAPIController@getCalendar');
+
+        //Message
         Route::get('message/{village_id}','MessageAPIController@getMessage');
       
         //Complaint
@@ -37,8 +42,58 @@ Route::namespace('API')
         Route::post('add-death/{village_id}', 'DeathCertificateAPIController@addDeathCertificate');
         Route::get('get-death/{village_id}', 'DeathCertificateAPIController@getDeathCertificate');
 
+        //Campaign
         Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
+
+        //Tour
         Route::get('tour/{village_id}','VillageTourAPIController@getVillageTour');
         Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
     	Route::get('slider/{village_id}', 'SliderController@index');
+
+        //SKCK
+        Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
+        Route::get('get-skck/{village_id}', 'SKCKAPIController@getSKCK');
+        
+        //Heir
+        Route::post('add-heir/{village_id}/{user_id}', 'HeirAPIController@addHeir');
+        Route::get('get-heir/{village_id}', 'HeirAPIController@getHeir');
+
+        //Slider
+    	  Route::get('slider/{village_id}', 'SliderController@index');
+        
+        //Domisili
+        Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');
+        Route::get('get-domicile/{village_id}', 'DomicileAPIController@getDomicile');
+
+        // KTP
+        Route::get('ktp/{village_id}', 'KtpAPIController@index');
+        Route::post('add-ktp/{village_id}', 'KtpAPIController@addKtp');
+
+        // birth Certificare
+        Route::get('birth-certificate/{village_id}', 'BirthCertificateAPIController@index');
+        Route::post('add-birth-certificate/{village_id}', 'BirthCertificateAPIController@addBirthCertificate');
+
+        // SKTM
+        Route::get('sktm/{village_id}', 'SktmAPIController@index');
+        Route::post('add-sktm/{village_id}', 'SktmAPIController@addSktm');
+
+        // Business Permits
+        Route::get('business-permits/{village_id}', 'BusinessPermitsAPIController@index');
+        Route::post('add-business-permits/{village_id}', 'BusinessPermitsAPIController@addBusinessPermits');
+
+        // Land Certificate
+        Route::get('land-certificate/{village_id}', 'LandCertificateAPIController@index');
+        Route::post('add-land-certificate/{village_id}', 'LandCertificateAPIController@addLandCertificate');
+        
+        // Employee
+        Route::get('employee/{village_id}', 'EmployeeAPIController@index');
+        Route::post('add-employee/{village_id}', 'EmployeeAPIController@addEmployee');
+
+        // Position
+        Route::get('position/{village_id}', 'positionAPIController@index');
+        Route::post('add-position/{village_id}', 'positionAPIController@addPosition');
+
+        // Village Structure
+        Route::get('village-structure/{village_id}', 'VillageStructureAPIController@index');
+        Route::post('add-village-structure/{village_id}', 'VillageStructureAPIControllerAPIController@addVillageStructure');
     });

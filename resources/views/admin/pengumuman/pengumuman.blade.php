@@ -162,8 +162,8 @@ Ini adalah halaman Pengumuman untuk admin
             $('#end_date').val('');
             $('#action').val('add');
             $('#button')
-                .removeClass('btn-outline-success edit')
-                .addClass('btn-outline-info add')
+                .removeClass('btn-info edit')
+                .addClass('btn-success add')
                 .html('Tambah');
             $('#modal-pesan').modal('show');
 
@@ -227,8 +227,8 @@ Ini adalah halaman Pengumuman untuk admin
                         $('#form-pesan')[0].reset();
                         $('#action').val('add');
                         $('#button')
-                            .removeClass('btn-outline-info')
-                            .addClass('btn-outline-success')
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
                             .val('Simpan');
                         $('#order-table').DataTable().ajax.reload();
                     }
@@ -255,8 +255,8 @@ Ini adalah halaman Pengumuman untuk admin
                     $('#action').val('edit');
 
                     $('#button')
-                        .removeClass('btn-outline-success add')
-                        .addClass('btn-outline-info edit')
+                        .removeClass('btn-success add')
+                        .addClass('btn-info edit')
                         .html('Update');
                     $('#modal-pesan').modal('show');
                 }

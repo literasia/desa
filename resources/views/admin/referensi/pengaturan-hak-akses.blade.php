@@ -33,30 +33,34 @@
                                             <span> : Kalender</span>
                                         </li>
                                         <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SE</label></span>
-                                            <span> : Sekolah</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">DP</label></span>
+                                            <span> : Data Penduduk</span>
                                         </li>
                                         <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PEL</label></span>
-                                            <span> : Pelajaran</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SD</label></span>
+                                            <span> : Struktur Desa</span>
                                         </li>
                                         <li>
                                             <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PD</label></span>
-                                            <span> : Peserta Didik</span>
+                                            <span> : Profil Desa</span>
                                         </li>
                                         <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">AB</label></span>
-                                            <span> : Absensi</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">Bd</label></span>
+                                            <span> : Berita</span>
                                         </li>
                                         <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">DN</label></span>
-                                            <span> : Daftar Nilai</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">AD</label></span>
+                                            <span> : Administrasi Desa</span>
                                         </li>
+                                        <li>
+                                        <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">R</label></span>
+                                            <span> : Referensi</span>
+                                        </li>                                        
                                     </div>
                                     <div class="col-md-4">
                                         <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PLG</label></span>
-                                            <span> : Pelanggaran</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PD</label></span>
+                                            <span> : Potensi Desa</span>
                                         </li>
                                         <li>
 
@@ -79,9 +83,12 @@
                                             <span> : Buku Tamu</span>
                                         </li>
                                         <li>
-
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KO</label></span>
-                                            <span> : Konsultasi</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SD</label></span>
+                                            <span> : Slider</span>
+                                        </li>
+                                        <li>
+                                        <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">P</label></span>
+                                            <span> : Pengaduan</span>
                                         </li>
                                     </div>
                                     <div class="col-md-4">
@@ -102,19 +109,21 @@
                                         </li>
                                         <li>
 
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PMB</label></span>
-                                            <span> : Penerimaan Murid Baru</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PT</label></span>
+                                            <span> : Peristiwa</span>
                                         </li>
                                         <li>
 
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">USBK</label></span>
-                                            <span> : Ujian Sekolah Berbasis Komputer</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">WD</label></span>
+                                            <span> : Wisata Desa</span>
                                         </li>
                                         <li>
 
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">EVO</label></span>
-                                            <span> : E-voting</span>
+                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">K</label></span>
+                                            <span> : Kampanye</span>
                                         </li>
+
+                                        
                                     </div>
                                 </div>
                             </ol>
@@ -125,12 +134,12 @@
                                     <tr class="text-left">
                                     <th>Nama</th>
                                     <th title="Kalender" >KA</th>
-                                    <th title="Sekolah">SE</th>
-                                    <th title="Pelajaran">PEL</th>
-                                    <th title="Peserta Didik">PD</th>
-                                    <th title="Absensi">AB</th>
-                                    <th title="Daftar Nilai">DN</th>
-                                    <th title="Pelanggaran">PLG</th>
+                                    <th title="Data Penduduk">DP</th>
+                                    <th title="Struktur Desa">SD</th>
+                                    <th title="Profil Desa">PD</th>
+                                    <th title="Berita">BD</th>
+                                    <th title="Administrasi">AD</th>
+                                    <th title="Potensi Desa">PD</th>
                                     <th title="Template">TE</th>
                                     <th title="Log User">LU</th>
                                     <th title="Referensi">R</th>
@@ -138,15 +147,17 @@
                                     <th title="Perpustakaan">PER</th>
                                     <th title="Keuangan">KE</th>
                                     <th title="Sarana & Prasarana">S&P</th>
-                                    <th title="Penerimaan Murid Baru">PMB</th>
-                                    <th title="Ujian Sekolah Berbasis Komputer">USBK</th>
-                                    <th title="E-voting">EVO</th>
-                                    <th title="Konsultasi">KO</th>
+                                    <th title="Slider">SD</th>
+                                    <th title="Peristiwa">PT</th>
+                                    <th title="Wisata Desa">WD</th>
+                                    <th title="Kampanye">K</th>
+                                    <th title="Referensi">R</th>
+                                    <th title="Pengaduan">P</th>
                                 </tr>
                                 </thead>
                                 <tbody  class="text-left">
                                     <tr>
-                                        <td>Al Firah</br> (Guru / Pegawai)</td>
+                                        <td>Syafri Maradu Manurung</br> (Aparat Desa / Pegawai)</td>
                                         <td>
                                             <div class="checkbox-radios">
                                                 <div class="form-check">
@@ -363,8 +374,32 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        <td>
+                                            <div class="checkbox-radios">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" checked id="konsultasi1" onclick="check('5935745', '#konsultasi1', 'konsultasi');">
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="checkbox-radios">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" checked id="konsultasi1" onclick="check('5935745', '#konsultasi1', 'konsultasi');">
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>Arifin Sitorus Pane</br> (Guru / Pegawai)</td>
                                         <td>
                                             <div class="checkbox-radios">
@@ -1020,7 +1055,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -1061,5 +1096,35 @@
         $(document).ready(function () {
             $('#order-table').DataTable();
         });
+
+        function check(pegawai_id, id_check_form, structure){
+            var isChecked = jQuery(id_check_form).is(":checked");
+            $.ajax({
+                url : "{{ route('admin.referensi.pengaturan-hak-akses-update') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    pegawai_id,
+                    isChecked,
+                    structure
+                }
+           //      ,
+           //      success : function(data){
+                    // $(id_check_form).attr("checked", "checked");
+           //      },
+           //      error : function(jqXHR, errorThrown, textStatus){
+                    // swal({
+                    //  title: "Failed!",
+                    //  text: "Gagal Mengubah Akses",
+                    //  type: "error",
+                    //  buttonsStyling: false,
+                    //  confirmButtonClass: "btn btn-danger"
+                    // }).then(function(){
+                    //  location.reload();
+                    // });
+           //      }
+        });
+        
+    }
     </script>
 @endpush

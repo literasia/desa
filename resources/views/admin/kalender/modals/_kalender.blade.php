@@ -36,13 +36,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
                                         <label id="label_start_clock" class="bmd-label-floating">Start At</label>
-                                        <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker">
+                                        <input type="text" name="start_clock" id="start_clock" class="form-control clockpicker" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
                                         <label id="label_end_clock" class="bmd-label-floating">End At</label>
-                                        <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker">
+                                        <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker" readonly>
                                     </div>
                                 </div>
                             </div>

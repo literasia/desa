@@ -104,6 +104,16 @@
         $(document).ready(function () {
 
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Pesan');
+                $('#action').val('add');
+                $('#candidate').val('');
+                $('#deputy_candidate').val('');
+                $('#vision').val('');
+                $('#mission').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-kampanye').modal('show');
             });
 
@@ -190,8 +200,6 @@
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -206,6 +214,7 @@
                     url: '/admin/kampanye/kampanye/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        $('.modal-title').html('Edit Pesan');
                         $('#action').val('edit');
                         $('#candidate').val(data.candidate);
                         $('#deputy_candidate').val(data.deputy_candidate);
@@ -213,8 +222,8 @@
                         $('#mission').val(data.mission);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-kampanye').modal('show');
                     }
