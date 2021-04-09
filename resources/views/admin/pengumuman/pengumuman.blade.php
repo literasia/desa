@@ -170,15 +170,15 @@ Ini adalah halaman Pengumuman untuk admin
 
         });
 
-        // $('#start_date').dateDropper({
-        //     theme: 'leaf',
-        //     format: 'Y-m-d'
-        // });
+        $('#start_date').dateDropper({
+            theme: 'leaf',
+            format: 'Y-m-d'
+        });
 
-        // $('#end_date').dateDropper({
-        //     theme: 'leaf',
-        //     format: 'Y-m-d'
-        // });
+        $('#end_date').dateDropper({
+            theme: 'leaf',
+            format: 'Y-m-d'
+        });
 
         $('input:radio[name="message_time"]').change(function() {
             if ($(this).is(':checked') && $(this).val() == 'Using Time') {
