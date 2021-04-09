@@ -33,9 +33,12 @@ Route::namespace('API')
         Route::get('get-category/{village_id}', 'CategoryBusinessAPIController@getCategoryBusiness');
         Route::get('get-types/{village_id}', 'BusinessTypeAPIController@getBusinessType');
 
+        //Death Certificate
+        Route::post('add-death/{village_id}', 'DeathCertificateAPIController@addDeathCertificate');
+        Route::get('get-death/{village_id}', 'DeathCertificateAPIController@getDeathCertificate');
+
         Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
         Route::get('tour/{village_id}','VillageTourAPIController@getVillageTour');
-        Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
         Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
-    	  Route::get('slider/{village_id}', 'SliderController@index');
+    	Route::get('slider/{village_id}', 'SliderController@index');
     });
