@@ -68,24 +68,28 @@
                     <ul class="pcoded-submenu">
                         <li class="{{ request()->is('admin/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.permohonan_pembuatan_ktp') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Permohonan Pembuatan KTP</span>
-                                <label class="badge badge-danger m-0">1</label>
-                                <label class="badge badge-warning m-0">1</label>
+                                <span class="pcoded-mtext">
+                                    Permohonan KTP
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
+                                </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.surat_keterangan_lahir') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext mr-1">Surat Lahir</span>
-                                <label class="badge badge-danger m-0">1</label>
-                                <label class="badge badge-warning m-0">1</label>
+                                <span class="pcoded-mtext">
+                                    Surat Lahir
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
+                                </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/perubahan-kk') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.perubahan-kk') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Perubahan KK
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
@@ -93,31 +97,35 @@
                             <a href="{{ route('admin.administrasi.surat-kematian') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Surat Kematian
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/izin-usaha') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.izin_usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext m-1">Izin Usaha</span>
-                                <label class="badge badge-danger m-0">1</label>
-                                <label class="badge badge-warning m-0">1</label>
+                                <span class="pcoded-mtext">
+                                    Izin Usaha
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
+                                </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan_tidak_mampu') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext m-1">Keterangan Tidak Mampu</span>
-                                <label class="badge badge-danger m-0">1</label>
-                                <label class="badge badge-warning m-0">1</label>
+                                <span class="pcoded-mtext">
+                                    Ket. Tidak Mampu
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
+                                </span>
                             </a>
                         </li>
                         <li class="{{ request()->is('admin/administrasi/permohonan-skck') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.permohonan-skck') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Permohonan SKCK
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
@@ -125,8 +133,8 @@
                             <a href="{{ route('admin.administrasi.keterangan-pindah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Pindah
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
@@ -134,8 +142,8 @@
                             <a href="{{ route('admin.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Domisili
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
@@ -143,8 +151,8 @@
                             <a href="{{ route('admin.administrasi.keterangan-ahli-waris') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Ahli Waris
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
@@ -152,8 +160,8 @@
                             <a href="{{ route('admin.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Tanah
-                                    <label class="notification-label-danger ml-2"></label>
-                                    <label class="notification-label-warning"></label>
+                                    <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
+                                    <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>
                                 </span>
                             </a>
                         </li>
@@ -254,7 +262,7 @@
                                 <span class="pcoded-mtext">Kalender</span>
                             </a>
                         </li>
-                        {{-- <li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
+                       {{-- <li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
                             <a href="{{ route('admin.kalender.kegiatan-desa') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Kegiatan Desa</span>
                             </a>

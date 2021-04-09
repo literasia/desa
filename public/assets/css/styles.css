@@ -20,4 +20,20 @@ body {
 	-webkit-box-shadow:none;
 	box-shadow:none;color:#fff
 }
-.btn-success:focus {-webkit-box-shadow:none;box-shadow:none;color:#fff;background-color:#59e0c5}.notification-label-danger{height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;}.notification-label-warning{height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;}
+.btn-success:focus {
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	color:#fff;
+	background-color:#59e0c5
+}
+.notification-label-danger {
+	height: 5px; 
+	background-color: #FF5370; 
+	border-radius: 50%; padding: 3px;
+}
+.notification-label-warning {
+	height: 5px; 
+	background-color: #FFB64D; 
+	border-radius: 50%; 
+	padding: 3px;
+}

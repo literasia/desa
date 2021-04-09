@@ -140,12 +140,16 @@
             });
 
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Slider');
                 $('#action').val('add');
+                $('#title').val('');
+                $('#description').val('');
+                $('#start_date').val('');
+                $('#end_date').val('');
                 $('#btn')
-                .removeClass('btn-outline-success')
-                .addClass('btn-outline-info')
-                .val('Simpan');
-                $('#form-slider')[0].reset();
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-slider').modal('show');
             });
 
@@ -202,8 +206,6 @@
                             $('#form-slider')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -217,6 +219,7 @@
                 $.ajax({
                     url: "/admin/slider/"+id,
                     success: function (data) {
+                        $('.modal-title').html('Edit Slider');
                         $('#action').val('edit');
                         $('#title').val(data.title);
                         $('#description').val(data.description);
@@ -224,8 +227,8 @@
                         $('#end_date').val(data.end_date);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-slider').modal('show');
                     }

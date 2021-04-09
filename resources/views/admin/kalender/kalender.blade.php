@@ -90,8 +90,8 @@ Ini adalah halaman kalender untuk desa
 <script type="text/javascript">
     $(document).ready(function() {
         $('.clockpicker').clockpicker({
-            donetext: 'Done',
-            autoclose: true
+             donetext: 'Done',
+             autoclose: true
         });
         // $('#start_date').dateDropper({
         //     theme: 'leaf',

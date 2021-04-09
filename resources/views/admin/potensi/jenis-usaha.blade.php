@@ -37,7 +37,7 @@
                                 <div class="col">
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn-outline-info btn btn-sm btn-success" value="Simpan" id="btn">
+                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
                                     <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
@@ -137,9 +137,8 @@
             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
             $('#action').val('add');
-            $('#btn').removeClass('btn-outline-info')
-                    .addClass('btn-outline-success')
-                    .val('Simpan');
+            $('#btn')
+                .val('Simpan');
         })
 
         $('#form-status').on('submit', function (event) {
@@ -178,8 +177,6 @@
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -198,7 +195,7 @@
                         $('#action').val('edit');
                         $('#btn')
                             .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .addClass('btn-info')
                             .val('Update');
                     }
                 });
