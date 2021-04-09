@@ -246,7 +246,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });
