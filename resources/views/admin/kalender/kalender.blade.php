@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Kalender | Kegiatan Desa ')
-@section('title-2', 'Kegiatan Desa ')
-@section('title-3', 'Kegiatan Desa ')
+@section('title', 'Kalender | Kalender ')
+@section('title-2', 'Kalender ')
+@section('title-3', 'Kalender ')
 
 @section('describ')
-Ini adalah halaman Kegiatan Desa untuk admin
+Ini adalah halaman kalender untuk desa
 @endsection
 
 @section('icon-l', 'fa fa-calendar')
@@ -20,7 +20,7 @@ Ini adalah halaman Kegiatan Desa untuk admin
 @section('content')
 
 
-@include('admin.kalender.modals._kegiatan-desa')
+@include('admin.kalender.modals._kalender')
 
 <div class="row">
     <div class="col-xl-12">
@@ -68,7 +68,7 @@ Ini adalah halaman Kegiatan Desa untuk admin
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.print.css') }}" media='print'>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}">
-
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" /> --}}
 <style>
     .btn i {
         margin-right: 0px;
@@ -89,41 +89,31 @@ Ini adalah halaman Kegiatan Desa untuk admin
 <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-
         $('.clockpicker').clockpicker({
             donetext: 'Done',
             autoclose: true
         });
-
-        $('#start_date').dateDropper({
-            theme: 'leaf',
-            format: 'd-m-Y'
-        });
-
-        $('#end_date').dateDropper({
-            theme: 'leaf',
-            format: 'd-m-Y'
-        });
-
+        // $('#start_date').dateDropper({
+        //     theme: 'leaf',
+        //     format: 'd-m-Y'
+        // });
+        // $('#end_date').dateDropper({
+        //     theme: 'leaf',
+        //     format: 'd-m-Y'
+        // });
         // $('#external-events .fc-event').each(function() {
-
         //     // store data so the calendar knows to render an event upon drop
         //     $(this).data('event', {
         //         title: $.trim($(this).text()), // use the element's text as the event title
         //         stick: true // maintain when user navigates (see docs on the renderEvent method)
         //     });
-
         //     // make the event draggable using jQuery UI
         //     $(this).draggable({
         //         zIndex: 999,
         //         revert: true, // will cause the event to go back to its
         //         revertDuration: 0 //  original position after the drag
         //     });
-
         // });
-
-
-
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -137,7 +127,6 @@ Ini adalah halaman Kegiatan Desa untuk admin
             selectable: true,
             // displayEventTime: true,
             eventSources: [
-
                 // your event source
                 {
                     events: JSON.parse('{!!$events!!}'),
@@ -145,9 +134,7 @@ Ini adalah halaman Kegiatan Desa untuk admin
                     textColor: 'white', // an option!
                     timeFormat: 'H(:mm)'
                 }
-
                 // any other event sources...
-
             ],
             select: function(start, end, allDay) {
                 $("#addEvent").modal("show");
@@ -172,10 +159,8 @@ Ini adalah halaman Kegiatan Desa untuk admin
                 $("#addEvent #end_date").val($.fullCalendar.formatDate(event.end, 'YYYY-MM-DD'));
                 $("#addEvent #start_clock").val(event.start.format("hh:mm"));
                 $("#addEvent #end_clock").val(event.end.format("hh:mm"));
-
                 var id_event = '<input type="hidden" id="id_event" name="id_event" value="' + event.id + '">';
                 $("#input_hidden").html(id_event);
-
                 var button_delete = '<button type="button" class="btn btn-sm btn-outline-danger" onclick=del_event(' + event.id + ')>Hapus Event</button>';
                 $("#deleteEvent").html(button_delete);
                 // var class_name;
@@ -190,15 +175,10 @@ Ini adalah halaman Kegiatan Desa untuk admin
                 // } else if (event.className == "event-green") {
                 //  class_name = 'Diharapkan Datang';
                 // }
-
                 // $("#prioritas option[value='" + class_name + "']").prop("selected", true);
             }
-
         });
         // $('#calendar').fullCalendar();
-
-
-
         //Fungsi Add-Update-Delete Data
         $("#addFormEvent").submit(function(e) {
             e.preventDefault();
@@ -212,8 +192,6 @@ Ini adalah halaman Kegiatan Desa untuk admin
             }
         });
     });
-
-
     function add_event(form_data) {
         //Pengumpulan Data
         console.log(form_data);
@@ -235,7 +213,6 @@ Ini adalah halaman Kegiatan Desa untuk admin
         } else if (prioritas == "Diharapkan Datang") {
             class_name = 'event-green';
         }
-
         //Jika kosong
         if (event_title == "" || start_date == "" || end_date == "" || start_clock == "" || end_clock == "" || prioritas == "") {
             swal({
@@ -284,17 +261,12 @@ Ini adalah halaman Kegiatan Desa untuk admin
                         $("#addEvent #start_clock").val("");
                         $("#addEvent #end_clock").val("");
                         $("#deleteEvent").html("");
-
                     }
-
                 },
             });
-
         }
     }
-
     function update_event(form_data) {
-
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -311,10 +283,8 @@ Ini adalah halaman Kegiatan Desa untuk admin
                 $('#addEvent #btnEvent').text('Mengupdate...');
             },
             success: function(data) {
-
                 setTimeout(function() {
                     $('#addEvent').modal('hide');
-
                     Swal.fire({
                            title: 'Success!!',
                             text: 'Event berhasil diupdate',
@@ -327,9 +297,7 @@ Ini adalah halaman Kegiatan Desa untuk admin
                 }, 1000);
             }
         });
-
     }
-
     function del_event(id_event) {
         //Konfirmasi bahwa data akan dihapus
         $('#ok_button').text('Hapus');
@@ -361,7 +329,6 @@ Ini adalah halaman Kegiatan Desa untuk admin
                             });
                         }, 1000);
                     }
-
                 }
             });
         });

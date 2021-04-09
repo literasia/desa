@@ -241,7 +241,7 @@
                         <span class="pcoded-mtext">Wisata Desa</span>
                     </a>
                 </li>
-                <li class="@if (request()->is('admin/kalender/kegiatan-desa')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/kalender/kalender') || request()->is('admin/kalender/kegiatan-desa') || request()->is('admin/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-calendar"></i>
@@ -249,8 +249,13 @@
                         <span class="pcoded-mtext">Kalender</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/kalender') ? 'active' : '' }}">
+                        <li class="{{ request()->is('admin/kalender/kalender') ? 'active' : '' }}">
                             <a href="{{ route('admin.kalender.kalender') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kalender</span>
+                            </a>
+                        </li>
+                        {{-- <li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kalender.kegiatan-desa') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Kegiatan Desa</span>
                             </a>
                         </li> --}}

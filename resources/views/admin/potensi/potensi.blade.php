@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Potensi Desa')
+@section('title', 'Potensi Desa | Potensi Desa')
 @section('title-2', 'Potensi Desa')
 @section('title-3', 'Potensi Desa')
 
@@ -41,7 +41,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                   
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+
     {{-- Modal --}}
     <div id="confirmModal1" class="modal fade" role="dialog">
         <div class="modal-dialog">

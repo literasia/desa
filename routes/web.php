@@ -8,7 +8,7 @@ Route::namespace('admin')
     ->name('admin.')
     ->middleware(['auth', 'auth.admin'])
     ->group(function () {
-        Route::get('/admin', 'adminController@index')
+        Route::get('/admin', 'AdminController@index')
             ->name('index');
 
         // Library Setting
@@ -167,8 +167,16 @@ Route::namespace('Admin')
                     ->name('administrasi.keterangan-pindah');
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
                     ->name('administrasi.keterangan-domisili');
-                Route::get('/desa/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
+                
+                // Ahli Waris
+                Route::get('/admin/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
                     ->name('administrasi.keterangan-ahli-waris');
+                Route::get('/admin/administrasi/keterangan-ahli-waris/{id}', 'KeteranganAhliWarisController@edit');
+                Route::post('/admin/administrasi/keterangan-ahli-waris/update', 'KeteranganAhliWarisController@update')
+                    ->name('administrasi.keterangan-ahli-waris-update');
+                Route::get('/admin/administrasi/keterangan-ahli-waris/hapus/{id}', 'KeteranganAhliWarisController@destroy');
+
+                
                 Route::get('/admin/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
                     ->name('administrasi.keterangan-tanah');
             });
@@ -210,13 +218,13 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/admin/kalender', 'KegiatanDesaController@index')
-            ->name('kalender.kalender');
-            Route::post('/admin/kalender/tambah', 'KegiatanDesaController@store')->name('kalender.tambah-event');
-            Route::post('/admin/kalender/update/{id}', 'KegiatanDesaController@update')->name('kalender.edit-event');
-            Route::get('/admin/kalender/hapus/{id}', 'KegiatanDesaController@destroy');
-            });
-
+            //Kalender
+            Route::get('/admin/kalender/kalender', 'KalenderDesaController@index')
+                ->name('kalender.kalender');
+            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
+            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
+            Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
+        });
 
         // Kampanye
         Route::namespace('Kampanye')
