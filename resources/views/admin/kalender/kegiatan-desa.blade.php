@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Kalender | Kalender ')
-@section('title-2', 'Kalender ')
-@section('title-3', 'Kalender ')
+@section('title', 'Kalender | Kegiatan Desa ')
+@section('title-2', 'Kegiatan Desa ')
+@section('title-3', 'Kegiatan Desa ')
 
 @section('describ')
-Ini adalah halaman kalender untuk admin
+Ini adalah halaman Kegiatan Desa untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-calendar')
@@ -19,7 +19,7 @@ Ini adalah halaman kalender untuk admin
 {{-- main content --}}
 @section('content')
 
-@include('admin.kalender.modals._kalender')
+@include('admin.kalender.modals._kegiatan-desa')
 
 <div class="row">
     <div class="col-xl-12">
@@ -67,6 +67,7 @@ Ini adalah halaman kalender untuk admin
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.print.css') }}" media='print'>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}">
+
 <style>
     .btn i {
         margin-right: 0px;
@@ -88,20 +89,20 @@ Ini adalah halaman kalender untuk admin
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // $('.clockpicker').clockpicker({
-        //     donetext: 'Done',
-        //     autoclose: true
-        // });
+        $('.clockpicker').clockpicker({
+            donetext: 'Done',
+            autoclose: true
+        });
 
-        // $('#start_date').dateDropper({
-        //     theme: 'leaf',
-        //     format: 'd-m-Y'
-        // });
+        $('#start_date').dateDropper({
+            theme: 'leaf',
+            format: 'd-m-Y'
+        });
 
-        // $('#end_date').dateDropper({
-        //     theme: 'leaf',
-        //     format: 'd-m-Y'
-        // });
+        $('#end_date').dateDropper({
+            theme: 'leaf',
+            format: 'd-m-Y'
+        });
 
         // $('#external-events .fc-event').each(function() {
 
@@ -149,7 +150,7 @@ Ini adalah halaman kalender untuk admin
             ],
             select: function(start, end, allDay) {
                 $("#addEvent").modal("show");
-                $("#addEvent .modal-title").text("Tambah Event");
+                $("#addEvent .modal-title").text("Kegiatan Desa");
                 $("#addEvent #title").val("");
                 $("#addEvent form").attr("action", "tambah");
                 $("#addEvent form").removeAttr("data-id");
@@ -162,7 +163,7 @@ Ini adalah halaman kalender untuk admin
             },
             eventClick: function(event) {
                 $("#addEvent").modal("show");
-                $("#addEvent .modal-title").text("Edit Event");
+                $("#addEvent .modal-title").text("Edit Kegiatan Desa");
                 $("#addEvent form").attr("action", "update");
                 $("#addEvent #btnEvent").text("Update");
                 $("#addEvent #title").val(event.title);
