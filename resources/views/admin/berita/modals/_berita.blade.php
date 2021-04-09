@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <input type="file" class="form-control form-control-sm" name="image" id="image" accept="image/*" value="" autocomplete="off">
+                                <input type="file" name="image" id="image" accept="image/*" value="" autocomplete="off">
                                 <label for="image" class="mt-1">
                                     thumbnail:
                                     <small class="text-muted">max. 3MB</small>

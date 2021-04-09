@@ -95,6 +95,16 @@
         $(document).ready(function () {
 
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Berita');
+                $('#action').val('add');
+                $('#title').val('');
+                $('#category').val('');
+                $('#content').val('');
+                $('#create_date').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-berita').modal('show');
             });
 
@@ -190,8 +200,6 @@
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -217,8 +225,8 @@
                         $('#create_date').val(data.create_date);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-berita').modal('show');
                     }

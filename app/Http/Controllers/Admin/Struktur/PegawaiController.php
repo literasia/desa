@@ -22,8 +22,9 @@ class PegawaiController extends Controller
 
 
     public function index(Request $request) {
+        $data = Employee::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
-            $data = Employee::latest()->get();
+            $data = Employee::where('village_id', auth()->user()->village->id)->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
@@ -31,7 +32,7 @@ class PegawaiController extends Controller
                     return $button;
                 })
                 ->addColumn('photo', function ($data) {
-                    $btnlink = '<a target="_blank" href="'.Storage::url($data->photo).'">Lihat Foto</a>';
+                    $btnlink = '<a target="_blank" href="'.Storage::url($data->photo).'" class="badge badge-warning">Lihat Foto</a>';
                     return $btnlink;
                 })
                 ->rawColumns(['photo', 'action'])
@@ -44,7 +45,6 @@ class PegawaiController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-        
         $validator = Validator::make($data, $this->rules);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors()->all())->withInput();

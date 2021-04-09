@@ -14,8 +14,28 @@ class IzinUsahaController extends Controller
             $data = BusinessPermits::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('status', function($data){
+                    
+                    switch ($data->status) {
+                        case 'processing':
+                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            break;
+                        case 'success':
+                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            break;
+                        case 'rejected':
+                            return '<lable class="label label-danger">'. $data->status .'</label>';
+                            break;                        
+                        default:
+                            # code...
+                            break;
+                    }
+                })
+                ->rawColumns(['status'])
                 ->make(true);
         }
+
+        
         return view('admin.administrasi.izin-usaha');
     }
 }
