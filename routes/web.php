@@ -134,6 +134,7 @@ Route::namespace('admin')
 
 Route::namespace('Admin')
     ->name('admin.')
+    ->middleware(['auth', 'auth.admin'])
     ->group(function () {
         Route::get('/admin', 'AdminController@index')
             ->name('index');
@@ -209,12 +210,12 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-            Route::get('/admin/kalender', 'KegiatanDesaController@index')
-            ->name('kalender.kalender');
-            Route::post('/admin/kalender/tambah', 'KegiatanDesaController@store')->name('kalender.tambah-event');
-            Route::post('/admin/kalender/update/{id}', 'KegiatanDesaController@update')->name('kalender.edit-event');
-            Route::get('/admin/kalender/hapus/{id}', 'KegiatanDesaController@destroy');
-            });
+            //Kalender
+            Route::get('/admin/kalender/kalender', 'KalenderDesaController@index')
+                ->name('kalender.kalender');
+            Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
+            Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
+            Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
 
 
         // Kampanye
@@ -321,9 +322,10 @@ Route::namespace('Admin')
                     ->name('slider.slider');
                 Route::post('/admin/slider', 'SliderController@store')
                     ->name('slider.store');
-                Route::put('/admin/slider', 'SliderController@update')
+                Route::get('/admin/slider/{id}', 'SliderController@edit')->name('slider.edit');
+                Route::post('/admin/slider/update', 'SliderController@update')
                     ->name('slider.update');
-                Route::delete('/admin/slider/{id}', 'SliderController@destroy')
+                Route::get('/admin/slider/destroy/{id}', 'SliderController@destroy')
                     ->name('slider.destroy');
             });
 
