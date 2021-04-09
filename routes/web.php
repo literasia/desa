@@ -165,8 +165,14 @@ Route::namespace('Admin')
                 
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
+
+                // Domisili
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
                     ->name('administrasi.keterangan-domisili');
+                Route::get('/admin/administrasi/keterangan-domisili/{id}', 'KeteranganDomisiliController@edit');
+                Route::post('/admin/administrasi/keterangan-domisili/update', 'KeteranganDomisiliController@update')
+                    ->name('administrasi.keterangan-domisili-update');
+                Route::get('/admin/administrasi/keterangan-domisili/hapus/{id}', 'KeteranganDomisiliController@destroy');
                 
                 // Ahli Waris
                 Route::get('/admin/administrasi/keterangan-ahli-waris', 'KeteranganAhliWarisController@index')
