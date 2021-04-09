@@ -148,8 +148,15 @@ Route::namespace('Admin')
                     ->name('administrasi.surat_keterangan_lahir');
                 Route::get('/admin/administrasi/perubahan-kk', 'PerubahanKKController@index')
                     ->name('administrasi.perubahan-kk');
+
+                //Surat Kematian
                 Route::get('/admin/administrasi/surat-kematian', 'SuratKematianController@index')
                     ->name('administrasi.surat-kematian');
+                Route::get('/admin/administrasi/surat-kematian/{id}', 'SuratKematianController@edit');
+                Route::post('/admin/administrasi/surat-kematian/update', 'SuratKematianController@update')
+                    ->name('administrasi.surat-kematian.update');
+                Route::get('/admin/administrasi/surat-kematian/hapus/{id}', 'SuratKematianController@destroy');
+                
                 Route::get('/admin/administrasi/izin-usaha', 'IzinUsahaController@index')
                     ->name('administrasi.izin_usaha');
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
@@ -224,6 +231,7 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
+
                 //Kalender
                 Route::get('/admin/kalender/kalender', 'KalenderDesaController@index')
                     ->name('kalender.kalender');
@@ -239,7 +247,6 @@ Route::namespace('Admin')
                 Route::get('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
                     ->name('kalender.kategori-kegiatan');
             });
-
 
         // Kampanye
         Route::namespace('Kampanye')

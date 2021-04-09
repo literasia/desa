@@ -262,7 +262,7 @@
                                 <span class="pcoded-mtext">Kalender</span>
                             </a>
                         </li>
-                       {{-- <li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
+                        {{--<li class="{{ request()->is('admin/kalender/kegiatan-desa') ? 'active' : '' }}">
                             <a href="{{ route('admin.kalender.kegiatan-desa') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Kegiatan Desa</span>
                             </a>
