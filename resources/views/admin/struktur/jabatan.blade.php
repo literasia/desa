@@ -92,14 +92,15 @@
     <script>
         $(document).ready(function () {
             // Show Modal
-           $('.modal-title').html('Edit Jabatan');
+            $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Jabatan');
                 $('#action').val('add');
                 $('#name').val('');
                 $('#btn')
-                    .removeClass('btn-info')
-                    .addClass('btn-success')
-                    .val('Update');
-                $('#modal-jabatan').modal('show');
+                    .removeClass('btn-success')
+                    .addClass('btn-info')
+                    .val('Simpan');
+                $('#modal-pegawai').modal('show');
             });
 
             // Show DataTables
