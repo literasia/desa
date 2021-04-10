@@ -179,7 +179,12 @@
                         var html = ''
                         if (data.errors) {
                             html = data.errors[0];
-                            $('#title').addClass('is-invalid');
+                            $('#name').addClass('is-invalid');
+                            $('#nik').addClass('is-invalid');
+                            $('#nip').addClass('is-invalid');
+                            $('#username').addClass('is-invalid');
+                            $('#password').addClass('is-invalid');
+                            $('#password_confirmation').addClass('is-invalid');
                             toastr.error(html);
                         }
 
