@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    @include('admin.struktur.modals._pegawai')
+    @include('admin.struktur.modals._jabatan')
 @endsection
 
 {{-- addons css --}}
@@ -92,22 +92,14 @@
     <script>
         $(document).ready(function () {
             // Show Modal
-            $('#add').on('click', function () {
-                $('.modal-title').html('Tambah Pegawai');
+           $('.modal-title').html('Edit Jabatan');
                 $('#action').val('add');
                 $('#name').val('');
-                $('#nik').val('');
-                $('#nip').val('');
-                $('#username').val('');
-                $('#password').val('');
-                $('#password-confirmation').val('');
-                $('#password-group').css('display', 'block');
-                $('#password-confirmation-group').css('display', 'block');
                 $('#btn')
                     .removeClass('btn-info')
                     .addClass('btn-success')
-                    .val('Simpan');
-                $('#modal-pegawai').modal('show');
+                    .val('Update');
+                $('#modal-jabatan').modal('show');
             });
 
             // Show DataTables
