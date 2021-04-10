@@ -16,8 +16,8 @@ class VillageStructureAPIController extends Controller
 
         $q = $request->query('q');
 
-        $village_structures->when($q, function($query) use ($q) {
-            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        $village_structures->whereHas('employee', function($query) use($q){
+            return $query->where('name', 'LIKE', '%'.strtolower($q).'%');
         });
 
         $village_structures = $village_structures->where('village_id', $village_id)->orderBy('created_at', 'desc')->limit(30)->get();
