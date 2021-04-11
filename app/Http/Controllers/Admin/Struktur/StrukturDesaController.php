@@ -20,6 +20,7 @@ class StrukturDesaController extends Controller
 
     public function index(Request $request) {
         $data = VillageStructure::where('village_id', auth()->user()->village->id)->get();
+        
         if ($request->ajax()) {
             $villageStructures = VillageStructure::where('village_id', auth()->user()->village->id)->get();
             

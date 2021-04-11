@@ -46,7 +46,7 @@ Ini adalah halaman kalender untuk desa
                 <h4>Konfirmasi</h4>
             </div>
             <div class="modal-body">
-                <h5 align="center" id="confirm">Apakah anda yakin ingin menghapus data ini?</h5>
+                <h5 align="center" id="confirm">Apakah Anda yakin ingin menghapus data ini?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>

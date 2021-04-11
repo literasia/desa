@@ -29,7 +29,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
+                                        <th>Jabatan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -96,11 +96,9 @@
                 $('.modal-title').html('Tambah Jabatan');
                 $('#action').val('add');
                 $('#name').val('');
-                $('#password-group').css('display', 'block');
-                $('#password-confirmation-group').css('display', 'block');
                 $('#btn')
-                    .removeClass('btn-info')
-                    .addClass('btn-success')
+                    .removeClass('btn-success')
+                    .addClass('btn-info')
                     .val('Simpan');
                 $('#modal-jabatan').modal('show');
             });
