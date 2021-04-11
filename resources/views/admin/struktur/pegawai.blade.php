@@ -177,17 +177,25 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
-                        if (data.errors) {
-                            html = data.errors[0];
-                            $('#name').addClass('is-invalid');
-                            $('#nik').addClass('is-invalid');
-                            $('#nip').addClass('is-invalid');
-                            $('#username').addClass('is-invalid');
-                            $('#password').addClass('is-invalid');
-                            $('#password_confirmation').addClass('is-invalid');
-                            toastr.error(html);
-                        }
 
+                        // If has Errors
+                        if (data.errors) {
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
+                            data.errors.nik ? $('#nik').addClass('is-invalid') : $('#nik').removeClass('is-invalid')
+                            data.errors.nip ? $('#nip').addClass('is-invalid') : $('#nip').removeClass('is-invalid')
+                            data.errors.username ? $('#username').addClass('is-invalid') : $('#username').removeClass('is-invalid')
+                            data.errors.password ? $('#password').addClass('is-invalid') : $('#password').removeClass('is-invalid')
+
+                            if (data.errors.password == "The password confirmation does not match.") {
+                                $('#password_confirmation').addClass('is-invalid');
+                                $('#password-help').css('display', 'block')
+                            }else{
+                                $('#password_confirmation').removeClass('is-invalid');
+                                $('#password-help').css('display', 'none')
+                            }
+                        }
+            
+                        // if passed
                         if (data.success) {
                             Swal.fire(
                             'Sukses!',

@@ -235,14 +235,22 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
+                        // if (data.errors) {
+                        //     html = data.errors[0];
+                        //     $('#title').addClass('is-invalid');
+                        //     toastr.error(html);
+                        // }
+                        console.log(data.errors);
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.employee_id ? $('#employee-id').addClass('is-invalid') : $('#employee_id').removeClass('is-invalid')
+                            data.errors.position_id ? $('#position-id').addClass('is-invalid') : $('#position_id').removeClass('is-invalid')
+                            data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
+                            data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
+                            data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
                         }
 
                         if (data.success) {
-                            
                             if ($('#action').val() == 'add') {
                                 Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
                             }
@@ -261,7 +269,12 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            $('#title').removeClass('is-invalid');
+                            $('#employee-id').removeClass("is-invalid");
+                            $('#position-id').removeClass("is-invalid");
+                            $('#status').removeClass("is-invalid");
+                            $('#level').removeClass("is-invalid");
+                            $('#parent-id').removeClass("is-invalid");
+                            $('#description').removeClass("is-invalid");
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
                             $('#btn')

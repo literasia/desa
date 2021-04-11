@@ -149,14 +149,14 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
-                        var html = ''
+                        var html = '';
+                    
+                        // If has Errors
                         if (data.errors) {
-                            console.log('tes');
-                            html = data.errors[0];
-                            $('#name').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
                         }
 
+                        // if passed
                         if (data.success) {
                             Swal.fire(
                             'Sukses!',

@@ -33,8 +33,12 @@ class JabatanController extends Controller
     public function store(Request $request){
         $data = $request->all();
         $validator = Validator::make($data, $this->rules);
+
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all())->withInput();
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
         }
 
         Position::create([
@@ -69,7 +73,10 @@ class JabatanController extends Controller
 
         $validator = Validator::make($data, $this->rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all())->withInput();
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
         }
 
         $position = Position::findOrFail($data['hidden_id']);
