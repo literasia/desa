@@ -88,8 +88,9 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -97,7 +98,6 @@
                 theme: 'leaf',
                 format: 'd-m-Y'
             });
-
             $('#end_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
@@ -120,7 +120,6 @@
                     }
                 });
             }
-
             // get positions json
             function getPositionData() {
                 $.ajax({
@@ -133,7 +132,6 @@
                     }
                 });
             }
-
             // get village structures
             function getVillageStructure(){
                 $.ajax({
@@ -150,11 +148,9 @@
                     }
                 });
             }
-
             getEmployeData();
             getVillageStructure();
             getPositionData();
-
             // Show Modal
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Struktur Desa');
@@ -171,7 +167,6 @@
                     .val('Simpan');
                 $('#modal-struktur').modal('show');
             });
-
             // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
@@ -210,22 +205,17 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-struktur').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.struktur.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.struktur.update') }}";
                 }
-
                 let formData = new FormData($('#form-struktur')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -235,22 +225,22 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.employee_id ? $('#employee-id').addClass('is-invalid') : $('#employee_id').removeClass('is-invalid')
+                            data.errors.position_id ? $('#position-id').addClass('is-invalid') : $('#position_id').removeClass('is-invalid')
+                            data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
+                            data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
+                            data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
+                            toastr.error(data.error);
                         }
-
                         if (data.success) {
-                            
                             if ($('#action').val() == 'add') {
                                 Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
                             }
-
                             if ($('#action').val() == 'edit') {
                                 Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
                             }
-
                             Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
                             $('#modal-struktur').modal('hide');
                             $('#parent-id-group').css('display', 'block');
@@ -261,7 +251,12 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            $('#title').removeClass('is-invalid');
+                            $('#employee-id').removeClass("is-invalid");
+                            $('#position-id').removeClass("is-invalid");
+                            $('#status').removeClass("is-invalid");
+                            $('#level').removeClass("is-invalid");
+                            $('#parent-id').removeClass("is-invalid");
+                            $('#description').removeClass("is-invalid");
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
                             $('#btn')
@@ -274,7 +269,6 @@
                     }
                 });
             });
-
             // Get data show to inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -299,7 +293,6 @@
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -307,7 +300,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/struktur/hapus/'+user_id,
@@ -326,7 +318,6 @@
                             getVillageStructure();
                             // toastr.success('Data berhasil dihapus');                            
                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
-
                         }, 1000);
                     }
                 });

@@ -14,6 +14,7 @@ class StrukturDesaController extends Controller
         'employee_id' => ['required'],
         'position_id' => ['required'],
         'status' => ['required'],
+        'level' => ['required'],
         'description' => ['required'],
     ];
 
@@ -47,7 +48,10 @@ class StrukturDesaController extends Controller
         $data = $request->all();
         $validator = Validator::make($data, $this->rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all())->withInput();
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
         }
 
         VillageStructure::create([
@@ -92,7 +96,10 @@ class StrukturDesaController extends Controller
 
         $validator = Validator::make($data, $this->rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all())->withInput();
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
         }
 
         $employee = VillageStructure::findOrFail($data['hidden_id']);

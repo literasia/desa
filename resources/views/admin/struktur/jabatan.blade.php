@@ -97,10 +97,10 @@
                 $('#action').val('add');
                 $('#name').val('');
                 $('#btn')
-                    .removeClass('btn-success')
-                    .addClass('btn-info')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
                     .val('Simpan');
-                $('#modal-pegawai').modal('show');
+                $('#modal-jabatan').modal('show');
             });
 
             // Show DataTables

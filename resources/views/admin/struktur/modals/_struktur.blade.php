@@ -62,8 +62,8 @@
                                 <label for="status">Status</label>
                                 <select name="status" id="status" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
-                                    <option value="honor">Honor</option>
-                                    <option value="pegawai_tetap">Pegawai Tetap</option>
+                                    <option value="Honor">Honor</option>
+                                    <option value="Pegawai Tetap">Pegawai Tetap</option>
                                 </select>
                             </div>
                         </div>
