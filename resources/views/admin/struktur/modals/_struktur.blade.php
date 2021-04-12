@@ -15,16 +15,16 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="employee-id">Nama Pegawai</label>
-                                <select name="employee_id" id="employee-id" class="form-control form-control-sm">
+                                <label for="employee_id">Nama Pegawai</label>
+                                <select name="employee_id" id="employee_id" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="position-id">Jabatan</label>
-                                <select name="position_id" id="position-id" class="form-control form-control-sm">
+                                <label for="position_id">Jabatan</label>
+                                <select name="position_id" id="position_id" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
                                 </select>
                             </div>
@@ -40,7 +40,7 @@
                                     <option value="golongan1a">Golongan 1A</option>
                                     <option value="golongan1b">Golongan 1B</option>
                                     <option value="golongan1c">Golongan 1C</option>
-                                    <option value="golongan1d">Golongan ID</option>
+                                    <option value="golongan1d">Golongan 1D</option>
                                     <option value="golongan2a">Golongan 2A</option>
                                     <option value="golongan2b">Golongan 2B</option>
                                     <option value="golongan2c">Golongan 2C</option>
@@ -69,11 +69,11 @@
                         </div>
                     </div>
 
-                    <div class="row" id="parent-id-group">
+                    <div class="row" id="parent_id_group">
                         <div class="col">
                             <div class="form-group">
                                 <label for="parent_id">Atasan</label>
-                                <select name="parent_id" id="parent-id" class="form-control form-control-sm">
+                                <select name="parent_id" id="parent_id" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
                                 </select>
                             </div>

@@ -91,21 +91,6 @@
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#start_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
-            $('#end_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
-        });
-    </script>
-
-    
     <script>
         $(document).ready(function () {
             // get employee Json
@@ -115,7 +100,7 @@
                     dataType: 'JSON',
                     success: function (employees) {
                         employees.forEach(employee => {    
-                            $("#employee-id").append(new Option(`${employee.name}`, `${employee.id}`));
+                            $("#employee_id").append(new Option(`${employee.name}`, `${employee.id}`));
                         });
                     }
                 });
@@ -127,7 +112,7 @@
                     dataType: 'JSON',
                     success: function (positions) {
                         positions.forEach(position => {    
-                            $("#position-id").append(new Option(`${position.name}`, `${position.id}`));
+                            $("#position_id").append(new Option(`${position.name}`, `${position.id}`));
                         });
                     }
                 });
@@ -140,10 +125,10 @@
                     success: function (villageStructures) {
                         if (villageStructures.length > 0) {
                             villageStructures.forEach(villageStructure => {    
-                                $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
+                                $("#parent_id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
                             });   
                         }else{
-                            $('#parent-id-group').css('display', 'none');
+                            $('#parent_id_group').css('display', 'none');
                         }
                     }
                 });
@@ -155,11 +140,11 @@
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Struktur Desa');
                 $('#action').val('add');                        
-                $('#employee-id').val('');
-                $('#position-id').val('');
+                $('#employee_id').val('');
+                $('#position_id').val('');
                 $('#status').val('');
                 $('#level').val('');
-                $('#parent-id').val('');
+                $('#parent_id').val('');
                 $('#description').val('');
                 $('#btn')
                     .removeClass('btn-info')
@@ -208,14 +193,17 @@
             // Event Submit
             $('#form-struktur').on('submit', function (event) {
                 event.preventDefault();
+
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.struktur.store') }}";
                 }
+
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.struktur.update') }}";
                 }
                 let formData = new FormData($('#form-struktur')[0]);
+
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -226,36 +214,32 @@
                     success: function (data) {
                         var html = ''
                         // If has Errors
-                        if (data.errors) {
-                            data.errors.employee_id ? $('#employee-id').addClass('is-invalid') : $('#employee_id').removeClass('is-invalid')
-                            data.errors.position_id ? $('#position-id').addClass('is-invalid') : $('#position_id').removeClass('is-invalid')
-                            data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
-                            data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
-                            data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
-                            toastr.error(data.error);
+                       if (data.errors) {
+                            html = data.errors[0];
+                            $('#employee_id').addClass('is-invalid');
+                            toastr.error(html);
                         }
+                        
                         if (data.success) {
-                            if ($('#action').val() == 'add') {
-                                Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
-                            }
-                            if ($('#action').val() == 'edit') {
-                                Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
-                            }
-                            Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
+                             Swal.fire(
+                            'Sukses!',
+                            'Data berhasil ditambahkan!',
+                            'success'
+                            )
                             $('#modal-struktur').modal('hide');
-                            $('#parent-id-group').css('display', 'block');
-                            $('#parent-id')
+                            $('#parent_id_group').css('display', 'block');
+                            $('#parent_id')
                                 .find('option')
                                 .remove()
                                 .end()
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            $('#employee-id').removeClass("is-invalid");
-                            $('#position-id').removeClass("is-invalid");
+                            $('#employee_id').removeClass("is-invalid");
+                            $('#position_id').removeClass("is-invalid");
                             $('#status').removeClass("is-invalid");
                             $('#level').removeClass("is-invalid");
-                            $('#parent-id').removeClass("is-invalid");
+                            $('#parent_id').removeClass("is-invalid");
                             $('#description').removeClass("is-invalid");
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
@@ -278,11 +262,11 @@
                     success: function (data) {
                         $('.modal-title').html('Edit Struktur Desa');
                         $('#action').val('edit');                        
-                        $('#employee-id').val(data.employee_id);
-                        $('#position-id').val(data.position_id);
+                        $('#employee_id').val(data.employee_id);
+                        $('#position_id').val(data.position_id);
                         $('#status').val(data.status);
                         $('#level').val(data.level);
-                        $('#parent-id').val(data.parent_id);
+                        $('#parent_id').val(data.parent_id);
                         $('#description').val(data.description);
                         $('#hidden_id').val(data.id);
                         $('#btn')
@@ -309,7 +293,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            $('#parent-id')
+                            $('#parent_id')
                                 .find('option')
                                 .remove()
                                 .end()

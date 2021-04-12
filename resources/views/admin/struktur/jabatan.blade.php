@@ -131,6 +131,7 @@
                 event.preventDefault();
 
                 let url = '';
+                
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.jabatan.store') }}";
                 }
@@ -153,7 +154,7 @@
                         if (data.errors) {
                             html = data.errors[0];
                             $('#name').addClass('is-invalid');
-                            toastr.error(html);
+                             Swal.fire('Error!', html, 'danger');
                         }
 
                         if (data.success) {
@@ -162,9 +163,9 @@
                             'Data berhasil ditambahkan!',
                             'success'
                             )
-                            $('#modal-pegawai').modal('hide');
+                            $('#modal-jabatan').modal('hide');
                             $('#name').removeClass('is-invalid');
-                            $('#form-pegawai')[0].reset();
+                            $('#form-jabatan')[0].reset();
                             $('#action').val('add');
                             $('#btn')
                                 .val('Simpan');
