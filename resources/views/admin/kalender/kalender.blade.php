@@ -163,19 +163,19 @@ Ini adalah halaman kalender untuk desa
                 $("#input_hidden").html(id_event);
                 var button_delete = '<button type="button" class="btn btn-sm btn-outline-danger" onclick=del_event(' + event.id + ')>Hapus Event</button>';
                 $("#deleteEvent").html(button_delete);
-                // var class_name;
-                // if (event.className == "event-red") {
-                //  class_name = 'Sangat Penting';
-                // } else if (event.className == "event-orange") {
-                //  class_name = 'Penting';
-                // } else if (event.className == "event-azure") {
-                //  class_name = 'Wajib Datang';
-                // } else if (event.className == "event-rose") {
-                //  class_name = 'Tidak Diwajibkan Datang';
-                // } else if (event.className == "event-green") {
-                //  class_name = 'Diharapkan Datang';
-                // }
-                // $("#prioritas option[value='" + class_name + "']").prop("selected", true);
+                var class_name;
+                if (event.className == "event-red") {
+                    class_name = 'Sangat Penting';
+                } else if (event.className == "event-orange") {
+                 class_name = 'Penting';
+                } else if (event.className == "event-azure") {
+                 class_name = 'Wajib Datang';
+                } else if (event.className == "event-rose") {
+                 class_name = 'Tidak Diwajibkan Datang';
+                } else if (event.className == "event-green") {
+                 class_name = 'Diharapkan Datang';
+                }
+                $("#prioritas option[value='" + class_name + "']").prop("selected", true);
             }
         });
         // $('#calendar').fullCalendar();
