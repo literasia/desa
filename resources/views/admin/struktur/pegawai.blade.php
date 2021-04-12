@@ -91,7 +91,7 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
@@ -177,17 +177,27 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
-                        if (data.errors) {
-                            html = data.errors[0];
-                            $('#name').addClass('is-invalid');
-                            $('#nik').addClass('is-invalid');
-                            $('#nip').addClass('is-invalid');
-                            $('#username').addClass('is-invalid');
-                            $('#password').addClass('is-invalid');
-                            $('#password_confirmation').addClass('is-invalid');
-                            toastr.error(html);
-                        }
 
+                        // If has Errors
+                        if (data.errors) {
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
+                            data.errors.nik ? $('#nik').addClass('is-invalid') : $('#nik').removeClass('is-invalid')
+                            data.errors.nip ? $('#nip').addClass('is-invalid') : $('#nip').removeClass('is-invalid')
+                            data.errors.username ? $('#username').addClass('is-invalid') : $('#username').removeClass('is-invalid')
+                            data.errors.password ? $('#password').addClass('is-invalid') : $('#password').removeClass('is-invalid')
+
+                            if (data.errors.password == "The password confirmation does not match.") {
+                                $('#password_confirmation').addClass('is-invalid');
+                                $('#password-help').css('display', 'block')
+                            }else{
+                                $('#password_confirmation').removeClass('is-invalid');
+                                $('#password-help').css('display', 'none')
+                            }
+
+                            toastr.error(data.error);
+                        }
+            
+                        // if passed
                         if (data.success) {
                             Swal.fire(
                             'Sukses!',

@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="card-block pt-0">
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm mr-0">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>

@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Storage;
 class PegawaiController extends Controller
 {
     private $rules = [
-        'name' => ['required'],
-        'nik' => ['required'],
-        'nip' => ['required'],
-        'username' => ['required'],
-        'password' => ['required'],
+        'name' => 'required',
+        'nik' => 'required',
+        'nip' => 'required',
+        'username' => 'required',
+        'password' => 'required|confirmed',
     ];
 
 
@@ -46,8 +46,12 @@ class PegawaiController extends Controller
     public function store(Request $request){
         $data = $request->all();
         $validator = Validator::make($data, $this->rules);
+
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all())->withInput();
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
         }
 
         $data['photo'] = null;
@@ -98,7 +102,10 @@ class PegawaiController extends Controller
 
         $validator = Validator::make($data, $this->rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator->errors()->all())->withInput();
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
         }
         
         // kalau input photo tidak diisi

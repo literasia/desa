@@ -53,6 +53,7 @@
                             <div class="form-group">
                                 <label for="password_confirmation">Konfirmasi Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-sm">
+                                <small id="password-help" class="form-text text-muted" style="display: none">Password konfirmasi tidak sama</small>
                             </div>
                         </div>
                     </div>

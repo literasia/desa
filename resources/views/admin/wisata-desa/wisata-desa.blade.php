@@ -208,8 +208,6 @@
                         }
 
                         if (data.success) {
-                            // toastr.success('Sukses!');
-
                             if ($('#action').val() == 'add') {
                                 Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
                             }
