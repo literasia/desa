@@ -88,8 +88,9 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -235,12 +236,6 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
-                        // if (data.errors) {
-                        //     html = data.errors[0];
-                        //     $('#title').addClass('is-invalid');
-                        //     toastr.error(html);
-                        // }
-                        console.log(data.errors);
                         // If has Errors
                         if (data.errors) {
                             data.errors.employee_id ? $('#employee-id').addClass('is-invalid') : $('#employee_id').removeClass('is-invalid')
@@ -248,6 +243,8 @@
                             data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
                             data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
                             data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
+
+                            toastr.error(data.error);
                         }
 
                         if (data.success) {
