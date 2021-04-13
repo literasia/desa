@@ -143,8 +143,8 @@
                     name: 'photo'
                 },
                 {
-                    data: 'username',
-                    name: 'username'
+                    data: 'user_id',
+                    name: 'user_id'
                 },
                 {
                     data: 'action',
@@ -237,6 +237,7 @@
                         $('#username').val(data.username);
                         $('#password').val(data.password);
                         $('#password-confirmation').val(data.password);
+                        $('#village_id').val(data.village_id);
                         $('#password-group').css('display', 'none');
                         $('#password-confirmation-group').css('display', 'none');
                         $('#hidden_id').val(data.id);

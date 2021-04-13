@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Employee extends Model
 {
@@ -10,5 +11,9 @@ class Employee extends Model
 
     public function villageStructure(){
         return $this->hasMany(VillageStructure::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

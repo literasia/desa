@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Village::class);
     }
+
+    public function employee(){
+        return $this->hasMany(Employee::class);
+    }
 }
