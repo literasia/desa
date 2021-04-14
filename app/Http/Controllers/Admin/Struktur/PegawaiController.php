@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Models\{Employee, Village};
-use App\User;
+use App\{User, Role};
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,6 +19,13 @@ class PegawaiController extends Controller
         'nip' => 'required',
         'username' => 'required',
         'password' => 'required|confirmed',
+    ];
+
+    private $update_rules = [
+        'name' => 'required',
+        'nik' => 'required',
+        'nip' => 'required',
+        'username' => 'required',
     ];
 
 
@@ -71,6 +78,14 @@ class PegawaiController extends Controller
             'village_id' => auth()->user()->village->id,
         ]);
 
+        $user_id = User::findOrFail($user->id);
+        
+        // get Roles to attach user roles
+        $role = Role::where('name', 'employee')->first();
+        
+        // attach
+        $user_id->roles()->attach($role->id);
+
         Employee::create([
             'village_id' => auth()->user()->village->id,
             'name' => $data['name'],
@@ -112,7 +127,7 @@ class PegawaiController extends Controller
         $data = $request->all();
         $employee = Employee::findOrFail($data['hidden_id']);
 
-        $validator = Validator::make($data, $this->rules);
+        $validator = Validator::make($data, $this->update_rules);
         if ($validator->fails()) {
             return response()->json([
                 'error' => "Data masih kosong",
@@ -173,7 +188,11 @@ class PegawaiController extends Controller
 
         $user = User::findOrFail($employee->user_id);
 
-        $user->delete();
+        // get Roles to attach user roles
+        $role = Role::where('name', 'employee')->first();
+        // detach user role
+        $user->roles()->detach($role->id);
+
         $employee->delete();
     }
 }
