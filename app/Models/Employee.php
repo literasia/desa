@@ -16,4 +16,8 @@ class Employee extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function access(){
+        return $this->hasOne(Admin\Access::class);
+    }
 }

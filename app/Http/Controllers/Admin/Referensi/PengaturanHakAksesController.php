@@ -12,22 +12,25 @@ class PengaturanHakAksesController extends Controller
 {
     public function index() {
     	$employees = Employee::where(['village_id'=>auth()->user()->village_id])->get();
-
-    	// dd($pegawais[0]->access);
+        $accessFields = new Access;
+        $accessFields = $accessFields->getTableColumns();
         return view('admin.referensi.pengaturan-hak-akses', [
-        	'employees'	=> $employees
+        	"employees"	=> $employees,
+            "accessFields"=>$accessFields
         ]);
     }
 
     public function update(Request $request)
     {
     	$pegawai_id    = $request->pegawai_id;
-    	$isChecked     = $request->isChecked;
     	$structure     = $request->structure;
 
     	$access = Access::where('employee_id', $pegawai_id)->first();
-    	$access->{$structure} = $isChecked=='true'?1:0;
+    	$access->{$structure} = $access->{$structure} == 'true'? 1 : 0;
     	// dd($access);
     	$access->save();
+        return response()->json([
+            "data" => $access
+        ]);
     }
 }

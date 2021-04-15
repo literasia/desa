@@ -343,7 +343,7 @@ Route::namespace('Admin')
                     ->name('referensi.golongan');
                 Route::get('/admin/referensi/pengaturan-hak-akses', 'PengaturanHakAksesController@index')
                     ->name('referensi.pengaturan-hak-akses');
-                Route::get('/admin/referensi/pengaturan-hak-akses-update', 'PengaturanHakAksesController@update')
+                Route::post('/admin/referensi/pengaturan-hak-akses-update', 'PengaturanHakAksesController@update')
                     ->name('referensi.pengaturan-hak-akses-update');
             });
 
