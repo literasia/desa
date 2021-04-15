@@ -4,34 +4,33 @@ namespace App\Http\Controllers\Admin\Referensi;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\Pegawai;
+use App\Models\Employee;
 use App\Models\Admin\Access;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class PengaturanHakAksesController extends Controller
 {
     public function index() {
-    	// $pegawais = Pegawai::where(['user_id'=>auth()->user()->id])->get();
-        $pegawais = Pegawai::whereHas('user', function($q) {
-            return $q->whereIdDesa(auth()->user()->id_desa);
-        })->get();
-    	// dd($pegawais[0]->access);
+    	$employees = Employee::where(['village_id'=>auth()->user()->village_id])->get();
+        $accessFields = new Access;
+        $accessFields = $accessFields->getTableColumns();
         return view('admin.referensi.pengaturan-hak-akses', [
-        	'myDesa' => User::Desa(),
-        	'pegawais'	=> $pegawais
+        	"employees"	=> $employees,
+            "accessFields"=>$accessFields
         ]);
     }
 
     public function update(Request $request)
-    
-{
+    {
     	$pegawai_id    = $request->pegawai_id;
-    	$isChecked     = $request->isChecked;
     	$structure     = $request->structure;
 
-    	$access = Access::where('pegawai_id', $pegawai_id)->first();
-    	$access->{$structure} = $isChecked=='true'?1:0;
+    	$access = Access::where('employee_id', $pegawai_id)->first();
+    	$access->{$structure} = $access->{$structure} == 'true'? 1 : 0;
     	// dd($access);
     	$access->save();
+        return response()->json([
+            "data" => $access
+        ]);
     }
 }

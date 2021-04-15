@@ -267,11 +267,11 @@
                                 <span class="pcoded-mtext">Kegiatan Desa</span>
                             </a>
                         </li> --}}
-                        {{-- <li class="{{ request()->is('admin/kalender/kategori-kegiatan') ? 'active' : '' }}">
+                        <li class="{{ request()->is('admin/kalender/kategori-kegiatan') ? 'active' : '' }}">
                             <a href="{{ route('admin.kalender.kategori-kegiatan') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Kategori Kegiatan</span>
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
                 <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
