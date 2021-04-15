@@ -194,7 +194,6 @@
                         if (data.errors) {
                             html = data.errors[0];
                             $('#title').addClass('is-invalid');
-                            // toastr.error(html);
                             Swal.fire('Error!', html, 'danger');
                         }
 

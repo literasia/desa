@@ -376,46 +376,46 @@ Route::namespace('Admin')
             ->group(function () {
                 // Struktur Desa
                 Route::get('/admin/struktur/struktur', 'StrukturDesaController@index')
-                                                                    ->name('struktur.struktur');
+                    ->name('struktur.struktur');
                 Route::post('/admin/struktur/struktur', 'StrukturDesaController@store')
-                                                                    ->name('struktur.struktur.store');
+                    ->name('struktur.struktur.store');
                 Route::get('/admin/struktur/struktur/{id}', 'StrukturDesaController@edit')
-                                                                    ->name('struktur.struktur.edit');
+                    ->name('struktur.struktur.edit');
                 Route::post('/admin/struktur/struktur/update', 'StrukturDesaController@update')
-                                                                    ->name('struktur.struktur.update');
+                    ->name('struktur.struktur.update');
                 Route::get('/admin/struktur/struktur/hapus/{id}', 'StrukturDesaController@destroy')
-                                                                    ->name('struktur.struktur.delete');
+                    ->name('struktur.struktur.delete');
                 // route get some data for modals structures
                 Route::get('/admin/struktur/get_employee', 'StrukturDesaController@getEmployee')
-                                                                    ->name('struktur.struktur.get_employee');
+                    ->name('struktur.struktur.get_employee');
                 Route::get('/admin/struktur/get_position', 'StrukturDesaController@getPosition')
-                                                                    ->name('struktur.struktur.get_position');
+                    ->name('struktur.struktur.get_position');
                 Route::get('/admin/struktur/get_village_structure', 'StrukturDesaController@getVillageStructure')
-                                                                    ->name('struktur.struktur.get_village_structure');
-
+                    ->name('struktur.struktur.get_village_structure');
+              
                 // Pegawai
                 Route::get('/admin/struktur/pegawai', 'PegawaiController@index')
-                                                                    ->name('struktur.pegawai');
+                    ->name('struktur.pegawai');
                 Route::post('/admin/struktur/pegawai', 'PegawaiController@store')
-                                                                    ->name('struktur.pegawai.store');
+                    ->name('struktur.pegawai.store');
                 Route::get('/admin/struktur/pegawai/{id}', 'PegawaiController@edit')
-                                                                    ->name('struktur.pegawai.edit');
+                    ->name('struktur.pegawai.edit');
                 Route::post('/admin/struktur/pegawai/update', 'PegawaiController@update')
-                                                                    ->name('struktur.pegawai.update');
+                    ->name('struktur.pegawai.update');
                 Route::get('/admin/struktur/pegawai/hapus/{id}', 'PegawaiController@destroy')
-                                                                    ->name('struktur.pegawai.delete');
+                    ->name('struktur.pegawai.delete');
 
                 // Jabatan
                 Route::get('/admin/struktur/jabatan', 'JabatanController@index')
-                                                                    ->name('struktur.jabatan');
+                    ->name('struktur.jabatan');
                 Route::post('/admin/struktur/jabatan', 'JabatanController@store')
-                                                                    ->name('struktur.jabatan.store');
+                    ->name('struktur.jabatan.store');
                 Route::get('/admin/struktur/jabatan/{id}', 'JabatanController@edit')
-                                                                    ->name('struktur.jabatan.edit');
+                    ->name('struktur.jabatan.edit');
                 Route::post('/admin/struktur/jabatan/update', 'JabatanController@update')
-                                                                    ->name('struktur.jabatan.update');
+                    ->name('struktur.jabatan.update');
                 Route::get('/admin/struktur/jabatan/hapus/{id}', 'JabatanController@destroy')
-                                                                    ->name('struktur.jabatan.delete');
+                    ->name('struktur.jabatan.delete');
 
             });
 

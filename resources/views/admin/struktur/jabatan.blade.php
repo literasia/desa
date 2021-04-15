@@ -97,8 +97,8 @@
                 $('#action').val('add');
                 $('#name').val('');
                 $('#btn')
-                    .removeClass('btn-success')
-                    .addClass('btn-info')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
                     .val('Simpan');
                 $('#modal-jabatan').modal('show');
             });
@@ -131,6 +131,7 @@
                 event.preventDefault();
 
                 let url = '';
+                
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.jabatan.store') }}";
                 }
