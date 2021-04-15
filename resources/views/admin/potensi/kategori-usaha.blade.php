@@ -138,6 +138,8 @@
                             $('#form-status')[0].reset();
             $('#action').val('add');
             $('#btn')
+            .removeClass('btn-info')
+                            .addClass('btn-success')
                 .val('Simpan');
         })
 

@@ -146,8 +146,13 @@ Route::namespace('Admin')
                     ->name('administrasi.permohonan_pembuatan_ktp');
                 Route::get('/admin/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
                     ->name('administrasi.surat_keterangan_lahir');
+
                 Route::get('/admin/administrasi/perubahan-kk', 'PerubahanKKController@index')
                     ->name('administrasi.perubahan-kk');
+                Route::get('/admin/administrasi/perubahan-kk/{id}', 'PerubahanKKController@edit');
+                Route::post('/admin/administrasi/perubahan-kk/update', 'PerubahanKKController@update')
+                    ->name('administrasi.perubahan-kk.update');
+                Route::get('/admin/administrasi/perubahan-kk/hapus/{id}', 'PerubahanKKController@destroy');
 
                 //Surat Kematian
                 Route::get('/admin/administrasi/surat-kematian', 'SuratKematianController@index')
@@ -246,6 +251,11 @@ Route::namespace('Admin')
                 //Kategori Desa
                 Route::get('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
                     ->name('kalender.kategori-kegiatan');
+                    Route::post('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@store');
+                    Route::post('/admin/kalender/kategori-kegiatan/update', 'KategoriKegiatanController@update')
+                    ->name('kalender.kategori.update'); 
+                    Route::get('/admin/kalender/kategori-kegiatan/edit/{id}', 'KategoriKegiatanController@edit');
+                    Route::get('/admin/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy'); 
             });
 
         // Kampanye
