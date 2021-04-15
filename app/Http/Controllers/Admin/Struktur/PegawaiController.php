@@ -75,7 +75,7 @@ class PegawaiController extends Controller
             'name' => $data['name'],
             'username' => str_replace(' ', '_', strtolower($data['username'])),
             'email' => null,
-            'password' => hash::make('password'),
+            'password' => hash::make($data['password']),
             'village_id' => auth()->user()->village->id,
         ]);
 
