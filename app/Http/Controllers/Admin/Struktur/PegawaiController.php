@@ -197,6 +197,7 @@ class PegawaiController extends Controller
         $role = Role::where('name', 'employee')->first();
         // detach user role
         $user->roles()->detach($role->id);
+        $user->delete();
 
         $employee->delete();
     }

@@ -15,27 +15,27 @@ class CreateAccessesTable extends Migration
     {
         Schema::create('accesses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('desa_id');
-            $table->bigInteger('pegawai_id');
-            $table->boolean('kalender')->default('0');
+            $table->bigInteger('village_id');
+            $table->bigInteger('employee_id');
+            $table->boolean('calendar')->default('0');
             $table->boolean('template')->default('0');
             $table->boolean('log_user')->default('0');
-            $table->boolean('perpustakaan')->default('0');
-            $table->boolean('buku_tamu')->default('0');
-            $table->boolean('keuangan')->default('0');
-            $table->boolean('data_penduduk')->default('0');
-            $table->boolean('struktur_desa')->default('0');
-            $table->boolean('profil_desa')->default('0');
-            $table->boolean('berita')->default('0');
-            $table->boolean('administrasi')->default('0');
-            $table->boolean('potensi_desa')->default('0');
+            $table->boolean('library')->default('0');
+            $table->boolean('guest_book')->default('0');
+            $table->boolean('finance')->default('0');
+            $table->boolean('population_data')->default('0');
+            $table->boolean('village_structure')->default('0');
+            $table->boolean('village_profile')->default('0');
+            $table->boolean('news')->default('0');
+            $table->boolean('administration')->default('0');
+            $table->boolean('village_potency')->default('0');
             $table->boolean('slider')->default('0');
-            $table->boolean('peristiwa')->default('0');
-            $table->boolean('wisata_desa')->default('0');            
-            $table->boolean('pengumuman')->default('0');
-            $table->boolean('kampanye')->default('0');
-            $table->boolean('referensi')->default('0');
-            $table->boolean('pengaduan')->default('0');
+            $table->boolean('event')->default('0');
+            $table->boolean('village_tour')->default('0');
+            $table->boolean('announcement')->default('0');
+            $table->boolean('campaign')->default('0');
+            $table->boolean('reference')->default('0');
+            $table->boolean('complaint')->default('0');
             $table->timestamps();
         });
     }

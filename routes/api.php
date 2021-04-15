@@ -42,6 +42,10 @@ Route::namespace('API')
         Route::post('add-death/{village_id}', 'DeathCertificateAPIController@addDeathCertificate');
         Route::get('get-death/{village_id}', 'DeathCertificateAPIController@getDeathCertificate');
 
+        //Change KK
+        Route::post('add-kk/{village_id}', 'ChangeKKAPIController@addChangeKK');
+        Route::get('get-kk/{village_id}', 'ChangeKKAPIController@getChangeKK');
+
         //Campaign
         Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
 

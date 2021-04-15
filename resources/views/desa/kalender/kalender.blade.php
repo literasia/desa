@@ -80,19 +80,15 @@ Ini adalah halaman kalender untuk desa
 <script type="text/javascript" src="{{ asset('bower_components/moment/js/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/sweetalert/js/sweetalert.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/fullcalendar/js/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
-{{-- <script src="{{ asset('assets/js/vertical/vertical-layout.min.js') }}"></script> --}}
-<script src="{{ asset('assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
-<script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // $('.clockpicker').clockpicker({
-        //     donetext: 'Done',
-        //     autoclose: true
-        // });
+        $('.clockpicker').clockpicker({
+            donetext: 'Done',
+            autoclose: true
+        });
 
         // $('#start_date').dateDropper({
         //     theme: 'leaf',
