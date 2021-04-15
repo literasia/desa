@@ -4,22 +4,18 @@ namespace App\Http\Controllers\Admin\Referensi;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\Pegawai;
+use App\Models\Employee;
 use App\Models\Admin\Access;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class PengaturanHakAksesController extends Controller
 {
     public function index() {
-    	// $pegawais = Pegawai::where(['user_id'=>auth()->user()->id])->get();
-        dd("mantap");
-        $pegawais = Pegawai::whereHas('user', function($q) {
-            return $q->whereIdDesa(auth()->user()->id_desa);
-        })->get();
+    	$employees = Employee::where(['village_id'=>auth()->user()->village_id])->get();
+
     	// dd($pegawais[0]->access);
         return view('admin.referensi.pengaturan-hak-akses', [
-        	'myDesa' => User::Desa(),
-        	'pegawais'	=> $pegawais
+        	'employees'	=> $employees
         ]);
     }
 
