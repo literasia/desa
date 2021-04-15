@@ -8,6 +8,7 @@ use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Models\{Employee, Village};
 use App\{User, Role};
+use App\Models\Admin\Access;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -74,19 +75,19 @@ class PegawaiController extends Controller
             'name' => $data['name'],
             'username' => str_replace(' ', '_', strtolower($data['username'])),
             'email' => null,
-            'password' => hash::make('password'),
+            'password' => hash::make($data['password']),
             'village_id' => auth()->user()->village->id,
         ]);
 
         $user_id = User::findOrFail($user->id);
-        
+
         // get Roles to attach user roles
         $role = Role::where('name', 'employee')->first();
-        
+
         // attach
         $user_id->roles()->attach($role->id);
 
-        Employee::create([
+       $employee =  Employee::create([
             'village_id' => auth()->user()->village->id,
             'name' => $data['name'],
             'nik' => $data['nik'],
@@ -94,7 +95,11 @@ class PegawaiController extends Controller
             'photo' => $data['photo'],
             'user_id' => $user->id
         ]);
-    
+
+        Access::create([
+            'village_id' => auth()->user()->village->id,
+            'employee_id' => $employee->id
+        ]);
 
         return response()
             ->json([
@@ -134,7 +139,7 @@ class PegawaiController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-        
+
         // kalau input photo tidak diisi
         $data['photo'] = $employee->photo;
 
@@ -144,7 +149,7 @@ class PegawaiController extends Controller
             if (Storage::disk('public')->exists($employee->photo)) {
                 Storage::disk('public')->delete($employee->photo);
             }
-            // ganti dengan photo baru yang telah diinput 
+            // ganti dengan photo baru yang telah diinput
             $data['photo'] = $request->file('photo')->store('pegawai', 'public');
         }
 
@@ -165,7 +170,7 @@ class PegawaiController extends Controller
             'password' => Hash::make($data['password']),
             'photo' => $data['photo']
         ]);
-    
+
         return response()
             ->json([
                 'success' => 'Data berhasil di update.',
