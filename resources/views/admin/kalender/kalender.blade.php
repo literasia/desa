@@ -179,6 +179,7 @@ Ini adalah halaman kalender untuk desa
 
                 var button_delete = '<button type="button" class="btn btn-sm btn-outline-danger" onclick=del_event(' + event.id + ')>Hapus Event</button>';
                 $("#deleteEvent").html(button_delete);
+
                 // var class_name;
                 // if (event.className == "event-red") {
                 //  class_name = 'Sangat Penting';

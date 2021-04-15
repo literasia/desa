@@ -35,7 +35,7 @@
                                         <th>Jam Buka</th>
                                         <th>Jam Tutup</th>
                                         <th>Jenis Wisata</th>
-                                        <th>Nomor Telp.</th>
+                                        <th>Nomor Telepon</th>
                                         <th>Keterangan</th>
                                         <th>Actions</th>
                                     </tr>
