@@ -89,31 +89,41 @@ Ini adalah halaman kalender untuk desa
 <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+
         $('.clockpicker').clockpicker({
-             donetext: 'Done',
-             autoclose: true
+            donetext: 'Done',
+            autoclose: true
         });
+        
         // $('#start_date').dateDropper({
         //     theme: 'leaf',
         //     format: 'd-m-Y'
         // });
+
         // $('#end_date').dateDropper({
         //     theme: 'leaf',
         //     format: 'd-m-Y'
         // });
+
         // $('#external-events .fc-event').each(function() {
+
         //     // store data so the calendar knows to render an event upon drop
         //     $(this).data('event', {
         //         title: $.trim($(this).text()), // use the element's text as the event title
         //         stick: true // maintain when user navigates (see docs on the renderEvent method)
         //     });
+
         //     // make the event draggable using jQuery UI
         //     $(this).draggable({
         //         zIndex: 999,
         //         revert: true, // will cause the event to go back to its
         //         revertDuration: 0 //  original position after the drag
         //     });
+
         // });
+
+
+
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -127,6 +137,7 @@ Ini adalah halaman kalender untuk desa
             selectable: true,
             // displayEventTime: true,
             eventSources: [
+
                 // your event source
                 {
                     events: JSON.parse('{!!$events!!}'),
@@ -134,7 +145,9 @@ Ini adalah halaman kalender untuk desa
                     textColor: 'white', // an option!
                     timeFormat: 'H(:mm)'
                 }
+
                 // any other event sources...
+
             ],
             select: function(start, end, allDay) {
                 $("#addEvent").modal("show");
@@ -149,6 +162,7 @@ Ini adalah halaman kalender untuk desa
                 $("#addEvent #end_clock").val("");
                 $("#deleteEvent").html("");
             },
+
             eventClick: function(event) {
                 $("#addEvent").modal("show");
                 $("#addEvent .modal-title").text("Edit Event");
@@ -159,26 +173,34 @@ Ini adalah halaman kalender untuk desa
                 $("#addEvent #end_date").val($.fullCalendar.formatDate(event.end, 'YYYY-MM-DD'));
                 $("#addEvent #start_clock").val(event.start.format("hh:mm"));
                 $("#addEvent #end_clock").val(event.end.format("hh:mm"));
+
                 var id_event = '<input type="hidden" id="id_event" name="id_event" value="' + event.id + '">';
                 $("#input_hidden").html(id_event);
+
                 var button_delete = '<button type="button" class="btn btn-sm btn-outline-danger" onclick=del_event(' + event.id + ')>Hapus Event</button>';
                 $("#deleteEvent").html(button_delete);
-                var class_name;
-                if (event.className == "event-red") {
-                    class_name = 'Sangat Penting';
-                } else if (event.className == "event-orange") {
-                 class_name = 'Penting';
-                } else if (event.className == "event-azure") {
-                 class_name = 'Wajib Datang';
-                } else if (event.className == "event-rose") {
-                 class_name = 'Tidak Diwajibkan Datang';
-                } else if (event.className == "event-green") {
-                 class_name = 'Diharapkan Datang';
-                }
-                $("#prioritas option[value='" + class_name + "']").prop("selected", true);
+
+                // var class_name;
+                // if (event.className == "event-red") {
+                //  class_name = 'Sangat Penting';
+                // } else if (event.className == "event-orange") {
+                //  class_name = 'Penting';
+                // } else if (event.className == "event-azure") {
+                //  class_name = 'Wajib Datang';
+                // } else if (event.className == "event-rose") {
+                //  class_name = 'Tidak Diwajibkan Datang';
+                // } else if (event.className == "event-green") {
+                //  class_name = 'Diharapkan Datang';
+                // }
+
+                // $("#prioritas option[value='" + class_name + "']").prop("selected", true);
             }
+
         });
         // $('#calendar').fullCalendar();
+
+
+
         //Fungsi Add-Update-Delete Data
         $("#addFormEvent").submit(function(e) {
             e.preventDefault();
@@ -192,6 +214,8 @@ Ini adalah halaman kalender untuk desa
             }
         });
     });
+
+
     function add_event(form_data) {
         //Pengumpulan Data
         console.log(form_data);
@@ -213,6 +237,7 @@ Ini adalah halaman kalender untuk desa
         } else if (prioritas == "Diharapkan Datang") {
             class_name = 'event-green';
         }
+
         //Jika kosong
         if (event_title == "" || start_date == "" || end_date == "" || start_clock == "" || end_clock == "" || prioritas == "") {
             swal({
@@ -261,12 +286,17 @@ Ini adalah halaman kalender untuk desa
                         $("#addEvent #start_clock").val("");
                         $("#addEvent #end_clock").val("");
                         $("#deleteEvent").html("");
+
                     }
+
                 },
             });
+
         }
     }
+
     function update_event(form_data) {
+
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -283,8 +313,10 @@ Ini adalah halaman kalender untuk desa
                 $('#addEvent #btnEvent').text('Mengupdate...');
             },
             success: function(data) {
+
                 setTimeout(function() {
                     $('#addEvent').modal('hide');
+
                     Swal.fire({
                            title: 'Success!!',
                             text: 'Event berhasil diupdate',
@@ -297,7 +329,9 @@ Ini adalah halaman kalender untuk desa
                 }, 1000);
             }
         });
+
     }
+
     function del_event(id_event) {
         //Konfirmasi bahwa data akan dihapus
         $('#ok_button').text('Hapus');
@@ -329,6 +363,7 @@ Ini adalah halaman kalender untuk desa
                             });
                         }, 1000);
                     }
+
                 }
             });
         });

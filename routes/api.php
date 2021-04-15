@@ -38,11 +38,17 @@ Route::namespace('API')
         Route::get('get-category/{village_id}', 'CategoryBusinessAPIController@getCategoryBusiness');
         Route::get('get-types/{village_id}', 'BusinessTypeAPIController@getBusinessType');
 
+        //Death Certificate
+        Route::post('add-death/{village_id}', 'DeathCertificateAPIController@addDeathCertificate');
+        Route::get('get-death/{village_id}', 'DeathCertificateAPIController@getDeathCertificate');
+
         //Campaign
         Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
 
         //Tour
         Route::get('tour/{village_id}','VillageTourAPIController@getVillageTour');
+        Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
+    	Route::get('slider/{village_id}', 'SliderController@index');
 
         //SKCK
         Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
@@ -53,7 +59,7 @@ Route::namespace('API')
         Route::get('get-heir/{village_id}', 'HeirAPIController@getHeir');
 
         //Slider
-    	Route::get('slider/{village_id}', 'SliderController@index');
+    	  Route::get('slider/{village_id}', 'SliderController@index');
         
         //Domisili
         Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');

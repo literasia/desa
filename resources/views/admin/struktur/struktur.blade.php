@@ -89,6 +89,7 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
@@ -138,12 +139,12 @@
                     url: '/admin/struktur/get_village_structure',
                     dataType: 'JSON',
                     success: function (villageStructures) {
-                        if (villageStructures.length > 0) {
+                        if (villageStructures.length <= 1) {
+                            $('#parent-id-group').css('display', 'none');
+                        }else{
                             villageStructures.forEach(villageStructure => {    
                                 $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
                             });   
-                        }else{
-                            $('#parent-id-group').css('display', 'none');
                         }
                     }
                 });
@@ -232,6 +233,7 @@
                             data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
                             data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
                             data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
+
                             toastr.error(data.error);
                         }
                         if (data.success) {
@@ -276,6 +278,7 @@
                     url: '/admin/struktur/struktur/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        getVillageStructure();
                         $('.modal-title').html('Edit Struktur Desa');
                         $('#action').val('edit');                        
                         $('#employee-id').val(data.employee_id);
