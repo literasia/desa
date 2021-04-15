@@ -37,23 +37,23 @@
                                 <label for="level">Golongan</label>
                                 <select name="level" id="level" class="form-control form-control-sm">
                                     <option value="">Pilih</option>
-                                    <option value="golongan1a">Golongan 1A</option>
-                                    <option value="golongan1b">Golongan 1B</option>
-                                    <option value="golongan1c">Golongan 1C</option>
-                                    <option value="golongan1d">Golongan ID</option>
-                                    <option value="golongan2a">Golongan 2A</option>
-                                    <option value="golongan2b">Golongan 2B</option>
-                                    <option value="golongan2c">Golongan 2C</option>
-                                    <option value="golongan2d">Golongan 2D</option>
-                                    <option value="golongan3a">Golongan 3A</option>
-                                    <option value="golongan3b">Golongan 3B</option>
-                                    <option value="golongan3c">Golongan 3C</option>
-                                    <option value="golongan3d">Golongan 3D</option>
-                                    <option value="golongan4a">Golongan 4A</option>
-                                    <option value="golongan4b">Golongan 4B</option>
-                                    <option value="golongan4c">Golongan 4C</option>
-                                    <option value="golongan4d">Golongan 4D</option>
-                                    <option value="golongan4e">Golongan 4E</option>
+                                    <option value="Golongan 1A">Golongan 1A</option>
+                                    <option value="Golongan 1B">Golongan 1B</option>
+                                    <option value="Golongan 1C">Golongan 1C</option>
+                                    <option value="Golongan 1D">Golongan 1D</option>
+                                    <option value="Golongan 2A">Golongan 2A</option>
+                                    <option value="Golongan 2b">Golongan 2B</option>
+                                    <option value="Golongan 2C">Golongan 2C</option>
+                                    <option value="Golongan 2D">Golongan 2D</option>
+                                    <option value="Golongan 3A">Golongan 3A</option>
+                                    <option value="Golongan 3B">Golongan 3B</option>
+                                    <option value="Golongan 3C">Golongan 3C</option>
+                                    <option value="Golongan 3D">Golongan 3D</option>
+                                    <option value="Golongan 4A">Golongan 4A</option>
+                                    <option value="Golongan 4B">Golongan 4B</option>
+                                    <option value="Golongan 4C">Golongan 4C</option>
+                                    <option value="Golongan 4D">Golongan 4D</option>
+                                    <option value="Golongan 4E">Golongan 4E</option>
                                 </select>
                             </div>
                         </div>
