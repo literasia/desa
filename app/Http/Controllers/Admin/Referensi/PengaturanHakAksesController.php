@@ -12,6 +12,7 @@ class PengaturanHakAksesController extends Controller
 {
     public function index() {
     	// $pegawais = Pegawai::where(['user_id'=>auth()->user()->id])->get();
+        dd("mantap");
         $pegawais = Pegawai::whereHas('user', function($q) {
             return $q->whereIdDesa(auth()->user()->id_desa);
         })->get();
@@ -23,13 +24,12 @@ class PengaturanHakAksesController extends Controller
     }
 
     public function update(Request $request)
-    
-{
+    {
     	$pegawai_id    = $request->pegawai_id;
     	$isChecked     = $request->isChecked;
     	$structure     = $request->structure;
 
-    	$access = Access::where('pegawai_id', $pegawai_id)->first();
+    	$access = Access::where('employee_id', $pegawai_id)->first();
     	$access->{$structure} = $isChecked=='true'?1:0;
     	// dd($access);
     	$access->save();
