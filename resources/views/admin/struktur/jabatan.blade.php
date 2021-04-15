@@ -29,7 +29,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
+                                        <th>Jabatan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    @include('admin.struktur.modals._pegawai')
+    @include('admin.struktur.modals._jabatan')
 @endsection
 
 {{-- addons css --}}
@@ -87,27 +87,20 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             // Show Modal
             $('#add').on('click', function () {
-                $('.modal-title').html('Tambah Pegawai');
+                $('.modal-title').html('Tambah Jabatan');
                 $('#action').val('add');
                 $('#name').val('');
-                $('#nik').val('');
-                $('#nip').val('');
-                $('#username').val('');
-                $('#password').val('');
-                $('#password-confirmation').val('');
-                $('#password-group').css('display', 'block');
-                $('#password-confirmation-group').css('display', 'block');
                 $('#btn')
-                    .removeClass('btn-info')
-                    .addClass('btn-success')
+                    .removeClass('btn-success')
+                    .addClass('btn-info')
                     .val('Simpan');
-                $('#modal-pegawai').modal('show');
+                $('#modal-jabatan').modal('show');
             });
 
             // Show DataTables
@@ -156,22 +149,25 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
-                        var html = ''
+                        var html = '';
+                    
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#name').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
+                            // Send message error with toastr
+                            toastr.error(data.error);
                         }
 
+                        // if passed
                         if (data.success) {
                             Swal.fire(
                             'Sukses!',
                             'Data berhasil ditambahkan!',
                             'success'
                             )
-                            $('#modal-pegawai').modal('hide');
+                            $('#modal-jabatan').modal('hide');
                             $('#name').removeClass('is-invalid');
-                            $('#form-pegawai')[0].reset();
+                            $('#form-jabatan')[0].reset();
                             $('#action').val('add');
                             $('#btn')
                                 .val('Simpan');
