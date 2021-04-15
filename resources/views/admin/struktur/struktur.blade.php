@@ -141,12 +141,12 @@
                     url: '/admin/struktur/get_village_structure',
                     dataType: 'JSON',
                     success: function (villageStructures) {
-                        if (villageStructures.length > 0) {
+                        if (villageStructures.length <= 1) {
+                            $('#parent-id-group').css('display', 'none');
+                        }else{
                             villageStructures.forEach(villageStructure => {    
                                 $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
                             });   
-                        }else{
-                            $('#parent-id-group').css('display', 'none');
                         }
                     }
                 });
@@ -292,6 +292,7 @@
                     url: '/admin/struktur/struktur/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        getVillageStructure();
                         $('.modal-title').html('Edit Struktur Desa');
                         $('#action').val('edit');                        
                         $('#employee-id').val(data.employee_id);
