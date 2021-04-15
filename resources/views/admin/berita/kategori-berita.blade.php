@@ -198,9 +198,10 @@
                         $('#hidden_id').val(data.news_category.id);
                         $('#action').val('edit');
                         $('#btn')
-                            .removeClass('btn-outline-success')
+                            .removeClass('btn-success')
                             .addClass('btn-info')
                             .val('Update');
+                        $('#order-table').DataTable().ajax.reload();
                     }
                 });
             });
