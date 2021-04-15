@@ -72,28 +72,18 @@ class PengumumanDesaController extends Controller
                 ]);
         }
 
-        // Message::create([
-        //     'title' => $request->input('title'),
-        //     'notification' => $notifikasi,
-        //     'dashboard' => $dashboard,
-        //     'message_time' => $request->input('message_time'),
-        //     'start_date' => $start,
-        //     'end_date' => $request->input('end_date'),
-        //     'message' => $request->input('message'),
-        //     'status' => 'Aktif',
-        //     'village_id' => auth()->user()->village->id
-        // ]);
         Message::create([
             'title' => $request->input('title'),
             'notification' => $notifikasi,
-            'dashboard'=> $dashboard,
+            'dashboard' => $dashboard,
             'message_time' => $request->input('message_time'),
             'start_date' => $start,
-            'end_date'=> $request->input('end_date'),
-            'message'=>$request->input('message'),
-            'status' => 'aktif',
-            'village_id' => auth()-user()->village->idate
+            'end_date' => $request->input('end_date'),
+            'message' => $request->input('message'),
+            'status' => 'Aktif',
+            'village_id' => auth()->user()->village->id
         ]);
+       
 
         return response()
             ->json([
