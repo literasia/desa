@@ -20,27 +20,29 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
-                        <div class="dt-responsive table-responsive mt-3">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No.</th>
-                                        <th></th>
-                                        <th>Judul</th>
-                                        <th>Keterangan</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-4">
+                <div class=" col-xl-12 card shadow mb-0">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
+                            <div class="dt-responsive table-responsive mt-3">
+                                <table id="order-table" class="table table-striped nowrap shadow-sm m-0">
+                                    <thead class="text-left thead-dark">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Foto</th>
+                                            <th>Judul</th>
+                                            <th>Keterangan</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,6 +86,12 @@
         .select2-container {
             width: 100% !important;
             padding: 0;
+        }
+
+        @media screen and (max-width: 678px) {
+            .card-body {
+                padding: 0!important;
+            }
         }
     </style>
 @endpush

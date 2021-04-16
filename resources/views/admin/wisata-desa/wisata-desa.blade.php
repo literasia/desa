@@ -104,7 +104,7 @@
                 donetext: 'Done',
                 autoclose: true
             });
-            
+
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Wisata Desa');
                 $('#action').val('add');
