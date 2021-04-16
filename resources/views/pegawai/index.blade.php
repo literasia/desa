@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 @section('title', 'Dashboard')
 @section('title-2', 'Dashboard')
