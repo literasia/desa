@@ -80,7 +80,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-clockpicker.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-clockpicker.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/toastr.css') }}">
     <style>
         .btn i {
             margin-right: 0px;
@@ -100,7 +100,11 @@
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-
+            $('.clockpicker').clockpicker({
+                donetext: 'Done',
+                autoclose: true
+            });
+            
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Wisata Desa');
                 $('#action').val('add');
@@ -117,11 +121,6 @@
                     .addClass('btn-success')
                     .val('Simpan');
                 $('#modal-wisata').modal('show');
-            });
-
-            $('.clockpicker').clockpicker({
-                donetext: 'Done',
-                autoclose: true
             });
 
             $('#order-table').DataTable({

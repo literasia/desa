@@ -100,7 +100,6 @@
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            // $('#order-table').DataTable();
             $("#order-table").DataTable({
                 processing: false,
                 serverSide: true,
