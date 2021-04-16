@@ -131,6 +131,13 @@ Route::namespace('admin')
                     ->name('library.tambah-baru');
             });
     });
+// Pegawai route
+Route::namespace("pegawai")
+    ->name("pegawai.")
+    ->middleware(['auth','auth.pegawai'])
+    ->group(function(){
+        Route::get("/pegawai", "PegawaiController@index")->name("index");
+    });
 
 Route::namespace('Admin')
     ->name('admin.')
@@ -253,9 +260,9 @@ Route::namespace('Admin')
                     ->name('kalender.kategori-kegiatan');
                     Route::post('/admin/kalender/kategori-kegiatan', 'KategoriKegiatanController@store');
                     Route::post('/admin/kalender/kategori-kegiatan/update', 'KategoriKegiatanController@update')
-                    ->name('kalender.kategori.update'); 
+                    ->name('kalender.kategori.update');
                     Route::get('/admin/kalender/kategori-kegiatan/edit/{id}', 'KategoriKegiatanController@edit');
-                    Route::get('/admin/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy'); 
+                    Route::get('/admin/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy');
             });
 
         // Kampanye
@@ -392,7 +399,7 @@ Route::namespace('Admin')
                     ->name('struktur.struktur.get_position');
                 Route::get('/admin/struktur/get_village_structure', 'StrukturDesaController@getVillageStructure')
                     ->name('struktur.struktur.get_village_structure');
-              
+
                 // Pegawai
                 Route::get('/admin/struktur/pegawai', 'PegawaiController@index')
                     ->name('struktur.pegawai');
