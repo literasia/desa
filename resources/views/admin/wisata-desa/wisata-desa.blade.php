@@ -77,6 +77,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-clockpicker.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-clockpicker.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
@@ -93,10 +94,10 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
 
