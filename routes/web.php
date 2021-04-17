@@ -132,11 +132,55 @@ Route::namespace('admin')
             });
     });
 // Pegawai route
-Route::namespace("pegawai")
+Route::namespace("Pegawai")
     ->name("pegawai.")
     ->middleware(['auth','auth.pegawai'])
     ->group(function(){
-        Route::get("/pegawai", "PegawaiController@index")->name("index");
+        Route::get('/pegawai', 'PegawaiController@index')
+            ->name('index');
+
+        // Kalender
+        Route::namespace('Kalender')
+        ->group(function () {
+            //Kalender
+            Route::get('/pegawai/kalender/kalender', 'KalenderDesaController@index')
+                ->name('kalender.kalender');
+            Route::post('/pegawai/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
+            Route::post('/pegawai/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
+            Route::get('/pegawai/kalender/hapus/{id}', 'KalenderDesaController@destroy');
+
+            // Kegiatan Desa
+            Route::get('/pegawai/kalender/kegiatan-desa', 'KegiatanDesaController@index')
+                ->name('kalender.kegiatan-desa');
+
+            //Kategori Desa
+            Route::get('/pegawai/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
+                ->name('kalender.kategori-kegiatan');
+                Route::post('/pegawai/kalender/kategori-kegiatan', 'KategoriKegiatanController@store');
+                Route::post('/pegawai/kalender/kategori-kegiatan/update', 'KategoriKegiatanController@update')
+                ->name('kalender.kategori.update');
+                Route::get('/pegawai/kalender/kategori-kegiatan/edit/{id}', 'KategoriKegiatanController@edit');
+                Route::get('/pegawai/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy');
+        });
+
+        // wisata desa
+        Route::namespace('WisataDesa')
+            ->group(function () {
+                Route::get('/pegawai/wisata-desa', 'VillageTourController@index')
+                    ->name('wisata-desa.wisata-desa');
+                Route::post('/pegawai/wisata-desa', 'VillageTourController@store');
+                Route::get('/pegawai/wisata-desa/wisata-desa/{id}', 'VillageTourController@edit');
+                Route::post('/pegawai/wisata-desa/wisata-desa/update', 'VillageTourController@update')
+                    ->name('wisata-desa.wisata-desa-update');
+                Route::get('/pegawai/wisata-desa/wisata-desa/hapus/{id}', 'VillageTourController@destroy');
+            });
+
+        // Profil
+        Route::namespace('ProfilDesa')
+            ->group(function () {
+                Route::get('/pegawai/profil-desa', 'ProfilDesaController@index')
+                    ->name('profil-desa.profil-desa');
+            });
     });
 
 Route::namespace('Admin')
