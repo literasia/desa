@@ -23,6 +23,7 @@ class pegawai
             "profil-desa" => "village_profile",
             "wisata-desa" => "village_tour",
             "data-penduduk" => "population_data",
+            "pengumuman" => "announcement",
         ];
 
         if (Auth::user()->hasRole('employee')) {

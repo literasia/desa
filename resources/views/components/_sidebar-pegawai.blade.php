@@ -83,6 +83,17 @@
                 </li>
                 @endif
 
+                @if ($employee->access->announcement)
+                <li class="{{ request()->is('pegawai/pengumuman') ? 'active' : '' }}">
+                    <a href="{{ route('pegawai.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
+                       <span class="pcoded-micon">
+                           <i class="fa fa-bell"></i>
+                       </span>
+                       <span class="pcoded-mtext">Pengumuman</span>
+                   </a>
+                </li>
+                @endif
+
                 {{-- @if ($employee->access->village_structure)
                     <li class="@if (request()->is('pegawai/struktur/struktur') || request()->is('pegawai/struktur/pegawai') || request()->is('pegawai/struktur/jabatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                         <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -110,8 +121,6 @@
                 @endif --}}
 
                 {{--
-
-
                 <li class="@if (request()->is('admin/administrasi/permohonan-pembuatan-ktp') || request()->is('admin/administrasi/surat-keterangan-lahir') || request()->is('admin/administrasi/perubahan-kk') || request()->is('admin/administrasi/surat-kematian') || request()->is('admin/administrasi/izin-usaha') || request()->is('admin/administrasi/keterangan-tidak-mampu') || request()->is('admin/administrasi/permohonan-skck') || request()->is('admin/administrasi/keterangan-pindah') || request()->is('admin/administrasi/keterangan-domisili') || request()->is('admin/administrasi/keterangan-ahli-waris') || request()->is('admin/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-archive"></i></span>
@@ -302,14 +311,7 @@
                     </a>
                 </li>
 
-                <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
-                     <a href="{{ route('admin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-bell"></i>
-                        </span>
-                        <span class="pcoded-mtext">Pengumuman</span>
-                    </a>
-                </li>
+
                 <li class="{{ request()->is('admin/kampanye') ? 'active' : '' }}">
                      <a href="{{ route('admin.kampanye.kampanye') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">

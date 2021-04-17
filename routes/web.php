@@ -182,16 +182,29 @@ Route::namespace("Pegawai")
                     ->name('profil-desa.profil-desa');
             });
 
-            // Data Penduduk
-            Route::namespace('DataPenduduk')
-                ->group(function () {
-                    Route::get('/pegawai/data-penduduk/keluarga', 'KeluargaController@index')
-                        ->name('data-penduduk.keluarga');
-                    Route::get('/pegawai/data-penduduk/penduduk', 'PendudukController@index')
-                        ->name('data-penduduk.penduduk');
-                    Route::get('/pegawai/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
-                        ->name('data-penduduk.penduduk.input-data-penduduk');
-                });
+        // Data Penduduk
+        Route::namespace('DataPenduduk')
+            ->group(function () {
+                Route::get('/pegawai/data-penduduk/keluarga', 'KeluargaController@index')
+                    ->name('data-penduduk.keluarga');
+                Route::get('/pegawai/data-penduduk/penduduk', 'PendudukController@index')
+                    ->name('data-penduduk.penduduk');
+                Route::get('/pegawai/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
+                    ->name('data-penduduk.penduduk.input-data-penduduk');
+            });
+
+
+        // Pengumuman
+        Route::namespace('Pengumuman')
+            ->group(function () {
+            Route::get('/pegawai/pengumuman', 'PengumumanDesaController@index')
+                ->name('pengumuman.pengumuman');
+            Route::post('/pegawai/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+            Route::get('/pegawai/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+            Route::post('/pegawai/pengumuman/pesan/update', 'PengumumanDesaController@update')
+                ->name('pengumuman.pesan-update');
+            Route::get('/pegawai/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
+            });
 
     });
 
