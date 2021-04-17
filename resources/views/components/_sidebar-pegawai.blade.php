@@ -213,7 +213,7 @@
                </li>
                @endif
 
-               @if ($employee->access->campaign)
+               @if ($employee->access->event)
                <li class="@if (request()->is('pegawai/peristiwa/kelahiran') || request()->is('pegawai/peristiwa/kematian') || request()->is('pegawai/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="icon-chart"></i></span>
@@ -239,8 +239,8 @@
                 </li>
                 @endif
 
-                {{--
-                <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+               @if ($employee->access->administration)
+               <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-archive"></i></span>
                         <span class="pcoded-mtext">Administrasi</span>
@@ -347,27 +347,8 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
-
-
-
-
-
-                <li class="@if (request()->is('pegawai/referensi/pengaturan-hak-akses')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="fa fa-list-alt"></i></span>
-                        <span class="pcoded-mtext">Referensi</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('pegawai/referensi/pengaturan-hak-akses') ? 'active' : '' }}">
-                            <a href="{{ route('pegawai.referensi.pengaturan-hak-akses') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengaturan Hak Akses</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                 --}}
             </ul>
         </div>
     </div>
