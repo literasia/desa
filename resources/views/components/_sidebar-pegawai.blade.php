@@ -105,7 +105,7 @@
                 </li>
                 @endif
 
-                {{-- @if ($employee->access->village_structure)
+                @if ($employee->access->village_structure)
                     <li class="@if (request()->is('pegawai/struktur/struktur') || request()->is('pegawai/struktur/pegawai') || request()->is('pegawai/struktur/jabatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                         <a href="javascript:void(0);" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="fa fa-project-diagram"></i></span>
@@ -129,7 +129,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif --}}
+                @endif
 
                 {{--
                 <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">

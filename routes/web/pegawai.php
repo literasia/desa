@@ -178,54 +178,6 @@
 //             ->name('slider.destroy');
 //     });
 
-// // Struktur
-// Route::namespace('Struktur')
-//     ->group(function () {
-//         // Struktur Desa
-//         Route::get('/pegawai/struktur/struktur', 'StrukturDesaController@index')
-//             ->name('struktur.struktur');
-//         Route::post('/pegawai/struktur/struktur', 'StrukturDesaController@store')
-//             ->name('struktur.struktur.store');
-//         Route::get('/pegawai/struktur/struktur/{id}', 'StrukturDesaController@edit')
-//             ->name('struktur.struktur.edit');
-//         Route::post('/pegawai/struktur/struktur/update', 'StrukturDesaController@update')
-//             ->name('struktur.struktur.update');
-//         Route::get('/pegawai/struktur/struktur/hapus/{id}', 'StrukturDesaController@destroy')
-//             ->name('struktur.struktur.delete');
-//         // route get some data for modals structures
-//         Route::get('/pegawai/struktur/get_employee', 'StrukturDesaController@getEmployee')
-//             ->name('struktur.struktur.get_employee');
-//         Route::get('/pegawai/struktur/get_position', 'StrukturDesaController@getPosition')
-//             ->name('struktur.struktur.get_position');
-//         Route::get('/pegawai/struktur/get_village_structure', 'StrukturDesaController@getVillageStructure')
-//             ->name('struktur.struktur.get_village_structure');
-
-//         // Pegawai
-//         Route::get('/pegawai/struktur/pegawai', 'PegawaiController@index')
-//             ->name('struktur.pegawai');
-//         Route::post('/pegawai/struktur/pegawai', 'PegawaiController@store')
-//             ->name('struktur.pegawai.store');
-//         Route::get('/pegawai/struktur/pegawai/{id}', 'PegawaiController@edit')
-//             ->name('struktur.pegawai.edit');
-//         Route::post('/pegawai/struktur/pegawai/update', 'PegawaiController@update')
-//             ->name('struktur.pegawai.update');
-//         Route::get('/pegawai/struktur/pegawai/hapus/{id}', 'PegawaiController@destroy')
-//             ->name('struktur.pegawai.delete');
-
-//         // Jabatan
-//         Route::get('/pegawai/struktur/jabatan', 'JabatanController@index')
-//             ->name('struktur.jabatan');
-//         Route::post('/pegawai/struktur/jabatan', 'JabatanController@store')
-//             ->name('struktur.jabatan.store');
-//         Route::get('/pegawai/struktur/jabatan/{id}', 'JabatanController@edit')
-//             ->name('struktur.jabatan.edit');
-//         Route::post('/pegawai/struktur/jabatan/update', 'JabatanController@update')
-//             ->name('struktur.jabatan.update');
-//         Route::get('/pegawai/struktur/jabatan/hapus/{id}', 'JabatanController@destroy')
-//             ->name('struktur.jabatan.delete');
-
-//     });
-
 // // Wisata Desa
 // Route::namespace('WisataDesa')
 //     ->group(function () {

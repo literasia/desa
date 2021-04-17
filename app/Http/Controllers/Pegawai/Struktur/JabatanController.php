@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Models\Position;
+use App\Models\Employee;
 
 class JabatanController extends Controller
 {
@@ -15,6 +16,7 @@ class JabatanController extends Controller
     ];
 
     public function index(Request $request) {
+        $employee = Employee::where("user_id",auth()->user()->id)->first();
         if ($request->ajax()) {
             $data = Position::latest()->get();
             return DataTables::of($data)
@@ -27,7 +29,7 @@ class JabatanController extends Controller
                 ->make(true);
         }
 
-        return view('pegawai.struktur.jabatan');
+        return view('pegawai.struktur.jabatan', ["employee"=>$employee]);
     }
 
     public function store(Request $request){

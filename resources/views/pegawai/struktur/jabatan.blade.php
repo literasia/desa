@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Struktur Desa | Jabatan')
@@ -6,14 +6,14 @@
 @section('title-3', 'Jabatan')
 
 @section('describ')
-    Ini adalah halaman Jabatan untuk admin
+    Ini adalah halaman Jabatan untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-project-diagram')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.struktur.jabatan') }}
+    {{ route('pegawai.struktur.jabatan') }}
 @endsection
 
 {{-- main content --}}
@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- Modal --}}
     <div id="confirmModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    @include('admin.struktur.modals._jabatan')
+    @include('pegawai.struktur.modals._jabatan')
 @endsection
 
 {{-- addons css --}}
@@ -108,7 +108,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.struktur.jabatan') }}",
+                    url: "{{ route('pegawai.struktur.jabatan') }}",
                 },
                 columns: [
                 {
@@ -131,13 +131,13 @@
                 event.preventDefault();
 
                 let url = '';
-                
+
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.struktur.jabatan.store') }}";
+                    url = "{{ route('pegawai.struktur.jabatan.store') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.struktur.jabatan.update') }}";
+                    url = "{{ route('pegawai.struktur.jabatan.update') }}";
                 }
 
                 let formData = new FormData($('#form-jabatan')[0]);
@@ -151,7 +151,7 @@
                     processData: false,
                     success: function (data) {
                         var html = '';
-                    
+
                         // If has Errors
                         if (data.errors) {
                             data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
@@ -183,7 +183,7 @@
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/struktur/jabatan/'+id,
+                    url: '/pegawai/struktur/jabatan/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('.modal-title').html('Edit Jabatan');
@@ -209,7 +209,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/struktur/jabatan/hapus/'+user_id,
+                    url: '/pegawai/struktur/jabatan/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
