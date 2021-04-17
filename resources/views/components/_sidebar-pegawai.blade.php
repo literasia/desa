@@ -193,7 +193,7 @@
 
                 @if ($employee->access->slider)
                 <li class="{{ request()->is('pegawai/slider/slider') ? 'active' : '' }}">
-                    <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
+                    <a href="{{ route('pegawai.slider.slider') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="feather icon-gitlab"></i>
                         </span>
