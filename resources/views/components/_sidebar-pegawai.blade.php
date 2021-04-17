@@ -62,6 +62,27 @@
                 </li>
                 @endif
 
+                @if ($employee->access->population_data)
+                <li class="@if (request()->is('pegawai/data-penduduk/keluarga') || request()->is('pegawai/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                        <span class="pcoded-mtext">Data Penduduk</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('pegawai/data-penduduk/keluarga') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.data-penduduk.keluarga') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Keluarga</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/data-penduduk/penduduk') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.data-penduduk.penduduk') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Penduduk</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
                 {{-- @if ($employee->access->village_structure)
                     <li class="@if (request()->is('pegawai/struktur/struktur') || request()->is('pegawai/struktur/pegawai') || request()->is('pegawai/struktur/jabatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                         <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -88,24 +109,7 @@
                     </li>
                 @endif --}}
 
-                {{-- <li class="@if (request()->is('admin/data-penduduk/keluarga') || request()->is('admin/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
-                        <span class="pcoded-mtext">Data Penduduk</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/data-penduduk/keluarga') ? 'active' : '' }}">
-                            <a href="{{ route('admin.data-penduduk.keluarga') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keluarga</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/data-penduduk/penduduk') ? 'active' : '' }}">
-                            <a href="{{ route('admin.data-penduduk.penduduk') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Penduduk</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                {{--
 
 
                 <li class="@if (request()->is('admin/administrasi/permohonan-pembuatan-ktp') || request()->is('admin/administrasi/surat-keterangan-lahir') || request()->is('admin/administrasi/perubahan-kk') || request()->is('admin/administrasi/surat-kematian') || request()->is('admin/administrasi/izin-usaha') || request()->is('admin/administrasi/keterangan-tidak-mampu') || request()->is('admin/administrasi/permohonan-skck') || request()->is('admin/administrasi/keterangan-pindah') || request()->is('admin/administrasi/keterangan-domisili') || request()->is('admin/administrasi/keterangan-ahli-waris') || request()->is('admin/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">

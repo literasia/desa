@@ -181,6 +181,18 @@ Route::namespace("Pegawai")
                 Route::get('/pegawai/profil-desa', 'ProfilDesaController@index')
                     ->name('profil-desa.profil-desa');
             });
+
+            // Data Penduduk
+            Route::namespace('DataPenduduk')
+                ->group(function () {
+                    Route::get('/pegawai/data-penduduk/keluarga', 'KeluargaController@index')
+                        ->name('data-penduduk.keluarga');
+                    Route::get('/pegawai/data-penduduk/penduduk', 'PendudukController@index')
+                        ->name('data-penduduk.penduduk');
+                    Route::get('/pegawai/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
+                        ->name('data-penduduk.penduduk.input-data-penduduk');
+                });
+
     });
 
 Route::namespace('Admin')

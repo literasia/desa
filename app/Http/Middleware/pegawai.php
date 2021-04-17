@@ -22,6 +22,7 @@ class pegawai
             "kalender" => "calendar",
             "profil-desa" => "village_profile",
             "wisata-desa" => "village_tour",
+            "data-penduduk" => "population_data",
         ];
 
         if (Auth::user()->hasRole('employee')) {
