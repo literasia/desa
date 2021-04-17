@@ -216,6 +216,7 @@ Route::namespace('Admin')
             Route::post('/admin/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
             Route::post('/admin/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
             Route::get('/admin/kalender/hapus/{id}', 'KalenderDesaController@destroy');
+        });
 
 
         // Kampanye
