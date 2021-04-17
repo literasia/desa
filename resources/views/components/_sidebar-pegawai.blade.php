@@ -142,6 +142,29 @@
                 </li>
                 @endif
 
+                @if ($employee->access->news)
+                <li class="@if (request()->is('pegawai/berita/berita') || request()->is('pegawai/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="#" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-newspaper"></i>
+                        </span>
+                        <span class="pcoded-mtext">Berita</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('pegawai/berita/berita') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.berita.berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Berita</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/berita/kategori-berita') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.berita.kategori-berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
                 {{--
                 <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -273,26 +296,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('pegawai/berita/berita') || request()->is('pegawai/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-newspaper"></i>
-                        </span>
-                        <span class="pcoded-mtext">Berita</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('pegawai/berita/berita') ? 'active' : '' }}">
-                            <a href="{{ route('admin.berita.berita') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Berita</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('pegawai/berita/kategori-berita') ? 'active' : '' }}">
-                            <a href="{{ route('admin.berita.kategori-berita') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
                 <li class="{{ request()->is('pegawai/slider/slider') ? 'active' : '' }}">
                     <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">

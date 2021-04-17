@@ -60,28 +60,7 @@
 //             ->name('administrasi.keterangan-tanah');
 //     });
 
-// // Berita
-// Route::namespace('Berita')
-//     ->group(function () {
 
-//         // Berita
-//         Route::get('/pegawai/berita/berita', 'NewsController@index')
-//         ->name('berita.berita');
-//         Route::post('/pegawai/berita/berita', 'NewsController@store');
-//         Route::get('/pegawai/berita/berita/{id}', 'NewsController@edit');
-//         Route::post('/pegawai/berita/berita/update', 'NewsController@update')
-//             ->name('berita.berita-update');
-//         Route::get('/pegawai/berita/berita/hapus/{id}', 'NewsController@destroy');
-
-//         // Kategori Berita
-//         Route::get('/pegawai/berita/kategori-berita', 'NewsCategoryController@index')
-//             ->name('berita.kategori-berita');
-//         Route::post('/pegawai/berita/kategori-berita', 'NewsCategoryController@store');
-//         Route::get('/pegawai/berita/kategori-berita/{id}', 'NewsCategoryController@edit');
-//         Route::post('/pegawai/berita/kategori-berita/update', 'NewsCategoryController@update')
-//             ->name('berita.kategori-berita-update');
-//         Route::get('/pegawai/berita/kategori-berita/hapus/{id}', 'NewsCategoryController@destroy');
-//     });
 
 
 // // Kalender
