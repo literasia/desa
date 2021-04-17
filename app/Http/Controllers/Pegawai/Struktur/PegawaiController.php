@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Struktur;
+namespace App\Http\Controllers\Pegawai\Struktur;
 
 use Validator;
 use Illuminate\Http\Request;
@@ -52,7 +52,7 @@ class PegawaiController extends Controller
                 ->make(true);
         }
 
-        return view('admin.struktur.pegawai');
+        return view('pegawai.struktur.pegawai');
     }
 
     public function store(Request $request){

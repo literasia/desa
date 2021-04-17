@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Berita | Kategori Berita')
-@section('title-2', 'Kategori Berita')
-@section('title-3', 'Kategori Berita')
+@section('title', 'Potensi Desa | Jenis Usaha')
+@section('title-2', 'Jenis Usaha')
+@section('title-3', 'Jenis Usaha')
 
 @section('describ')
-    Ini adalah halaman kategori berita untuk admin
+    Ini adalah halaman Jenis Usaha untuk admin
 @endsection
 
-@section('icon-l', 'icon-people')
+@section('icon-l', 'icon-chart')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.berita.kategori-berita') }}
+    {{ route('admin.potensi.jenis-usaha') }}
 @endsection
 
 {{-- main content --}}
@@ -23,13 +23,13 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-news-category">
+                        <form id="form-status">
                         @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label for="news_category">Kategori Berita</label>
-                                        <input type="text" name="news_category" id="news_category" class="form-control form-control-sm">
+                                        <label for="jenis_usaha">Jenis Usaha</label>
+                                        <input type="text" name="jenis_usaha" id="jenis_usaha" class="form-control form-control-sm" placeholder="Jenis Usaha">
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
                                     <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
+                                    <button type="reset" class="reset btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -51,11 +51,11 @@
                 <div class="card-body">
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Kategori</th>
+                                        <th>Jenis Usaha</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="button" class=" btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
                 </div>
             </div>
         </div>
@@ -94,8 +94,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <style>
         .btn i {
             margin-right: 0px;
@@ -109,13 +107,14 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
     <script>
-        $(document).ready(function () {
+         $(document).ready(function () {
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.berita.kategori-berita') }}",
+                    url: "{{ route('admin.potensi.jenis-usaha') }}",
                 },
                 columns: [
                 {
@@ -123,8 +122,8 @@
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'business_type',
+                    name: 'business_type'
                 },
                 {
                     data: 'action',
@@ -133,18 +132,30 @@
                 ]
             });
 
-            $('#form-news-category').on('submit', function (event) {
+        $('.reset').on('click', function(e) {
+            e.preventDefault();
+            $('#jenis_usaha').removeClass('is-invalid');
+                            $('#form-status')[0].reset();
+            $('#action').val('add');
+            $('#btn')
+            .removeClass('btn-info')
+                            .addClass('btn-success')    
+                .val('Simpan');
+        })
+
+        $('#form-status').on('submit', function (event) {
                 event.preventDefault();
-
-                $('#btn').prop('disabled', true);
-
                 var url = '';
+                var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.berita.kategori-berita') }}";
+                    url = "{{ route('admin.potensi.jenis-usaha') }}";
+                     text = "Data sukses ditambahkan";
+                   
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.berita.kategori-berita-update') }}";
+                    url = "{{ route('admin.potensi.jenis-usaha.update') }}";
+                     text = "Data sukses diupdate";
                 }
 
                 $.ajax({
@@ -153,37 +164,24 @@
                     dataType: 'JSON',
                     data: $(this).serialize(),
                     success: function (data) {
-                        var html = ''
+                        var html = '';
                         if (data.errors) {
+                            // for (var count = 0; count <= data.errors.length; count++) {
                             html = data.errors[0];
-                            $('#news_category').addClass('is-invalid');
+                            // 
+                            $('#jenis_usaha').addClass('is-invalid');
                             toastr.error(html);
-                            $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
-                            // toastr.success('Sukses!');
-                            if ($('#action').val() == 'add') {
-                                Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
-                            }
-
-                            if ($('#action').val() == 'edit') {
-                                Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
-                            }
-                            
-                            $('#news_category').removeClass('is-invalid');
-                            $('#form-news-category')[0].reset();
+                            Swal.fire('Success!!',text,'success' );  
+                            $('#jenis_usaha').removeClass('is-invalid');
+                            $('#form-status')[0].reset();
                             $('#action').val('add');
-                            $('#btn').prop('disabled', false);
                             $('#btn')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
-                        $('#form_result').html(html);
-                    },
-                    error: function(errors){
-                        toastr.error('Error');
-                        $('#btn').prop('disabled', false);
                     }
                 });
             });
@@ -191,17 +189,16 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/'+id,
+                    url: '/admin/potensi/jenis-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('#news_category').val(data.news_category.name);
-                        $('#hidden_id').val(data.news_category.id);
+                        $('#jenis_usaha').val(data.data.business_type);
+                        $('#hidden_id').val(data.data.id);
                         $('#action').val('edit');
                         $('#btn')
-                            .removeClass('btn-success')
+                            .removeClass('btn-outline-success')
                             .addClass('btn-info')
                             .val('Update');
-                        $('#order-table').DataTable().ajax.reload();
                     }
                 });
             });
@@ -215,21 +212,18 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/hapus/'+user_id,
+                    url: '/admin/potensi/jenis-usaha/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            // toastr.success('Data berhasil dihapus');
-                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
+                            Swal.fire('Success!!','Data berhasil dihapus','success' );
                         }, 1000);
                     }
                 });
             });
-
-        });
-
+         });      
     </script>
 @endpush

@@ -1,62 +1,40 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Berita | Kategori Berita')
-@section('title-2', 'Kategori Berita')
-@section('title-3', 'Kategori Berita')
+@section('title', ' Kampanye | Kampanye')
+@section('title-2', 'Kampanye')
+@section('title-3', 'Kampanye')
 
 @section('describ')
-    Ini adalah halaman kategori berita untuk admin
+    Ini adalah halaman Kampanye untuk admin
 @endsection
 
-@section('icon-l', 'icon-people')
+@section('icon-l', 'fa fa-bullhorn')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.berita.kategori-berita') }}
+    {{ route('admin.kampanye.kampanye') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <div class="card-block">
-                        <form id="form-news-category">
-                        @csrf
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="form-group">
-                                        <label for="news_category">Kategori Berita</label>
-                                        <input type="text" name="news_category" id="news_category" class="form-control form-control-sm">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="hidden" name="hidden_id" id="hidden_id">
-                                    <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
+                    <div class="card-block pt-0">
+                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Kategori</th>
-                                        <th>Actions</th>
+                                        <th>Nama Calon</th>
+                                        <th>Nama Calon Wakil</th>
+                                        <th>Visi</th>
+                                        <th>Misi</th>
+                                        <th>Foto</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -86,6 +64,9 @@
             </div>
         </div>
     </div>
+    
+{{-- Modal --}}
+@include('admin.kampanye.modals._kampanye')
 @endsection
 
 {{-- addons css --}}
@@ -93,12 +74,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <!-- Select 2 css -->
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
+        }
+
+        .select2-container {
+            width: 100% !important;
+            padding: 0;
         }
     </style>
 @endpush
@@ -109,13 +95,34 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
+
+            $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Pesan');
+                $('#action').val('add');
+                $('#candidate').val('');
+                $('#deputy_candidate').val('');
+                $('#vision').val('');
+                $('#mission').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
+                $('#modal-kampanye').modal('show');
+            });
+
+
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.berita.kategori-berita') }}",
+                    url: "{{ route('admin.kampanye.kampanye') }}",
                 },
                 columns: [
                 {
@@ -123,8 +130,24 @@
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'candidate',
+                    name: 'candidate'
+                },
+                {
+                    data: 'deputy_candidate',
+                    name: 'deputy_candidate'
+                },
+                {
+                    data: 'vision',
+                    name: 'vision'
+                },
+                {
+                    data: 'mission',
+                    name: 'mission'
+                },
+                {
+                    data: 'image',
+                    name: 'image'
                 },
                 {
                     data: 'action',
@@ -133,46 +156,47 @@
                 ]
             });
 
-            $('#form-news-category').on('submit', function (event) {
+            $('#form-campaign').on('submit', function (event) {
                 event.preventDefault();
 
                 $('#btn').prop('disabled', true);
 
                 var url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.berita.kategori-berita') }}";
+                    url = "{{ route('admin.kampanye.kampanye') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.berita.kategori-berita-update') }}";
+                    url = "{{ route('admin.kampanye.kampanye-update') }}";
                 }
+
+                var formData = new FormData($('#form-campaign')[0]);
 
                 $.ajax({
                     url: url,
                     method: 'POST',
-                    dataType: 'JSON',
-                    data: $(this).serialize(),
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     success: function (data) {
                         var html = ''
                         if (data.errors) {
                             html = data.errors[0];
-                            $('#news_category').addClass('is-invalid');
+                            $('#candidate').addClass('is-invalid');
                             toastr.error(html);
-                            $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
                             // toastr.success('Sukses!');
-                            if ($('#action').val() == 'add') {
-                                Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
-                            }
-
-                            if ($('#action').val() == 'edit') {
-                                Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
-                            }
-                            
-                            $('#news_category').removeClass('is-invalid');
-                            $('#form-news-category')[0].reset();
+                            Swal.fire(
+                            'Sukses!',
+                            'Data berhasil ditambahkan!',
+                            'success'
+                            )
+                            $('#modal-kampanye').modal('hide');
+                            $('#candidate').removeClass('is-invalid');
+                            $('#form-campaign')[0].reset();
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
@@ -180,10 +204,6 @@
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
-                    },
-                    error: function(errors){
-                        toastr.error('Error');
-                        $('#btn').prop('disabled', false);
                     }
                 });
             });
@@ -191,17 +211,21 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/'+id,
+                    url: '/admin/kampanye/kampanye/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('#news_category').val(data.news_category.name);
-                        $('#hidden_id').val(data.news_category.id);
+                        $('.modal-title').html('Edit Pesan');
                         $('#action').val('edit');
+                        $('#candidate').val(data.candidate);
+                        $('#deputy_candidate').val(data.deputy_candidate);
+                        $('#vision').val(data.vision);
+                        $('#mission').val(data.mission);
+                        $('#hidden_id').val(data.id);
                         $('#btn')
                             .removeClass('btn-success')
                             .addClass('btn-info')
                             .val('Update');
-                        $('#order-table').DataTable().ajax.reload();
+                        $('#modal-kampanye').modal('show');
                     }
                 });
             });
@@ -215,7 +239,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/hapus/'+user_id,
+                    url: '/admin/kampanye/kampanye/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
@@ -230,6 +254,5 @@
             });
 
         });
-
     </script>
 @endpush

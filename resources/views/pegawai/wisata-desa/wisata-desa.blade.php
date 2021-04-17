@@ -1,66 +1,47 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
-@section('title', 'Berita | Kategori Berita')
-@section('title-2', 'Kategori Berita')
-@section('title-3', 'Kategori Berita')
+@section('title', 'Wisata Desa')
+@section('title-2', 'Wisata Desa')
+@section('title-3', 'Wisata Desa')
 
 @section('describ')
-    Ini adalah halaman kategori berita untuk admin
+    Ini adalah halaman Wisata Desa untuk pegawai
 @endsection
 
-@section('icon-l', 'icon-people')
+@section('icon-l', 'fa fa-map-marker-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.berita.kategori-berita') }}
+    {{ route('pegawai.wisata-desa.wisata-desa') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
-    <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+<div class="row">
+        <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <div class="card-block">
-                        <form id="form-news-category">
-                        @csrf
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="form-group">
-                                        <label for="news_category">Kategori Berita</label>
-                                        <input type="text" name="news_category" id="news_category" class="form-control form-control-sm">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="hidden" name="hidden_id" id="hidden_id">
-                                    <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
+                    <div class="card-block pt-0">
+                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Kategori</th>
+                                        <th>Nama Tempat</th>
+                                        <th>Alamat</th>
+                                        <th>Hari Buka</th>
+                                        <th>Jam Buka</th>
+                                        <th>Jam Tutup</th>
+                                        <th>Jenis Wisata</th>
+                                        <th>Nomor Telepon</th>
+                                        <th>Keterangan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -86,6 +67,9 @@
             </div>
         </div>
     </div>
+
+{{-- Modal --}}
+    @include('pegawai.wisata-desa.modals._wisata')
 @endsection
 
 {{-- addons css --}}
@@ -93,9 +77,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-clockpicker.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <style>
         .btn i {
             margin-right: 0px;
@@ -109,13 +93,41 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script>
         $(document).ready(function () {
+
+            $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Wisata Desa');
+                $('#action').val('add');
+                $('#name').val('');
+                $('#address').val('');
+                $('#day_open').val('');
+                $('#time_opening').val('');
+                $('#time_closing').val('');
+                $('#tour_type').val('');
+                $('#no_phone').val('');
+                $('#information').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
+                $('#modal-wisata').modal('show');
+            });
+
+            $('.clockpicker').clockpicker({
+                donetext: 'Done',
+                autoclose: true
+            });
+
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.berita.kategori-berita') }}",
+                    url: "{{ route('pegawai.wisata-desa.wisata-desa') }}",
                 },
                 columns: [
                 {
@@ -127,25 +139,53 @@
                     name: 'name'
                 },
                 {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'day_open',
+                    name: 'day_open'
+                },
+                {
+                    data: 'time_opening',
+                    name: 'time_opening'
+                },
+                {
+                    data: 'time_closing',
+                    name: 'time_closing'
+                },
+                {
+                    data: 'tour_type',
+                    name: 'tour_type'
+                },
+                {
+                    data: 'no_phone',
+                    name: 'no_phone'
+                },
+                {
+                    data: 'information',
+                    name: 'information'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 }
                 ]
             });
 
-            $('#form-news-category').on('submit', function (event) {
+            $('#form-tour').on('submit', function (event) {
                 event.preventDefault();
-
-                $('#btn').prop('disabled', true);
 
                 var url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.berita.kategori-berita') }}";
+                    url = "{{ route('pegawai.wisata-desa.wisata-desa') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.berita.kategori-berita-update') }}";
+                    url = "{{ route('pegawai.wisata-desa.wisata-desa-update') }}";
                 }
+
+                $('#btn').prop('disabled', true);
 
                 $.ajax({
                     url: url,
@@ -156,23 +196,35 @@
                         var html = ''
                         if (data.errors) {
                             html = data.errors[0];
-                            $('#news_category').addClass('is-invalid');
+                            $('#name').addClass('is-invalid');
+                            $('#address').addClass('is-invalid');
+                            $('#day_open').addClass('is-invalid');
+                            $('#time_opening').addClass('is-invalid');
+                            $('#time_closing').addClass('is-invalid');
+                            $('#tour_type').addClass('is-invalid');
+                            $('#no_phone').addClass('is-invalid');
                             toastr.error(html);
                             $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
-                            // toastr.success('Sukses!');
                             if ($('#action').val() == 'add') {
-                                Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
+                                Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
                             }
 
                             if ($('#action').val() == 'edit') {
-                                Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
+                                Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
                             }
-                            
-                            $('#news_category').removeClass('is-invalid');
-                            $('#form-news-category')[0].reset();
+
+                            $('#modal-wisata').modal('hide');
+                            $('#name').removeClass('is-invalid');
+                            $('#address').removeClass('is-invalid');
+                            $('#day_open').removeClass('is-invalid');
+                            $('#time_opening').removeClass('is-invalid');
+                            $('#time_closing').removeClass('is-invalid');
+                            $('#tour_type').removeClass('is-invalid');
+                            $('#no_phone').removeClass('is-invalid');
+                            $('#form-tour')[0].reset();
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
@@ -191,17 +243,25 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/'+id,
+                    url: '/pegawai/wisata-desa/wisata-desa/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('#news_category').val(data.news_category.name);
-                        $('#hidden_id').val(data.news_category.id);
+                        $('.modal-title').html('Edit Wisata Desa')
                         $('#action').val('edit');
+                        $('#name').val(data.name);
+                        $('#address').val(data.address);
+                        $('#day_open').val(data.day_open);
+                        $('#time_opening').val(data.time_opening);
+                        $('#time_closing').val(data.time_closing);
+                        $('#tour_type').val(data.tour_type);
+                        $('#no_phone').val(data.no_phone);
+                        $('#information').val(data.information);
+                        $('#hidden_id').val(data.id);
                         $('#btn')
                             .removeClass('btn-success')
                             .addClass('btn-info')
                             .val('Update');
-                        $('#order-table').DataTable().ajax.reload();
+                        $('#modal-wisata').modal('show');
                     }
                 });
             });
@@ -215,21 +275,18 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/hapus/'+user_id,
+                    url: '/pegawai/wisata-desa/wisata-desa/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            // toastr.success('Data berhasil dihapus');
-                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
+                            Swal.fire('Sukses!', 'Data berhasi dihapus!', 'success');
                         }, 1000);
                     }
                 });
             });
-
         });
-
     </script>
 @endpush

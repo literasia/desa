@@ -1,61 +1,39 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Berita | Kategori Berita')
-@section('title-2', 'Kategori Berita')
-@section('title-3', 'Kategori Berita')
+@section('title', 'Administrasi Desa | Keterangan Domisili')
+@section('title-2', 'Keterangan Domisili')
+@section('title-3', 'Keterangan Domisili')
 
 @section('describ')
-    Ini adalah halaman kategori berita untuk admin
+    Ini adalah halaman Keterangan Domisili untuk admin
 @endsection
 
-@section('icon-l', 'icon-people')
+@section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.berita.kategori-berita') }}
+    {{ route('admin.administrasi.keterangan-domisili') }}
 @endsection
 
 {{-- main content --}}
 @section('content')
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="col-xl-12">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <div class="card-block">
-                        <form id="form-news-category">
-                        @csrf
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="form-group">
-                                        <label for="news_category">Kategori Berita</label>
-                                        <input type="text" name="news_category" id="news_category" class="form-control form-control-sm">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="hidden" name="hidden_id" id="hidden_id">
-                                    <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger">Batal</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
+                    <div class="card-block pt-0">
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Kategori</th>
+                                        <th>Nama</th>
+                                        <th>NIK</th>
+                                        <th>No. Telepon</th>
+                                        <th>Alamat</th>
+                                        <th>Foto KTP</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -86,6 +64,8 @@
             </div>
         </div>
     </div>
+
+@include('admin.administrasi.modals._domicile')
 @endsection
 
 {{-- addons css --}}
@@ -93,9 +73,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
@@ -109,13 +87,15 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.berita.kategori-berita') }}",
+                    url: "{{ route('admin.administrasi.keterangan-domisili') }}",
                 },
                 columns: [
                 {
@@ -127,25 +107,41 @@
                     name: 'name'
                 },
                 {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'no_phone',
+                    name: 'no_phone'
+                },
+                {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'image',
+                    name: 'image'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 }
                 ]
             });
 
-            $('#form-news-category').on('submit', function (event) {
+            $('#form-domicile').on('submit', function (event) {
                 event.preventDefault();
 
-                $('#btn').prop('disabled', true);
-
                 var url = '';
-                if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.berita.kategori-berita') }}";
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.administrasi.keterangan-domisili-update') }}";
                 }
 
-                if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.berita.kategori-berita-update') }}";
-                }
+                $('#btn').prop('disabled', true);
 
                 $.ajax({
                     url: url,
@@ -156,34 +152,27 @@
                         var html = ''
                         if (data.errors) {
                             html = data.errors[0];
-                            $('#news_category').addClass('is-invalid');
+                            $('#status').addClass('is-invalid');
                             toastr.error(html);
-                            $('#btn').prop('disabled', false);
                         }
 
                         if (data.success) {
                             // toastr.success('Sukses!');
-                            if ($('#action').val() == 'add') {
-                                Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
-                            }
-
                             if ($('#action').val() == 'edit') {
                                 Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
                             }
-                            
-                            $('#news_category').removeClass('is-invalid');
-                            $('#form-news-category')[0].reset();
+                            $('#modal-domicile').modal('hide');
+                            $('#status').removeClass('is-invalid');
+                            $('#form-domicile')[0].reset();
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
+                                .removeClass('btn-outline-info')
+                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
-                    },
-                    error: function(errors){
-                        toastr.error('Error');
-                        $('#btn').prop('disabled', false);
                     }
                 });
             });
@@ -191,17 +180,17 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/'+id,
+                    url: '/admin/administrasi/keterangan-domisili/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('#news_category').val(data.news_category.name);
-                        $('#hidden_id').val(data.news_category.id);
                         $('#action').val('edit');
+                        $('#status').val(data.status);
+                        $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-success')
-                            .addClass('btn-info')
+                            .removeClass('btn-outline-success')
+                            .addClass('btn-outline-info')
                             .val('Update');
-                        $('#order-table').DataTable().ajax.reload();
+                        $('#modal-domicile').modal('show');
                     }
                 });
             });
@@ -215,21 +204,19 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/hapus/'+user_id,
+                    url: '/admin/administrasi/keterangan-domisili/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            // toastr.success('Data berhasil dihapus');
-                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
+                            Swal.fire('Sukses!', 'Data berhasi dihapus!', 'success');
                         }, 1000);
                     }
                 });
             });
 
         });
-
     </script>
 @endpush

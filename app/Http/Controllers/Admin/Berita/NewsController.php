@@ -38,7 +38,7 @@ class NewsController extends Controller
                     return $button;
                 })
                 ->addColumn('image', function ($data) {
-                    $btnlink = '<a target="_blank" href="'.Storage::url($data->image).'">Lihat Foto</a>';
+                    $btnlink = '<a target="_blank" href="'.Storage::url($data->image).'" class="badge badge-warning">Lihat Foto</a>';
                     return $btnlink;
                 })
                 ->rawColumns(['image', 'action'])
