@@ -324,7 +324,7 @@ Route::namespace("Pegawai")
             Route::get('/pegawai/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy');
         });
 
-        // Slider
+        // Slider : pegawai
         Route::namespace('Slider')
         ->group(function () {
             Route::get('/pegawai/slider/slider', 'SliderController@index')
@@ -338,6 +338,28 @@ Route::namespace("Pegawai")
                 ->name('slider.destroy');
         });
 
+        // Kampanye : pegawai
+        Route::namespace('Kampanye')
+            ->group(function () {
+                Route::get('/pegawai/kampanye/kampanye', 'CampaignController@index')
+                ->name('kampanye.kampanye');
+                Route::post('/pegawai/kampanye/kampanye', 'CampaignController@store');
+                Route::get('/pegawai/kampanye/kampanye/{id}', 'CampaignController@edit');
+                Route::post('/pegawai/kampanye/kampanye/update', 'CampaignController@update')
+                    ->name('kampanye.kampanye-update');
+                Route::get('/pegawai/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
+            });
+
+        // Peristiwa : pegawai
+        Route::namespace('Peristiwa')
+        ->group(function () {
+            Route::get('/pegawai/peristiwa/kelahiran', 'KelahiranController@index')
+                ->name('peristiwa.kelahiran');
+            Route::get('/pegawai/peristiwa/kematian', 'KematianController@index')
+                ->name('peristiwa.kematian');
+            Route::get('/pegawai/peristiwa/pindah', 'PindahController@index')
+                ->name('peristiwa.pindah');
+        });
     });
 
 Route::namespace('Admin')
