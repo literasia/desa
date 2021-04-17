@@ -17,8 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::namespace('API')
     ->group(function (){
+        Route::post('user/login', 'AuthController@userLogin');
+        Route::post('user/register', 'AuthController@userRegister');
+
+        Route::get('village/search/{keyword}', 'VillageController@search');
+
         //News
         Route::get('news/{village_id}', 'NewsAPIController@index');
 

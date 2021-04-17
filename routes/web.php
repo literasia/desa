@@ -236,7 +236,6 @@ Route::namespace('Admin')
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-
                 //Kalender
                 Route::get('/admin/kalender/kalender', 'KalenderDesaController@index')
                     ->name('kalender.kalender');
