@@ -37,7 +37,7 @@
                                 <div class="col">
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-outline-success" value="Simpan" id="btn">
+                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
                                     <button type="reset" class="btn btn-sm btn-danger">Batal</button>
                                 </div>
                             </div>
@@ -176,8 +176,6 @@
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -200,9 +198,10 @@
                         $('#hidden_id').val(data.news_category.id);
                         $('#action').val('edit');
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
+                        $('#order-table').DataTable().ajax.reload();
                     }
                 });
             });

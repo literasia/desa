@@ -15,7 +15,7 @@ class CreateVillageStructuresTable extends Migration
     {
         Schema::create('village_structures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->BigInteger('village_id');
+            $table->BigInteger('village_id')->nullable();
             $table->unsignedBigInteger('position_id');
             $table->unsignedBigInteger('employee_id'); 
             $table->string('level');

@@ -83,6 +83,7 @@ class PengumumanDesaController extends Controller
             'status' => 'Aktif',
             'village_id' => auth()->user()->village->id
         ]);
+       
 
         return response()
             ->json([

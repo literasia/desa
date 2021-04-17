@@ -6,7 +6,7 @@
 @section('title-3', 'Jabatan')
 
 @section('describ')
-    Ini adalah halaman jabatan untuk admin
+    Ini adalah halaman Jabatan untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-project-diagram')
@@ -29,7 +29,7 @@
                                 <thead class="text-left">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
+                                        <th>Jabatan</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -70,6 +70,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
@@ -80,18 +81,29 @@
 
 {{-- addons js --}}
 @push('js')
-    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+     <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             // Show Modal
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Jabatan');
+                $('#action').val('add');
+                $('#name').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-jabatan').modal('show');
             });
 
-            // Show Data Tables
+            // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -119,6 +131,7 @@
                 event.preventDefault();
 
                 let url = '';
+                
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.jabatan.store') }}";
                 }
@@ -137,22 +150,27 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
-                        let html = ''
+                        var html = '';
+                    
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
+                            // Send message error with toastr
+                            toastr.error(data.error);
                         }
 
+                        // if passed
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            Swal.fire(
+                            'Sukses!',
+                            'Data berhasil ditambahkan!',
+                            'success'
+                            )
                             $('#modal-jabatan').modal('hide');
-                            $('#title').removeClass('is-invalid');
+                            $('#name').removeClass('is-invalid');
                             $('#form-jabatan')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -161,26 +179,27 @@
                 });
             });
 
-            // Get datas
+            // Get datas show on inputs
             $(document).on('click', '.edit', function () {
-                var id = $(this).attr('id');
+                let id = $(this).attr('id');
                 $.ajax({
                     url: '/admin/struktur/jabatan/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        $('.modal-title').html('Edit Jabatan');
                         $('#action').val('edit');
                         $('#name').val(data.name);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-jabatan').modal('show');
                     }
                 });
             });
 
-            // Event Delete
+            // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
                 user_id = $(this).attr('id');
@@ -197,7 +216,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                            toastr.success('Data berhasil dihapus');
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });

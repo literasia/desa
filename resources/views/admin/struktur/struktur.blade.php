@@ -73,6 +73,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
@@ -88,6 +89,9 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -95,7 +99,6 @@
                 theme: 'leaf',
                 format: 'd-m-Y'
             });
-
             $('#end_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
@@ -103,6 +106,7 @@
         });
     </script>
 
+    
     <script>
         $(document).ready(function () {
             // get employee Json
@@ -117,7 +121,6 @@
                     }
                 });
             }
-
             // get positions json
             function getPositionData() {
                 $.ajax({
@@ -130,14 +133,15 @@
                     }
                 });
             }
-
             // get village structures
             function getVillageStructure(){
                 $.ajax({
                     url: '/admin/struktur/get_village_structure',
                     dataType: 'JSON',
                     success: function (villageStructures) {
-                        if (villageStructures.length > 0) {
+                        if (villageStructures.length <= 1) {
+                            $('#parent-id-group').css('display', 'none');
+                        }else{
                             villageStructures.forEach(villageStructure => {    
                                 $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
                             });   
@@ -145,16 +149,25 @@
                     }
                 });
             }
-
             getEmployeData();
             getVillageStructure();
             getPositionData();
-
             // Show Modal
             $('#add').on('click', function () {
+                $('.modal-title').html('Tambah Struktur Desa');
+                $('#action').val('add');                        
+                $('#employee-id').val('');
+                $('#position-id').val('');
+                $('#status').val('');
+                $('#level').val('');
+                $('#parent-id').val('');
+                $('#description').val('');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
                 $('#modal-struktur').modal('show');
             });
-
             // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
@@ -193,22 +206,17 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-struktur').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.struktur.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.struktur.update') }}";
                 }
-
                 let formData = new FormData($('#form-struktur')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -218,36 +226,51 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
-                        }
+                            data.errors.employee_id ? $('#employee-id').addClass('is-invalid') : $('#employee_id').removeClass('is-invalid')
+                            data.errors.position_id ? $('#position-id').addClass('is-invalid') : $('#position_id').removeClass('is-invalid')
+                            data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
+                            data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
+                            data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
 
+                            toastr.error(data.error);
+                        }
                         if (data.success) {
-                            toastr.success('Sukses!');
+                            if ($('#action').val() == 'add') {
+                                Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
+                            }
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
+                            }
+                            Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
                             $('#modal-struktur').modal('hide');
-                            $('#title').removeClass('is-invalid');
+                            $('#parent-id-group').css('display', 'block');
+                            $('#parent-id')
+                                .find('option')
+                                .remove()
+                                .end()
+                                .append('<option value="">Pilih</option>')
+                                .val('Pilih');
+                            getVillageStructure();
+                            $('#employee-id').removeClass("is-invalid");
+                            $('#position-id').removeClass("is-invalid");
+                            $('#status').removeClass("is-invalid");
+                            $('#level').removeClass("is-invalid");
+                            $('#parent-id').removeClass("is-invalid");
+                            $('#description').removeClass("is-invalid");
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
-                        $('#parent-id')
-                            .find('option')
-                            .remove()
-                            .end()
-                            .append('<option value="">Pilih</option>')
-                            .val('Pilih');
-                        getVillageStructure();
                     }
                 });
             });
-
             // Get data show to inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -255,6 +278,8 @@
                     url: '/admin/struktur/struktur/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        getVillageStructure();
+                        $('.modal-title').html('Edit Struktur Desa');
                         $('#action').val('edit');                        
                         $('#employee-id').val(data.employee_id);
                         $('#position-id').val(data.position_id);
@@ -264,14 +289,13 @@
                         $('#description').val(data.description);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-struktur').modal('show');
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -279,7 +303,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/struktur/hapus/'+user_id,
@@ -296,7 +319,8 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            toastr.success('Data berhasil dihapus');
+                            // toastr.success('Data berhasil dihapus');                            
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });

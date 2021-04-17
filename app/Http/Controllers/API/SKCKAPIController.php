@@ -11,6 +11,21 @@ use Validator;
 
 class SKCKAPIController extends Controller
 {
+
+    public function getSKCK($village_id,Request $req) {
+        $data = $req->all();
+
+        $skck = SKCK::query();
+
+        $q = $req->query('q');
+        $skck->when($q, function($query) use ($q) {
+            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        });
+
+        $skck = $skck->where('village_id', $village_id)->get();
+        return response()->json(ApiResponse::success($skck));
+    }
+
     public function addSKCK(Request $request, $village_id, $user_id)
     {
         $rules = [

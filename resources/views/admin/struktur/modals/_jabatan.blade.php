@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="name">Nama</label>
+                                <label for="name">Jabatan</label>
                                 <input type="text" name="name" id="name" class="form-control form-control-sm">
                             </div>
                         </div>

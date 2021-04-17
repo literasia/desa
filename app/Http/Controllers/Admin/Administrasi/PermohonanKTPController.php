@@ -13,24 +13,24 @@ class PermohonanKTPController extends Controller
         if ($request->ajax()) {
             $data = Ktp::latest()->get();
             return DataTables::of($data)
-                // ->editColumn('status', function($data){
+                ->addColumn('status', function($data){
                     
-                //     switch ($data->status) {
-                //         case 'processing':
-                //             return '<lable class="label label-warning">'. $data->status .'</label>';
-                //             break;
-                //         case 'success':
-                //             return '<lable class="label label-warning">'. $data->status .'</label>';
-                //             break;
-                //         case 'rejected':
-                //             return '<lable class="label label-danger">'. $data->status .'</label>';
-                //             break;                        
-                //         default:
-                //             # code...
-                //             break;
-                //     }
-                    
-                // })
+                    switch ($data->status) {
+                        case 'processing':
+                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            break;
+                        case 'success':
+                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            break;
+                        case 'rejected':
+                            return '<lable class="label label-danger">'. $data->status .'</label>';
+                            break;                        
+                        default:
+                            # code...
+                            break;
+                    }
+                })
+                ->rawColumns(['status'])
                 ->addIndexColumn()
                 ->make(true);
         }
