@@ -36,6 +36,9 @@ class LoginController extends Controller
         } else if (Auth::user()->hasRole('superadmin')) {
             $this->redirectTo = route('superadmin.index');
             return $this->redirectTo;
+        }else if(Auth::user()->hasRole('employee')){
+            $this->redirectTo = route('pegawai.index');
+            return $this->redirectTo;
         } else {
             $this->redirectTo = route('home');
             return $this->redirectTo;
