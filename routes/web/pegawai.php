@@ -101,13 +101,7 @@
 //         Route::get('/pegawai/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
 //     });
 
-// // Pengaduan
-// Route::namespace('Pengaduan')
-//     ->group(function () {
-//     Route::get('/pegawai/pengaduan', 'PengaduanDesaController@index')
-//             ->name('pengaduan.pengaduan');
-//     Route::get('/pegawai/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
-//     });
+
 
 
 // Route::namespace('Peristiwa')

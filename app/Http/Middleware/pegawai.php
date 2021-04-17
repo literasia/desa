@@ -24,9 +24,11 @@ class pegawai
             "wisata-desa" => "village_tour",
             "data-penduduk" => "population_data",
             "pengumuman" => "announcement",
+            "pengaduan" => "complaint",
         ];
 
         if (Auth::user()->hasRole('employee')) {
+            // dd($request->path(), $access_data );
             foreach ($access_data as $key => $value) {
                 if(strrpos($request->path(), $key)){
                     if($emp->access[$value]){

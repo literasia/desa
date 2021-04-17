@@ -206,6 +206,14 @@ Route::namespace("Pegawai")
             Route::get('/pegawai/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
             });
 
+        // Pengaduan
+        Route::namespace('Pengaduan')
+            ->group(function () {
+            Route::get('/pegawai/pengaduan', 'PengaduanDesaController@index')
+                    ->name('pengaduan.pengaduan');
+            Route::get('/pegawai/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
+            });
+
     });
 
 Route::namespace('Admin')

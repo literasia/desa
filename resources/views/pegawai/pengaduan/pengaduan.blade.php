@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Penguaduan | Pengaduan Desa')
@@ -6,14 +6,14 @@
 @section('title-3', 'Pengumuman Desa')
 
 @section('describ')
-    Ini adalah halaman Pengaduan untuk admin
+    Ini adalah halaman Pengaduan untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-comment-alt')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.pengaduan.pengaduan') }}
+    {{ route('pegawai.pengaduan.pengaduan') }}
 @endsection
 
 @section('content')
@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -94,7 +94,7 @@
             processing: true,
             serverSide: false,
             ajax: {
-                url: "{{ route('admin.pengaduan.pengaduan') }}",
+                url: "{{ route('pegawai.pengaduan.pengaduan') }}",
             },
             columns: [{
                     data: 'DT_RowIndex',
@@ -140,7 +140,7 @@
 
         $('#ok_button').click(function() {
             $.ajax({
-                url: '/admin/pengaduan/hapus/' + user_id,
+                url: '/pegawai/pengaduan/hapus/' + user_id,
                 beforeSend: function() {
                     $('#ok_button').text('Menghapus...');
                 },
@@ -153,7 +153,7 @@
                 }
             });
         });
-        
+
         });
     </script>
 @endpush
