@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa | Jenis Usaha')
@@ -6,14 +6,14 @@
 @section('title-3', 'Jenis Usaha')
 
 @section('describ')
-    Ini adalah halaman Jenis Usaha untuk admin
+    Ini adalah halaman Jenis Usaha untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-chart')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.potensi.jenis-usaha') }}
+    {{ route('pegawai.potensi.jenis-usaha') }}
 @endsection
 
 {{-- main content --}}
@@ -60,7 +60,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -114,7 +114,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.potensi.jenis-usaha') }}",
+                    url: "{{ route('pegawai.potensi.jenis-usaha') }}",
                 },
                 columns: [
                 {
@@ -139,7 +139,7 @@
             $('#action').val('add');
             $('#btn')
             .removeClass('btn-info')
-                            .addClass('btn-success')    
+                            .addClass('btn-success')
                 .val('Simpan');
         })
 
@@ -148,13 +148,13 @@
                 var url = '';
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.potensi.jenis-usaha') }}";
+                    url = "{{ route('pegawai.potensi.jenis-usaha') }}";
                      text = "Data sukses ditambahkan";
-                   
+
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.potensi.jenis-usaha.update') }}";
+                    url = "{{ route('pegawai.potensi.jenis-usaha.update') }}";
                      text = "Data sukses diupdate";
                 }
 
@@ -168,13 +168,13 @@
                         if (data.errors) {
                             // for (var count = 0; count <= data.errors.length; count++) {
                             html = data.errors[0];
-                            // 
+                            //
                             $('#jenis_usaha').addClass('is-invalid');
                             toastr.error(html);
                         }
 
                         if (data.success) {
-                            Swal.fire('Success!!',text,'success' );  
+                            Swal.fire('Success!!',text,'success' );
                             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
                             $('#action').val('add');
@@ -189,7 +189,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/potensi/jenis-usaha/edit/'+id,
+                    url: '/pegawai/potensi/jenis-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#jenis_usaha').val(data.data.business_type);
@@ -212,7 +212,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/potensi/jenis-usaha/hapus/'+user_id,
+                    url: '/pegawai/potensi/jenis-usaha/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
@@ -224,6 +224,6 @@
                     }
                 });
             });
-         });      
+         });
     </script>
 @endpush

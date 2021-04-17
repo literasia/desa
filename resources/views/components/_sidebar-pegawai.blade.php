@@ -165,6 +165,43 @@
                 </li>
                 @endif
 
+                @if ($employee->access->village_potency)
+                <li class="@if (request()->is('pegawai/potensi/potensi') || request()->is('pegawai/potensi/jenis-usaha') || request()->is('pegawai/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-mtext">Potensi Desa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('pegawai/potensi/potensi') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.potensi.potensi') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Potensi Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/potensi/jenis-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Usaha</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/potensi/kategori-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori Usaha</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if ($employee->access->slider)
+                <li class="{{ request()->is('pegawai/slider/slider') ? 'active' : '' }}">
+                    <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-gitlab"></i>
+                        </span>
+                        <span class="pcoded-mtext">Slider</span>
+                    </a>
+                </li>
+                @endif
+
                 {{--
                 <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -273,38 +310,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('pegawai/potensi/potensi') || request()->is('pegawai/potensi/jenis-usaha') || request()->is('pegawai/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                        <span class="pcoded-mtext">Potensi Desa</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('pegawai/potensi/potensi') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensi.potensi') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Potensi Desa</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('pegawai/potensi/jenis-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Jenis Usaha</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('pegawai/potensi/kategori-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori Usaha</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li class="{{ request()->is('pegawai/slider/slider') ? 'active' : '' }}">
-                    <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="feather icon-gitlab"></i>
-                        </span>
-                        <span class="pcoded-mtext">Slider</span>
-                    </a>
-                </li>
+
+
                 <li class="@if (request()->is('pegawai/peristiwa/kelahiran') || request()->is('pegawai/peristiwa/kematian') || request()->is('pegawai/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="icon-chart"></i></span>

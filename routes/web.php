@@ -131,6 +131,7 @@ Route::namespace('admin')
                     ->name('library.tambah-baru');
             });
     });
+
 // Pegawai route
 Route::namespace("Pegawai")
     ->name("pegawai.")
@@ -140,7 +141,7 @@ Route::namespace("Pegawai")
             ->name('index');
 
 
-        // Struktur
+        // Struktur : Pegawai
         Route::namespace('Struktur')
             ->group(function () {
                 // Struktur Desa
@@ -189,7 +190,7 @@ Route::namespace("Pegawai")
             });
 
 
-        // Kalender
+        // Kalender : pegawai
         Route::namespace('Kalender')
         ->group(function () {
             //Kalender
@@ -213,7 +214,7 @@ Route::namespace("Pegawai")
                 Route::get('/pegawai/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy');
         });
 
-        // wisata desa
+        // wisata desa : pegawai
         Route::namespace('WisataDesa')
             ->group(function () {
                 Route::get('/pegawai/wisata-desa', 'VillageTourController@index')
@@ -225,14 +226,14 @@ Route::namespace("Pegawai")
                 Route::get('/pegawai/wisata-desa/wisata-desa/hapus/{id}', 'VillageTourController@destroy');
             });
 
-        // Profil
+        // Profil : pegawai
         Route::namespace('ProfilDesa')
             ->group(function () {
                 Route::get('/pegawai/profil-desa', 'ProfilDesaController@index')
                     ->name('profil-desa.profil-desa');
             });
 
-        // Data Penduduk
+        // Data Penduduk : pegawai
         Route::namespace('DataPenduduk')
             ->group(function () {
                 Route::get('/pegawai/data-penduduk/keluarga', 'KeluargaController@index')
@@ -244,7 +245,7 @@ Route::namespace("Pegawai")
             });
 
 
-        // Pengumuman
+        // Pengumuman : pegawai
         Route::namespace('Pengumuman')
             ->group(function () {
             Route::get('/pegawai/pengumuman', 'PengumumanDesaController@index')
@@ -256,7 +257,7 @@ Route::namespace("Pegawai")
             Route::get('/pegawai/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
             });
 
-        // Pengaduan
+        // Pengaduan : pegawai
         Route::namespace('Pengaduan')
             ->group(function () {
             Route::get('/pegawai/pengaduan', 'PengaduanDesaController@index')
@@ -264,14 +265,14 @@ Route::namespace("Pegawai")
             Route::get('/pegawai/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
             });
 
-        // Perpustakaan
+        // Perpustakaan : pegawai
         Route::namespace('Perpustakaan')
             ->group(function () {
             Route::get('/admin/perpustakaan', 'PerpustakaanController@index')
                 ->name('perpustakaan.perpustakaan');
             });
 
-        // Berita
+        // Berita : pegawai
         Route::namespace('Berita')
             ->group(function () {
 
@@ -293,6 +294,49 @@ Route::namespace("Pegawai")
                     ->name('berita.kategori-berita-update');
                 Route::get('/pegawai/berita/kategori-berita/hapus/{id}', 'NewsCategoryController@destroy');
             });
+
+
+        // Potensi : pegawai
+        Route::namespace('Potensi')
+        ->group(function () {
+            Route::get('/pegawai/potensi/potensi', 'PotensiDesaController@index')
+                ->name('potensi.potensi');
+            Route::get('/pegawai/potensi/hapus/{id}', 'PotensiDesaController@destroy');
+            Route::post('/pegawai/potensi/potensi/update/{id}', 'PotensiDesaController@update');
+
+            //Jenis Usaha
+            Route::get('/pegawai/potensi/jenis-usaha', 'JenisUsahaController@index')
+                ->name('potensi.jenis-usaha');
+            Route::post('/pegawai/potensi/jenis-usaha', 'JenisUsahaController@store');
+            Route::post('/pegawai/potensi/jenis-usaha/update', 'JenisUsahaController@update')
+                ->name('potensi.jenis-usaha.update');
+            Route::get('/pegawai/potensi/jenis-usaha/edit/{id}', 'JenisUsahaController@edit');
+            Route::get('/pegawai/potensi/jenis-usaha/hapus/{id}', 'JenisUsahaController@destroy');
+
+
+            //Kategori Usaha
+            Route::get('/pegawai/potensi/kategori-usaha', 'KategoriUsahaController@index')
+            ->name('potensi.kategori-usaha');
+            Route::post('/pegawai/potensi/kategori-usaha', 'KategoriUsahaController@store');
+            Route::post('/pegawai/potensi/kategori-usaha/update', 'KategoriUsahaController@update')
+            ->name('potensi.category.update');
+            Route::get('/pegawai/potensi/kategori-usaha/edit/{id}', 'KategoriUsahaController@edit');
+            Route::get('/pegawai/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy');
+        });
+
+        // Slider
+        Route::namespace('Slider')
+        ->group(function () {
+            Route::get('/pegawai/slider/slider', 'SliderController@index')
+                ->name('slider.slider');
+            Route::post('/pegawai/slider', 'SliderController@store')
+                ->name('slider.store');
+            Route::get('/pegawai/slider/{id}', 'SliderController@edit')->name('slider.edit');
+            Route::post('/pegawai/slider/update', 'SliderController@update')
+                ->name('slider.update');
+            Route::get('/pegawai/slider/destroy/{id}', 'SliderController@destroy')
+                ->name('slider.destroy');
+        });
 
     });
 

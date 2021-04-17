@@ -19,12 +19,22 @@ class pegawai
     {
         $emp = Employee::where("user_id", Auth::user()->id)->first();
         $access_data = [
-            "kalender" => "calendar",
-            "profil-desa" => "village_profile",
-            "wisata-desa" => "village_tour",
             "data-penduduk" => "population_data",
+            "profil-desa" => "village_profile",
+            "administrasi" => "administration",
+            "struktur" => "village_structure",
+            "wisata-desa" => "village_tour",
+            "potensi" => "village_potency",
             "pengumuman" => "announcement",
+            "perpustakaan" => "library",
             "pengaduan" => "complaint",
+            "kalender" => "calendar",
+            "kampanye" => "campaign",
+            "peristiwa" => "event",
+            "slider" => "slider",
+            "berita" => "news",
+            "___" => "finance",
+            "___" => "guest_book",
         ];
 
         if (Auth::user()->hasRole('employee')) {
