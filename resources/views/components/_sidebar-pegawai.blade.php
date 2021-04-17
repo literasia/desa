@@ -131,6 +131,17 @@
                     </li>
                 @endif
 
+                @if ($employee->access->library)
+                <li class="{{ request()->is('pegawai/perpustakaan') ? 'active' : '' }}">
+                    <a href="{{ route('admin.perpustakaan.perpustakaan') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-book-open"></i>
+                        </span>
+                        <span class="pcoded-mtext">Perpustakaan</span>
+                    </a>
+                </li>
+                @endif
+
                 {{--
                 <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -344,14 +355,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="{{ request()->is('pegawai/perpustakaan') ? 'active' : '' }}">
-                    <a href="{{ route('admin.perpustakaan.perpustakaan') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-book-open"></i>
-                        </span>
-                        <span class="pcoded-mtext">Perpustakaan</span>
-                    </a>
-                </li>
+
                  --}}
             </ul>
         </div>

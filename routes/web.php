@@ -264,6 +264,13 @@ Route::namespace("Pegawai")
             Route::get('/pegawai/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
             });
 
+        // Perpustakaan
+        Route::namespace('Perpustakaan')
+            ->group(function () {
+            Route::get('/admin/perpustakaan', 'PerpustakaanController@index')
+                ->name('perpustakaan.perpustakaan');
+            });
+
     });
 
 Route::namespace('Admin')
