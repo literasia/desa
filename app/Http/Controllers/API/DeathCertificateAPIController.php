@@ -9,7 +9,7 @@ use App\Models\DeathCertificate;
 use Validator;
 
 
-class DeathCertificateAPIController
+class DeathCertificateAPIController extends Controller
 {
     public function getDeathCertificate($village_id)
     {

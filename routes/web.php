@@ -299,12 +299,24 @@ Route::namespace('Admin')
 
         Route::namespace('Peristiwa')
             ->group(function () {
+
+                //Kelahiran
                 Route::get('/admin/peristiwa/kelahiran', 'KelahiranController@index')
                     ->name('peristiwa.kelahiran');
+                Route::get('/admin/peristiwa/kelahiran/hapus/{id}', 'KelahiranController@destroy');
+                Route::post('/admin/peristiwa/kelahiran/update/{id}', 'KelahiranController@update');
+    
+                //Kematian
                 Route::get('/admin/peristiwa/kematian', 'KematianController@index')
                     ->name('peristiwa.kematian');
+                Route::get('/admin/peristiwa/kematian/hapus/{id}', 'KematianController@destroy');
+                Route::post('/admin/peristiwa/kematian/update/{id}', 'KematianController@update');
+
+                //Pindah
                 Route::get('/admin/peristiwa/pindah', 'PindahController@index')
                     ->name('peristiwa.pindah');
+                Route::get('/admin/peristiwa/pindah/hapus/{id}', 'PindahController@destroy');
+                Route::post('/admin/peristiwa/pindah/update/{id}', 'PindahController@update');
             });
 
         // Potensi
