@@ -6,7 +6,7 @@ use App\Models\CategoryBusiness;
 use App\Http\Controllers\Controller;
 use App\Utils\ApiResponse;
 
-class CategoryBusinessAPIController
+class CategoryBusinessAPIController extends Controller
 {
     public function getCategoryBusiness($village_id)
     {
