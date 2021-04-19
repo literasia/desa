@@ -92,7 +92,7 @@ class PengumumanDesaController extends Controller
             'end_date'=> $request->input('end_date'),
             'message'=>$request->input('message'),
             'status' => 'aktif',
-            'village_id' => auth()-user()->village->idate
+            'village_id' => auth()->user()->village->id
         ]);
 
         return response()

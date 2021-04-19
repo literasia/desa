@@ -46,6 +46,7 @@ class StrukturDesaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
+        dd($data);
         $validator = Validator::make($data, $this->rules);
         if ($validator->fails()) {
             return response()->json([
