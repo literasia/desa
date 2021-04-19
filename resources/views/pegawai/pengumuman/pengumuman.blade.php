@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Pengumuman | Pengumuman')
@@ -6,14 +6,14 @@
 @section('title-3', 'Pengumuman')
 
 @section('describ')
-Ini adalah halaman Pengumuman untuk admin
+Ini adalah halaman Pengumuman untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-bell')
 @section('icon-r', 'icon-home')
 
 @section('link')
-{{ route('admin.pengumuman.pengumuman') }}
+{{ route('pegawai.pengumuman.pengumuman') }}
 @endsection
 
 {{-- main content --}}
@@ -90,7 +90,7 @@ Ini adalah halaman Pengumuman untuk admin
 </div>
 
 {{-- Modal --}}
-@include('admin.pengumuman.modals._pesan')
+@include('pegawai.pengumuman.modals._pesan')
 @endsection
 
 {{-- addons css --}}
@@ -121,7 +121,7 @@ Ini adalah halaman Pengumuman untuk admin
             processing: true,
             serverSide: false,
             ajax: {
-                url: "{{ route('admin.pengumuman.pengumuman') }}",
+                url: "{{ route('pegawai.pengumuman.pengumuman') }}",
             },
             columns: [{
                     data: 'DT_RowIndex',
@@ -195,12 +195,12 @@ Ini adalah halaman Pengumuman untuk admin
             var url = '';
 
             if ($('#button').hasClass('add')) {
-                url = "{{ route('admin.pengumuman.pesan-add') }}";
+                url = "{{ route('pegawai.pengumuman.pesan-add') }}";
                 text = "Data berhasil ditambahkan";
             }
 
             if ($('#button').hasClass('edit')) {
-                url = "{{ route('admin.pengumuman.pesan-update') }}";
+                url = "{{ route('pegawai.pengumuman.pesan-update') }}";
                 text = "Data berhasil diupdate";
             }
             $.ajax({
@@ -241,7 +241,7 @@ Ini adalah halaman Pengumuman untuk admin
             var id = $(this).attr('id');
 
             $.ajax({
-                url: '/admin/pengumuman/pesan/' + id,
+                url: '/pegawai/pengumuman/pesan/' + id,
                 dataType: 'JSON',
                 success: function(data) {
 
@@ -274,7 +274,7 @@ Ini adalah halaman Pengumuman untuk admin
 
         $('#ok_button').click(function() {
             $.ajax({
-                url: '/admin/pengumuman/pesan/hapus/' + user_id,
+                url: '/pegawai/pengumuman/pesan/hapus/' + user_id,
                 beforeSend: function() {
                     $('#ok_button').text('Menghapus...');
                 },

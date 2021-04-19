@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Keterangan Ahli Waris')
@@ -6,14 +6,14 @@
 @section('title-3', 'Keterangan Ahli Waris')
 
 @section('describ')
-    Ini adalah halaman Keterangan Ahli Waris untuk admin
+    Ini adalah halaman Keterangan Ahli Waris untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.keterangan-ahli-waris') }}
+    {{ route('pegawai.administrasi.keterangan-ahli-waris') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-@include('admin.administrasi.modals._heirs')
+@include('pegawai.administrasi.modals._heirs')
 @endsection
 
 {{-- addons css --}}
@@ -95,7 +95,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.keterangan-ahli-waris') }}",
+                    url: "{{ route('pegawai.administrasi.keterangan-ahli-waris') }}",
                 },
                 columns: [
                 {
@@ -138,7 +138,7 @@
 
                 var url = '';
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.administrasi.keterangan-ahli-waris-update') }}";
+                    url = "{{ route('pegawai.administrasi.keterangan-ahli-waris-update') }}";
                 }
 
                 $('#btn').prop('disabled', true);
@@ -180,7 +180,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/administrasi/keterangan-ahli-waris/'+id,
+                    url: '/pegawai/administrasi/keterangan-ahli-waris/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#action').val('edit');
@@ -204,7 +204,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/administrasi/keterangan-ahli-waris/hapus/'+user_id,
+                    url: '/pegawai/administrasi/keterangan-ahli-waris/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

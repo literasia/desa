@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Permohonan SKCK')
@@ -6,14 +6,14 @@
 @section('title-3', 'Permohonan SKCK')
 
 @section('describ')
-    Ini adalah halaman Permohonan SKCK untuk admin
+    Ini adalah halaman Permohonan SKCK untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.permohonan-skck') }}
+    {{ route('pegawai.administrasi.permohonan-skck') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-@include('admin.administrasi.modals._skck')
+@include('pegawai.administrasi.modals._skck')
 @endsection
 
 {{-- addons css --}}
@@ -95,7 +95,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.permohonan-skck') }}",
+                    url: "{{ route('pegawai.administrasi.permohonan-skck') }}",
                 },
                 columns: [
                 {
@@ -138,7 +138,7 @@
 
                 var url = '';
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.administrasi.permohonan-skck-update') }}";
+                    url = "{{ route('pegawai.administrasi.permohonan-skck-update') }}";
                 }
 
                 $('#btn').prop('disabled', true);
@@ -180,7 +180,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/administrasi/permohonan-skck/'+id,
+                    url: '/pegawai/administrasi/permohonan-skck/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#action').val('edit');
@@ -204,7 +204,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/administrasi/permohonan-skck/hapus/'+user_id,
+                    url: '/pegawai/administrasi/permohonan-skck/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
