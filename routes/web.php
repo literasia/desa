@@ -4,6 +4,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Superadmin route
 Route::namespace('Superadmin')
     ->name('superadmin.')
     ->middleware(['auth', 'auth.superadmin'])
@@ -132,7 +133,7 @@ Route::namespace('Superadmin')
             });
     });
 
-
+// Pegawai route
 Route::namespace("Pegawai")
     ->name("pegawai.")
     ->middleware(['auth','auth.pegawai'])
@@ -184,6 +185,7 @@ Route::namespace("Pegawai")
             });
     });
 
+// Admin route
 Route::namespace('Admin')
     ->name('admin.')
     ->middleware(['auth', 'auth.admin'])
