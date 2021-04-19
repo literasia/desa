@@ -21,6 +21,7 @@ class StrukturDesaController extends Controller
 
     public function index(Request $request) {
         $data = VillageStructure::where('village_id', auth()->user()->village->id)->get();
+        $employee = Employee::where("user_id",auth()->user()->id)->first();
 
         if ($request->ajax()) {
             $villageStructures = VillageStructure::where('village_id', auth()->user()->village->id)->get();
@@ -41,7 +42,7 @@ class StrukturDesaController extends Controller
                 ->make(true);
         }
 
-        return view('pegawai.struktur.struktur');
+        return view('pegawai.struktur.struktur', ["employee"=>$employee]);
     }
 
     public function store(Request $request){

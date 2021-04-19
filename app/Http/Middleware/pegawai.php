@@ -19,12 +19,26 @@ class pegawai
     {
         $emp = Employee::where("user_id", Auth::user()->id)->first();
         $access_data = [
-            "kalender" => "calendar",
+            "data-penduduk" => "population_data",
             "profil-desa" => "village_profile",
+            "administrasi" => "administration",
+            "struktur" => "village_structure",
             "wisata-desa" => "village_tour",
+            "potensi" => "village_potency",
+            "pengumuman" => "announcement",
+            "perpustakaan" => "library",
+            "pengaduan" => "complaint",
+            "kalender" => "calendar",
+            "kampanye" => "campaign",
+            "peristiwa" => "event",
+            "slider" => "slider",
+            "berita" => "news",
+            "___" => "finance",
+            "___" => "guest_book",
         ];
 
         if (Auth::user()->hasRole('employee')) {
+            // dd($request->path(), $access_data );
             foreach ($access_data as $key => $value) {
                 if(strrpos($request->path(), $key)){
                     if($emp->access[$value]){

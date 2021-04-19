@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Data Penduduk | Keluarga')
@@ -6,14 +6,14 @@
 @section('title-3', 'Keluarga')
 
 @section('describ')
-    Ini adalah halaman Keluarga untuk admin
+    Ini adalah halaman Keluarga untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-users')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.data-penduduk.keluarga') }}
+    {{ route('pegawai.data-penduduk.keluarga') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                   
+
                                 </tbody>
                             </table>
                         </div>
@@ -47,9 +47,9 @@
             </div>
         </div>
     </div>
-    
+
 {{-- Modal --}}
-@include('admin.data-penduduk.modals._keluarga')
+@include('pegawai.data-penduduk.modals._keluarga')
 @endsection
 
 {{-- addons css --}}

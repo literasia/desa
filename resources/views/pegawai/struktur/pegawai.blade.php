@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Struktur Desa | Pegawai')
@@ -6,14 +6,14 @@
 @section('title-3', 'Pegawai')
 
 @section('describ')
-    Ini adalah halaman Pegawai untuk admin
+    Ini adalah halaman Pegawai untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-project-diagram')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.struktur.pegawai') }}
+    {{ route('pegawai.struktur.pegawai') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- Modal --}}
     <div id="confirmModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    @include('admin.struktur.modals._pegawai')
+    @include('pegawai.struktur.modals._pegawai')
 @endsection
 
 {{-- addons css --}}
@@ -119,7 +119,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.struktur.pegawai') }}",
+                    url: "{{ route('pegawai.struktur.pegawai') }}",
                 },
                 columns: [
                 {
@@ -159,11 +159,11 @@
 
                 let url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.struktur.pegawai.store') }}";
+                    url = "{{ route('pegawai.struktur.pegawai.store') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.struktur.pegawai.update') }}";
+                    url = "{{ route('pegawai.struktur.pegawai.update') }}";
                 }
 
                 let formData = new FormData($('#form-pegawai')[0]);
@@ -196,7 +196,7 @@
 
                             toastr.error(data.error);
                         }
-            
+
                         // if passed
                         if (data.success) {
                             Swal.fire(
@@ -226,7 +226,7 @@
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/struktur/pegawai/'+id,
+                    url: '/pegawai/struktur/pegawai/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('.modal-title').html('Edit Pegawai');
@@ -260,7 +260,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/struktur/pegawai/hapus/'+user_id,
+                    url: '/pegawai/struktur/pegawai/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
