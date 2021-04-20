@@ -133,6 +133,7 @@
                                 <thead>
                                     <tr class="text-left">
                                     <th>Nama</th>
+                                    <th title="Absensi" >Ab</th>
                                     <th title="Kalender" >KA</th>
                                     <th title="Template">TE</th>
                                     <th title="Log User">LU</th>
