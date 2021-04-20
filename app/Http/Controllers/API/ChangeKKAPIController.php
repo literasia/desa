@@ -9,7 +9,7 @@ use App\Models\ChangeKK;
 use Validator;
 
 
-class ChangeKKAPIController
+class ChangeKKAPIController extends Controller
 {
     public function getChangeKK($village_id)
     {

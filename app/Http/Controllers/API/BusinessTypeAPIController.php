@@ -6,7 +6,7 @@ use App\Models\BusinessType;
 use App\Http\Controllers\Controller;
 use App\Utils\ApiResponse;
 
-class BusinessTypeAPIController
+class BusinessTypeAPIController extends Controller
 {
     public function getBusinessType($village_id)
     {

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Surat Kematian')
@@ -6,14 +6,14 @@
 @section('title-3', 'Surat Kematian')
 
 @section('describ')
-    Ini adalah halaman Surat Kematian untuk admin
+    Ini adalah halaman Surat Kematian untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.surat-kematian') }}
+    {{ route('pegawai.administrasi.surat-kematian') }}
 @endsection
 
 {{-- main content --}}
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-@include('admin.administrasi.modals._surat-kematian')
+@include('pegawai.administrasi.modals._surat-kematian')
 @endsection
 
 {{-- addons css --}}
@@ -107,7 +107,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.surat-kematian') }}",
+                    url: "{{ route('pegawai.administrasi.surat-kematian') }}",
                 },
                 columns: [
                 {
@@ -146,7 +146,7 @@
 
                 var url = '';
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.administrasi.surat-kematian.update') }}";
+                    url = "{{ route('pegawai.administrasi.surat-kematian.update') }}";
                 }
 
                 $('#btn').prop('disabled', true);
@@ -188,7 +188,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/administrasi/surat-kematian/'+id,
+                    url: '/pegawai/administrasi/surat-kematian/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#action').val('edit');
@@ -212,7 +212,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/administrasi/surat-kematian/hapus/'+user_id,
+                    url: '/pegawai/administrasi/surat-kematian/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
