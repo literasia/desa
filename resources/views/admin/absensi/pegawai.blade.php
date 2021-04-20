@@ -24,17 +24,17 @@
                 <div class="card-body">
                     <div class="card-block">
                         <h6>Pilih Desa</h6>
-                        <form id="form-absensi" action="" method="get">
+                        <form id="form-absensi" action="{{route("admin.absensi.pegawai")}}" method="get">
                             <input type="hidden" name="req" value="table">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
-                                    <select name="" id="pilih" class="form-control form-control-sm" required>
+                                    <select name="village_id" id="pilih" class="form-control form-control-sm" required>
                                         <option value="">-- Desa --</option>
-                                            <option value=""></option>
+                                            <option value="{{$village->village_id}}" {{ request()->village_id == $village->village_id ? "selected" : ""}} >{{$village->address}}</option>
                                     </select>
                                 </div>
                                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
-                                    <input type="text" name="tanggal" id="tanggal" class="form-control form-control-sm" placeholder="Tanggal" readonly required value="">
+                                    <input type="text" name="tanggal" id="tanggal" class="form-control form-control-sm" placeholder="Tanggal" readonly required value="{{request()->tanggal ?? ''}}">
                                 </div>
                                 <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
                                     <input type="submit" value="Pilih" class="btn btn-block btn-sm btn-primary shadow-sm">
@@ -63,23 +63,29 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
+                                    @foreach ($data as $d)
                                     <form class="form-absensi">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
-                                        <input type="hidden" name="" value="">
+                                        <input type="hidden" name="employee_id" value="{{$d->id}}">
+                                        <input type="hidden" name="village_id" value="{{request()->village_id}}">
+                                        <input type="hidden" name="tanggal" value="{{request()->tanggal}}">
                                         <tr>
-                                            <td></td>
-                                            <td class="text-center"></td>
-                                            <td class="text-center"><input type="radio" name="status" value="H" required></td>
-                                            <td class="text-center"><input type="radio" name="status" value="A" required></td>
-                                            <td class="text-center"><input type="radio" name="status" value="S" required></td>
-                                            <td class="text-center"><input type="radio" name="status" value="I" required></td>
-                                            <td class="text-center"><input type="radio" name="status" value="L" required></td>
-                                            <td id="" class="text-center">
-                                                <input type="submit" class="btn btn-success" value="approve">
+                                            <td>{{$d->name}}</td>
+                                            <td class="text-center">{{$village->address}}</td>
+                                            <td class="text-center"><input type="radio" name="status" value="H" {{$d->attendance && $d->attendance->status == "H" ? "checked" : ""}} required ></td>
+                                            <td class="text-center"><input type="radio" name="status" value="A" {{$d->attendance && $d->attendance->status == "A" ? "checked" : ""}} required ></td>
+                                            <td class="text-center"><input type="radio" name="status" value="S" {{$d->attendance && $d->attendance->status == "S" ? "checked" : ""}} required ></td>
+                                            <td class="text-center"><input type="radio" name="status" value="I" {{$d->attendance && $d->attendance->status == "I" ? "checked" : ""}} required ></td>
+                                            <td class="text-center"><input type="radio" name="status" value="L" {{$d->attendance && $d->attendance->status == "L" ? "checked" : ""}} required ></td>
+                                            <td id="submit_{{$d->id}}" class="text-center">
+                                                @if ($d->attendance)
+                                                    APPROVE
+                                                @else
+                                                    <input type="submit" class="btn btn-success" value="approve">
+                                                @endif
                                             </td>
                                         </tr>
                                     </form>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -119,6 +125,27 @@
                 theme: 'leaf',
                 format: 'Y-m-d'
             });
+
+            $(".form-absensi").on('submit', function(ev){
+                ev.preventDefault();
+                var params = {};
+                $.each($(this).serializeArray(), function() {
+                    params[this.name] = this.value;
+                });
+                params = {
+                    ...params,
+                    req: 'write'
+                };
+                $.post("{{route('admin.absensi.pegawai.write')}}", params).done(data => {
+                    toastr.success('Data berhasil disimpan');
+                    $(`#submit_${params.employee_id}`).html("APPROVE");
+                }).fail((data) => {
+                    if(typeof data.responseJSON.message == 'string')
+                        return Swal.fire('Error', data.responseJSON.message, 'error');
+                    else if(typeof data.responseText == 'string')
+                        return Swal.fire('Error', data.responseText, 'error');
+                })
+            })
         });
     </script>
 @endpush

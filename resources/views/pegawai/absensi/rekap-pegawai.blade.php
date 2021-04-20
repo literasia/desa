@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Absensi | Rekap Pegawai')
@@ -6,14 +6,14 @@
 @section('title-3', 'Rekap Pegawai')
 
 @section('describ')
-    Ini adalah halaman Rekap Pegawai untuk admin
+    Ini adalah halaman Rekap Pegawai untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-clipboard-check')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.absensi.rekap-pegawai') }}
+    {{ route('pegawai.absensi.rekap-pegawai') }}
 @endsection
 
 {{-- main content --}}
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="card-block">
                         <h6>Pilih Desa</h6>
-                        <form action="{{route("admin.absensi.rekap-pegawai")}}">
+                        <form action="{{route("pegawai.absensi.rekap-pegawai")}}">
                             <input type="hidden" name="req" value="table">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
