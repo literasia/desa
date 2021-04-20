@@ -6,7 +6,7 @@
 @section('title-3', 'Profil Desa')
 
 @section('describ')
-    Ini adalah halaman Profil Desa untuk admin
+    Ini adalah halaman Profil Desa untuk Admin
 @endsection
 
 @section('icon-l', 'fa fa-id-badge')
@@ -18,78 +18,80 @@
 
 {{-- main content --}}
 @section('content')
-    <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="col-12 text-center">
-                            <div class="form-group">
-                                <h4 class="mb-4">Foto Profil Desa</h4>
-                                <img id="thumb_gallery" />
-                                <label for="gallery1" class="sr-only">Pilih Gambar</label>
-                                <input type="file" id="gallery1" class="gallery">
+    <form id="profile-form" method="POST">
+        @csrf
+        <div class="row"> 
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="col-12 text-center">
+                                <div class="form-group">
+                                    <h4 class="mb-4">Foto Profil Desa</h4>
+                                    <img id="thumb_gallery" class="{{ empty($profile->photo)?"":"not_empty" }}" src="{{ asset('storage/'.$profile->photo) }}" />
+                                    <label for="gallery1" class="sr-only">Pilih Gambar</label>
+                                    <input type="file" id="gallery1" class="gallery" name="photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <h4>Profil Desa</h4>
+                            <div class="form-group row">
+                                <label for="nama_desa" class="col-sm-4 col-form-label">Nama Desa</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="village_name" value="{{ auth()->user()->village->name }}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="village_chief" class="col-sm-4 col-form-label">Kepala Desa</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="village_chief" name="village_chief" placeholder="Kepala Desa" value="{{ $profile->village_chief }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address" class="col-sm-4 col-form-label">Alamat</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Alamat" value="{{ $profile->address }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="phone_number" class="col-sm-4 col-form-label">No. Telepon</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="No. Telepon" value="{{ $profile->phone_number }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-4 col-form-label">Keterangan</label>
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">
+                                        {{ $profile->description }}
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <button type="submit" href="" class="btn btn-success">Simpan Profil</button>  
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <h4>Profil Desa</h4>
-                        <form class="mt-4">
-                            <div class="form-group row">
-                                <label for="nama_desa" class="col-sm-4 col-form-label">Nama Desa</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="nama_desa" value="{{ auth()->user()->village->name }}" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="nama_kepala_desa" class="col-sm-4 col-form-label">Kepala Desa</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="nama_kepala_desa" name="nama_kepala_desa" placeholder="Kepala Desa">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="alamat_desa" class="col-sm-4 col-form-label">Alamat</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="alamat_desa" name="alamat_desa" placeholder="Alamat">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="notelp_desa" class="col-sm-4 col-form-label">No. Telepon</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="notelp_desa" name="notelp_desa" placeholder="No. Telepon">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="keterangan" class="col-sm-4 col-form-label">Keterangan</label>
-                                <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan"></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-right">
-                                    <a href="" class="btn btn-success">Simpan</a>  
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    </form>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
                         <h4 class="mb-4">Upload Galeri</h4>
-                        <form>
+                        <form id="gallery-form">
                             <div class="form-group row">
                                 <div class="col-md-4 mb-2">
                                     <label for="gallery2" class="sr-only">Pilih Gambar</label>
@@ -105,7 +107,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 text-right mt-4">
-                                    <input type="submit" name="" class="btn btn-success" value="Simpan">
+                                    <input type="submit" name="" class="btn btn-success" value="Simpan Galeri">
                                 </div>
                             </div>
                         </form>
@@ -143,10 +145,16 @@
             margin-right: 0px;
         }
 
+        #thumb_gallery.not_empty{
+            display:inline-block;
+            width:200px;
+            margin-bottom:30px;
+        }
+
         #thumb_gallery {
             display: none;
         }
- 
+
         #gallery1, #gallery2 {
             visibility: hidden;
             width: 1px;
@@ -202,30 +210,8 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script type="text/javascript">
-        $('.gallery').each(function() {
-            var label = $(this).parents('.form-group').find('label').text();
-            label = (label) ? label : 'Pilih Gambar';
-            target = $(this).attr("id");
-            $(this).wrap('<div class="inputfile"></div>');
-            $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
-            $(this).before('<span class="file-selected"></span>');
-            $(this).change(function(e){
-                var val = $(this).val();
-               
-                // var filename = val.replace(/^.*[\\\/]/, '');
-                // $(this).siblings('.file-selected').text(filename);
-            });
-        });
-        $('.btn-upload').click(function() {
-            target = $(this).attr("target");
-            $("#"+target).trigger('click');
-        });
-    </script>
-    <script type="text/javascript">
-         $(document).on("change","#gallery1",function(){
-            thumb_gallery($(this))
-        })
         function thumb_gallery(inputFile){
             var file = inputFile[0].files[0];
             if(file){
@@ -236,14 +222,33 @@
                 }
      
                 reader.readAsDataURL(file);
-                document.getElementById("thumb_gallery").style.display = "inline-block";
-                document.getElementById("thumb_gallery").style.width = "200px";
-                document.getElementById("thumb_gallery").style.marginBottom = "30px";
+                $("#thumb_gallert").addClass("not_empty");
+                // document.getElementById("thumb_gallery").style.display = "inline-block";
+                // document.getElementById("thumb_gallery").style.width = "200px";
+                // document.getElementById("thumb_gallery").style.marginBottom = "30px";
             }
         }
-    </script>
-    <script type="text/javascript">
         $(document).ready(function(){
+            $('.gallery').each(function() {
+                var label = $(this).parents('.form-group').find('label').text();
+                label = (label) ? label : 'Pilih Gambar';
+                target = $(this).attr("id");
+                $(this).wrap('<div class="inputfile"></div>');
+                $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
+                $(this).before('<span class="file-selected"></span>');
+                $(this).change(function(e){
+                    var val = $(this).val();
+                    // var filename = val.replace(/^.*[\\\/]/, '');
+                    // $(this).siblings('.file-selected').text(filename);
+                });
+            });
+            $('.btn-upload').click(function() {
+                target = $(this).attr("target");
+                $("#"+target).trigger('click');
+            });
+            $(document).on("change","#gallery1",function(){
+                thumb_gallery($(this))
+            });
             $('#gallery2').on('change', function(){ //on file input change
                 if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
                 {
@@ -265,6 +270,34 @@
                 }else{
                     alert("Your browser doesn't support File API!"); //if File API is absent
                 }
+            });
+
+            $('#profile-form').on('submit', function (event) {
+                event.preventDefault();
+
+                var formData = new FormData($('#profile-form')[0]);
+
+                $.ajax({
+                    url: "{{ route('admin.profil-desa.profile-update') }}",
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            Swal.fire('Error!', html??"Gagal Menyimpan Profil", 'danger');
+                        }
+                        if (data.success) {
+                            Swal.fire('Sukses!', 'Berhasil update profil', 'success');
+                        }
+                    },
+                    error:function(err){
+                        Swal.fire('Error!', 'Error saat menyimpan profil desa. Coba lagi beberapa saat', 'error')
+                    }
+                });
             });
         });
     </script>

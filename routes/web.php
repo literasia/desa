@@ -653,6 +653,10 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('/admin/profil-desa', 'ProfilDesaController@index')
                     ->name('profil-desa.profil-desa');
+                Route::post('/pegawai/profil-desa/updateProfile', 'ProfilDesaController@updateProfile')
+                ->name('profil-desa.profile-update');
+                Route::post('/pegawai/profil-desa/updateGallery', 'ProfilDesaController@updateGallery')
+                ->name('profil-desa.profile-gallery');
             });
 
         // Referensi
