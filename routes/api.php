@@ -106,4 +106,8 @@ Route::namespace('API')
         // Village Structure
         Route::get('village-structure/{village_id}', 'VillageStructureAPIController@index');
         Route::post('add-village-structure/{village_id}', 'VillageStructureAPIControllerAPIController@addVillageStructure');
+
+        // Moved Information
+        Route::get('moved-information/{village_id}', 'MovedInformationAPIController@index');
+        Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
     });
