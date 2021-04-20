@@ -299,14 +299,14 @@
                         var html = ''
                         if (data.errors) {
                             html = data.errors[0];
-                            Swal.fire('Error!', html??"Gagal Menyimpan Profil", 'danger');
+                            Swal.fire('Error!', html??"Gagal menyimpan profil", 'danger');
                         }
                         if (data.success) {
                             Swal.fire('Sukses!', 'Berhasil update profil', 'success');
                         }
                     },
                     error:function(err){
-                        Swal.fire('Error!', 'Error saat menyimpan profil desa. Coba lagi beberapa saat', 'error')
+                        Swal.fire('Error!', 'Error saat menyimpan profil desa. Coba beberapa saat lagi', 'error')
                     }
                 });
             });
