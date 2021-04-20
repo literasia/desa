@@ -9,7 +9,7 @@
     Ini adalah halaman Kematian untuk admin
 @endsection
 
-@section('icon-l', 'icon-bell')
+@section('icon-l', 'fa fa-chart-bar')
 @section('icon-r', 'icon-home')
 
 @section('link')

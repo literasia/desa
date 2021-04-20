@@ -9,7 +9,7 @@
     Ini adalah halaman Jenis Usaha untuk pegawai
 @endsection
 
-@section('icon-l', 'icon-chart')
+@section('icon-l', 'fa fa-chart-line')
 @section('icon-r', 'icon-home')
 
 @section('link')

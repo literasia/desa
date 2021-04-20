@@ -91,12 +91,12 @@
                 <div class="card-body">
                     <div class="card-block">
                         <h4 class="mb-4">Upload Galeri</h4>
-                        <form id="gallery-form">
+                        <form action="" id="gallery-form">
                             <div class="form-group row">
-                                <div class="col-md-4 mb-2">
+                                <div class="col-md-6 mb-2">
                                     <label for="gallery2" class="sr-only">Pilih Gambar</label>
                                     <input type="file" id="gallery2" class="gallery" multiple />
-                                    <small class="text-muted d-block">max. 3MB</small>
+                                    <small class="text-muted d-block">Maksimal foto berjumlah 6 dan maksimal ukuran 3MB</small>
                                 </div>
                             </div>
                              <div class="row">
@@ -138,20 +138,18 @@
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <style>
         small {
-            margin-top: -20px;
+            margin-top: -15px;
+        }
+
+        img {
+            width: 150px;
         }
 
         .btn i {
             margin-right: 0px;
         }
 
-        #thumb_gallery.not_empty{
-            display:inline-block;
-            width:200px;
-            margin-bottom:30px;
-        }
-
-        #thumb_gallery {
+        #thumb_gallery, #thumb_gallery.not_empt {
             display: none;
         }
 
@@ -168,6 +166,7 @@
             color: #fff;
             padding: .375rem .75rem;
         }
+
         .btn-upload:hover, .btn-upload:active, .btn-upload:focus {
             background: #00a2a4;
             cursor: pointer;
@@ -180,20 +179,27 @@
             display: block;
             margin-top: 5px;
         }
-        .thumb_pict {
-            margin: 10px 20px 0 0;
+
+        #thumb_gallery.not_empty, .thumb_pict.not_empty {
+            margin-bottom: 30px;
             width: 200px;
+        }
+
+        .thumb_pict {
+            margin: 10px 45px 0 0;
             padding: 20px;
             -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
             box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
             border-radius: .25rem;
         }
+
         .google-maps {
             position: relative;
             padding-bottom: 75%; 
             height: 0;
             overflow: hidden;
         }
+
         .google-maps iframe {
             position: absolute;
             top: 0;
@@ -212,6 +218,26 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script type="text/javascript">
+        $('.gallery').each(function() {
+            var label = $(this).parents('.form-group').find('label').text();
+            label = (label) ? label : 'Pilih Gambar';
+            target = $(this).attr("id");
+            $(this).wrap('<div class="inputfile"></div>');
+            $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
+            $(this).before('<span class="file-selected"></span>');
+            $(this).change(function(e){
+                var val = $(this).val();
+            });
+        });
+        $('.btn-upload').click(function() {
+            target = $(this).attr("target");
+            $("#"+target).trigger('click');
+        });
+    </script>
+    <script type="text/javascript">
+         $(document).on("change","#gallery1",function(){
+            thumb_gallery($(this))
+        });
         function thumb_gallery(inputFile){
             var file = inputFile[0].files[0];
             if(file){
@@ -222,53 +248,40 @@
                 }
      
                 reader.readAsDataURL(file);
-                $("#thumb_gallert").addClass("not_empty");
-                // document.getElementById("thumb_gallery").style.display = "inline-block";
-                // document.getElementById("thumb_gallery").style.width = "200px";
-                // document.getElementById("thumb_gallery").style.marginBottom = "30px";
+                $("#thumb_gallery").addClass("not_empty");
+                document.getElementById("thumb_gallery").style.display = "inline-block";
+                document.getElementByClassName("not_empty").style.display = "inline-block";
+                document.getElementById("thumb_gallery").style.width = "200px";
+                document.getElementById("thumb_gallery").style.marginBottom = "30px";
             }
         }
         $(document).ready(function(){
-            $('.gallery').each(function() {
-                var label = $(this).parents('.form-group').find('label').text();
-                label = (label) ? label : 'Pilih Gambar';
-                target = $(this).attr("id");
-                $(this).wrap('<div class="inputfile"></div>');
-                $(this).before('<span class="btn-upload" target="'+target+'">'+label+'</span>');
-                $(this).before('<span class="file-selected"></span>');
-                $(this).change(function(e){
-                    var val = $(this).val();
-                    // var filename = val.replace(/^.*[\\\/]/, '');
-                    // $(this).siblings('.file-selected').text(filename);
-                });
-            });
-            $('.btn-upload').click(function() {
-                target = $(this).attr("target");
-                $("#"+target).trigger('click');
-            });
-            $(document).on("change","#gallery1",function(){
-                thumb_gallery($(this))
-            });
-            $('#gallery2').on('change', function(){ //on file input change
-                if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-                {
-                    var data = $(this)[0].files; //this file data
-                    
-                    $.each(data, function(index, file){ //loop though each file
-                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-                            var fRead = new FileReader(); //new filereader
-                            fRead.onload = (function(file){ //trigger function on successful read
+            $('#gallery2').on('change', function(){
+                if (window.File && window.FileReader && window.FileList && window.Blob){
+                    var data = $(this)[0].files;
+        
+                    $.each(data, function(index, file){
+                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){
+                            var fRead = new FileReader();
+                            fRead.onload = (function(file){
                             return function(e) {
-                                var img  = $('<img/>').addClass('thumb_pict').attr('src', e.target.result); //create image element 
-                                $('#thumb-output').append(img); //append image to output element
+                               var y = '<div class="thumb_pict d-inline-block">' +
+                                            '<img class="d-block mb-3" src="'+e.target.result+'" />' + 
+                                            '<div class="btn btn-outline-danger btn-sm remove d-block">Hapus</div>' +
+                                        '</div>';
+                                $('#thumb-output').append(y);
+                                $(".remove").click(function(){
+                                    $(this).parent(".thumb_pict").remove();
+                                });
                             };
-                            })(file);
-                            fRead.readAsDataURL(file); //URL representing the file's data.
-                        }
-                    });
+                        })(file);
+                        fRead.readAsDataURL(file);
+                        $(".thumb_pict").addClass("not_empty");
+                    }
+                });
                     
                 }else{
-                    alert("Your browser doesn't support File API!"); //if File API is absent
+                    alert("Your browser doesn't support File API!");
                 }
             });
 
