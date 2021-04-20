@@ -169,7 +169,7 @@
                 </li>
                 <li class="@if (request()->is('admin/potensi/potensi') || request()->is('admin/potensi/jenis-usaha') || request()->is('admin/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-micon"><i class="fa fa-chart-line"></i></span>
                         <span class="pcoded-mtext">Potensi Desa</span>
                     </a>
                     <ul class="pcoded-submenu">
@@ -213,7 +213,7 @@
                 <li class="{{ request()->is('admin/slider/slider') ? 'active' : '' }}">
                     <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
-                            <i class="feather icon-gitlab"></i>
+                            <i class="fa fa-images"></i>
                         </span>
                         <span class="pcoded-mtext">Slider</span>
                     </a>

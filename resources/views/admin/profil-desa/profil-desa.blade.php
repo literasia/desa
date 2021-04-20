@@ -139,6 +139,10 @@
             margin-top: -20px;
         }
 
+        img {
+            width: 150px;
+        }
+
         .btn i {
             margin-right: 0px;
         }
@@ -173,8 +177,7 @@
             margin-top: 5px;
         }
         .thumb_pict {
-            margin: 10px 20px 0 0;
-            width: 200px;
+            margin: 10px 45px 0 0;
             padding: 20px;
             -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
             box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
@@ -212,9 +215,6 @@
             $(this).before('<span class="file-selected"></span>');
             $(this).change(function(e){
                 var val = $(this).val();
-               
-                // var filename = val.replace(/^.*[\\\/]/, '');
-                // $(this).siblings('.file-selected').text(filename);
             });
         });
         $('.btn-upload').click(function() {
@@ -244,26 +244,31 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#gallery2').on('change', function(){ //on file input change
-                if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-                {
-                    var data = $(this)[0].files; //this file data
-                    
-                    $.each(data, function(index, file){ //loop though each file
-                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-                            var fRead = new FileReader(); //new filereader
-                            fRead.onload = (function(file){ //trigger function on successful read
+            $('#gallery2').on('change', function(){
+                if (window.File && window.FileReader && window.FileList && window.Blob){
+                    var data = $(this)[0].files;
+        
+                    $.each(data, function(index, file){
+                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){
+                            var fRead = new FileReader();
+                            fRead.onload = (function(file){
                             return function(e) {
-                                var img  = $('<img/>').addClass('thumb_pict').attr('src', e.target.result); //create image element 
-                                $('#thumb-output').append(img); //append image to output element
+                               var y = '<div class="thumb_pict d-inline-block">'+
+                                            '<img class="d-block mb-3" src="'+e.target.result+'" />' + 
+                                            '<div class="btn btn-outline-danger btn-sm remove d-block">Hapus</div>' +
+                                        '</div>';
+                                $('#thumb-output').append(y);
+                                $(".remove").click(function(){
+                                    $(this).parent(".thumb_pict").remove();
+                                });
                             };
-                            })(file);
-                            fRead.readAsDataURL(file); //URL representing the file's data.
-                        }
-                    });
+                        })(file);
+                        fRead.readAsDataURL(file);
+                    }
+                });
                     
                 }else{
-                    alert("Your browser doesn't support File API!"); //if File API is absent
+                    alert("Your browser doesn't support File API!");
                 }
             });
         });

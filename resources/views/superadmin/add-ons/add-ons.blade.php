@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-6 col-md-3 my-2 py-2 card rounded">
                             <input type="checkbox" name="" checked="" class="d-block checkbox">
-                            <span><i class="feather icon-gitlab fa-2x mb-2"></i></span>
+                            <span><i class="fa fa-images fa-2x mb-2"></i></span>
                             <h6>Slider</h6>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
                 <li class="{{ request()->is('superadmin/list-desa/list-desa') ? 'active' : '' }}">
                     <a href="{{ route('superadmin.list-desa.list-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
-                            <i class="fa fa-school"></i>
+                            <i class="fa fa-mountain"></i>
                         </span>
                         <span class="pcoded-mtext">List Desa</span>
                     </a>

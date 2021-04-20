@@ -6,7 +6,7 @@
 @section('describ')
     Ini adalah halaman List Desa untuk superadmin
 @endsection
-@section('icon-l', 'icon-home')
+@section('icon-l', 'fa fa-mountain')
 @section('icon-r', 'icon-home')
 @section('link')
     {{ route('superadmin.list-desa.list-desa') }}
