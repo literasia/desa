@@ -14,7 +14,6 @@ class CreateAttendancesTable extends Migration
     public function up()
     {
         Schema::create('attendances', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('village_id');
             $table->date('date_attendance');
@@ -22,7 +21,7 @@ class CreateAttendancesTable extends Migration
             $table->unsignedBigInteger('editor_id')->nullable();
             $table->timestamps();
 
-            $table->primary(["id", "employee_id", "village_id", "date_attendance"]);
+            $table->primary(["employee_id", "village_id", "date_attendance"]);
         });
     }
 
