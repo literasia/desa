@@ -20,7 +20,7 @@ class UserSeed extends Seeder
         $superadmin = Role::where('name', 'superadmin')->first();
         $admin = Role::where('name', 'admin')->first();
         $user = Role::where('name', 'user')->first();
-        $employee = Role::where('name', 'user')->first();
+        $employee = Role::where('name', 'employee')->first();
 
         $superadmins = User::create([
             'name'      => 'Superadmin',

@@ -6,7 +6,7 @@
 @section('title-3', 'Profil Desa')
 
 @section('describ')
-    Ini adalah halaman Profil Desa untuk admin
+    Ini adalah halaman Profil Desa untuk Admin
 @endsection
 
 @section('icon-l', 'fa fa-id-badge')
@@ -28,7 +28,7 @@
                             <div class="col-12 text-center">
                                 <div class="form-group">
                                     <h4 class="mb-4">Foto Profil Desa</h4>
-                                    <img id="thumb_gallery" class="{{ empty($profile ?? ''->photo)?"":"not_empty" }}" src="{{ asset('storage/'.$profile ?? ''->photo) }}" />
+                                    <img id="thumb_gallery" class="{{ empty($profile->photo)?"":"not_empty" }}" src="{{ asset('storage/'.$profile->photo) }}" />
                                     <label for="gallery1" class="sr-only">Pilih Gambar</label>
                                     <input type="file" id="gallery1" class="gallery" name="photo">
                                 </div>
@@ -51,26 +51,26 @@
                             <div class="form-group row">
                                 <label for="village_chief" class="col-sm-4 col-form-label">Kepala Desa</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="village_chief" name="village_chief" placeholder="Kepala Desa" value="{{ $profile ?? ''->village_chief }}">
+                                    <input type="text" class="form-control" id="village_chief" name="village_chief" placeholder="Kepala Desa" value="{{ $profile->village_chief }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Alamat" value="{{ $profile ?? ''->address }}">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Alamat" value="{{ $profile->address }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="phone_number" class="col-sm-4 col-form-label">No. Telepon</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="No. Telepon" value="{{ $profile ?? ''->phone_number }}">
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="No. Telepon" value="{{ $profile->phone_number }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="description" class="col-sm-4 col-form-label">Keterangan</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">
-                                        {{ $profile ?? ''->description }}
+                                        {{ $profile->description }}
                                     </textarea>
                                 </div>
                             </div>
@@ -85,7 +85,6 @@
             </div>
         </div>
     </form>
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-12">
             <div class="card shadow-sm">
@@ -153,7 +152,7 @@
         #thumb_gallery, #thumb_gallery.not_empt {
             display: none;
         }
- 
+
         #gallery1, #gallery2 {
             visibility: hidden;
             width: 1px;
@@ -217,6 +216,7 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script type="text/javascript">
         $('.gallery').each(function() {
             var label = $(this).parents('.form-group').find('label').text();
@@ -237,7 +237,7 @@
     <script type="text/javascript">
          $(document).on("change","#gallery1",function(){
             thumb_gallery($(this))
-        })
+        });
         function thumb_gallery(inputFile){
             var file = inputFile[0].files[0];
             if(file){
@@ -255,8 +255,6 @@
                 document.getElementById("thumb_gallery").style.marginBottom = "30px";
             }
         }
-    </script>
-    <script type="text/javascript">
         $(document).ready(function(){
             $('#gallery2').on('change', function(){
                 if (window.File && window.FileReader && window.FileList && window.Blob){
