@@ -9,8 +9,12 @@ class Access extends Model
 {
     protected $guarded = [];
 
-    public function pegawai()
+    public function employee()
     {
-    	return $this->belongsTo(Pegawai::class);
+    	return $this->belongsTo(Employee::class);
+    }
+
+    public function getTableColumns() {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
 }

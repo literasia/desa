@@ -15,13 +15,12 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->BigInteger('village_id');
+            $table->bigInteger('village_id');
             $table->string('name');
             $table->string('nik');
             $table->string('nip');
             $table->string('username');
             $table->string('password');
-            // $table->foreign('village_id')->on('indoregion_villages')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

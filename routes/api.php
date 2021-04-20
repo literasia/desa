@@ -17,8 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::namespace('API')
     ->group(function (){
+        Route::post('user/login', 'AuthController@userLogin');
+        Route::post('user/register', 'AuthController@userRegister');
+
+        Route::get('village/search/{keyword}', 'VillageController@search');
+
         //News
         Route::get('news/{village_id}', 'NewsAPIController@index');
 
@@ -42,6 +48,10 @@ Route::namespace('API')
         Route::post('add-death/{village_id}', 'DeathCertificateAPIController@addDeathCertificate');
         Route::get('get-death/{village_id}', 'DeathCertificateAPIController@getDeathCertificate');
 
+        //Change KK
+        Route::post('add-kk/{village_id}', 'ChangeKKAPIController@addChangeKK');
+        Route::get('get-kk/{village_id}', 'ChangeKKAPIController@getChangeKK');
+
         //Campaign
         Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
 
@@ -59,7 +69,7 @@ Route::namespace('API')
         Route::get('get-heir/{village_id}', 'HeirAPIController@getHeir');
 
         //Slider
-    	  Route::get('slider/{village_id}', 'SliderController@index');
+    	Route::get('slider/{village_id}', 'SliderController@index');
         
         //Domisili
         Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');
@@ -95,5 +105,17 @@ Route::namespace('API')
 
         // Village Structure
         Route::get('village-structure/{village_id}', 'VillageStructureAPIController@index');
-        Route::post('add-village-structure/{village_id}', 'VillageStructureAPIControllerAPIController@addVillageStructure');
+        Route::post('add-village-structure/{village_id}', 'VillageStructureAPIController@addVillageStructure');
+
+        //Birth
+        Route::get('get-birth/{village_id}', 'BirthAPIController@getBirth');
+        Route::post('add-birth/{village_id}', 'BirthAPIController@addBirth');
+
+        //Death
+        Route::get('get-citizen-death/{village_id}', 'DeathAPIController@getDeath');
+        Route::post('add-citizen-death/{village_id}', 'DeathAPIController@addDeath');
+        
+        //Immigrate
+        Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
+        Route::post('add-citizen-immigrate/{village_id}', 'ImmigrateAPIController@addImmigrate');
     });

@@ -21,7 +21,6 @@ Ini adalah halaman kalender untuk desa
 
 
 @include('admin.kalender.modals._kalender')
-
 <div class="row">
     <div class="col-xl-12">
         <div class="card shadow-sm">
@@ -44,6 +43,7 @@ Ini adalah halaman kalender untuk desa
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Konfirmasi</h4>
+                
             </div>
             <div class="modal-body">
                 <h5 align="center" id="confirm">Apakah Anda yakin ingin menghapus data ini?</h5>
@@ -68,7 +68,6 @@ Ini adalah halaman kalender untuk desa
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/fullcalendar/css/fullcalendar.print.css') }}" media='print'>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}">
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" /> --}}
 <style>
     .btn i {
         margin-right: 0px;
@@ -81,12 +80,8 @@ Ini adalah halaman kalender untuk desa
 <script type="text/javascript" src="{{ asset('bower_components/moment/js/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/sweetalert/js/sweetalert.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bower_components/fullcalendar/js/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-clockpicker.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
-<script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -153,6 +148,8 @@ Ini adalah halaman kalender untuk desa
                 $("#addEvent").modal("show");
                 $("#addEvent .modal-title").text("Tambah Event");
                 $("#addEvent #title").val("");
+                 $("#addEvent #description").val("");
+                $("#addEvent #location").val("");
                 $("#addEvent form").attr("action", "tambah");
                 $("#addEvent form").removeAttr("data-id");
                 $("#addEvent #btnEvent").text("Simpan");
@@ -164,11 +161,14 @@ Ini adalah halaman kalender untuk desa
             },
 
             eventClick: function(event) {
+              
                 $("#addEvent").modal("show");
                 $("#addEvent .modal-title").text("Edit Event");
                 $("#addEvent form").attr("action", "update");
                 $("#addEvent #btnEvent").text("Update");
                 $("#addEvent #title").val(event.title);
+                $("#addEvent #description").val(event.description);
+                $("#addEvent #location").val(event.location);
                 $("#addEvent #start_date").val($.fullCalendar.formatDate(event.start, 'YYYY-MM-DD'));
                 $("#addEvent #end_date").val($.fullCalendar.formatDate(event.end, 'YYYY-MM-DD'));
                 $("#addEvent #start_clock").val(event.start.format("hh:mm"));
@@ -179,6 +179,7 @@ Ini adalah halaman kalender untuk desa
 
                 var button_delete = '<button type="button" class="btn btn-sm btn-outline-danger" onclick=del_event(' + event.id + ')>Hapus Event</button>';
                 $("#deleteEvent").html(button_delete);
+
                 // var class_name;
                 // if (event.className == "event-red") {
                 //  class_name = 'Sangat Penting';
@@ -217,13 +218,14 @@ Ini adalah halaman kalender untuk desa
 
     function add_event(form_data) {
         //Pengumpulan Data
-        console.log(form_data);
-        var event_title = $("#event_title").val();
+        var event_title = $("#title").val();
         var start_date = $("#start_date").val();
         var end_date = $("#end_date").val();
         var start_clock = $("#start_clock").val();
         var end_clock = $("#end_clock").val();
         var prioritas = $("#prioritas").val();
+        var loc = $("#location").val();
+        var des = $("textarea#description").val();
         var class_name;
         if (prioritas == "Sangat Penting") {
             class_name = 'event-red';
@@ -237,15 +239,16 @@ Ini adalah halaman kalender untuk desa
             class_name = 'event-green';
         }
 
+        
         //Jika kosong
-        if (event_title == "" || start_date == "" || end_date == "" || start_clock == "" || end_clock == "" || prioritas == "") {
-            swal({
+        if (event_title == "" || start_date == "" || end_date == "" || start_clock == "" || end_clock == "" || prioritas == "" || loc == "" || des == "") {
+            swal.fire({
                 title: "Something is missing!",
                 text: "Tolong Lengkapi Data",
                 type: "warning",
                 buttonsStyling: false,
                 confirmButtonClass: "btn btn-warning"
-            }).catch(swal.noop);
+            });
         }
         //Jika tidak
         else {
@@ -273,18 +276,6 @@ Ini adalah halaman kalender untuk desa
                                     location.reload();
                                     }
                             });
-                        
-                        $("#addEvent").modal("hide");
-                        $("#title").val('');
-                        $("#addEvent .modal-title").text("Tambah Event");
-                        $("#addEvent form").attr("action", "tambah");
-                        $("#addEvent form").removeAttr("data-id");
-                        $("#addEvent #btnEvent").text("Simpan");
-                        $("#start_date").val(moment(start).format());
-                        $("#end_date").val(moment(end).format());
-                        $("#addEvent #start_clock").val("");
-                        $("#addEvent #end_clock").val("");
-                        $("#deleteEvent").html("");
 
                     }
 

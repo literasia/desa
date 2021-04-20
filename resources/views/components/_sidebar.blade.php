@@ -218,6 +218,24 @@
                         <span class="pcoded-mtext">Slider</span>
                     </a>
                 </li>
+                <li class="@if (request()->is('admin/absensi/pegawai') || request()->is('admin/absensi/rekap-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-clipboard-list"></i></span>
+                        <span class="pcoded-mtext">Absensi</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/absensi/pegawai') ? 'active' : '' }}">
+                            <a href="{{ route('admin.absensi.pegawai') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Pegawai</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/absensi/rekap-pegawai') ? 'active' : '' }}">
+                            <a href="{{ route('admin.absensi.rekap-pegawai') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Rekap Pegawai</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="@if (request()->is('admin/peristiwa/kelahiran') || request()->is('admin/peristiwa/kematian') || request()->is('admin/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="icon-chart"></i></span>
@@ -249,7 +267,7 @@
                         <span class="pcoded-mtext">Wisata Desa</span>
                     </a>
                 </li>
-                <li class="@if (request()->is('admin/kalender/kalender') || request()->is('admin/kalender/kegiatan-desa') || request()->is('admin/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/kalender/kalender') ||  request()->is('admin/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-calendar"></i>
@@ -267,11 +285,11 @@
                                 <span class="pcoded-mtext">Kegiatan Desa</span>
                             </a>
                         </li> --}}
-                        {{-- <li class="{{ request()->is('admin/kalender/kategori-kegiatan') ? 'active' : '' }}">
+                        <li class="{{ request()->is('admin/kalender/kategori-kegiatan') ? 'active' : '' }}">
                             <a href="{{ route('admin.kalender.kategori-kegiatan') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Kategori Kegiatan</span>
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
                 <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
