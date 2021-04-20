@@ -70,7 +70,7 @@
                                 <label for="description" class="col-sm-4 col-form-label">Keterangan</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">
-                                        {{ $profile->description }}
+                                        {{ $profile->description??"" }}
                                     </textarea>
                                 </div>
                             </div>
