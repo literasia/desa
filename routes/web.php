@@ -437,6 +437,8 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('/admin/absensi/pegawai', 'AbsensiPegawaiController@index')
                     ->name('absensi.pegawai');
+                Route::post('/admin/absensi/pegawai', 'AbsensiPegawaiController@write')
+                    ->name('absensi.pegawai.write');
                 Route::get('/admin/absensi/rekap-pegawai', 'RekapPegawaiController@index')
                     ->name('absensi.rekap-pegawai');
             });
@@ -606,7 +608,7 @@ Route::namespace('Admin')
                     ->name('peristiwa.kelahiran');
                 Route::get('/admin/peristiwa/kelahiran/hapus/{id}', 'KelahiranController@destroy');
                 Route::post('/admin/peristiwa/kelahiran/update/{id}', 'KelahiranController@update');
-    
+
                 //Kematian
                 Route::get('/admin/peristiwa/kematian', 'KematianController@index')
                     ->name('peristiwa.kematian');
