@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Surat Keterangan Lahir')
@@ -6,14 +6,14 @@
 @section('title-3', 'Surat Keterangan Lahir')
 
 @section('describ')
-    Ini adalah halaman Surat Keterangan Lahir untuk admin
+    Ini adalah halaman Surat Keterangan Lahir untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.surat_keterangan_lahir') }}
+    {{ route('pegawai.administrasi.surat_keterangan_lahir') }}
 @endsection
 
 {{-- main content --}}
@@ -43,7 +43,7 @@
                                         <td>
                                             <label class="badge badge-danger">Baruk Masuk</label>
                                             <label class="badge badge-warning">Sedang Diproses</label>
-                                            <label class="badge badge-success">Selesai</label> 
+                                            <label class="badge badge-success">Selesai</label>
                                         </td>
                                         <td></td>
                                     </tr> --}}
@@ -84,7 +84,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.surat_keterangan_lahir') }}",
+                    url: "{{ route('pegawai.administrasi.surat_keterangan_lahir') }}",
                 },
                 columns: [
                 {

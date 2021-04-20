@@ -60,64 +60,13 @@
 //             ->name('administrasi.keterangan-tanah');
 //     });
 
-// // Berita
-// Route::namespace('Berita')
-//     ->group(function () {
 
-//         // Berita
-//         Route::get('/pegawai/berita/berita', 'NewsController@index')
-//         ->name('berita.berita');
-//         Route::post('/pegawai/berita/berita', 'NewsController@store');
-//         Route::get('/pegawai/berita/berita/{id}', 'NewsController@edit');
-//         Route::post('/pegawai/berita/berita/update', 'NewsController@update')
-//             ->name('berita.berita-update');
-//         Route::get('/pegawai/berita/berita/hapus/{id}', 'NewsController@destroy');
 
-//         // Kategori Berita
-//         Route::get('/pegawai/berita/kategori-berita', 'NewsCategoryController@index')
-//             ->name('berita.kategori-berita');
-//         Route::post('/pegawai/berita/kategori-berita', 'NewsCategoryController@store');
-//         Route::get('/pegawai/berita/kategori-berita/{id}', 'NewsCategoryController@edit');
-//         Route::post('/pegawai/berita/kategori-berita/update', 'NewsCategoryController@update')
-//             ->name('berita.kategori-berita-update');
-//         Route::get('/pegawai/berita/kategori-berita/hapus/{id}', 'NewsCategoryController@destroy');
-//     });
-
-// // Data Penduduk
-// Route::namespace('DataPenduduk')
-//     ->group(function () {
-//         Route::get('/pegawai/data-penduduk/keluarga', 'KeluargaController@index')
-//             ->name('data-penduduk.keluarga');
-//         Route::get('/pegawai/data-penduduk/penduduk', 'PendudukController@index')
-//             ->name('data-penduduk.penduduk');
-//         Route::get('/pegawai/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
-//             ->name('data-penduduk.penduduk.input-data-penduduk');
-//     });
 
 // // Kalender
 // Route::namespace('Kalender')
 //     ->group(function () {
 
-//         //Kalender
-//         Route::get('/pegawai/kalender/kalender', 'KalenderDesaController@index')
-//             ->name('kalender.kalender');
-//         Route::post('/pegawai/kalender/tambah', 'KalenderDesaController@store')->name('kalender.tambah-event');
-//         Route::post('/pegawai/kalender/update/{id}', 'KalenderDesaController@update')->name('kalender.edit-event');
-//         Route::get('/pegawai/kalender/hapus/{id}', 'KalenderDesaController@destroy');
-
-//         // Kegiatan Desa
-//         Route::get('/pegawai/kalender/kegiatan-desa', 'KegiatanDesaController@index')
-//             ->name('kalender.kegiatan-desa');
-
-//         //Kategori Desa
-//         Route::get('/pegawai/kalender/kategori-kegiatan', 'KategoriKegiatanController@index')
-//             ->name('kalender.kategori-kegiatan');
-//             Route::post('/pegawai/kalender/kategori-kegiatan', 'KategoriKegiatanController@store');
-//             Route::post('/pegawai/kalender/kategori-kegiatan/update', 'KategoriKegiatanController@update')
-//             ->name('kalender.kategori.update');
-//             Route::get('/pegawai/kalender/kategori-kegiatan/edit/{id}', 'KategoriKegiatanController@edit');
-//             Route::get('/pegawai/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy');
-//     });
 
 // // Kampanye
 // Route::namespace('Kampanye')
@@ -131,32 +80,8 @@
 //         Route::get('/pegawai/kampanye/kampanye/hapus/{id}', 'CampaignController@destroy');
 //     });
 
-// // Pengaduan
-// Route::namespace('Pengaduan')
-//     ->group(function () {
-//     Route::get('/pegawai/pengaduan', 'PengaduanDesaController@index')
-//             ->name('pengaduan.pengaduan');
-//     Route::get('/pegawai/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
-//     });
 
-// // Pengumuman
-// Route::namespace('Pengumuman')
-//     ->group(function () {
-//     Route::get('/pegawai/pengumuman', 'PengumumanDesaController@index')
-//         ->name('pengumuman.pengumuman');
-//     Route::post('/pegawai/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
-//     Route::get('/pegawai/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
-//     Route::post('/pegawai/pengumuman/pesan/update', 'PengumumanDesaController@update')
-//         ->name('pengumuman.pesan-update');
-//     Route::get('/pegawai/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
-//     });
 
-// // Perpustakaan
-// Route::namespace('Perpustakaan')
-//     ->group(function () {
-//     Route::get('/pegawai/perpustakaan', 'PerpustakaanController@index')
-//         ->name('perpustakaan.perpustakaan');
-//     });
 
 // Route::namespace('Peristiwa')
 //     ->group(function () {
@@ -230,54 +155,6 @@
 //             ->name('slider.update');
 //         Route::get('/pegawai/slider/destroy/{id}', 'SliderController@destroy')
 //             ->name('slider.destroy');
-//     });
-
-// // Struktur
-// Route::namespace('Struktur')
-//     ->group(function () {
-//         // Struktur Desa
-//         Route::get('/pegawai/struktur/struktur', 'StrukturDesaController@index')
-//             ->name('struktur.struktur');
-//         Route::post('/pegawai/struktur/struktur', 'StrukturDesaController@store')
-//             ->name('struktur.struktur.store');
-//         Route::get('/pegawai/struktur/struktur/{id}', 'StrukturDesaController@edit')
-//             ->name('struktur.struktur.edit');
-//         Route::post('/pegawai/struktur/struktur/update', 'StrukturDesaController@update')
-//             ->name('struktur.struktur.update');
-//         Route::get('/pegawai/struktur/struktur/hapus/{id}', 'StrukturDesaController@destroy')
-//             ->name('struktur.struktur.delete');
-//         // route get some data for modals structures
-//         Route::get('/pegawai/struktur/get_employee', 'StrukturDesaController@getEmployee')
-//             ->name('struktur.struktur.get_employee');
-//         Route::get('/pegawai/struktur/get_position', 'StrukturDesaController@getPosition')
-//             ->name('struktur.struktur.get_position');
-//         Route::get('/pegawai/struktur/get_village_structure', 'StrukturDesaController@getVillageStructure')
-//             ->name('struktur.struktur.get_village_structure');
-
-//         // Pegawai
-//         Route::get('/pegawai/struktur/pegawai', 'PegawaiController@index')
-//             ->name('struktur.pegawai');
-//         Route::post('/pegawai/struktur/pegawai', 'PegawaiController@store')
-//             ->name('struktur.pegawai.store');
-//         Route::get('/pegawai/struktur/pegawai/{id}', 'PegawaiController@edit')
-//             ->name('struktur.pegawai.edit');
-//         Route::post('/pegawai/struktur/pegawai/update', 'PegawaiController@update')
-//             ->name('struktur.pegawai.update');
-//         Route::get('/pegawai/struktur/pegawai/hapus/{id}', 'PegawaiController@destroy')
-//             ->name('struktur.pegawai.delete');
-
-//         // Jabatan
-//         Route::get('/pegawai/struktur/jabatan', 'JabatanController@index')
-//             ->name('struktur.jabatan');
-//         Route::post('/pegawai/struktur/jabatan', 'JabatanController@store')
-//             ->name('struktur.jabatan.store');
-//         Route::get('/pegawai/struktur/jabatan/{id}', 'JabatanController@edit')
-//             ->name('struktur.jabatan.edit');
-//         Route::post('/pegawai/struktur/jabatan/update', 'JabatanController@update')
-//             ->name('struktur.jabatan.update');
-//         Route::get('/pegawai/struktur/jabatan/hapus/{id}', 'JabatanController@destroy')
-//             ->name('struktur.jabatan.delete');
-
 //     });
 
 // // Wisata Desa

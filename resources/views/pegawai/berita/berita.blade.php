@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Berita | Berita')
@@ -6,14 +6,14 @@
 @section('title-3', 'Berita')
 
 @section('describ')
-    Ini adalah halaman Berita untuk admin
+    Ini adalah halaman Berita untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-list')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.berita.berita') }}
+    {{ route('pegawai.berita.berita') }}
 @endsection
 
 {{-- main content --}}
@@ -36,7 +36,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -64,7 +64,7 @@
     </div>
 
     {{-- Modal --}}
-    @include('admin.berita.modals._berita')
+    @include('pegawai.berita.modals._berita')
 @endsection
 
 {{-- addons css --}}
@@ -119,7 +119,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.berita.berita') }}",
+                    url: "{{ route('pegawai.berita.berita') }}",
                 },
                 columns: [
                 {
@@ -150,11 +150,11 @@
 
                 var url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.berita.berita') }}";
+                    url = "{{ route('pegawai.berita.berita') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.berita.berita-update') }}";
+                    url = "{{ route('pegawai.berita.berita-update') }}";
                 }
 
                 var formData = new FormData($('#form-news')[0]);
@@ -190,7 +190,7 @@
                             if ($('#action').val() == 'edit') {
                                 Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
                             }
-                            
+
                             $('#modal-berita').modal('hide');
                             $('#title').removeClass('is-invalid');
                             $('#category').removeClass('is-invalid');
@@ -215,7 +215,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/berita/berita/'+id,
+                    url: '/pegawai/berita/berita/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#action').val('edit');
@@ -242,7 +242,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/berita/berita/hapus/'+user_id,
+                    url: '/pegawai/berita/berita/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

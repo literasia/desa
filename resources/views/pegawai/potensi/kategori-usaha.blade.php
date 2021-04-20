@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa | Kategori Usaha')
@@ -6,14 +6,14 @@
 @section('title-3', 'Kategori Usaha')
 
 @section('describ')
-    Ini adalah halaman Kategori Usaha untuk admin
+    Ini adalah halaman Kategori Usaha untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-chart')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.potensi.kategori-usaha') }}
+    {{ route('pegawai.potensi.kategori-usaha') }}
 @endsection
 
 {{-- main content --}}
@@ -60,7 +60,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -114,7 +114,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.potensi.kategori-usaha') }}",
+                    url: "{{ route('pegawai.potensi.kategori-usaha') }}",
                 },
                 columns: [
                 {
@@ -148,13 +148,13 @@
                 var url = '';
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.potensi.kategori-usaha') }}";
+                    url = "{{ route('pegawai.potensi.kategori-usaha') }}";
                     text = "Data sukses ditambahkan";
-                   
+
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.potensi.category.update') }}";
+                    url = "{{ route('pegawai.potensi.category.update') }}";
                     text = "Data sukses diupdate";
                 }
 
@@ -168,13 +168,13 @@
                         if (data.errors) {
                             // for (var count = 0; count <= data.errors.length; count++) {
                             html = data.errors[0];
-                            // 
+                            //
                             $('#kategori_usaha').addClass('is-invalid');
                             toastr.error(html);
                         }
 
                         if (data.success) {
-                            Swal.fire('Success!!',text,'success' );  
+                            Swal.fire('Success!!',text,'success' );
                             $('#kategori_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
                             $('#action').val('add');
@@ -189,7 +189,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/potensi/kategori-usaha/edit/'+id,
+                    url: '/pegawai/potensi/kategori-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         console.log(data.data.category_name)
@@ -213,7 +213,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/potensi/kategori-usaha/hapus/'+user_id,
+                    url: '/pegawai/potensi/kategori-usaha/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
@@ -225,6 +225,6 @@
                     }
                 });
             });
-         });      
+         });
     </script>
 @endpush

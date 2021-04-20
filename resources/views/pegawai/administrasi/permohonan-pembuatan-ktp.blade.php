@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Permohonan Pembuatan KTP')
@@ -6,14 +6,14 @@
 @section('title-3', 'Permohonan Pembuatan KTP')
 
 @section('describ')
-    Ini adalah halaman Permohonan Pembuatan KTP untuk admin
+    Ini adalah halaman Permohonan Pembuatan KTP untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.permohonan_pembuatan_ktp') }}
+    {{ route('pegawai.administrasi.permohonan_pembuatan_ktp') }}
 @endsection
 
 {{-- main content --}}
@@ -72,7 +72,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.permohonan_pembuatan_ktp') }}",
+                    url: "{{ route('pegawai.administrasi.permohonan_pembuatan_ktp') }}",
                 },
                 columns: [
                 {

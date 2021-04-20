@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Keterangan Pindah')
@@ -6,14 +6,14 @@
 @section('title-3', 'Keterangan Pindah')
 
 @section('describ')
-    Ini adalah halaman Keterangan Pindah untuk admin
+    Ini adalah halaman Keterangan Pindah untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.keterangan-pindah') }}
+    {{ route('pegawai.administrasi.keterangan-pindah') }}
 @endsection
 
 {{-- main content --}}
