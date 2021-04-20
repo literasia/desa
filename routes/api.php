@@ -110,4 +110,8 @@ Route::namespace('API')
         // Moved Information
         Route::get('moved-information/{village_id}', 'MovedInformationAPIController@index');
         Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
+
+        // Citizen
+        Route::get('citizen/{village_id}', 'CitizenAPIController@index');
+        Route::post('add-citizen/{village_id}', 'CitizenAPIController@addCitizen');
     });

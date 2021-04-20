@@ -280,8 +280,8 @@ Route::namespace('Admin')
                     ->name('data-penduduk.keluarga');
                 Route::get('/admin/data-penduduk/penduduk', 'PendudukController@index')
                     ->name('data-penduduk.penduduk');
-                Route::get('/admin/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
-                    ->name('data-penduduk.penduduk.input-data-penduduk');
+                // Route::get('/admin/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
+                //     ->name('data-penduduk.penduduk.input-data-penduduk');
             });
 
         // Kalender
