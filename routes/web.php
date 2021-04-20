@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -12,9 +15,21 @@ Route::namespace('Superadmin')
         Route::get('/superadmin', 'SuperadminController@index')
             ->name('index');
 
-        // Library Setting
+        //Add-ons
+        Route::namespace('AddOns')
+            ->group(function () {
+                Route::get('/superadmin/add-ons/add-ons', 'AddOnsController@index')
+                    ->name('add-ons.add-ons');
+            });
+
+        // Library
         Route::namespace('Library')
             ->group(function () {
+                // Tambah 
+                Route::get('/superadmin/library/tambah-baru', 'TambahController@index')
+                    ->name('library.tambah-baru');
+
+                // Library Setting
                 Route::get('/superadmin/library/setting', 'SettingController@index')
                     ->name('library.setting');
                 Route::post('/superadmin/library/setting/tipe', 'SettingController@tipeStore')
@@ -24,9 +39,6 @@ Route::namespace('Superadmin')
                     ->name('library-tipe-update');
                 Route::delete('/superadmin/library/tipe/delete/{id}', 'SettingController@deleteTipe')
                     ->name('library-tipe-delete');
-
-                Route::get('/superadmin/library/tambah-baru', 'TambahController@index')
-                    ->name('library.tambah-baru');
             });
 
         // List Desa
@@ -41,12 +53,12 @@ Route::namespace('Superadmin')
                 Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
             });
 
-         // Kalender
-         Route::namespace('Kalender')
-         ->group(function () {
-         Route::get('/supersuperadmin/kalender', 'KalenderSuperadminController@index')
-             ->name('kalender.kalender');
-         });
+        // Kalender
+        Route::namespace('Kalender')
+            ->group(function () {
+                Route::get('/supersuperadmin/kalender', 'KalenderSuperadminController@index')
+                    ->name('kalender.kalender');
+            });
 
         // Referensi
         Route::namespace('Referensi')
@@ -113,23 +125,6 @@ Route::namespace('Superadmin')
                 Route::post('/superadmin/referensi/suku/update', 'SukuController@update')
                     ->name('referensi.suku-update');
                 Route::get('/supersuperadmin/referensi/suku/hapus/{id}', 'SukuController@destroy');
-            });
-
-        // Library Setting
-        Route::namespace('Library')
-            ->group(function () {
-                Route::get('/superadmin/library/setting', 'SettingController@index')
-                    ->name('library.setting');
-                Route::post('/superadmin/library/setting/tipe', 'SettingController@tipeStore')
-                    ->name('library-tipe');
-                Route::get('/superadmin/library/setting/tipe/{id}', 'SettingController@editTipe');
-                Route::put('/superadmin/library/setting/tipe/update', 'SettingController@updateTipe')
-                    ->name('library-tipe-update');
-                Route::delete('/superadmin/library/tipe/delete/{id}', 'SettingController@deleteTipe')
-                    ->name('library-tipe-delete');
-
-                Route::get('/superadmin/library/tambah-baru', 'TambahController@index')
-                    ->name('library.tambah-baru');
             });
     });
 
@@ -221,7 +216,7 @@ Route::namespace("Pegawai")
                 Route::get('/pegawai/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy');
         });
 
-        // wisata desa : pegawai
+        // Wisata desa
         Route::namespace('WisataDesa')
             ->group(function () {
                 Route::get('/pegawai/wisata-desa', 'VillageTourController@index')
@@ -438,7 +433,7 @@ Route::namespace('Admin')
         Route::get('/admin', 'AdminController@index')
             ->name('index');
 
-        //Absensi
+        // Absensi
         Route::namespace('Absensi')
             ->group(function () {
                 Route::get('/admin/absensi/pegawai', 'AbsensiPegawaiController@index')
@@ -606,6 +601,7 @@ Route::namespace('Admin')
                 ->name('perpustakaan.perpustakaan');
             });
 
+        // Peristiwa
         Route::namespace('Peristiwa')
             ->group(function () {
 
@@ -656,11 +652,15 @@ Route::namespace('Admin')
                 Route::get('/admin/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy');
             });
 
-        // Profil
+        // Profil Desa
         Route::namespace('ProfilDesa')
             ->group(function () {
                 Route::get('/admin/profil-desa', 'ProfilDesaController@index')
                     ->name('profil-desa.profil-desa');
+                Route::post('/pegawai/profil-desa/updateProfile', 'ProfilDesaController@updateProfile')
+                    ->name('profil-desa.profile-update');
+                Route::post('/pegawai/profil-desa/updateGallery', 'ProfilDesaController@updateGallery')
+                    ->name('profil-desa.profile-gallery');
             });
 
         // Referensi
