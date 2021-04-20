@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Berita | Kategori Berita')
@@ -6,14 +6,14 @@
 @section('title-3', 'Kategori Berita')
 
 @section('describ')
-    Ini adalah halaman kategori berita untuk admin
+    Ini adalah halaman kategori berita untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-people')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.berita.kategori-berita') }}
+    {{ route('pegawai.berita.kategori-berita') }}
 @endsection
 
 {{-- main content --}}
@@ -60,7 +60,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -115,7 +115,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.berita.kategori-berita') }}",
+                    url: "{{ route('pegawai.berita.kategori-berita') }}",
                 },
                 columns: [
                 {
@@ -140,11 +140,11 @@
 
                 var url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.berita.kategori-berita') }}";
+                    url = "{{ route('pegawai.berita.kategori-berita') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.berita.kategori-berita-update') }}";
+                    url = "{{ route('pegawai.berita.kategori-berita-update') }}";
                 }
 
                 $.ajax({
@@ -170,7 +170,7 @@
                             if ($('#action').val() == 'edit') {
                                 Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
                             }
-                            
+
                             $('#news_category').removeClass('is-invalid');
                             $('#form-news-category')[0].reset();
                             $('#action').val('add');
@@ -191,7 +191,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/'+id,
+                    url: '/pegawai/berita/kategori-berita/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#news_category').val(data.news_category.name);
@@ -215,7 +215,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/berita/kategori-berita/hapus/'+user_id,
+                    url: '/pegawai/berita/kategori-berita/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

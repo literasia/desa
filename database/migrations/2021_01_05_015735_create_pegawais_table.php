@@ -11,7 +11,7 @@ class CreatePegawaisTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()    
     {
         Schema::create('pegawais', function (Blueprint $table) {
             $table->bigIncrements('id');

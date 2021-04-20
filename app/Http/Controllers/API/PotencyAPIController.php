@@ -8,7 +8,7 @@ use App\Utils\ApiResponse;
 use Illuminate\Http\Request;
 use Validator;
 
-class PotencyAPIController
+class PotencyAPIController extends Controller
 {
 
     public function getPotency($village_id,$user_id)

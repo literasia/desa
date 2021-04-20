@@ -9,7 +9,7 @@
     Ini adalah halaman Kategori Usaha untuk admin
 @endsection
 
-@section('icon-l', 'icon-chart')
+@section('icon-l', 'fa fa-chart-line')
 @section('icon-r', 'icon-home')
 
 @section('link')

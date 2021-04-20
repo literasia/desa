@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Peristiwa | Kematian')
@@ -6,20 +6,20 @@
 @section('title-3', 'Kematian')
 
 @section('describ')
-    Ini adalah halaman Kematian untuk admin
+    Ini adalah halaman Kematian untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-bell')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.peristiwa.kematian') }}
+    {{ route('pegawai.peristiwa.kematian') }}
 @endsection
 
 @section('content')
 <div class="row">
     <div class="col-xl-12">
-        <div class="card shadow">            
+        <div class="card shadow">
             <div class="card-body">
                 <div class="card-block">
                 <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
@@ -30,7 +30,7 @@
                                     <th>#</th>
                                     <th>Penduduk Meninggal</th>
                                     <th>Tanggal Kematian</th>
-                                    <th>Penyebab Kematian</th>                                 
+                                    <th>Penyebab Kematian</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,7 +44,7 @@
 </div>
 
 {{-- Modal --}}
-    @include('admin.peristiwa.modals._kematian')
+    @include('pegawai.peristiwa.modals._kematian')
 @endsection
 
 {{-- addons css --}}
@@ -75,4 +75,4 @@
             });
         });
     </script>
-@endpush            
+@endpush
