@@ -8,8 +8,6 @@ use App\Models\{VillageProfile, VillageGallery};
 use App\Utils\CRUDResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Route;
-
 
 class ProfilDesaController extends Controller
 {

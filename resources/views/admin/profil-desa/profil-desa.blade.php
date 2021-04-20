@@ -69,9 +69,7 @@
                             <div class="form-group row">
                                 <label for="description" class="col-sm-4 col-form-label">Keterangan</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">
-                                        {{ $profile->description??"" }}
-                                    </textarea>
+                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">{{ $profile->description }}</textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -149,7 +147,7 @@
             margin-right: 0px;
         }
 
-        #thumb_gallery, #thumb_gallery.not_empt {
+        #thumb_gallery {
             display: none;
         }
 
@@ -181,6 +179,7 @@
         }
 
         #thumb_gallery.not_empty, .thumb_pict.not_empty {
+            display: inline-block;
             margin-bottom: 30px;
             width: 200px;
         }
@@ -249,10 +248,9 @@
      
                 reader.readAsDataURL(file);
                 $("#thumb_gallery").addClass("not_empty");
-                document.getElementById("thumb_gallery").style.display = "inline-block";
-                document.getElementByClassName("not_empty").style.display = "inline-block";
-                document.getElementById("thumb_gallery").style.width = "200px";
-                document.getElementById("thumb_gallery").style.marginBottom = "30px";
+                // document.getElementById("thumb_gallery").style.display = "inline-block";
+                // document.getElementById("thumb_gallery").style.width = "200px";
+                // document.getElementById("thumb_gallery").style.marginBottom = "30px";
             }
         }
         $(document).ready(function(){
