@@ -83,8 +83,8 @@
                     name: 'name'
                 },
                 {
-                    data: 'phone_number',
-                    name: 'phone_number'
+                    data: 'number_phone',
+                    name: 'number_phone'
                 },
                 {
                     data: 'address',

@@ -32,7 +32,6 @@
                                         <th>No. Telepon</th>
                                         <th>Alamat</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left"></tbody>
@@ -72,7 +71,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.struktur.pegawai') }}",
+                    url: "{{ route('admin.administrasi.keterangan-tanah') }}",
                 },
                 columns: [
                 {
@@ -84,21 +83,17 @@
                     name: 'name'
                 },
                 {
-                    data: 'nik',
-                    name: 'nik'
+                    data: 'number_phone',
+                    name: 'number_phone'
                 },
                 {
-                    data: 'nip',
-                    name: 'nip'
+                    data: 'address',
+                    name: 'address'
                 },
                 {
-                    data: 'username',
-                    name: 'username'
+                    data: 'status',
+                    name: 'status'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
                 ]
             });
         });
