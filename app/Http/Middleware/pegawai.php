@@ -33,6 +33,7 @@ class pegawai
             "peristiwa" => "event",
             "slider" => "slider",
             "berita" => "news",
+            "absensi" => "attendance",
             "___" => "finance",
             "___" => "guest_book",
         ];

@@ -141,6 +141,12 @@ Route::namespace("Pegawai")
         Route::get('/pegawai', 'PegawaiController@index')
             ->name('index');
 
+        // Rekap Absensi : pegawai
+        Route::namespace('Absensi')
+            ->group(function () {
+                Route::get('/pegawai/absensi/rekap-pegawai', 'RekapPegawaiController@index')
+                    ->name('absensi.rekap-pegawai');
+            });
 
         // Struktur : Pegawai
         Route::namespace('Struktur')

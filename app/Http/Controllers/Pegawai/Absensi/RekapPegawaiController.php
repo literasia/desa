@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Absensi;
+namespace App\Http\Controllers\Pegawai\Absensi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +13,7 @@ class RekapPegawaiController extends Controller
 {
     public function index(Request $request) {
         $village = VillageProfile::where("village_id", auth()->user()->village_id)->first();
+        $employee = Employee::where("user_id",auth()->user()->id)->first();
         $data = [];
         if($request->req == "table"){
             $data = Employee::with(["attendances" => function($q) use($request) {
@@ -25,6 +26,6 @@ class RekapPegawaiController extends Controller
             ->get();
 
         }
-        return view('admin.absensi.rekap-pegawai', compact("village","data"));
+        return view('pegawai.absensi.rekap-pegawai', compact("village","data","employee"));
     }
 }
