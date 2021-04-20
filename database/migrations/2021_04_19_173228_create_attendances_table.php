@@ -21,6 +21,8 @@ class CreateAttendancesTable extends Migration
             $table->char('status', 1);
             $table->unsignedBigInteger('editor_id')->nullable();
             $table->timestamps();
+
+            $table->primary(["id", "employee_id", "village_id", "date_attendance"]);
         });
     }
 
