@@ -24,20 +24,20 @@
                 <div class="card-body">
                     <div class="card-block">
                         <h6>Pilih Desa</h6>
-                        <form action="">
+                        <form action="{{route("admin.absensi.rekap-pegawai")}}">
                             <input type="hidden" name="req" value="table">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
-                                    <select name="kelas_id" id="pilih" class="form-control form-control-sm" required>
+                                    <select name="village_id" id="pilih" class="form-control form-control-sm" required>
                                         <option value="">-- Desa --</option>
-                                            <option value=""></option>
+                                        <option value="{{$village->village_id}}" {{ request()->village_id == $village->village_id ? 'selected' : '' }} >{{$village->address}}}</option>
                                     </select>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
-                                    <input type="text" name="tanggal_mulai" id="tanggal_mulai" class="form-control form-control-sm" placeholder="Start Date" readonly value="">
+                                    <input type="text" name="tanggal_mulai" id="tanggal_mulai" class="form-control form-control-sm" placeholder="Start Date" readonly value="{{ request()->tanggal_mulai ?? '' }}"">
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
-                                    <input type="text" name="tanggal_selesai" id="tanggal_selesai" class="form-control form-control-sm" placeholder="End Date" readonly value="">
+                                    <input type="text" name="tanggal_selesai" id="tanggal_selesai" class="form-control form-control-sm" placeholder="End Date" readonly value="{{ request()->tanggal_selesai ?? '' }}">
                                 </div>
                                 <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
                                     <input type="submit" value="Pilih" class="btn btn-block btn-sm btn-primary shadow-sm">
@@ -66,19 +66,24 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
+                                    @foreach ($data as $d)
+                                        @if ($d->attandances)
                                         <tr>
                                             <td colspan="8">Data Kosong</td>
                                         </tr>
+                                        @else
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{$d->name}}</td>
+                                            <td>{{$village->address}}</td>
+                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'H']) </td>
+                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'A']) </td>
+                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'S']) </td>
+                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'I']) </td>
+                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'L']) </td>
                                             <td><button class="btn btn-success shadow-sm nobradius" type="button" disabled>Cetak</button></td>
                                         </tr>
+                                        @endif
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
