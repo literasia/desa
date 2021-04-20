@@ -13,7 +13,7 @@ class DeathAPIController extends Controller
 
     public function getDeath($village_id)
     {
-        $death = Death::where('deaths.village_id', $village_id)->get();
+        $death = Death::where('deaths.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($death, 'Success get data'));
     }

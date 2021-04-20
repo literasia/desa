@@ -10,10 +10,9 @@ use Yajra\DataTables\DataTables;
 class KematianController extends Controller
 {
     public function index( Request $request) {
-        $status = Death::where('village_id', auth()->user()->village->id)->get();
 
         if ($request->ajax()) {
-            $data = Death::where('village_id', auth()->user()->village->id)->get();
+            $data = Death::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {

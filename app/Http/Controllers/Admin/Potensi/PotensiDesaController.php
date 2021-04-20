@@ -15,7 +15,7 @@ class PotensiDesaController extends Controller
         $status = Potency::where('village_id', auth()->user()->village->id)->get('status');
 
         if ($request->ajax()) {
-            $data = Potency::where('village_id', auth()->user()->village->id)->get();
+            $data = Potency::where('village_id', auth()->user()->village->id)->get()->orderByDesc('created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image_ktp', function ($data) {
