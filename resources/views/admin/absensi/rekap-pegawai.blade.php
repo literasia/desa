@@ -67,20 +67,22 @@
                                 </thead>
                                 <tbody class="text-left">
                                     @foreach ($data as $d)
-                                        @if ($d->attandances)
+                                        @if (count($d->attendances))
                                         <tr>
-                                            <td colspan="8">Data Kosong</td>
+                                            <td>{{$d->name}}</td>
+                                            <td>{{$village->address}}</td>
+                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'H']) </td>
+                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'A']) </td>
+                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'S']) </td>
+                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'I']) </td>
+                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'L']) </td>
+                                            <td><button class="btn btn-success shadow-sm nobradius" type="button" disabled>Cetak</button></td>
                                         </tr>
                                         @else
                                         <tr>
                                             <td>{{$d->name}}</td>
                                             <td>{{$village->address}}</td>
-                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'H']) </td>
-                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'A']) </td>
-                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'S']) </td>
-                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'I']) </td>
-                                            <td>@include('admin.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'L']) </td>
-                                            <td><button class="btn btn-success shadow-sm nobradius" type="button" disabled>Cetak</button></td>
+                                            <td colspan="8">Data Absensi kosong</td>
                                         </tr>
                                         @endif
                                     @endforeach
