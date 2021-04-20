@@ -238,7 +238,7 @@
                 </li>
                 <li class="@if (request()->is('admin/peristiwa/kelahiran') || request()->is('admin/peristiwa/kematian') || request()->is('admin/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-micon"><i class="fa fa-chart-bar"></i></span>
                         <span class="pcoded-mtext">Peristiwa</span>
                     </a>
                     <ul class="pcoded-submenu">

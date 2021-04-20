@@ -22,6 +22,7 @@
                 <li class="@if (request()->is('superadmin/library/tambah-baru') || request()->is('superadmin/library/setting')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
+                            <i class="icon-book-open"></i>
                         </span>
                         <span class="pcoded-mtext">Library</span>
                     </a>
@@ -82,6 +83,22 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="{{ request()->is('superadmin/kalender/kalender') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.kalender.kalender') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <span class="pcoded-mtext">Kalender</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('superadmin/add-ons/add-ons') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.add-ons.add-ons') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-puzzle-piece"></i>
+                        </span>
+                        <span class="pcoded-mtext">Add-ons</span>
+                    </a>
                 </li>
             </ul>
         </div>

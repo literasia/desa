@@ -1,6 +1,6 @@
 @extends('layouts.superadmin')
 
-@section('title', 'List Desa')
+@section('title', 'List Desa | List Desa')
 @section('title-2', 'List Desa')
 @section('title-3', 'List Desa')
 @section('describ')
