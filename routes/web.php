@@ -402,11 +402,15 @@ Route::namespace('Admin')
                 Route::get('/admin/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy');
             });
 
-        // Profil
+        // Profil Desa
         Route::namespace('ProfilDesa')
             ->group(function () {
                 Route::get('/admin/profil-desa', 'ProfilDesaController@index')
                     ->name('profil-desa.profil-desa');
+                Route::post('/pegawai/profil-desa/updateProfile', 'ProfilDesaController@updateProfile')
+                    ->name('profil-desa.profile-update');
+                Route::post('/pegawai/profil-desa/updateGallery', 'ProfilDesaController@updateGallery')
+                    ->name('profil-desa.profile-gallery');
             });
 
         // Referensi
