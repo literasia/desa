@@ -18,6 +18,7 @@
 
 {{-- main content --}}
 @section('content')
+
 	<div class="row">
 		<div class="col-xl-12">
 			<div class="card glass-card d-flex justify-content-center align-items-center p-2">
@@ -94,7 +95,91 @@
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
      <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.data-penduduk.penduduk') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'no_kk',
+                    name: 'no_kk' 
+                },
+                {
+                    data: 'nik',
+                    name: 'nik'
+                },
+                {
+                    data: 'place_of_birth',
+                    name: 'place_of_birth'
+                },
+                {
+                    data: 'date_of_birth',
+                    name: 'date_of_birth'
+                },
+                {
+                    data: 'sex',
+                    name: 'sex'
+                },
+                {
+                    data: 'religion',
+                    name: 'religion'
+                },
+                    {
+                    data: 'education',
+                    name: 'education'
+                },
+                {
+                    data: 'marital_status',
+                    name: 'marital_status'
+                },
+                {
+                    data: 'family_status',
+                    name: 'family_status'
+                },
+                {
+                    data: 'work_type',
+                    name: 'work_type'
+                },
+                {
+                    data: 'citizenship',
+                    name: 'citizenship'
+                },
+                {
+                    data: 'province_id',
+                    name: 'province_id'
+                },
+                {
+                    data: 'district_id',
+                    name: 'district_id'
+                },
+                {
+                    data: 'regency_id',
+                    name: 'regency_id'
+                },
+                {
+                    data: 'village_id',
+                    name: 'village_id'
+                },
+                {
+                    data: 'address',
+                    name: 'address'
+                },
+                {
+                    data: 'photo',
+                    name: 'photo'
+                },
+                ]
+            });
         });
     </script>
 @endpush

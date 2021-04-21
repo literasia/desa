@@ -49,4 +49,8 @@ class Village extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+
+    public function citizen(){
+        return $this->hasMany(Citizen::class);
+    }
 }
