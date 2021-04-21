@@ -93,7 +93,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6 mb-2">
                                     <label for="gallery2" class="sr-only">Pilih Gambar</label>
-                                    <input type="file" name="photos[]" id="gallery2" class="gallery" multiple />
+                                    <input type="file" name="files[]" id="gallery2" class="gallery" multiple />
                                     <small class="text-muted d-block">Maksimal foto berjumlah 6 dan maksimal ukuran 3MB</small>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <style>
         small {
-            margin-top: -15px;
+            margin-top: 15px;
         }
 
         img {
@@ -250,35 +250,64 @@
             }
         }
 
+        var count = 0;
         $(document).ready(function(){
-            $('#gallery2').on('change', function(){
-                if (window.File && window.FileReader && window.FileList && window.Blob){
-                    var data = $(this)[0].files;
-        
-                    $.each(data, function(index, file){
-                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){
-                            var fRead = new FileReader();
-                            fRead.onload = (function(file){
-                            return function(e) {
-                               var img = '<div class="thumb_pict d-inline-block">' +
-                                            '<img class="d-block mb-3" src="'+e.target.result+'" />' + 
-                                            '<div class="btn btn-outline-danger btn-sm remove d-block">Hapus</div>' +
-                                        '</div>';
-                                $('#thumb-output').append(img);
-                                $(".remove").click(function(){
-                                    $(this).parent(".thumb_pict").remove();
-                                });
-                            };
-                        })(file);
-                        fRead.readAsDataURL(file);
+            if (window.File && window.FileList && window.FileReader && window.Blob) {
+                $("#gallery2").on("change", function(e) {
+
+                    var files = e.target.files,
+                    filesLength = files.length;
+                    console.log(filesLength);
+                    count++;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function(e) {
+                            var file = e.target;
+                            var img = '<div class="thumb_pict d-inline-block">' +
+                                        '<img class="d-block mb-3" src="'+e.target.result+'" />' + 
+                                        '<div class="btn btn-outline-danger btn-sm remove d-block">Hapus</div>' +
+                                    '</div>';
+                            $('#thumb-output').append(img);
+                            $(".remove").click(function(){
+                                $(this).parent(".thumb_pict").remove();
+                            });
+                        });
+                        fileReader.readAsDataURL(f);
                         $(".thumb_pict").addClass("not_empty");
                     }
                 });
+            } else {
+                alert("Your browser doesn't support to File API");
+            }
+            // $('#gallery2').on('change', function(){
+            //     if (window.File && window.FileReader && window.FileList && window.Blob){
+            //         var data = $(this)[0].files;
+        
+            //         $.each(data, function(index, file){
+            //             if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){
+            //                 var fRead = new FileReader();
+            //                 fRead.onload = (function(file){
+            //                 return function(e) {
+            //                    var img = '<div class="thumb_pict d-inline-block">' +
+            //                                 '<img class="d-block mb-3" src="'+e.target.result+'" />' + 
+            //                                 '<div class="btn btn-outline-danger btn-sm remove d-block">Hapus</div>' +
+            //                             '</div>';
+            //                     $('#thumb-output').append(img);
+            //                     $(".remove").click(function(){
+            //                         $(this).parent(".thumb_pict").remove();
+            //                     });
+            //                 };
+            //             })(file);
+            //             fRead.readAsDataURL(file);
+            //             $(".thumb_pict").addClass("not_empty");
+            //         }
+            //     });
                     
-                }else{
-                    alert("Your browser doesn't support File API!");
-                }
-            });
+            //     }else{
+            //         alert("Your browser doesn't support File API!");
+            //     }
+            // });
 
             $('#profile-form').on('submit', function (event) {
                 event.preventDefault();
@@ -310,3 +339,35 @@
         });
     </script>
 @endpush
+
+<script type="text/javascript">
+var count =0;
+$(document).ready(function() {
+    if (window.File && window.FileList && window.FileReader) {
+        $("#files").on("change", function(e) {
+
+            var files = e.target.files,
+            filesLength = files.length;
+            console.log(filesLength);
+            count++;
+            for (var i = 0; i < filesLength; i++) {
+                var f = files[i]
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                    var file = e.target;
+                    $("<span class=\"pip\">" +
+                        "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                        "<br/><span class=\"removeImg\">Remove image</span>" +
+                        "</span>").insertAfter("#files");
+                    $(".removeImg").click(function(){
+                        $(this).parent(".pip").remove();
+                    });
+                });
+                fileReader.readAsDataURL(f);
+            }
+        });
+    } else {
+        alert("Your browser doesn't support to File API")
+    }
+});
+</script>
