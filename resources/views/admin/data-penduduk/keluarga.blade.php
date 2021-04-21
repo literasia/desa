@@ -33,7 +33,7 @@
                                             <th>Kepala Keluarga</th>
                                             <th>Alamat</th>
                                             <th>Desa/Kelurahan</th>
-                                            <th>Aplikasi</th>
+                                            <!-- <th>Aplikasi</th> -->
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
