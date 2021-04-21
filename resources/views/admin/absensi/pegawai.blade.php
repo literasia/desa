@@ -45,49 +45,51 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>Nama Lengkap</th>
-                                        <th class="text-center">Desa</th>
-                                        <th class="text-center">H</th>
-                                        <th class="text-center">A</th>
-                                        <th class="text-center">S</th>
-                                        <th class="text-center">I</th>
-                                        <th class="text-center">Lainnya</th>
-                                        <th class="text-center">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    @foreach ($data as $d)
-                                    <form class="form-absensi">
-                                        <input type="hidden" name="employee_id" value="{{$d->id}}">
-                                        <input type="hidden" name="village_id" value="{{request()->village_id}}">
-                                        <input type="hidden" name="tanggal" value="{{request()->tanggal}}">
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
                                         <tr>
-                                            <td>{{$d->name}}</td>
-                                            <td class="text-center">{{$village->address}}</td>
-                                            <td class="text-center"><input type="radio" name="status" value="H" {{$d->attendance && $d->attendance->status == "H" ? "checked" : ""}} required ></td>
-                                            <td class="text-center"><input type="radio" name="status" value="A" {{$d->attendance && $d->attendance->status == "A" ? "checked" : ""}} required ></td>
-                                            <td class="text-center"><input type="radio" name="status" value="S" {{$d->attendance && $d->attendance->status == "S" ? "checked" : ""}} required ></td>
-                                            <td class="text-center"><input type="radio" name="status" value="I" {{$d->attendance && $d->attendance->status == "I" ? "checked" : ""}} required ></td>
-                                            <td class="text-center"><input type="radio" name="status" value="L" {{$d->attendance && $d->attendance->status == "L" ? "checked" : ""}} required ></td>
-                                            <td id="submit_{{$d->id}}" class="text-center">
-                                                @if ($d->attendance)
-                                                    APPROVE
-                                                @else
-                                                    <input type="submit" class="btn btn-success" value="approve">
-                                                @endif
-                                            </td>
+                                            <th>Nama Lengkap</th>
+                                            <th class="text-center">Desa</th>
+                                            <th class="text-center">H</th>
+                                            <th class="text-center">A</th>
+                                            <th class="text-center">S</th>
+                                            <th class="text-center">I</th>
+                                            <th class="text-center">Lainnya</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
-                                    </form>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        @foreach ($data as $d)
+                                        <form class="form-absensi">
+                                            <input type="hidden" name="employee_id" value="{{$d->id}}">
+                                            <input type="hidden" name="village_id" value="{{request()->village_id}}">
+                                            <input type="hidden" name="tanggal" value="{{request()->tanggal}}">
+                                            <tr>
+                                                <td>{{$d->name}}</td>
+                                                <td class="text-center">{{$village->address}}</td>
+                                                <td class="text-center"><input type="radio" name="status" value="H" {{$d->attendance && $d->attendance->status == "H" ? "checked" : ""}} required ></td>
+                                                <td class="text-center"><input type="radio" name="status" value="A" {{$d->attendance && $d->attendance->status == "A" ? "checked" : ""}} required ></td>
+                                                <td class="text-center"><input type="radio" name="status" value="S" {{$d->attendance && $d->attendance->status == "S" ? "checked" : ""}} required ></td>
+                                                <td class="text-center"><input type="radio" name="status" value="I" {{$d->attendance && $d->attendance->status == "I" ? "checked" : ""}} required ></td>
+                                                <td class="text-center"><input type="radio" name="status" value="L" {{$d->attendance && $d->attendance->status == "L" ? "checked" : ""}} required ></td>
+                                                <td id="submit_{{$d->id}}" class="text-center">
+                                                    @if ($d->attendance)
+                                                        APPROVE
+                                                    @else
+                                                        <input type="submit" class="btn btn-success" value="approve">
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </form>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

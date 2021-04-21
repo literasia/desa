@@ -21,39 +21,41 @@
 
 	<div class="row">
 		<div class="col-xl-12">
-			<div class="card shadow-sm">
-				<div class="card-body">
-					<div class="card-block pt-0">
-						<div class="dt-responsive table-responsive">
-							<table id="order-table" class="table table-striped nowrap shadow-sm">
-								<thead class="text-left">
-									<tr>
-										<th>No</th>
-                                        <th>Nama Lengkap</th>
-										<th>No. KK</th>
-                                        <th>NIK</th>
-										<th>Tempat Lahir</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Agama</th>
-                                        <th>Pendidikan</th>
-                                        <th>Status</th>
-                                        <th>Status Dalam Keluarga</th>
-                                        <th>Pekerjaan</th>
-                                        <th>Kewarganegaraan</th>
-                                        <th>Provinsi</th>
-                                        <th>Kabupaten</th>
-                                        <th>Kecamatan</th>
-                                        <th>Desa/Kelurahan</th>
-                                        <th>Alamat</th>
-                                        <th>Foto</th> 
-									</tr>
-								</thead>
-								<tbody class="text-left">
-							
-								</tbody>
-							</table>
-						</div>
+			<div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+    						<div class="dt-responsive table-responsive">
+    							<table id="order-table" class="table table-striped nowrap shadow-sm">
+    								<thead class="text-left">
+    									<tr>
+    										<th>No</th>
+                                            <th>Nama Lengkap</th>
+    										<th>No. KK</th>
+    										<th>NIK</th>
+                                            <th>Tempat Lahir</th>
+                                            <th>Tanggal Lahir</th>
+    										<th>Jenis Kelamin</th>
+    										<th>Agama</th>
+                                            <th>Pendidikan</th>
+                                            <th>Pekerjaan</th>
+    										<th>Status</th>
+                                            <th>Status Dalam Keluarga</th>
+                                            <th>Kewarganegaraan</th>
+                                            <th>Provinsi</th>
+                                            <th>Kabupaten</th>
+                                            <th>Kecamatan</th>
+                                            <th>Desa/Kelurahan</th>
+                                            <th>Alamat</th>
+                                            <th>Foto</th>
+    									</tr>
+    								</thead>
+    								<tbody class="text-left">
+    							
+    								</tbody>
+    							</table>
+    						</div>
+                        </div>
 					</div>
 				</div>
 			</div>
