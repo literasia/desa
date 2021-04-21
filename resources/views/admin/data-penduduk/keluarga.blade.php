@@ -25,15 +25,16 @@
                     <div class="card-body">
                         <div class="card-block p-2">
                             <div class="dt-responsive table-responsive">
+                                <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                                 <table id="order-table" class="table table-striped nowrap shadow-sm">
                                     <thead class="text-left">
                                         <tr>
                                             <th>No</th>
                                             <th>No. KK</th>
                                             <th>Kepala Keluarga</th>
-                                            <th>Alamat</th>
+                                            <th>Alamat</th> 
                                             <th>Desa/Kelurahan</th>
-                                            <!-- <th>Aplikasi</th> -->
+                                           <!--  {{-- <th>Aplikasi</th> --}} -->
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -83,7 +84,6 @@
         .btn i {
             margin-right: 0px;
         }
-
         .select2-container {
             width: 100% !important;
             padding: 0;
@@ -116,23 +116,19 @@
                             // push citizens
                             citizens.push(citizen);
                         });
-
                         // add item to input select
                         addItemToCitizenInput();
                         
                     }
                 });
             }
-
             // add item to input select 
             function addItemToCitizenInput(){
                 citizens.forEach(citizen => {
                     $("#citizen_id").append(new Option(`${citizen.name}`, `${citizen.id}`));
                 });
             }
-
             getCitizenData();
-
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -166,7 +162,6 @@
                     },
                 ]
             });
-
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Keluarga');
                 $('#action').val('add');
@@ -177,22 +172,17 @@
                     .val('Simpan');
                 $('#modal-keluarga').modal('show');
             });
-
            // Event Submit
            $('#form-keluarga').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.data-penduduk.keluarga.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.data-penduduk.keluarga.update') }}";
                 }
-
                 let formData = new FormData($('#form-keluarga')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -202,11 +192,9 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
-
                         // If has Errors
                         if (data.errors) {
                             data.errors.citizen_id ? $('#citizen_id').addClass('is-invalid') : $('#citizen_id').removeClass('is-invalid')
-
                             toastr.error(data.error);
                         }
             
@@ -225,7 +213,6 @@
                     }
                 });
             });
-
             // Get datas show on inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -245,7 +232,6 @@
                     }
                 });
             });
-
             // Get data keluarga show on inputs
             $(document).on('click', '.view-keluarga', function () {
                 let id = $(this).attr('id');
@@ -257,7 +243,6 @@
                             
                         let familyGroup = data.family_group;
                         let familyGroupContent = ``;
-
                         familyGroup.forEach(item => {
                             let familyStatus = "";
                             if (item.family_status == "father") {
@@ -269,15 +254,12 @@
                             }
                             familyGroupContent += `<div>${item.name} - ${familyStatus}</div>`;
                         });
-
                         $('#head_of_family').html(data.head_of_family);
                         $('#family_group').html(familyGroupContent);
-
                         $('#modal-view-keluarga').modal('show');
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -285,7 +267,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/data-penduduk/keluarga/hapus/'+user_id,

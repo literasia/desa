@@ -42,11 +42,12 @@
     										<th>Status</th>
                                             <th>Status Dalam Keluarga</th>
                                             <th>Kewarganegaraan</th>
-                                            <th>Alamat</th>
-                                            <th>RT/RW</th>
+                                            <th>Provinsi</th>
+                                            <th>Kabupaten</th>
+                                            <th>Kecamatan</th>
                                             <th>Desa/Kelurahan</th>
-                                            <th>Kode Pos</th>
-    										<th>Actions</th>
+                                            <th>Alamat</th>
+                                            <th>Foto</th>
     									</tr>
     								</thead>
     								<tbody class="text-left">
