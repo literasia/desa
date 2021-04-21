@@ -69,9 +69,7 @@
                             <div class="form-group row">
                                 <label for="description" class="col-sm-4 col-form-label">Keterangan</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">
-                                        {{ $profile->description }}
-                                    </textarea>
+                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Keterangan">{{ $profile->description }}</textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -149,8 +147,12 @@
             margin-right: 0px;
         }
 
-        #thumb_gallery, #thumb_gallery.not_empt {
+        #thumb_gallery{
             display: none;
+        }
+
+        #thumb_gallery.not_empty {
+            display: inline-block;
         }
 
         #gallery1, #gallery2 {
