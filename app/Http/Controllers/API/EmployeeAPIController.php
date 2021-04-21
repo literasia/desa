@@ -9,6 +9,7 @@ use App\Utils\ApiResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\{User, Role};
 
 class EmployeeAPIController extends Controller
 {
@@ -41,7 +42,6 @@ class EmployeeAPIController extends Controller
             'name.required' => 'This column cannot be empty',
             'nik.required' => 'This column cannot be empty',
             'nip.required' => 'This column cannot be empty',
-            'address.required' => 'This column cannot be empty',
             'username.required' => 'This column cannot be empty',
             'password.required' => 'This column cannot be empty',
         ];
@@ -68,15 +68,29 @@ class EmployeeAPIController extends Controller
             $photo = $request->file('photo')->store('pegawai', 'public');
         }
 
-        $employee = Employee::create([
-            "village_id" => $village_id,
-            "name" => $request->name,
-            "nik" => $request->nik,
-            "nip" => $request->nip,
-            "address" => $request->address,
-            "username" => $request->username,
-            "password" => Hash::make($request->password),
-            "photo" => $photo
+        $user = User::create([
+            'name' => $request->name,
+            'username' => str_replace(' ', '_', strtolower($request->username)),
+            'email' => null,
+            'password' => hash::make($request->password),
+            'village_id' => $village_id,
+        ]);
+    
+        $user_id = User::findOrFail($user->id);
+
+        // get Roles to attach user roles
+        $role = Role::where('name', 'employee')->first();
+
+        // attach
+        $user_id->roles()->attach($role->id);
+
+        $employee =  Employee::create([
+            'village_id' => $village_id,
+            'name' => $request->name,
+            'nik' => $request->nik,
+            'nip' => $request->nip,
+            'photo' => $photo,
+            'user_id' => $user->id,
         ]);
 
         return response()->json(ApiResponse::success($employee, 'Success add data'));
