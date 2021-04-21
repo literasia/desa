@@ -93,7 +93,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6 mb-2">
                                     <label for="gallery2" class="sr-only">Pilih Gambar</label>
-                                    <input type="file" id="gallery2" class="gallery" multiple />
+                                    <input type="file" name="photos[]" id="gallery2" class="gallery" multiple />
                                     <small class="text-muted d-block">Maksimal foto berjumlah 6 dan maksimal ukuran 3MB</small>
                                 </div>
                             </div>
@@ -232,9 +232,8 @@
             target = $(this).attr("target");
             $("#"+target).trigger('click');
         });
-    </script>
-    <script type="text/javascript">
-         $(document).on("change","#gallery1",function(){
+
+        $(document).on("change","#gallery1",function(){
             thumb_gallery($(this))
         });
         function thumb_gallery(inputFile){
@@ -248,11 +247,9 @@
      
                 reader.readAsDataURL(file);
                 $("#thumb_gallery").addClass("not_empty");
-                // document.getElementById("thumb_gallery").style.display = "inline-block";
-                // document.getElementById("thumb_gallery").style.width = "200px";
-                // document.getElementById("thumb_gallery").style.marginBottom = "30px";
             }
         }
+
         $(document).ready(function(){
             $('#gallery2').on('change', function(){
                 if (window.File && window.FileReader && window.FileList && window.Blob){
@@ -263,11 +260,11 @@
                             var fRead = new FileReader();
                             fRead.onload = (function(file){
                             return function(e) {
-                               var y = '<div class="thumb_pict d-inline-block">' +
+                               var img = '<div class="thumb_pict d-inline-block">' +
                                             '<img class="d-block mb-3" src="'+e.target.result+'" />' + 
                                             '<div class="btn btn-outline-danger btn-sm remove d-block">Hapus</div>' +
                                         '</div>';
-                                $('#thumb-output').append(y);
+                                $('#thumb-output').append(img);
                                 $(".remove").click(function(){
                                     $(this).parent(".thumb_pict").remove();
                                 });

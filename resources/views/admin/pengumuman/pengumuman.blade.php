@@ -20,51 +20,53 @@ Ini adalah halaman Pengumuman untuk admin
 @section('content')
 <div class="row">
     <div class="col-xl-12">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <div class="card-block pt-0">
-                    <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
-                    <div class="dt-responsive table-responsive">
-                        <table id="order-table" class="table table-striped nowrap shadow-sm">
-                            <thead class="text-left">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Set Waktu</th>
-                                    <th>Tanggal Upload</th>
-                                    <th>Tampil Pada</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-left">
-                                {{-- @php
-                                        $i = 1;
+        <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+            <div class=" col-xl-12 card shadow mb-0 p-0">
+                <div class="card-body">
+                    <div class="card-block p-2">
+                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
+                        <div class="dt-responsive table-responsive">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                <thead class="text-left">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul</th>
+                                        <th>Set Waktu</th>
+                                        <th>Tanggal Upload</th>
+                                        <th>Tampil Pada</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    {{-- @php
+                                            $i = 1;
+                                        @endphp
+                                        @forelse($data as $pesan)
+                                            <tr>
+                                                <td>{{ $i }}</td>
+                                    <td>{{ $pesan->title }}</td>
+                                    <td>{{ $pesan->message_time }}</td>
+                                    <td>{{ date("Y-m-d", strtotime($pesan->created_at)) }}</td>
+                                    <td>{{ $pesan->start_date }}</td>
+                                    <td>{{ $pesan->status }}</td>
+                                    <td>
+                                        <button type="button" data-id="{{$pesan->id}}" class="edit btn btn-mini btn-info shadow-sm">Edit</button>
+                                        &nbsp;&nbsp;
+                                        <button type="button" data-id="{{$pesan->id}}" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>
+                                    </td>
+                                    </tr>
+                                    @php
+                                    $i++;
                                     @endphp
-                                    @forelse($data as $pesan)
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                <td>{{ $pesan->title }}</td>
-                                <td>{{ $pesan->message_time }}</td>
-                                <td>{{ date("Y-m-d", strtotime($pesan->created_at)) }}</td>
-                                <td>{{ $pesan->start_date }}</td>
-                                <td>{{ $pesan->status }}</td>
-                                <td>
-                                    <button type="button" data-id="{{$pesan->id}}" class="edit btn btn-mini btn-info shadow-sm">Edit</button>
-                                    &nbsp;&nbsp;
-                                    <button type="button" data-id="{{$pesan->id}}" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>
-                                </td>
-                                </tr>
-                                @php
-                                $i++;
-                                @endphp
-                                @empty
-                                <tr>
-                                    <td colspan="5" class="text-center">Tidak ada data</td>
-                                </tr>
-                                @endforelse --}}
-                            </tbody>
-                        </table>
+                                    @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">Tidak ada data</td>
+                                    </tr>
+                                    @endforelse --}}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
