@@ -12,6 +12,23 @@
                     </a>
                 </li>
 
+                @if ($employee->access->attendance)
+                <li class="@if (request()->is('pegawai/absensi/pegawai') || request()->is('pegawai/absensi/rekap-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-clipboard-list"></i></span>
+                        <span class="pcoded-mtext">Absensi</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+
+                        <li class="{{ request()->is('pegawai/absensi/rekap-pegawai') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.absensi.rekap-pegawai') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Rekap Pegawai</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
                 @if ($employee->access->calendar)
                 <li class="@if (request()->is('pegawai/kalender/kalender') || request()->is('pegawai/kalender/kegiatan-desa') || request()->is('pegawai/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">

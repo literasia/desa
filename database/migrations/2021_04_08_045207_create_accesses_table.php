@@ -17,6 +17,7 @@ class CreateAccessesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('village_id');
             $table->bigInteger('employee_id');
+            $table->boolean('attendance')->default('0');
             $table->boolean('calendar')->default('0');
             $table->boolean('template')->default('0');
             $table->boolean('log_user')->default('0');

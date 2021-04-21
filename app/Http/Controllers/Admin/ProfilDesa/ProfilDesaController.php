@@ -9,7 +9,6 @@ use App\Utils\CRUDResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-
 class ProfilDesaController extends Controller
 {
     public function index() {
