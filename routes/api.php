@@ -115,6 +115,11 @@ Route::namespace('API')
         Route::get('citizen/{village_id}', 'CitizenAPIController@index');
         Route::post('add-citizen/{village_id}', 'CitizenAPIController@addCitizen');
 
+        // Family
+        Route::get('family/{village_id}', 'FamilyAPIController@index');
+        Route::post('add-family/{village_id}', 'FamilyAPIController@addFamily');
+        Route::get('view-group-family/{id}/{village_id}', 'FamilyAPIController@getGroupFamily');
+
         //Birth
         Route::get('get-birth/{village_id}', 'BirthAPIController@getBirth');
         Route::post('add-birth/{village_id}', 'BirthAPIController@addBirth');
