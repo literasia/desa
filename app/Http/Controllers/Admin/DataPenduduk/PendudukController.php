@@ -32,9 +32,9 @@ class PendudukController extends Controller
                 ->editColumn('family_status', function($data){
                     if($data->family_status == "father"){
                         return "Ayah";
-                    }elseif($data->mother == "Mother"){
+                    }elseif($data->family_status == "mother"){
                         return "Ibu";
-                    }elseif($data->mother == "Child"){
+                    }elseif($data->family_status == "child"){
                         return "Anak";
                     }
                 })

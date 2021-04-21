@@ -529,9 +529,19 @@ Route::namespace('Admin')
 
         // Data Penduduk
         Route::namespace('DataPenduduk')
-            ->group(function () {
-                Route::get('/admin/data-penduduk/keluarga', 'KeluargaController@index')
-                    ->name('data-penduduk.keluarga');
+        ->group(function () {
+            
+                Route::get('/admin/data-penduduk/keluarga/get-family/{id}', 'KeluargaController@getFamily')->name('data-penduduk.keluarga.get-family');
+                Route::get('/admin/data-penduduk/keluarga/get-citizen', 'KeluargaController@getCitizen')->name('data-penduduk.keluarga.get-citizen');
+
+                // Penduduk
+                Route::get('/admin/data-penduduk/keluarga', 'KeluargaController@index')->name('data-penduduk.keluarga');
+                Route::post('/admin/data-penduduk/keluarga', 'KeluargaController@store')->name('data-penduduk.keluarga.store');
+                Route::get('/admin/data-penduduk/keluarga/{id}', 'KeluargaController@edit')->name('data-penduduk.keluarga.edit');
+                Route::post('/admin/data-penduduk/keluarga/update', 'KeluargaController@update')->name('data-penduduk.keluarga.update');
+                Route::get('/admin/data-penduduk/keluarga/hapus/{id}', 'KeluargaController@destroy')->name('data-penduduk.keluarga.delete');
+
+
                 Route::get('/admin/data-penduduk/penduduk', 'PendudukController@index')
                     ->name('data-penduduk.penduduk');
                 // Route::get('/admin/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')

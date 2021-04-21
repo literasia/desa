@@ -122,7 +122,7 @@
                     url: "{{ route('admin.struktur.pegawai') }}",
                 },
                 columns: [
-                {
+            {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
