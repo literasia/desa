@@ -19,25 +19,27 @@
 @section('content')
 <div class="row">
     <div class="col-xl-12">
-        <div class="card shadow">            
-            <div class="card-body">
-                <div class="card-block">
-                    <div class="dt-responsive table-responsive">
-                        <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>NIK</th>
-                                    <th>Penduduk Meninggal</th>
-                                    <th>Tanggal Kematian</th>
-                                    <th>Penyebab Kematian</th>       
-                                    <th>Alamat</th>        
-                                    <th>Action</th>                  
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+        <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+            <div class=" col-xl-12 card shadow mb-0 p-0">
+                <div class="card-body">
+                    <div class="card-block p-2">
+                        <div class="dt-responsive table-responsive">
+                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>NIK</th>
+                                        <th>Penduduk Meninggal</th>
+                                        <th>Tanggal Kematian</th>
+                                        <th>Penyebab Kematian</th>       
+                                        <th>Alamat</th>        
+                                        <th>Action</th>                  
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

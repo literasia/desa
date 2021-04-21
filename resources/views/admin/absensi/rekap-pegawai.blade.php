@@ -48,46 +48,48 @@
                 </div>
             </div>
 
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>Nama Lengkap</th>
-                                        <th>Desa</th>
-                                        <th>H</th>
-                                        <th>A</th>
-                                        <th>S</th>
-                                        <th>I</th>
-                                        <th>Lainnya</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    @foreach ($data as $d)
-                                        @if (count($d->attendances))
+           <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
                                         <tr>
-                                            <td>{{$d->name}}</td>
-                                            <td>{{$village->address}}</td>
-                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'H']) </td>
-                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'A']) </td>
-                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'S']) </td>
-                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'I']) </td>
-                                            <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'L']) </td>
-                                            <td><button class="btn btn-success shadow-sm nobradius" type="button" disabled>Cetak</button></td>
+                                            <th>Nama Lengkap</th>
+                                            <th>Desa</th>
+                                            <th>Hadir</th>
+                                            <th>Alfa</th>
+                                            <th>Sakit</th>
+                                            <th>Izin</th>
+                                            <th>Lainnya</th>
+                                            <th>Action</th>
                                         </tr>
-                                        @else
-                                        <tr>
-                                            <td>{{$d->name}}</td>
-                                            <td>{{$village->address}}</td>
-                                            <td colspan="8">Data Absensi kosong</td>
-                                        </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        @foreach ($data as $d)
+                                            @if (count($d->attendances))
+                                            <tr>
+                                                <td>{{$d->name}}</td>
+                                                <td>{{$village->address}}</td>
+                                                <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'H']) </td>
+                                                <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'A']) </td>
+                                                <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'S']) </td>
+                                                <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'I']) </td>
+                                                <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'L']) </td>
+                                                <td><button class="btn btn-success shadow-sm nobradius" type="button" disabled>Cetak</button></td>
+                                            </tr>
+                                            @else
+                                            <tr>
+                                                <td>{{$d->name}}</td>
+                                                <td>{{$village->address}}</td>
+                                                <td colspan="8">Data Absensi kosong</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
