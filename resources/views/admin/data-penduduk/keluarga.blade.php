@@ -32,6 +32,9 @@
                                         <th>No. KK</th>
                                         <th>Kepala Keluarga</th>
                                         <th>Alamat</th> 
+                                        <th>Provinsi</th>
+                                        <th>Kabupaten</th>
+                                        <th>Kecamatan</th>
                                         <th>Desa/Kelurahan</th>
                                         {{-- <th>Aplikasi</th> --}}
                                         <th>Actions</th>
@@ -154,6 +157,18 @@
                     {
                         data: 'alamat',
                         name: 'alamat'
+                    },
+                    {
+                        data: 'provinsi',
+                        name: 'provinsi'
+                    },
+                    {
+                        data: 'kabupaten',
+                        name: 'kabupaten'
+                    },
+                    {
+                        data: 'kecamatan',
+                        name: 'kecamatan'
                     },
                     {
                         data: 'desa_kelurahan',

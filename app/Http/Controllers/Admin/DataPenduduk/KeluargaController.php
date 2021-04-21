@@ -41,6 +41,15 @@ class KeluargaController extends Controller
                 ->addColumn('desa_kelurahan', function ($data) {
                     return $data->citizen->village->name;
                 })
+                ->addColumn('provinsi', function ($data) {
+                    return $data->citizen->province->name;
+                })
+                ->addColumn('kabupaten', function ($data) {
+                    return $data->citizen->district->name;
+                })
+                ->addColumn('kecamatan', function ($data) {
+                    return $data->citizen->regency->name;
+                })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
