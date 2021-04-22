@@ -12,7 +12,7 @@ class KategoriUsahaController extends Controller
 {
     public function index(Request $request) {
         if ($request->ajax()) {
-            $data = CategoryBusiness::where('village_id', auth()->user()->village->id)->get()->orderByDesc('created_at');
+            $data = CategoryBusiness::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                         $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';

@@ -1,4 +1,4 @@
-@extends('layouts.pegawai')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa | Jenis Usaha')
@@ -116,7 +116,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('pegawai.potensi.jenis-usaha') }}",
+                    url: "{{ route('admin.potensi.jenis-usaha') }}",
                 },
                 columns: [
                 {
