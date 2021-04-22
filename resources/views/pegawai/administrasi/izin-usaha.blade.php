@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Izin Usaha')
@@ -6,14 +6,14 @@
 @section('title-3', 'Izin Usaha')
 
 @section('describ')
-    Ini adalah halaman Izin Usaha untuk admin
+    Ini adalah halaman Izin Usaha untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.izin_usaha') }}
+    {{ route('pegawai.administrasi.izin_usaha') }}
 @endsection
 
 {{-- main content --}}
@@ -35,7 +35,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                   
+
                                 </tbody>
                             </table>
                         </div>
@@ -73,7 +73,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.izin_usaha') }}",
+                    url: "{{ route('pegawai.administrasi.izin_usaha') }}",
                 },
                 columns: [
                 {

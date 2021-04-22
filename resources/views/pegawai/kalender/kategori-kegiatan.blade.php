@@ -6,7 +6,7 @@
 @section('title-3', 'Kategori Kegiatan')
 
 @section('describ')
-    Ini adalah halaman Kategori Kegiatan untuk admin
+    Ini adalah halaman Kategori Kegiatan untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-list-alt')
@@ -114,7 +114,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.kalender.kategori-kegiatan') }}",
+                    url: "{{ route('pegawai.kalender.kategori-kegiatan') }}",
                 },
                 columns: [
                 {
@@ -148,13 +148,13 @@
                 var url = '';
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.kalender.kategori-kegiatan') }}";
+                    url = "{{ route('pegawai.kalender.kategori-kegiatan') }}";
                     text = "Data sukses ditambahkan";
 
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.kalender.kategori.update') }}";
+                    url = "{{ route('pegawai.kalender.kategori.update') }}";
                     text = "Data sukses diupdate";
                 }
 
@@ -189,7 +189,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/kalender/kategori-kegiatan/edit/'+id,
+                    url: '/pegawai/kalender/kategori-kegiatan/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         console.log(data.data.category_name)
@@ -213,7 +213,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/kalender/kategori-kegiatan/hapus/'+user_id,
+                    url: '/pegawai/kalender/kategori-kegiatan/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

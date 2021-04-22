@@ -11,6 +11,7 @@ use App\{User, Role};
 use App\Models\Admin\Access;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Employee;
 
 class PegawaiController extends Controller
 {
@@ -32,6 +33,7 @@ class PegawaiController extends Controller
 
     public function index(Request $request) {
         $data = Employee::where('village_id', auth()->user()->village->id)->get();
+        $employee = Employee::where("user_id",auth()->user()->id)->first();
         if ($request->ajax()) {
             $data = Employee::where('village_id', auth()->user()->village->id)->get();
             return DataTables::of($data)
@@ -52,7 +54,7 @@ class PegawaiController extends Controller
                 ->make(true);
         }
 
-        return view('pegawai.struktur.pegawai');
+        return view('pegawai.struktur.pegawai', ["employee"=>$employee]);
     }
 
     public function store(Request $request){

@@ -20,7 +20,6 @@ class NewsController extends Controller
         'image' => ['nullable', 'mimes:jpeg,jpg,png', 'max:3000']
     ];
 
-
     /**
      * Display a listing of the resource.
      *

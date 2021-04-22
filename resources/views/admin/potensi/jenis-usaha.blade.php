@@ -6,10 +6,10 @@
 @section('title-3', 'Jenis Usaha')
 
 @section('describ')
-    Ini adalah halaman Jenis Usaha untuk admin
+    Ini adalah halaman Jenis Usaha untuk pegawai
 @endsection
 
-@section('icon-l', 'icon-chart')
+@section('icon-l', 'fa fa-chart-line')
 @section('icon-r', 'icon-home')
 
 @section('link')
@@ -47,22 +47,24 @@
             </div>
         </div>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Jenis Usaha</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Jenis Usaha</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,14 +134,14 @@
                 ]
             });
 
-        $('.reset').on('click', function(e) {
+            $('.reset').on('click', function(e) {
             e.preventDefault();
             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
             $('#action').val('add');
             $('#btn')
             .removeClass('btn-info')
-                            .addClass('btn-success')    
+                            .addClass('btn-success')
                 .val('Simpan');
         })
 
@@ -149,13 +151,13 @@
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.potensi.jenis-usaha') }}";
-                     text = "Data sukses ditambahkan";
+                    text = "Data sukses ditambahkan";
                    
                 }
 
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.potensi.jenis-usaha.update') }}";
-                     text = "Data sukses diupdate";
+                    text = "Data sukses diupdate";
                 }
 
                 $.ajax({
@@ -179,7 +181,9 @@
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .val('Simpan');
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
+                            .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                     }
@@ -224,6 +228,6 @@
                     }
                 });
             });
-         });      
+         });
     </script>
 @endpush

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Keterangan Tanah')
@@ -6,14 +6,14 @@
 @section('title-3', 'Keterangan Tanah')
 
 @section('describ')
-    Ini adalah halaman Keterangan Tanah untuk admin
+    Ini adalah halaman Keterangan Tanah untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.keterangan-tanah') }}
+    {{ route('pegawai.administrasi.keterangan-tanah') }}
 @endsection
 
 {{-- main content --}}
@@ -72,7 +72,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.struktur.pegawai') }}",
+                    url: "{{ route('pegawai.struktur.pegawai') }}",
                 },
                 columns: [
                 {

@@ -13,7 +13,7 @@ class BirthAPIController extends Controller
 
     public function getBirth($village_id)
     {
-        $birth = Birth::where('births.village_id', $village_id)->get();
+        $birth = Birth::where('births.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($birth, 'Success get data'));
     }

@@ -13,7 +13,7 @@ class PengumumanDesaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Message::where('village_id', auth()->user()->village->id);
+            $data = Message::where('village_id', auth()->user()->village->id)->orderByDesc('created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {

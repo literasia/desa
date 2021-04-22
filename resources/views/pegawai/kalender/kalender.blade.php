@@ -257,7 +257,7 @@ Ini adalah halaman kalender untuk desa
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{route('admin.kalender.tambah-event')}}",
+                url: "{{route('pegawai.kalender.tambah-event')}}",
                 method: "POST",
                 dataType: "JSON",
                 data: form_data,
@@ -291,7 +291,7 @@ Ini adalah halaman kalender untuk desa
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: "/admin/kalender/update/" + $("#id_event").val(),
+            url: "/pegawai/kalender/update/" + $("#id_event").val(),
             method: "POST",
             dataType: "JSON",
             data: form_data,
@@ -332,7 +332,7 @@ Ini adalah halaman kalender untuk desa
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/admin/kalender/hapus/' + id_event,
+                url: '/pegawai/kalender/hapus/' + id_event,
                 beforeSend: function() {
                     $('#ok_button').text('Menghapus...');
                 },

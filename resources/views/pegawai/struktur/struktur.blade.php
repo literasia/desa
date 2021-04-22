@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Struktur Desa | Struktur Desa')
@@ -6,14 +6,14 @@
 @section('title-3', 'Struktur Desa')
 
 @section('describ')
-    Ini adalah halaman Struktur Desa untuk admin
+    Ini adalah halaman Struktur Desa untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-project-diagram')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.struktur.struktur') }}
+    {{ route('pegawai.struktur.struktur') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -48,7 +48,7 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('admin.struktur.modals._struktur')
+    @include('pegawai.struktur.modals._struktur')
 
     <div id="confirmModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -106,16 +106,16 @@
         });
     </script>
 
-    
+
     <script>
         $(document).ready(function () {
             // get employee Json
             function getEmployeData() {
                 $.ajax({
-                    url: '/admin/struktur/get_employee',
+                    url: '/pegawai/struktur/get_employee',
                     dataType: 'JSON',
                     success: function (employees) {
-                        employees.forEach(employee => {    
+                        employees.forEach(employee => {
                             $("#employee-id").append(new Option(`${employee.name}`, `${employee.id}`));
                         });
                     }
@@ -124,10 +124,10 @@
             // get positions json
             function getPositionData() {
                 $.ajax({
-                    url: '/admin/struktur/get_position',
+                    url: '/pegawai/struktur/get_position',
                     dataType: 'JSON',
                     success: function (positions) {
-                        positions.forEach(position => {    
+                        positions.forEach(position => {
                             $("#position-id").append(new Option(`${position.name}`, `${position.id}`));
                         });
                     }
@@ -136,15 +136,15 @@
             // get village structures
             function getVillageStructure(){
                 $.ajax({
-                    url: '/admin/struktur/get_village_structure',
+                    url: '/pegawai/struktur/get_village_structure',
                     dataType: 'JSON',
                     success: function (villageStructures) {
                         if (villageStructures.length <= 1) {
                             $('#parent-id-group').css('display', 'none');
                         }else{
-                            villageStructures.forEach(villageStructure => {    
+                            villageStructures.forEach(villageStructure => {
                                 $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
-                            });   
+                            });
                         }
                     }
                 });
@@ -155,7 +155,7 @@
             // Show Modal
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Struktur Desa');
-                $('#action').val('add');                        
+                $('#action').val('add');
                 $('#employee-id').val('');
                 $('#position-id').val('');
                 $('#status').val('');
@@ -173,7 +173,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.struktur.struktur') }}",
+                    url: "{{ route('pegawai.struktur.struktur') }}",
                 },
                 columns: [
                 {
@@ -211,10 +211,10 @@
                 event.preventDefault();
                 let url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.struktur.struktur.store') }}";
+                    url = "{{ route('pegawai.struktur.struktur.store') }}";
                 }
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.struktur.struktur.update') }}";
+                    url = "{{ route('pegawai.struktur.struktur.update') }}";
                 }
                 let formData = new FormData($('#form-struktur')[0]);
                 $.ajax({
@@ -275,12 +275,12 @@
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/struktur/struktur/'+id,
+                    url: '/pegawai/struktur/struktur/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         getVillageStructure();
                         $('.modal-title').html('Edit Struktur Desa');
-                        $('#action').val('edit');                        
+                        $('#action').val('edit');
                         $('#employee-id').val(data.employee_id);
                         $('#position-id').val(data.position_id);
                         $('#status').val(data.status);
@@ -305,7 +305,7 @@
             });
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/struktur/struktur/hapus/'+user_id,
+                    url: '/pegawai/struktur/struktur/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
@@ -319,7 +319,7 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            // toastr.success('Data berhasil dihapus');                            
+                            // toastr.success('Data berhasil dihapus');
                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }

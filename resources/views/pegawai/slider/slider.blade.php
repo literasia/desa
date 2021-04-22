@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Slider | Slider')
@@ -6,14 +6,14 @@
 @section('title-3', 'Slider')
 
 @section('describ')
-    Ini adalah halaman slider untuk Admin Desa
+    Ini adalah halaman slider untuk Pegawai Desa
 @endsection
 
 @section('icon-l', 'icon-list')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.slider.slider') }}
+    {{ route('pegawai.slider.slider') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    @include('admin.slider._slider')
+    @include('pegawai.slider._slider')
 @endsection
 
 {{-- addons css --}}
@@ -105,7 +105,7 @@
                 processing: false,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.slider.slider') }}",
+                    url: "{{ route('pegawai.slider.slider') }}",
                 },
                 columns: [
                 {
@@ -169,14 +169,14 @@
                 event.preventDefault();
 
                 var url = method = '';
-                
+
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.slider.store') }}";
+                    url = "{{ route('pegawai.slider.store') }}";
                     message = "Slider berhasil ditambahkan";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.slider.update') }}";
+                    url = "{{ route('pegawai.slider.update') }}";
                     message = "Slider berhasil diedit";
                 }
 
@@ -216,7 +216,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: "/admin/slider/"+id,
+                    url: "/pegawai/slider/"+id,
                     success: function (data) {
                         $('.modal-title').html('Edit Slider');
                         $('#action').val('edit');
@@ -243,7 +243,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/slider/destroy/'+user_id,
+                    url: '/pegawai/slider/destroy/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

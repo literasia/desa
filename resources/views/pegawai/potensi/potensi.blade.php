@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa | Potensi Desa')
@@ -6,14 +6,14 @@
 @section('title-3', 'Potensi Desa')
 
 @section('describ')
-    Ini adalah halaman Potensi Desa untuk admin
+    Ini adalah halaman Potensi Desa untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-chart')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.potensi.potensi') }}
+    {{ route('pegawai.potensi.potensi') }}
 @endsection
 
 {{-- main content --}}
@@ -112,14 +112,14 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>   
+    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
     <script>
         $(document).ready(function () {
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.potensi.potensi') }}",
+                    url: "{{ route('pegawai.potensi.potensi') }}",
                 },
                 columns: [
                 {
@@ -184,7 +184,7 @@
                     data: {
                         reject : "rejected"
                     },
-                    url: '/admin/potensi/potensi/update/'+update_id,
+                    url: '/pegawai/potensi/potensi/update/'+update_id,
                     beforeSend: function () {
                         $('#btn-reject').text('Mengupdate...');
                     }, success: function (data) {
@@ -197,14 +197,14 @@
                     }
                 });
             });
-    
+
             $('.update_btn').click(function () {
                 $.ajax({
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     method: 'POST',
-                    url: '/admin/potensi/potensi/update/'+update_id,
+                    url: '/pegawai/potensi/potensi/update/'+update_id,
                     beforeSend: function () {
                         $('#btn-update').text('Mengupdate...');
                     }, success: function (data) {
@@ -222,13 +222,13 @@
             var delete_id;
             $(document).on('click', '.delete', function () {
                 delete_id = $(this).attr('id');
-                
+
                 $('#confirmModal1').modal('show');
             });
 
             $('.delete_btn').click(function () {
                 $.ajax({
-                    url: '/admin/potensi/hapus/'+delete_id,
+                    url: '/pegawai/potensi/hapus/'+delete_id,
                     beforeSend: function () {
                         $('#btn-delete').text('Menghapus...');
                     }, success: function (data) {

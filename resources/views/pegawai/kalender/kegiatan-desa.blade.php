@@ -6,7 +6,7 @@
 @section('title-3', 'Kegiatan Desa ')
 
 @section('describ')
-Ini adalah halaman Kegiatan Desa untuk admin
+Ini adalah halaman Kegiatan Desa untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-calendar')

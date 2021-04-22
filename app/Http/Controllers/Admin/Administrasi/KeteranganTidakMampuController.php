@@ -21,7 +21,7 @@ class KeteranganTidakMampuController extends Controller
                             return '<lable class="label label-warning">'. $data->status .'</label>';
                             break;
                         case 'success':
-                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            return '<lable class="label label-success">'. $data->status .'</label>';
                             break;
                         case 'rejected':
                             return '<lable class="label label-danger">'. $data->status .'</label>';

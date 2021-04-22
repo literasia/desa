@@ -1,12 +1,12 @@
 @extends('layouts.superadmin')
 
 {{-- config 1 --}}
-@section('title', 'Kalender ')
+@section('title', 'Kalender | Kalender ')
 @section('title-2', 'Kalender ')
 @section('title-3', 'Kalender ')
 
 @section('describ')
-Ini adalah halaman kalender untuk desa
+Ini adalah halaman Kalender untuk superadmin
 @endsection
 
 @section('icon-l', 'fa fa-calendar')
