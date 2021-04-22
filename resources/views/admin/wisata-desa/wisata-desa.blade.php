@@ -20,7 +20,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <<div class="card glass-card d-flex justify-content-center align-items-center p-2">
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
                 <div class=" col-xl-12 card shadow mb-0 p-0">
                     <div class="card-body">
                         <div class="card-block p-2">

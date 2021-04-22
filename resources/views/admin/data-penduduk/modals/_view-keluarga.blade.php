@@ -10,14 +10,16 @@
                 </button>
             </div>
             <div class="modal-body p-4">
-                <label for="">Kepala Keluarga : </label>
-                <div id="head_of_family"></div>
+                <div class="alert alert-primary shadow">
+                    <div class="badge badge-info rounded mb-3"><h6 class="m-0">NIK</h6></div>
+                    <h6 class="text-dark font-weight-bold">1234567890345</h6>
+                </div>
 
-                <label for="" style="margin-top: 20px">Anggota Keluarga</label>
-                <div id="family_group"></div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
+                <div class="mt-5" style="position: relative;">
+                    <h6 class="font-weight-bold d-inline-block mt-4 px-2" style="position: absolute; top: -35px; left: 30px; background: #fff;">Anggota Keluarga</h6>
+                    <div class="border rounded p-3">
+                      
+                    </div>
                 </div>
             </div>
         </div>
