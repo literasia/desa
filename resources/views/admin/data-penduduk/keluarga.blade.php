@@ -271,6 +271,7 @@
                         });
                         $('#head_of_family').html(data.head_of_family);
                         $('#family_group').html(familyGroupContent);
+                        $('.modal-title').html('Data Keluarga');
                         $('#modal-view-keluarga').modal('show');
                     }
                 });
