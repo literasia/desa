@@ -14,7 +14,7 @@ class PengaduanDesaController extends Controller
         $complaint = Complaint::where('village_id', auth()->user()->village->id)->get();
 
         if ($request->ajax()) {
-            $data = Complaint::where('village_id', auth()->user()->village->id);
+            $data = Complaint::where('village_id', auth()->user()->village->id)->orderByDesc('created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {

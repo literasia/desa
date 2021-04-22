@@ -11,10 +11,9 @@ use Yajra\DataTables\DataTables;
 class PindahController extends Controller
 {
     public function index( Request $request) {
-        $status = Immigrate::where('village_id', auth()->user()->village->id)->get();
 
         if ($request->ajax()) {
-            $data = Immigrate::where('village_id', auth()->user()->village->id)->get();
+            $data = Immigrate::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {

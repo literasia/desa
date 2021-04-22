@@ -181,7 +181,9 @@
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .val('Simpan');
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
+                            .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                     }
@@ -194,7 +196,6 @@
                     url: '/admin/potensi/kategori-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        console.log(data.data.category_name)
                         $('#kategori_usaha').val(data.data.category_name);
                         $('#hidden_id').val(data.data.id);
                         $('#action').val('edit');
