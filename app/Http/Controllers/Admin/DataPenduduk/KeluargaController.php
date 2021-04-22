@@ -130,8 +130,10 @@ class KeluargaController extends Controller
     public function destroy($id)
     {
         $family = Family::findOrFail($id);
+        $citizen = Citizen::findOrFail($family->citizen_id);
 
         $family->delete();
+        return response()->json($citizen);
     }
 
     public function getCitizen(){

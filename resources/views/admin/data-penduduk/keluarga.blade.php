@@ -111,18 +111,17 @@
             
             // get citizen 
             function getCitizenData() {
+                citizens = [];
                 $.ajax({
                     url: '/admin/data-penduduk/keluarga/get-citizen',
                     dataType: 'JSON',
                     success: function (data) {
-                        citizens.splice(0, citizens.length);
                         data.forEach(citizen => {  
                             // push citizens
                             citizens.push(citizen);
                         });
                         // add item to input select
                         addItemToCitizenInput();
-                        
                     }
                 });
             }
@@ -219,8 +218,6 @@
                             }
                         }
 
-                        getCitizenData();
-
                         // If has Errors
                         if (data.errors) {
                             data.errors.citizen_id ? $('#citizen_id').addClass('is-invalid') : $('#citizen_id').removeClass('is-invalid')
@@ -303,7 +300,7 @@
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
-                        getCitizenData();
+                        $("#citizen_id").append(new Option(`${data.name} - ${data.no_kk}`, `${data.id}`));
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
