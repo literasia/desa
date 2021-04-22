@@ -13,7 +13,7 @@ class DeathCertificateAPIController extends Controller
 {
     public function getDeathCertificate($village_id)
     {
-        $certificate = DeathCertificate::where('death_certificates.village_id', $village_id)->get();
+        $certificate = DeathCertificate::where('death_certificates.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($certificate, 'Success get data'));
     }

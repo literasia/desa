@@ -13,7 +13,7 @@ class PengumumanDesaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Message::where('village_id', auth()->user()->village->id);
+            $data = Message::where('village_id', auth()->user()->village->id)->orderByDesc('created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
@@ -72,28 +72,18 @@ class PengumumanDesaController extends Controller
                 ]);
         }
 
-        // Message::create([
-        //     'title' => $request->input('title'),
-        //     'notification' => $notifikasi,
-        //     'dashboard' => $dashboard,
-        //     'message_time' => $request->input('message_time'),
-        //     'start_date' => $start,
-        //     'end_date' => $request->input('end_date'),
-        //     'message' => $request->input('message'),
-        //     'status' => 'Aktif',
-        //     'village_id' => auth()->user()->village->id
-        // ]);
         Message::create([
             'title' => $request->input('title'),
             'notification' => $notifikasi,
-            'dashboard'=> $dashboard,
+            'dashboard' => $dashboard,
             'message_time' => $request->input('message_time'),
             'start_date' => $start,
-            'end_date'=> $request->input('end_date'),
-            'message'=>$request->input('message'),
-            'status' => 'aktif',
+            'end_date' => $request->input('end_date'),
+            'message' => $request->input('message'),
+            'status' => 'Aktif',
             'village_id' => auth()->user()->village->id
         ]);
+       
 
         return response()
             ->json([

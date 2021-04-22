@@ -14,8 +14,7 @@ class AddFieldUserIdOnEmployee extends Migration
     public function up()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->dropColumn('username');
             $table->dropColumn('password');
         });
