@@ -109,7 +109,7 @@
     </div>
 
     {{-- testimonial and top selling start --}}
-    <div class="col-md-12">
+    {{-- <div class="col-md-12">
         <div class="card table-card">
             <div class="card-header">
                 <h5>Sekolah</h5>
@@ -171,7 +171,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
 
