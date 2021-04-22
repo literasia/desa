@@ -235,7 +235,6 @@
                             data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
                             data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
                             data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
-
                             toastr.error(data.error);
                         }
                         if (data.success) {
