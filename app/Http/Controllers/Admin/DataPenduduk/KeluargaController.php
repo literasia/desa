@@ -133,7 +133,9 @@ class KeluargaController extends Controller
     }
 
     public function getCitizen(){
-        $citizen = Citizen::where('village_id', auth()->user()->village_id)->get();
+        $citizen = Citizen::where('head_of_family_status', 1)->whereNotIn('id', function($query){
+            $query->select('citizen_id')->from('families');
+        })->where('village_id', auth()->user()->village_id)->get();
 
         return response()->json($citizen);
     }

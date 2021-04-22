@@ -128,7 +128,7 @@
             // add item to input select 
             function addItemToCitizenInput(){
                 citizens.forEach(citizen => {
-                    $("#citizen_id").append(new Option(`${citizen.name}`, `${citizen.id}`));
+                    $("#citizen_id").append(new Option(`${citizen.name} - ${citizen.no_kk}`, `${citizen.id}`));
                 });
             }
             getCitizenData();
