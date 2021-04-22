@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Storage;
 class KelahiranController extends Controller
 {
     public function index( Request $request) {
-        $status = Birth::where('village_id', auth()->user()->village->id)->get();
 
         if ($request->ajax()) {
-            $data = Birth::where('village_id', auth()->user()->village->id)->get();
+            $data = Birth::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {

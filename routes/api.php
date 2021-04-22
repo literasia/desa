@@ -112,8 +112,8 @@ Route::namespace('API')
         Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
 
         // Citizen
-        Route::get('citizen/{village_id}', 'CitizenAPIController@index');
-        Route::post('add-citizen/{village_id}', 'CitizenAPIController@addCitizen');
+        Route::get('citizen', 'CitizenAPIController@index');
+        Route::post('add-citizen', 'CitizenAPIController@addCitizen');
 
         // Family
         Route::get('family/{village_id}', 'FamilyAPIController@index');
