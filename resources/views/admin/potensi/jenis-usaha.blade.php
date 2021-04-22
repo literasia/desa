@@ -13,7 +13,7 @@
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('pegawai.potensi.jenis-usaha') }}
+    {{ route('admin.potensi.jenis-usaha') }}
 @endsection
 
 {{-- main content --}}
