@@ -134,7 +134,7 @@
                 ]
             });
 
-        $('.reset').on('click', function(e) {
+            $('.reset').on('click', function(e) {
             e.preventDefault();
             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
@@ -150,14 +150,14 @@
                 var url = '';
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('pegawai.potensi.jenis-usaha') }}";
-                     text = "Data sukses ditambahkan";
-
+                    url = "{{ route('admin.potensi.jenis-usaha') }}";
+                    text = "Data sukses ditambahkan";
+                   
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('pegawai.potensi.jenis-usaha.update') }}";
-                     text = "Data sukses diupdate";
+                    url = "{{ route('admin.potensi.jenis-usaha.update') }}";
+                    text = "Data sukses diupdate";
                 }
 
                 $.ajax({
@@ -170,18 +170,20 @@
                         if (data.errors) {
                             // for (var count = 0; count <= data.errors.length; count++) {
                             html = data.errors[0];
-                            //
+                            // 
                             $('#jenis_usaha').addClass('is-invalid');
                             toastr.error(html);
                         }
 
                         if (data.success) {
-                            Swal.fire('Success!!',text,'success' );
+                            Swal.fire('Success!!',text,'success' );  
                             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .val('Simpan');
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
+                            .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                     }
@@ -191,7 +193,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/pegawai/potensi/jenis-usaha/edit/'+id,
+                    url: '/admin/potensi/jenis-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#jenis_usaha').val(data.data.business_type);
@@ -214,7 +216,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/pegawai/potensi/jenis-usaha/hapus/'+user_id,
+                    url: '/admin/potensi/jenis-usaha/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
