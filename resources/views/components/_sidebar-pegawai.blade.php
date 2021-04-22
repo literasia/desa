@@ -12,6 +12,23 @@
                     </a>
                 </li>
 
+                @if ($employee->access->attendance)
+                <li class="@if (request()->is('pegawai/absensi/pegawai') || request()->is('pegawai/absensi/rekap-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-clipboard-list"></i></span>
+                        <span class="pcoded-mtext">Absensi</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+
+                        <li class="{{ request()->is('pegawai/absensi/rekap-pegawai') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.absensi.rekap-pegawai') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Rekap Pegawai</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
                 @if ($employee->access->calendar)
                 <li class="@if (request()->is('pegawai/kalender/kalender') || request()->is('pegawai/kalender/kegiatan-desa') || request()->is('pegawai/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -62,7 +79,50 @@
                 </li>
                 @endif
 
-                {{-- @if ($employee->access->village_structure)
+                @if ($employee->access->population_data)
+                <li class="@if (request()->is('pegawai/data-penduduk/keluarga') || request()->is('pegawai/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                        <span class="pcoded-mtext">Data Penduduk</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('pegawai/data-penduduk/keluarga') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.data-penduduk.keluarga') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Keluarga</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/data-penduduk/penduduk') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.data-penduduk.penduduk') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Penduduk</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if ($employee->access->announcement)
+                <li class="{{ request()->is('pegawai/pengumuman') ? 'active' : '' }}">
+                    <a href="{{ route('pegawai.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
+                       <span class="pcoded-micon">
+                           <i class="fa fa-bell"></i>
+                       </span>
+                       <span class="pcoded-mtext">Pengumuman</span>
+                   </a>
+                </li>
+                @endif
+
+                @if ($employee->access->complaint)
+                <li class="{{ request()->is('pegawai/pengaduan') ? 'active' : '' }}">
+                    <a href="{{ route('pegawai.pengaduan.pengaduan') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-comment-alt"></i>
+                        </span>
+                        <span class="pcoded-mtext">Pengaduan</span>
+                    </a>
+                </li>
+                @endif
+
+                @if ($employee->access->village_structure)
                     <li class="@if (request()->is('pegawai/struktur/struktur') || request()->is('pegawai/struktur/pegawai') || request()->is('pegawai/struktur/jabatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                         <a href="javascript:void(0);" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="fa fa-project-diagram"></i></span>
@@ -86,36 +146,125 @@
                             </li>
                         </ul>
                     </li>
-                @endif --}}
+                @endif
 
-                {{-- <li class="@if (request()->is('admin/data-penduduk/keluarga') || request()->is('admin/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="fa fa-users"></i></span>
-                        <span class="pcoded-mtext">Data Penduduk</span>
+                @if ($employee->access->library)
+                <li class="{{ request()->is('pegawai/perpustakaan') ? 'active' : '' }}">
+                    <a href="{{ route('pegawai.perpustakaan.perpustakaan') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-book-open"></i>
+                        </span>
+                        <span class="pcoded-mtext">Perpustakaan</span>
+                    </a>
+                </li>
+                @endif
+
+                @if ($employee->access->news)
+                <li class="@if (request()->is('pegawai/berita/berita') || request()->is('pegawai/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="#" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-newspaper"></i>
+                        </span>
+                        <span class="pcoded-mtext">Berita</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/data-penduduk/keluarga') ? 'active' : '' }}">
-                            <a href="{{ route('admin.data-penduduk.keluarga') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Keluarga</span>
+                        <li class="{{ request()->is('pegawai/berita/berita') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.berita.berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Berita</span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/data-penduduk/penduduk') ? 'active' : '' }}">
-                            <a href="{{ route('admin.data-penduduk.penduduk') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Penduduk</span>
+                        <li class="{{ request()->is('pegawai/berita/kategori-berita') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.berita.kategori-berita') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+                @endif
 
+                @if ($employee->access->village_potency)
+                <li class="@if (request()->is('pegawai/potensi/potensi') || request()->is('pegawai/potensi/jenis-usaha') || request()->is('pegawai/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-mtext">Potensi Desa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('pegawai/potensi/potensi') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.potensi.potensi') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Potensi Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/potensi/jenis-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Usaha</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/potensi/kategori-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori Usaha</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
 
-                <li class="@if (request()->is('admin/administrasi/permohonan-pembuatan-ktp') || request()->is('admin/administrasi/surat-keterangan-lahir') || request()->is('admin/administrasi/perubahan-kk') || request()->is('admin/administrasi/surat-kematian') || request()->is('admin/administrasi/izin-usaha') || request()->is('admin/administrasi/keterangan-tidak-mampu') || request()->is('admin/administrasi/permohonan-skck') || request()->is('admin/administrasi/keterangan-pindah') || request()->is('admin/administrasi/keterangan-domisili') || request()->is('admin/administrasi/keterangan-ahli-waris') || request()->is('admin/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                @if ($employee->access->slider)
+                <li class="{{ request()->is('pegawai/slider/slider') ? 'active' : '' }}">
+                    <a href="{{ route('pegawai.slider.slider') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-gitlab"></i>
+                        </span>
+                        <span class="pcoded-mtext">Slider</span>
+                    </a>
+                </li>
+                @endif
+
+                @if ($employee->access->campaign)
+                <li class="{{ request()->is('pegawai/kampanye') ? 'active' : '' }}">
+                    <a href="{{ route('pegawai.kampanye.kampanye') }}" class="waves-effect waves-dark">
+                       <span class="pcoded-micon">
+                           <i class="fa fa-bullhorn"></i>
+                       </span>
+                       <span class="pcoded-mtext">Kampanye</span>
+                   </a>
+               </li>
+               @endif
+
+               @if ($employee->access->event)
+               <li class="@if (request()->is('pegawai/peristiwa/kelahiran') || request()->is('pegawai/peristiwa/kematian') || request()->is('pegawai/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
+                        <span class="pcoded-mtext">Peristiwa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('pegawai/peristiwa/kelahiran') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.peristiwa.kelahiran') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kelahiran</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/peristiwa/kematian') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.peristiwa.kematian') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kematian</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('pegawai/peristiwa/pindah') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.peristiwa.pindah') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Perpindahan</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+               @if ($employee->access->administration)
+               <li class="@if (request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') || request()->is('pegawai/administrasi/surat-keterangan-lahir') || request()->is('pegawai/administrasi/perubahan-kk') || request()->is('pegawai/administrasi/surat-kematian') || request()->is('pegawai/administrasi/izin-usaha') || request()->is('pegawai/administrasi/keterangan-tidak-mampu') || request()->is('pegawai/administrasi/permohonan-skck') || request()->is('pegawai/administrasi/keterangan-pindah') || request()->is('pegawai/administrasi/keterangan-domisili') || request()->is('pegawai/administrasi/keterangan-ahli-waris') || request()->is('pegawai/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-archive"></i></span>
                         <span class="pcoded-mtext">Administrasi</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.permohonan_pembuatan_ktp') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/permohonan-pembuatan-ktp') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.permohonan_pembuatan_ktp') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Permohonan KTP
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -123,8 +272,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.surat_keterangan_lahir') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/surat-keterangan-lahir') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.surat_keterangan_lahir') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Surat Lahir
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -132,8 +281,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/perubahan-kk') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.perubahan-kk') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/perubahan-kk') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.perubahan-kk') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Perubahan KK
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -141,8 +290,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/surat-kematian') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.surat-kematian') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/surat-kematian') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.surat-kematian') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Surat Kematian
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -150,8 +299,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/izin-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.izin_usaha') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/izin-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.izin_usaha') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Izin Usaha
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -159,8 +308,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan_tidak_mampu') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/keterangan-tidak-mampu') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.keterangan_tidak_mampu') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Ket. Tidak Mampu
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -168,8 +317,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/permohonan-skck') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.permohonan-skck') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/permohonan-skck') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.permohonan-skck') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Permohonan SKCK
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -177,8 +326,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/keterangan-pindah') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan-pindah') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/keterangan-pindah') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.keterangan-pindah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Pindah
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -186,8 +335,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/keterangan-domisili') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/keterangan-domisili') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.keterangan-domisili') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Domisili
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -195,8 +344,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/keterangan-ahli-waris') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan-ahli-waris') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/keterangan-ahli-waris') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.keterangan-ahli-waris') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Ahli Waris
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -204,8 +353,8 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/administrasi/keterangan-tanah') ? 'active' : '' }}">
-                            <a href="{{ route('admin.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
+                        <li class="{{ request()->is('pegawai/administrasi/keterangan-tanah') ? 'active' : '' }}">
+                            <a href="{{ route('pegawai.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">
                                     Keterangan Tanah
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
@@ -215,134 +364,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('admin/potensi/potensi') || request()->is('admin/potensi/jenis-usaha') || request()->is('admin/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                        <span class="pcoded-mtext">Potensi Desa</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/potensi/potensi') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensi.potensi') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Potensi Desa</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/potensi/jenis-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Jenis Usaha</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/potensi/kategori-usaha') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori Usaha</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="@if (request()->is('admin/berita/berita') || request()->is('admin/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-newspaper"></i>
-                        </span>
-                        <span class="pcoded-mtext">Berita</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/berita/berita') ? 'active' : '' }}">
-                            <a href="{{ route('admin.berita.berita') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Berita</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/berita/kategori-berita') ? 'active' : '' }}">
-                            <a href="{{ route('admin.berita.kategori-berita') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="{{ request()->is('admin/slider/slider') ? 'active' : '' }}">
-                    <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="feather icon-gitlab"></i>
-                        </span>
-                        <span class="pcoded-mtext">Slider</span>
-                    </a>
-                </li>
-                <li class="@if (request()->is('admin/peristiwa/kelahiran') || request()->is('admin/peristiwa/kematian') || request()->is('admin/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                        <span class="pcoded-mtext">Peristiwa</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/peristiwa/kelahiran') ? 'active' : '' }}">
-                            <a href="{{ route('admin.peristiwa.kelahiran') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kelahiran</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/peristiwa/kematian') ? 'active' : '' }}">
-                            <a href="{{ route('admin.peristiwa.kematian') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kematian</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/peristiwa/pindah') ? 'active' : '' }}">
-                            <a href="{{ route('admin.peristiwa.pindah') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Perpindahan</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="{{ request()->is('admin/wisata-desa') ? 'active' : '' }}">
-                     <a href="{{ route('admin.wisata-desa.wisata-desa') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-map-marker-alt"></i>
-                        </span>
-                        <span class="pcoded-mtext">Wisata Desa</span>
-                    </a>
-                </li>
+                @endif
 
-                <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
-                     <a href="{{ route('admin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-bell"></i>
-                        </span>
-                        <span class="pcoded-mtext">Pengumuman</span>
-                    </a>
-                </li>
-                <li class="{{ request()->is('admin/kampanye') ? 'active' : '' }}">
-                     <a href="{{ route('admin.kampanye.kampanye') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-bullhorn"></i>
-                        </span>
-                        <span class="pcoded-mtext">Kampanye</span>
-                    </a>
-                </li>
-                <li class="@if (request()->is('admin/referensi/pengaturan-hak-akses')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="fa fa-list-alt"></i></span>
-                        <span class="pcoded-mtext">Referensi</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/referensi/pengaturan-hak-akses') ? 'active' : '' }}">
-                            <a href="{{ route('admin.referensi.pengaturan-hak-akses') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengaturan Hak Akses</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="{{ request()->is('admin/perpustakaan') ? 'active' : '' }}">
-                    <a href="{{ route('admin.perpustakaan.perpustakaan') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-book-open"></i>
-                        </span>
-                        <span class="pcoded-mtext">Perpustakaan</span>
-                    </a>
-                </li>
-                <li class="{{ request()->is('admin/pengaduan') ? 'active' : '' }}">
-                    <a href="{{ route('admin.pengaduan.pengaduan') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-comment-alt"></i>
-                        </span>
-                        <span class="pcoded-mtext">Pengaduan</span>
-                    </a>
-                </li> --}}
             </ul>
         </div>
     </div>

@@ -107,6 +107,19 @@ Route::namespace('API')
         Route::get('village-structure/{village_id}', 'VillageStructureAPIController@index');
         Route::post('add-village-structure/{village_id}', 'VillageStructureAPIController@addVillageStructure');
 
+        // Moved Information
+        Route::get('moved-information/{village_id}', 'MovedInformationAPIController@index');
+        Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
+
+        // Citizen
+        Route::get('citizen/{village_id}', 'CitizenAPIController@index');
+        Route::post('add-citizen/{village_id}', 'CitizenAPIController@addCitizen');
+
+        // Family
+        Route::get('family/{village_id}', 'FamilyAPIController@index');
+        Route::post('add-family/{village_id}', 'FamilyAPIController@addFamily');
+        Route::get('view-group-family/{id}/{village_id}', 'FamilyAPIController@getGroupFamily');
+
         //Birth
         Route::get('get-birth/{village_id}', 'BirthAPIController@getBirth');
         Route::post('add-birth/{village_id}', 'BirthAPIController@addBirth');

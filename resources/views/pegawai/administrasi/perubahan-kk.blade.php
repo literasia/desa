@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Perubahan Kartu Keluarga')
@@ -6,14 +6,14 @@
 @section('title-3', 'Perubahan Kartu Keluarga')
 
 @section('describ')
-    Ini adalah halaman Perubahan Kartu Keluarga untuk admin
+    Ini adalah halaman Perubahan Kartu Keluarga untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.perubahan-kk') }}
+    {{ route('pegawai.administrasi.perubahan-kk') }}
 @endsection
 
 {{-- main content --}}
@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                        
+
                                 </tbody>
                             </table>
                         </div>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    @include('admin.administrasi.modals._perubahan-kk')
+    @include('pegawai.administrasi.modals._perubahan-kk')
 @endsection
 
 {{-- addons css --}}
@@ -94,7 +94,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.perubahan-kk') }}",
+                    url: "{{ route('pegawai.administrasi.perubahan-kk') }}",
                 },
                 columns: [
                 {
@@ -133,7 +133,7 @@
 
                 var url = '';
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.administrasi.perubahan-kk.update') }}";
+                    url = "{{ route('pegawai.administrasi.perubahan-kk.update') }}";
                 }
 
                 $('#btn').prop('disabled', true);
@@ -175,7 +175,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/administrasi/perubahan-kk/'+id,
+                    url: '/pegawai/administrasi/perubahan-kk/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#action').val('edit');
@@ -199,7 +199,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/administrasi/perubahan-kk/hapus/'+user_id,
+                    url: '/pegawai/administrasi/perubahan-kk/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

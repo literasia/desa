@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Administrasi Desa | Keterangan Tidak Mampu')
@@ -6,14 +6,14 @@
 @section('title-3', 'Keterangan Tidak Mampu')
 
 @section('describ')
-    Ini adalah halaman Keterangan Tidak Mampu untuk admin
+    Ini adalah halaman Keterangan Tidak Mampu untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-archive')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.administrasi.keterangan_tidak_mampu') }}
+    {{ route('pegawai.administrasi.keterangan_tidak_mampu') }}
 @endsection
 
 {{-- main content --}}
@@ -71,7 +71,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.administrasi.keterangan_tidak_mampu') }}",
+                    url: "{{ route('pegawai.administrasi.keterangan_tidak_mampu') }}",
                 },
                 columns: [
                 {

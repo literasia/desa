@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', ' Kampanye | Kampanye')
@@ -6,14 +6,14 @@
 @section('title-3', 'Kampanye')
 
 @section('describ')
-    Ini adalah halaman Kampanye untuk admin
+    Ini adalah halaman Kampanye untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-bullhorn')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.kampanye.kampanye') }}
+    {{ route('pegawai.kampanye.kampanye') }}
 @endsection
 
 {{-- main content --}}
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -64,9 +64,9 @@
             </div>
         </div>
     </div>
-    
+
 {{-- Modal --}}
-@include('admin.kampanye.modals._kampanye')
+@include('pegawai.kampanye.modals._kampanye')
 @endsection
 
 {{-- addons css --}}
@@ -122,7 +122,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin.kampanye.kampanye') }}",
+                    url: "{{ route('pegawai.kampanye.kampanye') }}",
                 },
                 columns: [
                 {
@@ -163,11 +163,11 @@
 
                 var url = '';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.kampanye.kampanye') }}";
+                    url = "{{ route('pegawai.kampanye.kampanye') }}";
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.kampanye.kampanye-update') }}";
+                    url = "{{ route('pegawai.kampanye.kampanye-update') }}";
                 }
 
                 var formData = new FormData($('#form-campaign')[0]);
@@ -211,7 +211,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/kampanye/kampanye/'+id,
+                    url: '/pegawai/kampanye/kampanye/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('.modal-title').html('Edit Pesan');
@@ -239,7 +239,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/kampanye/kampanye/hapus/'+user_id,
+                    url: '/pegawai/kampanye/kampanye/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

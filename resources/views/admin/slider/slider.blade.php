@@ -9,7 +9,7 @@
     Ini adalah halaman slider untuk Admin Desa
 @endsection
 
-@section('icon-l', 'icon-list')
+@section('icon-l', 'fa fa-images')
 @section('icon-r', 'icon-home')
 
 @section('link')
@@ -20,14 +20,14 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="card glass-card d-flex justify-content-center align-items-center p-4">
-                <div class=" col-xl-12 card shadow mb-0">
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
                     <div class="card-body">
-                        <div class="card-block">
+                        <div class="card-block p-2">
                             <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
                             <div class="dt-responsive table-responsive mt-3">
                                 <table id="order-table" class="table table-striped nowrap shadow-sm m-0">
-                                    <thead class="text-left thead-dark">
+                                    <thead class="text-left">
                                         <tr>
                                             <th>No.</th>
                                             <th>Foto</th>
@@ -86,12 +86,6 @@
         .select2-container {
             width: 100% !important;
             padding: 0;
-        }
-
-        @media screen and (max-width: 678px) {
-            .card-body {
-                padding: 0!important;
-            }
         }
     </style>
 @endpush
