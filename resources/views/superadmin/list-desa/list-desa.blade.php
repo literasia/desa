@@ -1,12 +1,12 @@
 @extends('layouts.superadmin')
 
-@section('title', 'List Desa')
+@section('title', 'List Desa | List Desa')
 @section('title-2', 'List Desa')
 @section('title-3', 'List Desa')
 @section('describ')
     Ini adalah halaman List Desa untuk superadmin
 @endsection
-@section('icon-l', 'icon-home')
+@section('icon-l', 'fa fa-mountain')
 @section('icon-r', 'icon-home')
 @section('link')
     {{ route('superadmin.list-desa.list-desa') }}

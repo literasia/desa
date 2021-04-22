@@ -19,12 +19,9 @@ class StrukturDesaController extends Controller
     ];
 
 
-    public function index(Request $request) {
-        $data = VillageStructure::where('village_id', auth()->user()->village->id)->get();
-        
+    public function index(Request $request) {        
         if ($request->ajax()) {
             $villageStructures = VillageStructure::where('village_id', auth()->user()->village->id)->get();
-            
             return DataTables::of($villageStructures)
                 ->addColumn('action', function ($villageStructures) {
                     $button = '<button type="button" id="'.$villageStructures->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';

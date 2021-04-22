@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 {{-- config 1 --}}
 @section('title', 'Data Penduduk | Penduduk')
@@ -6,14 +6,14 @@
 @section('title-3', 'Penduduk')
 
 @section('describ')
-	Ini adalah halaman Penduduk untuk admin
+	Ini adalah halaman Penduduk untuk pegawai
 @endsection
 
 @section('icon-l', 'fa fa-users')
 @section('icon-r', 'icon-home')
 
 @section('link')
-	{{ route('admin.data-penduduk.penduduk') }}
+	{{ route('pegawai.data-penduduk.penduduk') }}
 @endsection
 
 {{-- main content --}}
@@ -48,7 +48,7 @@
 									</tr>
 								</thead>
 								<tbody class="text-left">
-							
+
 								</tbody>
 							</table>
 						</div>

@@ -13,7 +13,7 @@ class PotencyAPIController extends Controller
 
     public function getPotency($village_id,$user_id)
     {
-        $potency = Potency::where('potencies.user_id', $user_id)->where('potencies.village_id', $village_id)->get();
+        $potency = Potency::where('potencies.user_id', $user_id)->where('potencies.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($potency, 'Success get data'));
     }

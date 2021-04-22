@@ -31,7 +31,6 @@ class PegawaiController extends Controller
 
 
     public function index(Request $request) {
-        $data = Employee::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
             $data = Employee::where('village_id', auth()->user()->village->id)->get();
             return DataTables::of($data)

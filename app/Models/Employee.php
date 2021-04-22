@@ -20,4 +20,12 @@ class Employee extends Model
     public function access(){
         return $this->hasOne(Admin\Access::class);
     }
+
+    public function attendance(){
+        return $this->hasOne(Attendance::class);
+    }
+
+    public function attendances(){
+        return $this->hasMany(Attendance::class);
+    }
 }
