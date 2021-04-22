@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Models\{Citizen};
+use App\Models\{Citizen, Family};
 use App\{User, Role};
 use App\Utils\ApiResponse;
 use Illuminate\Support\Facades\Hash;
@@ -140,6 +140,15 @@ class CitizenAPIController extends Controller
             'head_of_family_status' => $request->head_of_family_status,
             'photo' => $photo,
         ]);
+
+        
+        // jika status kepala keluarga
+        if ($request->head_of_family_status == 1) {
+            Family::create([
+                'village_id' => $request->village_id,
+                'citizen_id' => $citizen->id
+            ]);
+        }
 
         return response()->json(ApiResponse::success($citizen, 'Success add data'));
     }

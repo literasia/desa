@@ -29,7 +29,7 @@ class CreateCitizensTable extends Migration
             $table->enum("education", ["sd", "smp", "sma", "d1", "d2", "d3", "s1", "s2", "s3"])->nullable();
             $table->enum("marital_status", ["single", "married", "divorced"])->nullable();
             $table->enum("family_status", ["father", "mother", "child", ""])->nullable();
-            $table->enum("work_type", ["employee", "farmer", "housewife", "government_employee", "retired", "student"])->nullable();
+            $table->enum("work_type", ["employee", "farmer", "housewife", "government_employee", "retired", "student", ""])->nullable();
             $table->integer('province_id');
             $table->integer('regency_id');
             $table->integer('district_id');
