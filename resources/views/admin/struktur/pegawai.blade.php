@@ -115,7 +115,6 @@
                     .val('Simpan');
                 $('#modal-pegawai').modal('show');
             });
-
             // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
@@ -154,22 +153,17 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-pegawai').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.pegawai.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.pegawai.update') }}";
                 }
-
                 let formData = new FormData($('#form-pegawai')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -179,7 +173,6 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
-
                         // If has Errors
                         if (data.errors) {
                             data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
@@ -187,7 +180,6 @@
                             data.errors.nip ? $('#nip').addClass('is-invalid') : $('#nip').removeClass('is-invalid')
                             data.errors.username ? $('#username').addClass('is-invalid') : $('#username').removeClass('is-invalid')
                             data.errors.password ? $('#password').addClass('is-invalid') : $('#password').removeClass('is-invalid')
-
                             if (data.errors.password == "The password confirmation does not match.") {
                                 $('#password_confirmation').addClass('is-invalid');
                                 $('#password-help').css('display', 'block')
@@ -195,7 +187,6 @@
                                 $('#password_confirmation').removeClass('is-invalid');
                                 $('#password-help').css('display', 'none')
                             }
-
                             toastr.error(data.error);
                         }
             
@@ -223,7 +214,6 @@
                     }
                 });
             });
-
             // Get datas show on inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -251,7 +241,6 @@
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -259,7 +248,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/pegawai/hapus/'+user_id,

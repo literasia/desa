@@ -29,7 +29,7 @@ class CitizenAPIController extends Controller
         return response()->json(ApiResponse::success($citizen));
     }
 
-    public function addCitizen(Request $request, $village_id)
+    public function addCitizen(Request $request)
     {
         $rules = [
             'name'  => 'required|max:100',
@@ -46,10 +46,12 @@ class CitizenAPIController extends Controller
             'marital_status' => 'required',
             'family_status' => 'required',
             'work_type' => 'required',
+            'village_id' => 'required',
             'province_id' => 'required',
             'regency_id' => 'required',
             'district_id' => 'required',
             'address' => 'required',
+            'head_of_family_status' => 'required',
         ];
 
         $message = [
@@ -67,10 +69,12 @@ class CitizenAPIController extends Controller
             'marital_status.required' => 'This column cannot be empty',
             'family_status.required' => 'This column cannot be empty',
             'work_type.required' => 'This column cannot be empty',
+            'village_id.required' => 'This column cannot be empty',
             'province_id.required' => 'This column cannot be empty',
             'regency_id.required' => 'This column cannot be empty',
             'district_id.required' => 'This column cannot be empty',
             'address.required' => 'required',
+            'head_of_family_status.required' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -100,7 +104,7 @@ class CitizenAPIController extends Controller
             'username' => str_replace(' ', '_', strtolower($request->username)),
             'email' => $request->email,
             'password' => hash::make($request->password),
-            'village_id' => $village_id,
+            'village_id' => $request->village_id,
         ]);
             
         $user_id = User::findOrFail($user->id);
@@ -112,7 +116,7 @@ class CitizenAPIController extends Controller
         $user_id->roles()->attach($role->id);
 
         $citizen = Citizen::create([
-            "village_id" => $village_id,
+            "village_id" => $request->village_id,
             "name" => $request->name,
             "user_id" => $user->id,
             'no_kk' => $request->no_kk,
@@ -133,6 +137,7 @@ class CitizenAPIController extends Controller
             'district_id' => $request->district_id,
             'village_id' => $request->village_id,
             'address' => $request->address,
+            'head_of_family_status' => $request->head_of_family_status,
             'photo' => $photo,
         ]);
 
