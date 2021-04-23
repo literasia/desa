@@ -134,10 +134,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <style>
-        small {
-            margin-top: 15px;
-        }
-
         img {
             width: 150px;
         }
@@ -201,11 +197,10 @@
 
         .thumb_pict {
             margin-bottom:30px;
-            /* padding-top:20px; */
-            /* padding-bottom:20px; */
-            /* -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
-            box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%); */
-            /* border-radius: .25rem; */
+            padding: 20px;
+            -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
+            box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
+            border-radius: .25rem;
         }
 
         .thumb_pict img{
@@ -274,7 +269,7 @@
                     thumb_gallery($(this))
                 });
                 $('body').on("change", "#gallery2", function(e) {
-                    alert("kok ini");
+                    // alert("kok ini");
                     var formData = new FormData($('#gallery-form')[0]);
 
                     $.ajax({
@@ -427,35 +422,3 @@
         });
     </script>
 @endpush
-
-<script type="text/javascript">
-// var count =0;
-// $(document).ready(function() {
-//     if (window.File && window.FileList && window.FileReader) {
-//         $("#files").on("change", function(e) {
-
-//             var files = e.target.files,
-//             filesLength = files.length;
-//             console.log(filesLength);
-//             count++;
-//             for (var i = 0; i < filesLength; i++) {
-//                 var f = files[i]
-//                 var fileReader = new FileReader();
-//                 fileReader.onload = (function(e) {
-//                     var file = e.target;
-//                     $("<span class=\"pip\">" +
-//                         "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-//                         "<br/><span class=\"removeImg\">Remove image</span>" +
-//                         "</span>").insertAfter("#files");
-//                     $(".removeImg").click(function(){
-//                         $(this).parent(".pip").remove();
-//                     });
-//                 });
-//                 fileReader.readAsDataURL(f);
-//             }
-//         });
-//     } else {
-//         alert("Your browser doesn't support to File API")
-//     }
-// });
-</script>

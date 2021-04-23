@@ -24,7 +24,7 @@
                         <div class="thumb-img-container">
                             <img class="d-block mb-3" src="{{ asset('storage/'.$gallery->image) }}" />
                         </div>
-                        <div class="btn btn-outline-danger btn-sm remove-gallery d-block" data-id="{{ $gallery->id }}">Hapus</div>
+                        <div class="btn btn-outline-danger btn-sm remove-gallery d-block mt-3" data-id="{{ $gallery->id }}">Hapus</div>
                     </div>
                     @endforeach
                 </div>
