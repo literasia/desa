@@ -29,14 +29,14 @@ class LandCertificateAPIController extends Controller
     {
         $rules = [
             'name'  => 'required|max:100',
-            'phone_number' => 'required|max:16',
+            'number_phone' => 'required|max:16',
             'address' => 'required',
             'status' => 'required',
         ];
 
         $message = [
             'name.required' => 'This column cannot be empty',
-            'phone_number.required' => 'This column cannot be empty',
+            'number_phone.required' => 'This column cannot be empty',
             'address.required' => 'This column cannot be empty',
             'status.required' => 'This column cannot be empty',
         ];
@@ -53,7 +53,7 @@ class LandCertificateAPIController extends Controller
         $land_certificate = LandCertificate::create([
             "village_id" => $village_id,
             "name" => $request->name,
-            "phone_number" => $request->phone_number,
+            "number_phone" => $request->number_phone,
             "address" => $request->address,
             "status" => $request->status,
         ]);
