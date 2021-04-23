@@ -13,7 +13,7 @@ class PengumumanDesaController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Message::where('village_id', auth()->user()->village->id);
+            $data = Message::where('village_id', auth()->user()->village->id)->orderByDesc('created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
@@ -78,9 +78,9 @@ class PengumumanDesaController extends Controller
             'dashboard' => $dashboard,
             'message_time' => $request->input('message_time'),
             'start_date' => $start,
-            'end_date' => $request->input('end_date'),
-            'message' => $request->input('message'),
-            'status' => 'Aktif',
+            'end_date'=> $request->input('end_date'),
+            'message'=>$request->input('message'),
+            'status' => 'aktif',
             'village_id' => auth()->user()->village->id
         ]);
        

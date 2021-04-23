@@ -106,7 +106,7 @@
         $(document).ready(function () {
 
             $('#add').on('click', function () {
-                $('.modal-title').html('Tambah Pesan');
+                $('.modal-title').html('Tambah Data Kampanye');
                 $('#action').val('add');
                 $('#candidate').val('');
                 $('#deputy_candidate').val('');
@@ -216,7 +216,7 @@
                     url: '/admin/kampanye/kampanye/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('.modal-title').html('Edit Pesan');
+                        $('.modal-title').html('Edit Data Kampanye');
                         $('#action').val('edit');
                         $('#candidate').val(data.candidate);
                         $('#deputy_candidate').val(data.deputy_candidate);

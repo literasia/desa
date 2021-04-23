@@ -37,7 +37,7 @@ class SliderController extends Controller
                     return $button;
                 })
                 ->addColumn('image', function ($data) {
-                    $image = '<img width="100px" src="/storage/'.$data->image.'">';
+                    $image = '<a target="_blank" href="'.Storage::url($data->image).'"><img width="100px" src="/storage/'.$data->image.'"></a>';
                     return $image;
                 })
                 ->rawColumns(['action', 'image'])

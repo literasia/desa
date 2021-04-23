@@ -14,9 +14,8 @@ class PerubahanKKController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ChangeKK::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
-            $data = ChangeKK::where('village_id', auth()->user()->village->id)->get();
+            $data = ChangeKK::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';

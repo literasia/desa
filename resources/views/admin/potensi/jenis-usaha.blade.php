@@ -134,7 +134,7 @@
                 ]
             });
 
-        $('.reset').on('click', function(e) {
+            $('.reset').on('click', function(e) {
             e.preventDefault();
             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
@@ -151,13 +151,13 @@
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.potensi.jenis-usaha') }}";
-                     text = "Data sukses ditambahkan";
-
+                    text = "Data sukses ditambahkan";
+                   
                 }
 
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.potensi.jenis-usaha.update') }}";
-                     text = "Data sukses diupdate";
+                    text = "Data sukses diupdate";
                 }
 
                 $.ajax({
@@ -170,18 +170,20 @@
                         if (data.errors) {
                             // for (var count = 0; count <= data.errors.length; count++) {
                             html = data.errors[0];
-                            //
+                            // 
                             $('#jenis_usaha').addClass('is-invalid');
                             toastr.error(html);
                         }
 
                         if (data.success) {
-                            Swal.fire('Success!!',text,'success' );
+                            Swal.fire('Success!!',text,'success' );  
                             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .val('Simpan');
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
+                            .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                     }

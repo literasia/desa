@@ -33,7 +33,7 @@
 
     <style>
         .bg-image {
-            background-image: url('{{ asset("img/bg-siswa.jpg") }}'); background-size: cover; background-position: top center; min-height:100% !important; height: 100%;
+            background-image: url('{{ asset("img/bg-desa.jpg") }}'); background-size: cover; background-position: top center; min-height:100% !important; height: 100%;
         }
     </style>
   </head>

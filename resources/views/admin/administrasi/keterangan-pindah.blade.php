@@ -33,22 +33,10 @@
                                             <th>No. Telepon</th>
                                             <th>Alamat</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-left">
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <label class="badge badge-danger">Baruk Masuk</label>
-                                                <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                                <label class="badge badge-success">Selesai</label> -->
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                                      
                                     </tbody>
                                 </table>
                             </div>
