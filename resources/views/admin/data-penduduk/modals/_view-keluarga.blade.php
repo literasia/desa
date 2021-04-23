@@ -12,56 +12,46 @@
             <div class="modal-body p-4">
                 <div class="alert alert-primary shadow">
                     <div class="badge badge-info rounded mb-3"><h6 class="m-0">Nomor Kartu Keluarga</h6></div>
-                    <h5 class="text-dark font-weight-bold">1234567890345</h5>
+                    <h5 class="text-dark font-weight-bold" id="no_kk"></h5>
                 </div>
 
-                <div class="mt-5" style="position: relative;">
-                    <h6 class="font-weight-bold d-inline-block mt-4 px-2" style="position: absolute; top: -35px; left: 20px; background: #fff;">Anggota Keluarga</h6>
+                <div class="mt-5" class="family-modal-wrapper">
+                    <h6 class="font-weight-bold d-inline-block family-modal-caption mt-4 px-2">Anggota Keluarga</h6>
                     <div class="border rounded p-3">
                         <table class="table table-striped">
-                            <tr>
-                                <td>Asdf</td>
-                                <td>12356789689</td>
-                                <td>Kepala Keluarga</td>
-                            </tr>
-                            <tr>
-                                <td>Ghjk</td>
-                                <td>12356789689</td>
-                                <td>Ibu</td>
-                            </tr>
-                            <tr>
-                                <td>Qwerty</td>
-                                <td>12356789689</td>
-                                <td>Anak</td>
-                            </tr>
-                            <tr>
-                                <td>Yuiop</td>
-                                <td>12356789689</td>
-                                <td>Anak</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>NIK</td>
+                                    <td>Status Dalam Keluarga</td>
+                                </tr>
+                            </thead>
+                            <tbody id="family_group">
+                                
+                            </tbody>
                         </table>
                     </div>
                 </div>
 
-                <div class="mt-5" style="position: relative;">
-                    <h6 class="font-weight-bold d-inline-block mt-4 px-2" style="position: absolute; top: -35px; left: 20px; background: #fff;">Domisili</h6>
+                <div class="mt-5" class="family-modal-wrapper">
+                    <h6 class="font-weight-bold d-inline-block mt-4 px-2 family-modal-caption">Domisili</h6>
                     <div class="border rounded p-3">
                         <table class="table table-striped">
                             <tr>
                                 <td>Provinsi</td>
-                                <td>12356789689</td>
+                                <td id="provinsi"></td>
                             </tr>
                             <tr>
                                 <td>Kabupaten</td>
-                                <td>12356789689</td>
+                                <td id="kabupaten"></td>
                             </tr>
                             <tr>
                                 <td>Kecamatan</td>
-                                <td>12356789689</td>
+                                <td id="kecamatan"></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td>12356789689</td>
+                                <td id="alamat"></td>
                             </tr>
                         </table>
                     </div>

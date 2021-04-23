@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Models\{Citizen};
+use App\Models\{Citizen, Family};
 use App\{User, Role};
 use App\Utils\ApiResponse;
 use Illuminate\Support\Facades\Hash;
@@ -51,7 +51,7 @@ class CitizenAPIController extends Controller
             'regency_id' => 'required',
             'district_id' => 'required',
             'address' => 'required',
-            'head_of_family_status' => 'required',
+            'is_head_of_family' => 'required',
         ];
 
         $message = [
@@ -73,8 +73,8 @@ class CitizenAPIController extends Controller
             'province_id.required' => 'This column cannot be empty',
             'regency_id.required' => 'This column cannot be empty',
             'district_id.required' => 'This column cannot be empty',
-            'address.required' => 'required',
-            'head_of_family_status.required' => 'required',
+            'address.required' => 'This column cannot be empty',
+            'is_head_of_family.required' => 'This column cannot be empty',
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -137,9 +137,18 @@ class CitizenAPIController extends Controller
             'district_id' => $request->district_id,
             'village_id' => $request->village_id,
             'address' => $request->address,
-            'head_of_family_status' => $request->head_of_family_status,
+            'is_head_of_family' => $request->is_head_of_family,
             'photo' => $photo,
         ]);
+
+        
+        // jika status kepala keluarga
+        if ($request->is_head_of_family) {
+            Family::create([
+                'village_id' => $request->village_id,
+                'citizen_id' => $citizen->id
+            ]);
+        }
 
         return response()->json(ApiResponse::success($citizen, 'Success add data'));
     }

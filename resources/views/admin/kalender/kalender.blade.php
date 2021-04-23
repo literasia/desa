@@ -271,7 +271,7 @@ Ini adalah halaman kalender untuk desa
                            title: 'Success!!',
                             text: 'Event berhasil ditambah',
                             icon: 'success',
-                            confirmButtonText: 'Ok' }).then((result) => {
+                            confirmButtonText: 'OK' }).then((result) => {
                                 if (result.isConfirmed) {
                                     location.reload();
                                     }
@@ -311,7 +311,7 @@ Ini adalah halaman kalender untuk desa
                            title: 'Success!!',
                             text: 'Event berhasil diupdate',
                             icon: 'success',
-                            confirmButtonText: 'Ok' }).then((result) => {
+                            confirmButtonText: 'OK' }).then((result) => {
                                 if (result.isConfirmed) {
                                     location.reload();
                                     }
@@ -346,7 +346,7 @@ Ini adalah halaman kalender untuk desa
                             title: 'Success!!',
                             text: 'Event berhasil dihapus',
                             icon: 'success',
-                            confirmButtonText: 'Ok' }).then((result) => {
+                            confirmButtonText: 'OK' }).then((result) => {
                                 if (result.isConfirmed) {
                                     location.reload();
                                     }

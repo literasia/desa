@@ -27,3 +27,18 @@
 	border-radius: 10px;
 	border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
+.family-modal-wrapper {
+	position: relative;
+}
+
+.family-modal-caption {
+	position: absolute; 
+	top: -35px; 
+	left: 20px; 
+	background: #fff;
+}
+
+.abc {
+	display: block;
+}
