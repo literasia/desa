@@ -30,12 +30,34 @@ class PendudukController extends Controller
                     return $district->name;
                 })
                 ->editColumn('family_status', function($data){
-                    if($data->family_status == "father"){
-                        return "Ayah";
-                    }elseif($data->family_status == "mother"){
-                        return "Ibu";
-                    }elseif($data->family_status == "child"){
-                        return "Anak";
+                    switch ($data->family_status) {
+                        case 'husband':
+                            return 'Suami/Ayah';
+                            break;
+                        case 'wife':
+                            return 'Istri/Ibu';
+                            break;
+                        case 'son_in_law':
+                            return 'Menantu';
+                            break;
+                        case 'child':
+                            return 'Anak';
+                            break;
+                        case 'grandchild':
+                            return 'Cucu';
+                            break;
+                        case 'in_laws':
+                            return 'Mertua';
+                            break;
+                        case 'other family':
+                            return 'Famili Lain';
+                            break;
+                        case 'etc':
+                            return 'Lainnya';
+                            break;
+                        default:
+                            # code...
+                            break;
                     }
                 })
                 ->editColumn('sex', function($data){
@@ -66,18 +88,215 @@ class PendudukController extends Controller
                     }
                 })
                 ->editColumn('work_type', function($data){
-                    if($data->work_type == "employee"){
-                        return "Pegawai";
-                    }elseif($data->work_type == "farmer"){
-                        return "Petani";
-                    }elseif($data->work_type == "housewife"){
-                        return "Ibu Rumah Tangga";
-                    }elseif($data->work_type == "government_employee"){
-                        return "Pegawai Pemerintahan";
-                    }elseif($data->work_type == "retired"){
-                        return "Pensiunan";
-                    }elseif($data->work_type == "student"){
-                        return "Siswa/Mahasiswa";
+                    switch ($data->work_type) {
+                        case 'housewife':
+                            return "Ibu Rumah Tangga";
+                            break;
+                        case 'student':
+                            return "Murid/Mahasiswa";
+                            break;
+                        case 'retired':
+                            return "Pensiunan";
+                            break;
+                        case 'government_employee':
+                            return "Pegawai Pemerintahan";
+                            break;
+                        case 'honorary_employee':
+                            return "Pegawai Honorer/Swasta";
+                            break;
+                        case 'police':
+                            return "Polisi RI";
+                            break;
+                        case 'army':
+                            return "TNI";
+                            break;
+                        case 'farmer':
+                            return "Petani";
+                            break;
+                        case 'fisherman':
+                            return "Nelayan";
+                            break;
+                        case 'industry':
+                            return "Industri";
+                            break;
+                        case 'contruction':
+                            return "Konstruksi";
+                            break;
+                        case 'transportation':
+                            return "Transportasi";
+                            break;
+                        case 'street_vendors':
+                            return "Pedagang Kaki Lima";
+                            break;
+                        case 'laborer':
+                            return "Buruh";
+                            break;
+                        case 'housemaid':
+                            return "Pembantu";
+                            break;
+                        case 'barber':
+                            return "Tukang Pangkas";
+                            break;
+                        case 'electrican':
+                            return "Tukang Listrik";
+                            break;
+                        case 'briklayer':
+                            return "Tukang Batu";
+                            break;
+                        case 'carpenter':
+                            return "Tukang Kayu";
+                            break;
+                        case 'cobler':
+                            return "Tukang Sol Sepatu";
+                            break;
+                        case 'blacksmith':
+                            return "Pandai Besi";
+                            break;
+                        case 'tailor':
+                            return "Penjahit";
+                            break;
+                        case 'hairdresser':
+                            return "Penata Rambut";
+                            break;
+                        case 'makeup_man':
+                            return "Penata Rias";
+                            break;
+                        case 'fashion_stylist':
+                            return "Penata Busana";
+                            break;
+                        case 'mechanics':
+                            return "Mekanik";
+                            break;
+                        case 'dentist':
+                            return "Dokter Gigi";
+                            break;
+                        case 'artist':
+                            return "Seniman";
+                            break;
+                        case 'physician':
+                            return "Tabib";
+                            break;
+                        case 'fashion_designer':
+                            return "Perancang Busana";
+                            break;
+                        case 'translator':
+                            return "Penerjemah";
+                            break;
+                        case 'mosque_imam':
+                            return "Imam Masjid";
+                            break;
+                        case 'pastor':
+                            return "Pastur";
+                            break;
+                        case 'journalists':
+                            return "Jurnalis";
+                            break;
+                        case 'chef':
+                            return "Tukang Masak";
+                            break;
+                        case 'driver':
+                            return "Pengemudi";
+                            break;
+                        case 'president':
+                            return "Presiden";
+                            break;
+                        case 'vice_president':
+                            return "Wakil Presiden";
+                            break;
+                        case 'members_of_the_supreme_court':
+                            return "Anggota Mahkamah Agung";
+                            break;
+                        case 'members_of_cabinet_minister':
+                            return "Anggota Menteri Kabinet";
+                            break;
+                        case 'ambassador':
+                            return "Duta Besar";
+                            break;
+                        case 'governer':
+                            return "Gubernur";
+                            break;
+                        case 'deputy_governor':
+                            return "Wakil Gubernur";
+                            break;
+                        case 'regent':
+                            return "Bupati";
+                            break;
+                        case 'vice_regent':
+                            return "Wakil Gubernur";
+                            break;
+                        case 'mayor':
+                            return "Wakil Walikota";
+                            break;
+                        case 'vice_mayor':
+                            return "Wakil Walikota";
+                            break;
+                        case 'lecturer':
+                            return "Dosen";
+                            break;
+                        case 'pilot':
+                            return "Pilot";
+                            break;
+                        case 'lawyer':
+                            return "Pengacara";
+                            break;
+                        case 'notary_public':
+                            return "Notaris";
+                            break;
+                        case 'arsitect':
+                            return "Arsitect";
+                            break;
+                        case 'accountant':
+                            return "Akuntan";
+                            break;
+                        case 'consultant':
+                            return "konsultan";
+                            break;
+                        case 'docter':
+                            return "Dokter";
+                            break;
+                        case 'nurse':
+                            return "Perawat";
+                            break;
+                        case 'midwife':
+                            return "Bidan";
+                            break;
+                        case 'television_broadcaster':
+                            return "Penyiar Televisi";
+                            break;
+                        case 'radio_announcer':
+                            return "Penyiar Radio";
+                            break;
+                        case 'sailor':
+                            return "Pelaut";
+                            break;
+                        case 'researcher':
+                            return "Penilti";
+                            break;
+                        case 'pharmacist':
+                            return "Apoteker";
+                            break;
+                        case 'psychiatrist':
+                            return "Psikiater";
+                            break;
+                        case 'broker':
+                            return "Makelar";
+                            break;
+                        case 'paranormal':
+                            return "Paranormal";
+                            break;
+                        case 'village_apparatus':
+                            return "Perangkat Desa";
+                            break;
+                        case 'village_head':
+                            return "Kepala Desa";
+                            break;
+                        case 'nun':
+                            return "Biarawati";
+                            break;
+                        
+                        default:
+                            # code...
+                            break;
                     }
                 })
                 ->addColumn('photo', function ($data) {

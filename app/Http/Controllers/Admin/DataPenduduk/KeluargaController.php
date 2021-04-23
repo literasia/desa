@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\DataPenduduk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\{Family, Citizen};
+use App\Models\{Family, Citizen, Province, Regency, Village, District};
 use Validator;
 
 class KeluargaController extends Controller
@@ -146,12 +146,25 @@ class KeluargaController extends Controller
     
     public function getFamily($id){
         $family = Family::findOrFail($id);
-        $family_group = Citizen::where('village_id', auth()->user()->village_id)->where('id', '!=', $family->citizen->id)->where('no_kk', $family->citizen->no_kk)->get();
+        $family_group = Citizen::where('village_id', auth()->user()->village_id)->where('no_kk', $family->citizen->no_kk)->get();
+        $get_first_family = Citizen::where('village_id', auth()->user()->village_id)->where('no_kk', $family->citizen->no_kk)->first();
+
+        $provinsi = Province::findOrFail($get_first_family->province_id);
+        $kabupaten = District::findOrFail($get_first_family->district_id);
+        $kecamatan = Regency::findOrFail($get_first_family->regency_id);
+        $alamat = $get_first_family->address;
+        $no_kk = $get_first_family->no_kk;
+
         
         return response()
         ->json([
             'head_of_family' => $family->citizen->name,
             'family_group' => $family_group,
+            'kabupaten' => $kabupaten->name,
+            'kecamatan' => $kecamatan->name,
+            'alamat' => $alamat,
+            'provinsi' => $provinsi->name,
+            'no_kk' => $no_kk,
         ]);
     }
 }
