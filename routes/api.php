@@ -33,7 +33,7 @@ Route::namespace('API')
 
         //Message
         Route::get('message/{village_id}','MessageAPIController@getMessage');
-      
+
         //Complaint
         Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
         Route::get('get-complaint/{village_id}/{user_id}', 'ComplaintAPIController@getComplaint');
@@ -63,14 +63,14 @@ Route::namespace('API')
         //SKCK
         Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
         Route::get('get-skck/{village_id}', 'SKCKAPIController@getSKCK');
-        
+
         //Heir
         Route::post('add-heir/{village_id}/{user_id}', 'HeirAPIController@addHeir');
         Route::get('get-heir/{village_id}', 'HeirAPIController@getHeir');
 
         //Slider
     	Route::get('slider/{village_id}', 'SliderController@index');
-        
+
         //Domisili
         Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');
         Route::get('get-domicile/{village_id}', 'DomicileAPIController@getDomicile');
@@ -94,7 +94,7 @@ Route::namespace('API')
         // Land Certificate
         Route::get('land-certificate/{village_id}', 'LandCertificateAPIController@index');
         Route::post('add-land-certificate/{village_id}', 'LandCertificateAPIController@addLandCertificate');
-        
+
         // Employee
         Route::get('employee/{village_id}', 'EmployeeAPIController@index');
         Route::post('add-employee/{village_id}', 'EmployeeAPIController@addEmployee');
@@ -125,7 +125,11 @@ Route::namespace('API')
 
         //Death
         Route::get('get-citizen-death/{village_id}', 'DeathAPIController@getDeath');
-        
+
         //Immigrate
         Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
+
+        //Attendance
+        Route::get("get-village-attendance/{village_id}/{month}/{year}", "AttendanceApiController@getAttendance");
+        Route::post("add-employee-attendance/{employee_id}", "AttendanceApiController@addAttendance");
     });

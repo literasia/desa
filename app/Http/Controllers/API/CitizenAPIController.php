@@ -51,6 +51,7 @@ class CitizenAPIController extends Controller
             'regency_id' => 'required',
             'district_id' => 'required',
             'address' => 'required',
+            'head_of_family_status' => 'required',
         ];
 
         $message = [
@@ -73,6 +74,7 @@ class CitizenAPIController extends Controller
             'regency_id.required' => 'This column cannot be empty',
             'district_id.required' => 'This column cannot be empty',
             'address.required' => 'required',
+            'head_of_family_status.required' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -135,6 +137,7 @@ class CitizenAPIController extends Controller
             'district_id' => $request->district_id,
             'village_id' => $request->village_id,
             'address' => $request->address,
+            'head_of_family_status' => $request->head_of_family_status,
             'photo' => $photo,
         ]);
 

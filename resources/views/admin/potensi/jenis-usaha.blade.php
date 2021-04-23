@@ -6,7 +6,7 @@
 @section('title-3', 'Jenis Usaha')
 
 @section('describ')
-    Ini adalah halaman Jenis Usaha untuk pegawai
+    Ini adalah halaman Jenis Usaha untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-chart-line')
