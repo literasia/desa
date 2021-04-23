@@ -41,6 +41,12 @@ class CRUDResponse {
         ];
     }
 
+    public static function errorMessage($postfixMsg) {
+        return [
+            'error' => $postfixMsg
+        ];
+    }
+
     public static function errorInputNotif($postfixMsg) {
         return [
             'message' => "terjadi kesalahan, mohon periksa kembali inputan data $postfixMsg",

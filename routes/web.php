@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\{Route, Auth};
 
 Route::get('/', function () {
     return view('welcome');
@@ -677,8 +676,12 @@ Route::namespace('Admin')
                     ->name('profil-desa.profil-desa');
                 Route::post('/pegawai/profil-desa/updateProfile', 'ProfilDesaController@updateProfile')
                     ->name('profil-desa.profile-update');
-                Route::post('/pegawai/profil-desa/updateGallery', 'ProfilDesaController@updateGallery')
-                    ->name('profil-desa.profile-gallery');
+                Route::post('/pegawai/profil-desa/addGallery', 'ProfilDesaController@addGallery')
+                    ->name('profil-desa.add-gallery');
+                Route::post('/pegawai/profil-desa/deleteGallery', 'ProfilDesaController@deleteGallery')
+                    ->name('profil-desa.delete-gallery');
+                Route::get('/admin/profil-desa/refreshGallery', 'ProfilDesaController@refreshGallery')
+                    ->name('profil-desa.refresh-gallery');
             });
 
         // Referensi
