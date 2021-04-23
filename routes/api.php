@@ -121,16 +121,13 @@ Route::namespace('API')
         Route::get('view-group-family/{id}/{village_id}', 'FamilyAPIController@getGroupFamily');
 
         //Birth
-        Route::get('get-birth/{village_id}', 'BirthAPIController@getBirth');
-        Route::post('add-birth/{village_id}', 'BirthAPIController@addBirth');
+        Route::get('get-citizen-birth/{village_id}', 'BirthAPIController@getBirth');
 
         //Death
         Route::get('get-citizen-death/{village_id}', 'DeathAPIController@getDeath');
-        Route::post('add-citizen-death/{village_id}', 'DeathAPIController@addDeath');
 
         //Immigrate
         Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
-        Route::post('add-citizen-immigrate/{village_id}', 'ImmigrateAPIController@addImmigrate');
 
         //Attendance
         Route::get("get-village-attendance/{village_id}/{month}/{year}", "AttendanceApiController@getAttendance");
