@@ -3,79 +3,81 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Penduduk meninggal
+                    Tambah Penduduk meninggal
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="">
+            <form id="form_kematian" action="">
+            @csrf
+            <div class="modal-body">    
                 <div class="row">
+                <input type="hidden" name="hidden_id" id="hidden_id" class="form-control form-control-sm">
                 <div class="col">
                     <div class="form-group">
                         <label for="no.kk">No. KK</label>
-                        <input type="text" name="No. KK" id="No. KK" class="form-control form-control-sm" placeholder="No. KK">
+                        <input type="text" name="no_kk" id="no_kk" class="form-control form-control-sm" placeholder="No. KK">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="NIK"><Nav>NIK</Nav></label>
-                        <input type="text" name="NIK" id="NIK" class="form-control form-control-sm" placeholder="NIK">
+                        <input type="text" name="nik" id="nik" class="form-control form-control-sm" placeholder="NIK">
                     </div>
                 </div>
-            </div>
+             </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="nama_pegawai">Nama Lengkap</label>
-                                <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control form-control-sm" placeholder="Nama Lengkap">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" name="name" id="name" class="form-control form-control-sm" placeholder="Nama Lengkap">
                             </div>
                         </div>  
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control form-control-sm" placeholder="Tempat Lahir">
+                                <label for="birthplace">Tempat Lahir</label>
+                                <input type="text" name="birthplace" id="birthplace" class="form-control form-control-sm" placeholder="Tempat Lahir">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
+                                <label for="birthdate">Tanggal Lahir</label>
+                                <input type="text" name="birthdate" id="birthdate" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="tanggal_lahir">Tanggal Kematian</label>
-                                <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
+                                <label for="deathdate">Tanggal Kematian</label>
+                                <input type="text" name="deathdate" id="deathdate" class="form-control form-control-sm" placeholder="Tanggal Lahir" readonly>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="nama_pegawai">Sebab Kematian</label>
-                                <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control form-control-sm" placeholder="Nama Lengkap">
+                                <label for="deadcause">Sebab Kematian</label>
+                                <input type="text" name="deadcause" id="deadcause" class="form-control form-control-sm" placeholder="Penyebab Kematian">
                             </div>
                         </div>  
                     </div>                    
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <select name="jenis_kelamin" id="jenis_kelamin" class="form-control form-control-sm">
+                                <label for="gender">Jenis Kelamin</label>
+                                <select name="gender" id="gender" class="form-control form-control-sm">
                                     <option value="">-- Jenis Kelamin --</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option value="Laki-laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="agama">Agama</label>
-                                <select name="agama" id="agama" class="form-control form-control-sm">
+                                <label for="religion">Agama</label>
+                                <select name="religion" id="religion" class="form-control form-control-sm">
                                     <option value="">-- Agama --</option>
                                     <option value="Islam">Islam</option>
                                     <option value="Budha">Budha</option>
@@ -88,8 +90,8 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="status">Status Menikah</label>
-                                <select name="status" id="status" class="form-control form-control-sm">
+                                <label for="status_marriage">Status Menikah</label>
+                                <select name="status_marriage" id="status_marriage" class="form-control form-control-sm">
                                     <option value="">-- Status Menikah --</option>
                                     <option value="Menikah">Menikah</option>
                                     <option value="Belum Menikah">Belum Menikah</option>
@@ -100,73 +102,17 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="alamat_tinggal">Alamat Tinggal</label>
-                                <textarea name="alamat_tinggal" id="alamat_tinggal" cols="10" rows="3" class="form-control form-control-sm" placeholder="Alamat Tinggal"></textarea>
+                                <label for="address">Alamat Tinggal</label>
+                                <textarea name="address" id="address" cols="10" rows="3" class="form-control form-control-sm" placeholder="Alamat Tinggal"></textarea>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="provinsi">Provinsi</label>
-                                <select name="provinsi" id="provinsi" class="form-control form-control-sm">
-                                    <option value="">-- Provinsi --</option>
-                                    <option value="Aceh">Aceh</option>
-                                    <option value="Sumatera Utara">Sumatera Utara</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="kabupaten">Kabupaten</label>
-                                <select name="kabupaten" id="kabupaten" class="form-control form-control-sm">
-                                    <option value="">-- Kabupaten --</option>
-                                    <option value="Langkat">Langkat</option>
-                                    <option value="Deli Serdang">Deli Serdang</option>
-                                    <option value="Medan">Medan</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="kecamatan">Kecamatan</label>
-                                <select name="kecamatan" id="kecamatan" class="form-control form-control-sm">
-                                    <option value="">-- Kecamatan --</option>
-                                    <option value="Besitang">Besitang</option>
-                                    <option value="Medan Kota">Medan Kota</option>
-                                    <option value="Medan Selayang">Medan Selayang</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="dusun">Dusun</label>
-                                <input type="text" name="dusun" id="dusun" class="form-control form-control-sm" placeholder="Dusun">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="rt">RT</label>
-                                <input type="text" name="rt" id="rt" class="form-control form-control-sm" placeholder="RT">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="rw">RW</label>
-                                <input type="text" name="rw" id="rw" class="form-control form-control-sm" placeholder="RW">
-                            </div>
-                        </div>
-                    </div>                                  
-                </form>
+                    </div>                              
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-sm btn-outline-success">Simpan</button>
+                <button type="submit" id="button" class="btn btn-sm btn-outline-success">Simpan</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
