@@ -1,4 +1,4 @@
-@extends('layouts.pegawai')
+@extends('layouts.admin')
 
 {{-- config 1 --}}
 @section('title', 'Potensi Desa | Jenis Usaha')
@@ -6,14 +6,14 @@
 @section('title-3', 'Jenis Usaha')
 
 @section('describ')
-    Ini adalah halaman Jenis Usaha untuk pegawai
+    Ini adalah halaman Jenis Usaha untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-chart-line')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('pegawai.potensi.jenis-usaha') }}
+    {{ route('admin.potensi.jenis-usaha') }}
 @endsection
 
 {{-- main content --}}
@@ -116,7 +116,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('pegawai.potensi.jenis-usaha') }}",
+                    url: "{{ route('admin.potensi.jenis-usaha') }}",
                 },
                 columns: [
                 {
@@ -150,13 +150,13 @@
                 var url = '';
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('pegawai.potensi.jenis-usaha') }}";
+                    url = "{{ route('admin.potensi.jenis-usaha') }}";
                      text = "Data sukses ditambahkan";
 
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('pegawai.potensi.jenis-usaha.update') }}";
+                    url = "{{ route('admin.potensi.jenis-usaha.update') }}";
                      text = "Data sukses diupdate";
                 }
 
@@ -191,7 +191,7 @@
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/pegawai/potensi/jenis-usaha/edit/'+id,
+                    url: '/admin/potensi/jenis-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
                         $('#jenis_usaha').val(data.data.business_type);
@@ -214,7 +214,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/pegawai/potensi/jenis-usaha/hapus/'+user_id,
+                    url: '/admin/potensi/jenis-usaha/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
