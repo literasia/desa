@@ -111,6 +111,7 @@
             
             // get citizen 
             function getCitizenData() {
+                citizens = [];
                 $.ajax({
                     url: '/admin/data-penduduk/keluarga/get-citizen',
                     dataType: 'JSON',
@@ -121,7 +122,6 @@
                         });
                         // add item to input select
                         addItemToCitizenInput();
-                        
                     }
                 });
             }
@@ -131,7 +131,9 @@
                     $("#citizen_id").append(new Option(`${citizen.name} - ${citizen.no_kk}`, `${citizen.id}`));
                 });
             }
+
             getCitizenData();
+
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -207,6 +209,15 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
+
+                        let selectobject = document.getElementById("citizen_id");
+
+                        for (var i=0; i<selectobject.length; i++) {
+                            if (selectobject.options[i].value == data.citizen_id_delete){
+                                selectobject.remove(i);
+                            }
+                        }
+
                         // If has Errors
                         if (data.errors) {
                             data.errors.citizen_id ? $('#citizen_id').addClass('is-invalid') : $('#citizen_id').removeClass('is-invalid')
@@ -224,6 +235,7 @@
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
+                        
                         $('#form_result').html(html);
                     }
                 });
@@ -289,6 +301,7 @@
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
+                        $("#citizen_id").append(new Option(`${data.name} - ${data.no_kk}`, `${data.id}`));
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
