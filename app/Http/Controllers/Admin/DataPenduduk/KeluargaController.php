@@ -152,6 +152,7 @@ class KeluargaController extends Controller
         $provinsi = Province::findOrFail($get_first_family->province_id);
         $kabupaten = District::findOrFail($get_first_family->district_id);
         $kecamatan = Regency::findOrFail($get_first_family->regency_id);
+        $desa = Village::findOrFail($get_first_family->village_id);
         $alamat = $get_first_family->address;
         $no_kk = $get_first_family->no_kk;
 
@@ -162,6 +163,7 @@ class KeluargaController extends Controller
             'family_group' => $family_group,
             'kabupaten' => $kabupaten->name,
             'kecamatan' => $kecamatan->name,
+            'desa' => $desa->name,
             'alamat' => $alamat,
             'provinsi' => $provinsi->name,
             'no_kk' => $no_kk,

@@ -269,23 +269,26 @@
                     success: function (data) {
                         let familyGroup = document.getElementById('family_group');
                         let provinsi = document.getElementById('provinsi');
-                        let kecamatan = document.getElementById('kecamatan');
                         let kabupaten = document.getElementById('kabupaten');
+                        let kecamatan = document.getElementById('kecamatan');
+                        let desa = document.getElementById('desa');
                         let alamat = document.getElementById('alamat');
                         let noKK = document.getElementById('no_kk');
 
                         familyGroup.innerHTML = "";
                         noKK.innerHTML = "";
                         provinsi.innerHTML = "";
-                        kecamatan.innerHTML = "";
                         kabupaten.innerHTML = "";
+                        kecamatan.innerHTML = "";
+                        desa.innerHTML = "";
                         alamat.innerHTML = "";
 
 
                         noKK.innerHTML = `${data.no_kk}`;
                         provinsi.innerHTML = `${data.provinsi}`;
-                        kecamatan.innerHTML = `${data.kecamatan}`;
                         kabupaten.innerHTML = `${data.kabupaten}`;
+                        kecamatan.innerHTML = `${data.kecamatan}`;
+                        desa.innerHTML = `${data.desa}`;
                         alamat.innerHTML = `${data.alamat}`;
 
                         console.log(data);
