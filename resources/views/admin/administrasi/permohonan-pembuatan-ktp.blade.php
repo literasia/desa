@@ -36,17 +36,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-left">
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <label class="badge badge-danger">Baru Masuk</label>
-                                                <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                                <label class="badge badge-success">Selesai</label> -->
-                                            </td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

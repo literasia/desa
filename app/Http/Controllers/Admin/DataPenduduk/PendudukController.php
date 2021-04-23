@@ -31,11 +31,11 @@ class PendudukController extends Controller
                 })
                 ->editColumn('family_status', function($data){
                     switch ($data->family_status) {
-                        case 'husband':
-                            return 'Suami/Ayah';
+                        case 'father':
+                            return 'Ayah';
                             break;
-                        case 'wife':
-                            return 'Istri/Ibu';
+                        case 'mother':
+                            return 'Ibu';
                             break;
                         case 'son_in_law':
                             return 'Menantu';
@@ -68,12 +68,22 @@ class PendudukController extends Controller
                     }
                 })
                 ->editColumn('marital_status', function($data){
-                    if($data->marital_status == "single"){
-                        return "Lajang";
-                    }elseif($data->marital_status == "married"){
-                        return "Menikah";
-                    }else{
-                        return "Cerai";
+                    switch ($data->marital_status) {
+                        case 'single':
+                            return "Lajang";
+                            break;
+                        case 'married':
+                            return "Menikah";
+                            break;
+                        case 'divorced':
+                            return "Cerai";
+                            break;
+                        case 'death_divorced':
+                            return "Cerai Mati";
+                            break;    
+                        default:
+                            # code...
+                            break;
                     }
                 })
                 ->editColumn('religion', function($data){
