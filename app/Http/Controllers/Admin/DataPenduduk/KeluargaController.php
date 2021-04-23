@@ -60,6 +60,7 @@ class KeluargaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
+        $citizen_id_delete = $request->citizen_id;
         $validator = Validator::make($data, $this->rules);
 
         if ($validator->fails()) {
@@ -76,6 +77,7 @@ class KeluargaController extends Controller
 
         return response()
             ->json([
+                'citizen_id_delete' => $citizen_id_delete,
                 'success' => 'Data berhasil ditambahkan.',
         ]);
     }
@@ -128,8 +130,10 @@ class KeluargaController extends Controller
     public function destroy($id)
     {
         $family = Family::findOrFail($id);
+        $citizen = Citizen::findOrFail($family->citizen_id);
 
         $family->delete();
+        return response()->json($citizen);
     }
 
     public function getCitizen(){
