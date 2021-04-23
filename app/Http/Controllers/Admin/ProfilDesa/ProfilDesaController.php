@@ -17,7 +17,8 @@ class ProfilDesaController extends Controller
     		// first array = where
     		['village_id'=>auth()->user()->village->id],
 		);
-        return view('admin.profil-desa.profil-desa', compact('profile'));
+        $galleries = auth()->user()->village->galleries()->get();
+        return view('admin.profil-desa.profil-desa', compact(['profile', 'galleries']));
     }
 
     public function updateProfile(Request $request)
@@ -43,15 +44,57 @@ class ProfilDesaController extends Controller
             'phone_number'  => $request->phone_number,
             'address'       => $request->address,
             'description'   => $request->description,
-            'photo'         => $photo ?? $profile->photo
+            'photo'         => $photo ?? $profile->photo,
+            'latitude'      => $request->latitude,
+            'longitude'     => $request->longitude
             ])
         ){
             return response()->json(CRUDResponse::successUpdate('Profil Desa'));
         }
     }
 
-    public function updateGallery(Request $request)
+    public function addGallery(Request $request)
     {
+        $village_id = auth()->user()->village_id;
+        $gallery = new VillageGallery;
+        $gallery->village_id = $village_id;
+        $total_gallery = VillageGallery::where('village_id', $village_id);
+        // dd($total_gallery->latest()->get());
+        $gallery_image = "";
+
+        if($total_gallery->count()>=6){
+            return response()->json(CRUDResponse::errorMessage("Jumlah maksimal gallery adalah 6 gambar"));
+        }
+
+        if ($request->file('gallery')) {
+        	$fileExtension = $request->gallery->getClientOriginalExtension();
+        	$fileName = Str::slug("gallery-" . auth()->user()->village->name . "-" . date("Y-m-d-H-i-s"), '-') . "." . $fileExtension;
+            $request->gallery->storeAs('public/village_galleries', $fileName);
+            $gallery_image = 'village_galleries/'.$fileName;
+            $gallery->image = $gallery_image;
+            $gallery->order = 0;
+            $gallery->save();
+        }
+    }
+
+    public function deleteGallery(Request $request)
+    {
+        $id = $request->id;
+        $gallery = VillageGallery::findOrFail($id);
         
+        if(!$gallery->delete()){
+            return response()->json(CRUDResponse::errorMessage('Error Server. Gagal menghapus gallery'));
+        }
+        if (Storage::disk('public')->exists($gallery->image)) {
+            Storage::disk('public')->delete($gallery->image);
+        }
+        return response()->json(CRUDResponse::successDeleteNotif('Gallery'));
+    }
+
+    public function refreshGallery()
+    {
+        $galleries = auth()->user()->village->galleries()->get();
+        
+        return view('admin.profil-desa._profile-gallery', compact('galleries'));
     }
 }
