@@ -14,7 +14,7 @@ class AddFieldParentIdOnVillageStructures extends Migration
     public function up()
     {
         Schema::table('village_structures', function (Blueprint $table) {
-            $table->string('parent_id');
+            $table->string('parent_id')->nullable();
         });
     }
 
