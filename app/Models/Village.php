@@ -11,7 +11,7 @@ namespace App\Models;
 
 use AzisHapidin\IndoRegion\Traits\VillageTrait;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\District;
+use App\Models\{District, VillageGallery};
 
 /**
  * Village Model.
@@ -52,5 +52,10 @@ class Village extends Model
 
     public function citizen(){
         return $this->hasMany(Citizen::class);
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(VillageGallery::class);
     }
 }
