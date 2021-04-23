@@ -119,7 +119,7 @@
                     <div class="card-block">
                     <h4>Peta</h4>
                         <div class="col-md-12 text-center google-maps">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106412.05412244878!2d110.911941207651!3d-7.622584068974703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a18aeeb6a8c19%3A0x4027a76e35302c0!2sKaranganyar%2C%20Kec.%20Karanganyar%2C%20Kabupaten%20Karanganyar%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1617097890130!5m2!1sid!2sid" width="800" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                            
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15927.860122700129!2d98.72589717678544!3d3.5954904581368505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30313139834532ad%3A0x3525a16ce231639b!2sTembung%2C%20Medan%20Tembung%2C%20Medan%20City%2C%20North%20Sumatra!5e0!3m2!1sen!2sid!4v1619078697909!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                       
                         </div>
                     </div>
                 </div>
