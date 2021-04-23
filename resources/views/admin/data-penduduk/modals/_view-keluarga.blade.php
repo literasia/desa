@@ -12,18 +12,23 @@
             <div class="modal-body p-4">
                 <div class="alert alert-primary shadow">
                     <div class="badge badge-info rounded mb-3"><h6 class="m-0">Nomor Kartu Keluarga</h6></div>
-                    <h5 class="text-dark font-weight-bold">1234567890345</h5>
+                    <h5 class="text-dark font-weight-bold" id="no_kk"></h5>
                 </div>
 
                 <div class="mt-5" class="family-modal-wrapper">
                     <h6 class="font-weight-bold d-inline-block family-modal-caption mt-4 px-2">Anggota Keluarga</h6>
                     <div class="border rounded p-3">
                         <table class="table table-striped">
-                            <tr>
-                                <td>Nama</td>
-                                <td>NIK</td>
-                                <td>Status Dalam Keluarga</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>NIK</td>
+                                    <td>Status Dalam Keluarga</td>
+                                </tr>
+                            </thead>
+                            <tbody id="family_group">
+                                
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -34,19 +39,19 @@
                         <table class="table table-striped">
                             <tr>
                                 <td>Provinsi</td>
-                                <td></td>
+                                <td id="provinsi"></td>
                             </tr>
                             <tr>
                                 <td>Kabupaten</td>
-                                <td></td>
+                                <td id="kabupaten"></td>
                             </tr>
                             <tr>
                                 <td>Kecamatan</td>
-                                <td></td>
+                                <td id="kecamatan"></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td></td>
+                                <td id="alamat"></td>
                             </tr>
                         </table>
                     </div>
