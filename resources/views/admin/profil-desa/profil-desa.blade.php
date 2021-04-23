@@ -196,6 +196,8 @@
         }
 
         .thumb_pict {
+            margin-left: 5px;
+            margin-right: 5px;
             margin-bottom:30px;
             padding: 20px;
             -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
