@@ -181,6 +181,8 @@
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -199,7 +201,7 @@
                         $('#hidden_id').val(data.data.id);
                         $('#action').val('edit');
                         $('#btn')
-                            .removeClass('btn-outline-success')
+                            .removeClass('btn-success')
                             .addClass('btn-info')
                             .val('Update');
                     }

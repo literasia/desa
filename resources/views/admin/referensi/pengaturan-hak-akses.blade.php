@@ -46,7 +46,7 @@
                                                 <span> : Profil Desa</span>
                                             </li>
                                             <li>
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">Bd</label></span>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">B</label></span>
                                                 <span> : Berita</span>
                                             </li>
                                             <li>
