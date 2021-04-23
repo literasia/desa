@@ -23,6 +23,7 @@
             <div class=" col-xl-12 card shadow mb-0 p-0">
                 <div class="card-body">
                     <div class="card-block p-2">
+                    <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                         <div class="dt-responsive table-responsive">
                             <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                                 <thead>
@@ -52,6 +53,8 @@
 </div>
 
 {{-- Modal --}}
+@include('admin.peristiwa.modals._kelahiran')
+
 <div id="confirmModal1" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -75,6 +78,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <style>
         .btn i {
@@ -89,6 +93,7 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
@@ -142,60 +147,117 @@
                 ]
             });
 
-            // var update_id = '';
-            // $(document).on('click', '.update', function (e) {
-            //     update_id = $(this).attr('id');
-            //     $('#confirmModal2').modal('show');
-            // });
+            
+            $('#birthdate').dateDropper({
+                theme: 'leaf',
+                format: 'Y-m-d'
+            });
 
-            // $('.reject_btn').click(function () {
-            //     $.ajax({
-            //         headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         method: 'POST',
-            //         data: {
-            //             reject : "rejected"
-            //         },
-            //         url: '/admin/potensi/potensi/update/'+update_id,
-            //         beforeSend: function () {
-            //             $('#btn-reject').text('Mengupdate...');
-            //         }, success: function (data) {
-            //             setTimeout(function () {
-            //                 $('#confirmModal2').modal('hide');
-            //                 $('#order-table').DataTable().ajax.reload();
-            //                 $('#btn-reject').text('Tolak');
-            //                 Swal.fire('Success!!','Data berhasil ditolak','success' );
-            //             }, 1000);
-            //         }
-            //     });
-            // });
-    
-            // $('.update_btn').click(function () {
-            //     $.ajax({
-            //         headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         method: 'POST',
-            //         url: '/admin/potensi/potensi/update/'+update_id,
-            //         beforeSend: function () {
-            //             $('#btn-update').text('Mengupdate...');
-            //         }, success: function (data) {
-            //             setTimeout(function () {
-            //                 $('#confirmModal2').modal('hide');
-            //                 $('#order-table').DataTable().ajax.reload();
-            //                 $('#btn-update').text('Setujui');
-            //                 Swal.fire('Success!!','Data berhasil diapprove','success' );
-            //             }, 1000);
-            //         }
-            //     });
-            // });
+
+            $('#add').on('click', function() {
+            $('.modal-title').html('Tambah Kelahiran');
+            $('#form-kelahiran form').attr('action', 'add');
+            $('#modal-kelahiran').modal('show');
+            $('#no_kk').val('');
+            $('#name').val('');
+            $('#birthplace').val('');
+            $('#birthdate').val('');
+            $('#gender').val('');
+            $('#religion').val('');
+            $('#address').val('');
+            $('#dadname').val('');
+            $('#momname').val('');
+            $('#hidden_id').val('');
+            $('#action').val('add');
+            $('#button')
+                .removeClass('btn-info edit')
+                .addClass('btn-success add')
+                .html('Tambah');
+            });
+
+
+            $('#form_kelahiran').on('submit', function(event) {
+            event.preventDefault();
+            var url = '';
+
+            if ($('#button').hasClass('add')) {
+                url = "{{ route('admin.kelahiran.add') }}";
+                text = "Data berhasil ditambahkan";
+            }
+
+            if ($('#button').hasClass('edit')) {
+                url = "{{ route('admin.kelahiran.update') }}";
+                text = "Data berhasil diupdate";
+            }
+            $.ajax({
+                url: url,
+                method: 'POST',
+                dataType: 'JSON',
+                data: $(this).serialize(),
+                success: function(data) {
+                    var html = '';
+                    if (data.errors) {
+                        // for (var count = 0; count <= data.errors.length; count++) {
+                        html = data.errors[0];
+                        // }
+                        $('#title').addClass('is-invalid');
+                        $('#message').addClass('is-invalid');
+                        toastr.error(html);
+                    }
+
+                    if (data.success) {
+                        Swal.fire('Success!!',text,'success' );
+                        $('#title').removeClass('is-invalid');
+                        $('#message').removeClass('is-invalid');
+                        $('#modal-kelahiran').modal('hide');
+                        $('#form_kelahiran')[0].reset();
+                        $('#action').val('add');
+                        $('#button')
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
+                            .val('Simpan');
+                        $('#order-table').DataTable().ajax.reload();
+                    }
+                    $('#form_result').html(html);
+                }
+            });
+        });
+
+        $(document).on('click', '.edit', function() {
+            var id = $(this).attr('id');
+
+            $.ajax({
+                url: '/admin/peristiwa/kelahiran/edit/' + id,
+                dataType: 'JSON',
+                success: function(data) {
+                    $('.modal-title').html('Edit Kelahiran');
+                    $('#form-kelahiran form').attr('action', 'edit');
+                    $('#no_kk').val(data.birth.no_kk);
+                    $('#name').val(data.birth.name);
+                    $('#birthplace').val(data.birth.birthplace);
+                    $('#birthdate').val(data.birth.birthdate);
+                    $('#gender').val(data.birth.gender);
+                    $('#religion').val(data.birth.religion);
+                    $('#address').val(data.birth.address);
+                    $('#dadname').val(data.birth.dadname);
+                    $('#momname').val(data.birth.momname);
+                    $('#hidden_id').val(data.birth.id);
+                    $('#action').val('edit');
+
+                    $('#button')
+                        .removeClass('btn-success add')
+                        .addClass('btn-info edit')
+                        .html('Update');
+                    $('#modal-kelahiran').modal('show');
+                }
+
+            });
+        });
 
 
             var delete_id;
             $(document).on('click', '.delete', function () {
                 delete_id = $(this).attr('id');
-                
                 $('#confirmModal1').modal('show');
             });
 
