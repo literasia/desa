@@ -142,10 +142,6 @@
             margin-right: 0px;
         }
 
-        #thumb_gallery.not_empty {
-            display: inline-block;
-        }
-
         #gallery1, #gallery2 {
             visibility: hidden;
             width: 1px;
@@ -171,6 +167,11 @@
             width: 100%;
             display: block;
             margin-top: 5px;
+        }
+
+        #thumb_gallery.not_empty {
+            width: 200px;
+            object-fit: cover;
         }
 
         #thumb_gallery.not_empty, .thumb_pict.not_empty {
