@@ -53,7 +53,7 @@ class ChangeKKAPIController extends Controller
             "name" => $request->name,
             "no_phone" => $request->no_phone,
             "address" => $request->address,
-            "image_ktp" => $data['image_ktp'],
+            "image_ktp" => $data['image_ktp'] ?? "",
             "status" => 'processing'
         ]);
 

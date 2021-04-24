@@ -111,7 +111,7 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h6>Kepala Keluarga</h6>
+                        <h6>Kep. Keluarga</h6>
                         <h5 class="m-b-30 f-w-700">{{ $family }}</h5>
                         <div class="progress">
                             <div class="progress-bar bg-c-red" style="width:{{100}}%"></div>
