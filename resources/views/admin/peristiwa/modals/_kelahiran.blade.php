@@ -91,7 +91,7 @@
                     </div>                               
             </div>
             <div class="modal-footer">
-                <button type="submit" id="button" class="btn btn-sm btn-outline-success">Simpan</button>
+                <button type="submit" id="button" class="btn btn-sm btn-success">Simpan</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
             </div>
             </form>

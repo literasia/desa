@@ -156,26 +156,26 @@
             
 
             $('#add').on('click', function() {
-            $('#modal-kematian').modal('show');
-            $('.modal-title').html('Tambah Penduduk Meninggal');
-            $('#form-kematian form').attr('action', 'add');
-            $('#no_kk').val('');
-            $('#nik').val('');
-            $('#name').val('');
-            $('#birthplace').val('');
-            $('#birthdate').val('');
-            $('#deathdate').val('');
-            $('#deadcause').val('');
-            $('#gender').val('');
-            $('#religion').val('');
-            $('#status_marriage').val('');
-            $('#address').val('');
-            $('#hidden_id').val('');
-            $('#action').val('add');
-            $('#button')
-                .removeClass('btn-info edit')
-                .addClass('btn-success add')
-                .html('Tambah');
+                $('#modal-kematian').modal('show');
+                $('.modal-title').html('Tambah Penduduk Meninggal');
+                $('#form-kematian form').attr('action', 'add');
+                $('#no_kk').val('');
+                $('#nik').val('');
+                $('#name').val('');
+                $('#birthplace').val('');
+                $('#birthdate').val('');
+                $('#deathdate').val('');
+                $('#deadcause').val('');
+                $('#gender').val('');
+                $('#religion').val('');
+                $('#status_marriage').val('');
+                $('#address').val('');
+                $('#hidden_id').val('');
+                $('#action').val('add');
+                $('#button')
+                    .removeClass('btn-info edit')
+                    .addClass('btn-success add')
+                    .html('Tambah');
             });
 
         

@@ -155,24 +155,24 @@
 
 
             $('#add').on('click', function() {
-            $('.modal-title').html('Tambah Kelahiran');
-            $('#form-kelahiran form').attr('action', 'add');
-            $('#modal-kelahiran').modal('show');
-            $('#no_kk').val('');
-            $('#name').val('');
-            $('#birthplace').val('');
-            $('#birthdate').val('');
-            $('#gender').val('');
-            $('#religion').val('');
-            $('#address').val('');
-            $('#dadname').val('');
-            $('#momname').val('');
-            $('#hidden_id').val('');
-            $('#action').val('add');
-            $('#button')
-                .removeClass('btn-info edit')
-                .addClass('btn-success add')
-                .html('Tambah');
+                $('.modal-title').html('Tambah Kelahiran');
+                $('#form-kelahiran form').attr('action', 'add');
+                $('#modal-kelahiran').modal('show');
+                $('#no_kk').val('');
+                $('#name').val('');
+                $('#birthplace').val('');
+                $('#birthdate').val('');
+                $('#gender').val('');
+                $('#religion').val('');
+                $('#address').val('');
+                $('#dadname').val('');
+                $('#momname').val('');
+                $('#hidden_id').val('');
+                $('#action').val('add');
+                $('#button')
+                    .removeClass('btn-info edit')
+                    .addClass('btn-success add')
+                    .html('Tambah');
             });
 
 
