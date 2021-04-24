@@ -43,8 +43,8 @@
                                             <th>Status Dalam Keluarga</th>
                                             <th>Kewarganegaraan</th>
                                             <th>Provinsi</th>
-                                            <th>Kabupaten</th>
                                             <th>Kecamatan</th>
+                                            <th>Kabupaten</th>
                                             <th>Desa/Kelurahan</th>
                                             <th>Alamat</th>
                                             <th>Foto</th>

@@ -45,10 +45,10 @@ class KeluargaController extends Controller
                     return $data->citizen->province->name;
                 })
                 ->addColumn('kabupaten', function ($data) {
-                    return $data->citizen->district->name;
+                    return $data->citizen->regency->name;
                 })
                 ->addColumn('kecamatan', function ($data) {
-                    return $data->citizen->regency->name;
+                    return $data->citizen->district->name;
                 })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
@@ -150,8 +150,8 @@ class KeluargaController extends Controller
         $get_first_family = Citizen::where('village_id', auth()->user()->village_id)->where('no_kk', $family->citizen->no_kk)->first();
 
         $provinsi = Province::findOrFail($get_first_family->province_id);
-        $kabupaten = District::findOrFail($get_first_family->district_id);
-        $kecamatan = Regency::findOrFail($get_first_family->regency_id);
+        $kabupaten = Regency::findOrFail($get_first_family->regency_id);
+        $kecamatan = District::findOrFail($get_first_family->district_id);
         $desa = Village::findOrFail($get_first_family->village_id);
         $alamat = $get_first_family->address;
         $no_kk = $get_first_family->no_kk;
