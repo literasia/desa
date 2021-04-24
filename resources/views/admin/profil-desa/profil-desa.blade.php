@@ -169,6 +169,10 @@
             margin-top: 5px;
         }
 
+        #thumb_gallery {
+            display: none;
+        }
+
         #thumb_gallery.not_empty {
             width: 200px;
             object-fit: cover;
