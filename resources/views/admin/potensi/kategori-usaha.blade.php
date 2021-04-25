@@ -23,7 +23,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <form id="form-status">
+                        <form id="form-kategori-usaha">
                         @csrf
                             <div class="row">
                                 <div class="col-xl-12">
@@ -137,15 +137,15 @@
         $('.reset').on('click', function(e) {
             e.preventDefault();
             $('#kategori_usaha').removeClass('is-invalid');
-                            $('#form-status')[0].reset();
+            $('#form-kategori-usaha')[0].reset();
             $('#action').val('add');
             $('#btn')
-            .removeClass('btn-info')
-                            .addClass('btn-success')
+                .removeClass('btn-info')
+                .addClass('btn-success')
                 .val('Simpan');
         })
 
-        $('#form-status').on('submit', function (event) {
+        $('#form-kategori-usaha').on('submit', function (event) {
                 event.preventDefault();
                 var url = '';
                 var text = "Data sukses ditambahkan";
@@ -168,9 +168,7 @@
                     success: function (data) {
                         var html = '';
                         if (data.errors) {
-                            // for (var count = 0; count <= data.errors.length; count++) {
                             html = data.errors[0];
-                            // 
                             $('#kategori_usaha').addClass('is-invalid');
                             toastr.error(html);
                         }
@@ -178,9 +176,11 @@
                         if (data.success) {
                             Swal.fire('Success!!',text,'success' );  
                             $('#kategori_usaha').removeClass('is-invalid');
-                            $('#form-status')[0].reset();
+                            $('#form-kategori-usaha')[0].reset();
                             $('#action').val('add');
                             $('#btn')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -194,7 +194,6 @@
                     url: '/admin/potensi/kategori-usaha/edit/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        console.log(data.data.category_name)
                         $('#kategori_usaha').val(data.data.category_name);
                         $('#hidden_id').val(data.data.id);
                         $('#action').val('edit');

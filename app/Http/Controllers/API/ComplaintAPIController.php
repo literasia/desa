@@ -14,7 +14,7 @@ class ComplaintAPIController extends Controller
 
     public function getComplaint($village_id,$user_id)
     {
-        $complaint = Complaint::where('complaint.user_id', $user_id)->where('complaint.village_id', $village_id)->get();
+        $complaint = Complaint::whereUserId($user_id)->whereVillageId($village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($complaint, 'Success get data'));
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\DataPenduduk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\{Family, Citizen};
+use App\Models\{Family, Citizen, Province, Regency, Village, District};
 use Validator;
 
 class KeluargaController extends Controller
@@ -41,6 +41,15 @@ class KeluargaController extends Controller
                 ->addColumn('desa_kelurahan', function ($data) {
                     return $data->citizen->village->name;
                 })
+                ->addColumn('provinsi', function ($data) {
+                    return $data->citizen->province->name;
+                })
+                ->addColumn('kabupaten', function ($data) {
+                    return $data->citizen->district->name;
+                })
+                ->addColumn('kecamatan', function ($data) {
+                    return $data->citizen->regency->name;
+                })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
@@ -51,6 +60,7 @@ class KeluargaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
+        $citizen_id_delete = $request->citizen_id;
         $validator = Validator::make($data, $this->rules);
 
         if ($validator->fails()) {
@@ -67,6 +77,7 @@ class KeluargaController extends Controller
 
         return response()
             ->json([
+                'citizen_id_delete' => $citizen_id_delete,
                 'success' => 'Data berhasil ditambahkan.',
         ]);
     }
@@ -119,24 +130,43 @@ class KeluargaController extends Controller
     public function destroy($id)
     {
         $family = Family::findOrFail($id);
+        $citizen = Citizen::findOrFail($family->citizen_id);
 
         $family->delete();
+        return response()->json($citizen);
     }
 
     public function getCitizen(){
-        $citizen = Citizen::where('village_id', auth()->user()->village_id)->get();
+        $citizen = Citizen::where('is_head_of_family', 1)->whereNotIn('id', function($query){
+            $query->select('citizen_id')->from('families');
+        })->where('village_id', auth()->user()->village_id)->get();
 
         return response()->json($citizen);
     }
     
     public function getFamily($id){
         $family = Family::findOrFail($id);
-        $family_group = Citizen::where('village_id', auth()->user()->village_id)->where('id', '!=', $family->citizen->id)->where('no_kk', $family->citizen->no_kk)->get();
+        $family_group = Citizen::where('village_id', auth()->user()->village_id)->where('no_kk', $family->citizen->no_kk)->get();
+        $get_first_family = Citizen::where('village_id', auth()->user()->village_id)->where('no_kk', $family->citizen->no_kk)->first();
+
+        $provinsi = Province::findOrFail($get_first_family->province_id);
+        $kabupaten = District::findOrFail($get_first_family->district_id);
+        $kecamatan = Regency::findOrFail($get_first_family->regency_id);
+        $desa = Village::findOrFail($get_first_family->village_id);
+        $alamat = $get_first_family->address;
+        $no_kk = $get_first_family->no_kk;
+
         
         return response()
         ->json([
             'head_of_family' => $family->citizen->name,
             'family_group' => $family_group,
+            'kabupaten' => $kabupaten->name,
+            'kecamatan' => $kecamatan->name,
+            'desa' => $desa->name,
+            'alamat' => $alamat,
+            'provinsi' => $provinsi->name,
+            'no_kk' => $no_kk,
         ]);
     }
 }

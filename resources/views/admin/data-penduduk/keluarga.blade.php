@@ -25,20 +25,24 @@
                     <div class="card-body">
                         <div class="card-block p-2">
                             <div class="dt-responsive table-responsive">
+                                <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                                 <table id="order-table" class="table table-striped nowrap shadow-sm">
                                     <thead class="text-left">
                                         <tr>
                                             <th>No</th>
                                             <th>No. KK</th>
                                             <th>Kepala Keluarga</th>
-                                            <th>Alamat</th>
+                                            <th>Alamat</th> 
+                                            <th>Provinsi</th>
+                                            <th>Kabupaten</th>
+                                            <th>Kecamatan</th>
                                             <th>Desa/Kelurahan</th>
-                                            <!-- <th>Aplikasi</th> -->
+                                            {{-- <th>Aplikasi</th> --}}
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-left">
-                                       
+
                                     </tbody>
                                 </table>
                             </div>
@@ -83,7 +87,6 @@
         .btn i {
             margin-right: 0px;
         }
-
         .select2-container {
             width: 100% !important;
             padding: 0;
@@ -108,6 +111,7 @@
             
             // get citizen 
             function getCitizenData() {
+                citizens = [];
                 $.ajax({
                     url: '/admin/data-penduduk/keluarga/get-citizen',
                     dataType: 'JSON',
@@ -116,18 +120,15 @@
                             // push citizens
                             citizens.push(citizen);
                         });
-
                         // add item to input select
                         addItemToCitizenInput();
-                        
                     }
                 });
             }
-
             // add item to input select 
             function addItemToCitizenInput(){
                 citizens.forEach(citizen => {
-                    $("#citizen_id").append(new Option(`${citizen.name}`, `${citizen.id}`));
+                    $("#citizen_id").append(new Option(`${citizen.name} - ${citizen.no_kk}`, `${citizen.id}`));
                 });
             }
 
@@ -157,6 +158,18 @@
                         name: 'alamat'
                     },
                     {
+                        data: 'provinsi',
+                        name: 'provinsi'
+                    },
+                    {
+                        data: 'kabupaten',
+                        name: 'kabupaten'
+                    },
+                    {
+                        data: 'kecamatan',
+                        name: 'kecamatan'
+                    },
+                    {
                         data: 'desa_kelurahan',
                         name: 'desa_kelurahan'
                     },
@@ -166,7 +179,6 @@
                     },
                 ]
             });
-
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Keluarga');
                 $('#action').val('add');
@@ -177,22 +189,17 @@
                     .val('Simpan');
                 $('#modal-keluarga').modal('show');
             });
-
            // Event Submit
            $('#form-keluarga').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.data-penduduk.keluarga.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.data-penduduk.keluarga.update') }}";
                 }
-
                 let formData = new FormData($('#form-keluarga')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -203,10 +210,17 @@
                     success: function (data) {
                         var html = ''
 
+                        let selectobject = document.getElementById("citizen_id");
+
+                        for (var i=0; i<selectobject.length; i++) {
+                            if (selectobject.options[i].value == data.citizen_id_delete){
+                                selectobject.remove(i);
+                            }
+                        }
+
                         // If has Errors
                         if (data.errors) {
                             data.errors.citizen_id ? $('#citizen_id').addClass('is-invalid') : $('#citizen_id').removeClass('is-invalid')
-
                             toastr.error(data.error);
                         }
             
@@ -221,11 +235,11 @@
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
+                        
                         $('#form_result').html(html);
                     }
                 });
             });
-
             // Get datas show on inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -253,31 +267,81 @@
                     url: '/admin/data-penduduk/keluarga/get-family/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('#head_of_family').html(data.head_of_family);
-                            
-                        let familyGroup = data.family_group;
-                        let familyGroupContent = ``;
+                        let familyGroup = document.getElementById('family_group');
+                        let provinsi = document.getElementById('provinsi');
+                        let kabupaten = document.getElementById('kabupaten');
+                        let kecamatan = document.getElementById('kecamatan');
+                        let desa = document.getElementById('desa');
+                        let alamat = document.getElementById('alamat');
+                        let noKK = document.getElementById('no_kk');
 
-                        familyGroup.forEach(item => {
+                        familyGroup.innerHTML = "";
+                        noKK.innerHTML = "";
+                        provinsi.innerHTML = "";
+                        kabupaten.innerHTML = "";
+                        kecamatan.innerHTML = "";
+                        desa.innerHTML = "";
+                        alamat.innerHTML = "";
+
+
+                        noKK.innerHTML = `${data.no_kk}`;
+                        provinsi.innerHTML = `${data.provinsi}`;
+                        kabupaten.innerHTML = `${data.kabupaten}`;
+                        kecamatan.innerHTML = `${data.kecamatan}`;
+                        desa.innerHTML = `${data.desa}`;
+                        alamat.innerHTML = `${data.alamat}`;
+
+                        console.log(data);
+
+                        // noKK.innerHTML = `${data.family_group[0].reginc}`;
+                        // noKK.innerHTML = `${data.family_group[0].no_kk}`;
+
+                        for (let index = 0; index < data.family_group.length; index++) {
+                            let familyGroupContent = ``;
                             let familyStatus = "";
-                            if (item.family_status == "father") {
-                                familyStatus = "Ayah";
-                            }else if(item.family_status == "mother"){
-                                familyStatus = "Ibu";
-                            }else{
-                                familyStatus = "Anak";
+                            switch (data.family_group[index].family_status) {
+                                case 'husband':
+                                    familyStatus = "Suami/Ayah";
+                                    break;
+                                case 'wife':
+                                    familyStatus = "Istri/Ibu";
+                                    break;
+                                case 'son_in_law':
+                                    familyStatus = "Menantu";
+                                    break;
+                                case 'child':
+                                    familyStatus = "Anak";
+                                    break;
+                                case 'grandchild':
+                                    familyStatus = "Cucu";
+                                    break;
+                                case 'in_laws':
+                                    familyStatus = "Mertua";
+                                    break;
+                                case 'other family':
+                                    familyStatus = "Famili Lain";
+                                    break;
+                                case 'etc':
+                                    familyStatus = "Lainnya";
+                                    break;
+                                default:
+                                    break;
                             }
-                            familyGroupContent += `<div>${item.name} - ${familyStatus}</div>`;
-                        });
 
-                        $('#head_of_family').html(data.head_of_family);
-                        $('#family_group').html(familyGroupContent);
+                            familyGroup.innerHTML += `
+                                <tr>
+                                    <td>${data.family_group[index].name}</td>
+                                    <td>${data.family_group[index].nik}</td>
+                                    <td>${familyStatus}</td>
+                                </tr>
+                            `;
+                        }      
 
-                        $('#modal-view-keluarga').modal('show');
+                        $('#modal-view-keluarga').modal('show');                  
+                        
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -285,13 +349,13 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/data-penduduk/keluarga/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
+                        $("#citizen_id").append(new Option(`${data.name} - ${data.no_kk}`, `${data.id}`));
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();

@@ -33,7 +33,7 @@ Route::namespace('API')
 
         //Message
         Route::get('message/{village_id}','MessageAPIController@getMessage');
-      
+
         //Complaint
         Route::post('add-complaint/{village_id}/{user_id}', 'ComplaintAPIController@addComplaint');
         Route::get('get-complaint/{village_id}/{user_id}', 'ComplaintAPIController@getComplaint');
@@ -63,14 +63,14 @@ Route::namespace('API')
         //SKCK
         Route::post('add-skck/{village_id}/{user_id}', 'SKCKAPIController@addSKCK');
         Route::get('get-skck/{village_id}', 'SKCKAPIController@getSKCK');
-        
+
         //Heir
         Route::post('add-heir/{village_id}/{user_id}', 'HeirAPIController@addHeir');
         Route::get('get-heir/{village_id}', 'HeirAPIController@getHeir');
 
         //Slider
     	Route::get('slider/{village_id}', 'SliderController@index');
-        
+
         //Domisili
         Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');
         Route::get('get-domicile/{village_id}', 'DomicileAPIController@getDomicile');
@@ -94,7 +94,7 @@ Route::namespace('API')
         // Land Certificate
         Route::get('land-certificate/{village_id}', 'LandCertificateAPIController@index');
         Route::post('add-land-certificate/{village_id}', 'LandCertificateAPIController@addLandCertificate');
-        
+
         // Employee
         Route::get('employee/{village_id}', 'EmployeeAPIController@index');
         Route::post('add-employee/{village_id}', 'EmployeeAPIController@addEmployee');
@@ -112,17 +112,20 @@ Route::namespace('API')
         Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
 
         // Citizen
-        Route::get('citizen/{village_id}', 'CitizenAPIController@index');
-        Route::post('add-citizen/{village_id}', 'CitizenAPIController@addCitizen');
+        Route::get('citizen', 'CitizenAPIController@index');
+        Route::post('add-citizen', 'CitizenAPIController@addCitizen');
+
+        // Family
+        Route::get('family/{village_id}', 'FamilyAPIController@index');
+        Route::post('add-family/{village_id}', 'FamilyAPIController@addFamily');
+        Route::get('view-group-family/{id}/{village_id}', 'FamilyAPIController@getGroupFamily');
 
         //Birth
-        Route::get('get-birth/{village_id}', 'BirthAPIController@getBirth');
-        Route::post('add-birth/{village_id}', 'BirthAPIController@addBirth');
+        Route::get('get-citizen-birth/{village_id}', 'BirthAPIController@getBirth');
 
         //Death
         Route::get('get-citizen-death/{village_id}', 'DeathAPIController@getDeath');
-        Route::post('add-citizen-death/{village_id}', 'DeathAPIController@addDeath');
-        
+
         //Immigrate
         Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
         Route::post('add-citizen-immigrate/{village_id}', 'ImmigrateAPIController@addImmigrate');
@@ -133,4 +136,7 @@ Route::namespace('API')
 
         // Like
         Route::post('like-library/{id}', 'LibraryController@like');
+        //Attendance
+        Route::get("get-village-attendance/{village_id}/{month}/{year}", "AttendanceApiController@getAttendance");
+        Route::post("add-employee-attendance/{employee_id}", "AttendanceApiController@addAttendance");
     });

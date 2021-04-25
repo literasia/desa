@@ -13,7 +13,7 @@ class ChangeKKAPIController extends Controller
 {
     public function getChangeKK($village_id)
     {
-        $certificate = ChangeKK::where('change_k_k_s.village_id', $village_id)->get();
+        $certificate = ChangeKK::where('change_k_k_s.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($certificate, 'Success get data'));
     }
@@ -53,7 +53,7 @@ class ChangeKKAPIController extends Controller
             "name" => $request->name,
             "no_phone" => $request->no_phone,
             "address" => $request->address,
-            "image_ktp" => $data['image_ktp'],
+            "image_ktp" => $data['image_ktp'] ?? "",
             "status" => 'processing'
         ]);
 

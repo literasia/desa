@@ -118,7 +118,7 @@
                     <div class="card-block">
                     <h4>Peta</h4>
                         <div class="col-md-12 text-center google-maps">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106412.05412244878!2d110.911941207651!3d-7.622584068974703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a18aeeb6a8c19%3A0x4027a76e35302c0!2sKaranganyar%2C%20Kec.%20Karanganyar%2C%20Kabupaten%20Karanganyar%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1617097890130!5m2!1sid!2sid" width="800" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                            
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15927.860122700129!2d98.72589717678544!3d3.5954904581368505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30313139834532ad%3A0x3525a16ce231639b!2sTembung%2C%20Medan%20Tembung%2C%20Medan%20City%2C%20North%20Sumatra!5e0!3m2!1sen!2sid!4v1619078697909!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                       
                         </div>
                     </div>
                 </div>
@@ -134,20 +134,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <style>
-        small {
-            margin-top: 15px;
-        }
-
         img {
             width: 150px;
         }
 
         .btn i {
             margin-right: 0px;
-        }
-
-        #thumb_gallery.not_empty {
-            display: inline-block;
         }
 
         #gallery1, #gallery2 {
@@ -177,6 +169,15 @@
             margin-top: 5px;
         }
 
+        #thumb_gallery {
+            display: none;
+        }
+
+        #thumb_gallery.not_empty {
+            width: 200px;
+            object-fit: cover;
+        }
+
         #thumb_gallery.not_empty, .thumb_pict.not_empty {
             display: inline-block;
             margin-bottom: 30px;
@@ -201,11 +202,10 @@
 
         .thumb_pict {
             margin-bottom:30px;
-            /* padding-top:20px; */
-            /* padding-bottom:20px; */
-            /* -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
-            box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%); */
-            /* border-radius: .25rem; */
+            padding: 20px;
+            -webkit-box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
+            box-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
+            border-radius: .25rem;
         }
 
         .thumb_pict img{
@@ -274,7 +274,7 @@
                     thumb_gallery($(this))
                 });
                 $('body').on("change", "#gallery2", function(e) {
-                    alert("kok ini");
+                    // alert("kok ini");
                     var formData = new FormData($('#gallery-form')[0]);
 
                     $.ajax({
@@ -427,35 +427,3 @@
         });
     </script>
 @endpush
-
-<script type="text/javascript">
-// var count =0;
-// $(document).ready(function() {
-//     if (window.File && window.FileList && window.FileReader) {
-//         $("#files").on("change", function(e) {
-
-//             var files = e.target.files,
-//             filesLength = files.length;
-//             console.log(filesLength);
-//             count++;
-//             for (var i = 0; i < filesLength; i++) {
-//                 var f = files[i]
-//                 var fileReader = new FileReader();
-//                 fileReader.onload = (function(e) {
-//                     var file = e.target;
-//                     $("<span class=\"pip\">" +
-//                         "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-//                         "<br/><span class=\"removeImg\">Remove image</span>" +
-//                         "</span>").insertAfter("#files");
-//                     $(".removeImg").click(function(){
-//                         $(this).parent(".pip").remove();
-//                     });
-//                 });
-//                 fileReader.readAsDataURL(f);
-//             }
-//         });
-//     } else {
-//         alert("Your browser doesn't support to File API")
-//     }
-// });
-</script>

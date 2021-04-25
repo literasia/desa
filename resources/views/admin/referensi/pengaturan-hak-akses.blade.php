@@ -46,7 +46,7 @@
                                                 <span> : Profil Desa</span>
                                             </li>
                                             <li>
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">Bd</label></span>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">B</label></span>
                                                 <span> : Berita</span>
                                             </li>
                                             <li>
@@ -135,7 +135,7 @@
                                 <thead>
                                     <tr class="text-left">
                                     <th>Nama</th>
-                                    <th title="Absensi" >Ab</th>
+                                    <th title="Absensi" >A</th>
                                     <th title="Kalender" >KA</th>
                                     <th title="Template">TE</th>
                                     <th title="Log User">LU</th>
@@ -145,7 +145,7 @@
                                     <th title="Data Penduduk">DP</th>
                                     <th title="Struktur Desa">SD</th>
                                     <th title="Profil Desa">PD</th>
-                                    <th title="Berita">BD</th>
+                                    <th title="Berita">B</th>
                                     <th title="Administrasi">AD</th>
                                     <th title="Potensi Desa">PD</th>
                                     <th title="Slider">SD</th>

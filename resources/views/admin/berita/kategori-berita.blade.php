@@ -135,6 +135,17 @@
                 ]
             });
 
+            $('.reset').on('click', function(e) {
+                e.preventDefault();
+                $('#news_category').removeClass('is-invalid');
+                $('#form-news-category')[0].reset();
+                $('#action').val('add');
+                $('#btn')
+                    .removeClass('btn-info')
+                    .addClass('btn-success')
+                    .val('Simpan');
+            })
+
             $('#form-news-category').on('submit', function (event) {
                 event.preventDefault();
 
@@ -178,6 +189,8 @@
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }

@@ -104,7 +104,6 @@
                     .val('Simpan');
                 $('#modal-jabatan').modal('show');
             });
-
             // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
@@ -127,23 +126,18 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-jabatan').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.jabatan.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.jabatan.update') }}";
                 }
-
                 let formData = new FormData($('#form-jabatan')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -160,7 +154,6 @@
                             // Send message error with toastr
                             toastr.error(data.error);
                         }
-
                         // if passed
                         if (data.success) {
                             Swal.fire(
@@ -180,7 +173,6 @@
                     }
                 });
             });
-
             // Get datas show on inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -200,7 +192,6 @@
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -208,7 +199,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/jabatan/hapus/'+user_id,

@@ -50,7 +50,7 @@ Route::namespace('Superadmin')
                 Route::post('/superadmin/list-desa/list-desa/update', 'ListDesaController@update')
                     ->name('list-desa.list-desa-update');
                 Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
-            });
+        });
 
         // Kalender
         Route::namespace('Kalender')
@@ -356,8 +356,10 @@ Route::namespace("Pegawai")
         ->group(function () {
             Route::get('/pegawai/peristiwa/kelahiran', 'KelahiranController@index')
                 ->name('peristiwa.kelahiran');
+
             Route::get('/pegawai/peristiwa/kematian', 'KematianController@index')
                 ->name('peristiwa.kematian');
+                
             Route::get('/pegawai/peristiwa/pindah', 'PindahController@index')
                 ->name('peristiwa.pindah');
         });
@@ -617,20 +619,26 @@ Route::namespace('Admin')
                 //Kelahiran
                 Route::get('/admin/peristiwa/kelahiran', 'KelahiranController@index')
                     ->name('peristiwa.kelahiran');
+                Route::post('/admin/peristiwa/kelahiran/add', 'KelahiranController@store')->name('kelahiran.add');
+                Route::get('/admin/peristiwa/kelahiran/edit/{id}', 'KelahiranController@edit');
                 Route::get('/admin/peristiwa/kelahiran/hapus/{id}', 'KelahiranController@destroy');
-                Route::post('/admin/peristiwa/kelahiran/update/{id}', 'KelahiranController@update');
+                Route::post('/admin/peristiwa/kelahiran/update', 'KelahiranController@update')->name('kelahiran.update');
 
                 //Kematian
                 Route::get('/admin/peristiwa/kematian', 'KematianController@index')
                     ->name('peristiwa.kematian');
+                Route::post('/admin/peristiwa/kematian/add', 'KematianController@store')->name('kematian.add');
+                Route::get('/admin/peristiwa/kematian/edit/{id}', 'KematianController@edit');
                 Route::get('/admin/peristiwa/kematian/hapus/{id}', 'KematianController@destroy');
-                Route::post('/admin/peristiwa/kematian/update/{id}', 'KematianController@update');
+                Route::post('/admin/peristiwa/kematian/update', 'KematianController@update')->name('kematian.update');
 
                 //Pindah
                 Route::get('/admin/peristiwa/pindah', 'PindahController@index')
                     ->name('peristiwa.pindah');
+                Route::post('/admin/peristiwa/pindah/add', 'PindahController@store')->name('pindah.add');
+                Route::get('/admin/peristiwa/pindah/edit/{id}', 'PindahController@edit');
                 Route::get('/admin/peristiwa/pindah/hapus/{id}', 'PindahController@destroy');
-                Route::post('/admin/peristiwa/pindah/update/{id}', 'PindahController@update');
+                Route::post('/admin/peristiwa/pindah/update', 'PindahController@update')->name('pindah.update');
             });
 
         // Potensi
