@@ -128,7 +128,14 @@ Route::namespace('API')
 
         //Immigrate
         Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
+        Route::post('add-citizen-immigrate/{village_id}', 'ImmigrateAPIController@addImmigrate');
 
+        // Borrow
+        Route::get('get-borrow/{id}', 'LibraryController@getBorrow');
+        Route::post('add-borrow/{id}', 'LibraryController@addBorrow');
+
+        // Like
+        Route::post('like-library/{id}', 'LibraryController@like');
         //Attendance
         Route::get("get-village-attendance/{village_id}/{month}/{year}", "AttendanceApiController@getAttendance");
         Route::post("add-employee-attendance/{employee_id}", "AttendanceApiController@addAttendance");
