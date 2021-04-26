@@ -78,7 +78,6 @@
                             <div class="form-group">
                                 <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
                                     <option value="" selected="true" disabled>Prioritas</option>
-                                    <option value="Sangat Penting">Sangat Penting</option>
                                     <option value="Penting">Penting</option>
                                     <option value="Wajib Datang">Wajib Datang</option>
                                     <option value="Tidak Diwajibkan Datang">Tidak Wajibkan Datang</option>

@@ -31,7 +31,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h6 class="m-b-25">E-Book</h6>
-                        <h3 class="f-w-700 text-c-blue">{{ $ebook }}</h3>
+                        <h3 class="f-w-700 text-c-blue">{{ $ebook ?? '' }}</h3>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-book-open bg-c-blue"></i>
@@ -44,7 +44,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h6 class="m-b-25">Audio Book</h6>
-                        <h3 class="f-w-700 text-c-green">{{ $audiobook }}</h3>
+                        <h3 class="f-w-700 text-c-green">{{ $audiobook ?? '' }}</h3>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-file-audio bg-c-green"></i>
@@ -57,7 +57,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h6 class="m-b-25">Video Book</h6>
-                        <h3 class="f-w-700 text-c-yellow">{{ $videobook }}</h3>
+                        <h3 class="f-w-700 text-c-yellow">{{ $videobook ?? '' }}</h3>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-file-video bg-c-yellow"></i>
@@ -109,7 +109,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h6>Provinsi</h6>
-                        <h5 class="m-b-30 f-w-700">{{ Provinsi }}</h5>
+                        <h5 class="m-b-30 f-w-700">{{ $provinsi ?? "" }}</h5>
                         <div class="progress">
                             <div class="progress-bar bg-c-yellow" style="width:100%"></div>
                         </div>
@@ -127,7 +127,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h6>User</h6>
-                        <h5 class="m-b-30 f-w-700">{{ User }}</h5>
+                        <h5 class="m-b-30 f-w-700">{{$User ?? "" }}</h5>
                         <div class="progress">
                             <div class="progress-bar bg-c-yellow" style="width:100%"></div>
                         </div>

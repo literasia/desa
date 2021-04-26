@@ -14,9 +14,11 @@ class KalenderDesaController extends Controller
     {
         $datas = [];
         $category = CategoryCalendar::where('village_id', auth()->user()->village->id)->get();
-
+        $nasional =  Kalender::where('kalenders.village_id', null)->orderBy('kalenders.created_at')->get();
         $data = Kalender::where('kalenders.village_id', auth()->user()->village->id)->orderBy('kalenders.created_at')->get();
-        foreach ($data as $d) {
+
+       $original = $data->merge($nasional);    
+        foreach ($original as $d) {
             $datas[] = (object) array('id' => $d->id, 'title' => $d->title, 'start' => $d->start_date . " " . $d->start_clock, 'end' => $d->end_date . " " . $d->end_clock, 'className' => $d->priority, 'category' => $d->category_name, 'description' => $d->description, 'location' => $d->location);
         }
 
@@ -26,9 +28,7 @@ class KalenderDesaController extends Controller
     }
     public function store(Request $request)
     {
-        if ($request->prioritas == "Sangat Penting") {
-            $prioritas = "bg-danger";
-        } else if ($request->prioritas == "Penting") {
+        if ($request->prioritas == "Penting") {
             $prioritas = "bg-warning";
         } else if ($request->prioritas == "Wajib Datang") {
             $prioritas = "bg-primary";
@@ -80,9 +80,7 @@ class KalenderDesaController extends Controller
             $category = $check[0]->category_name;
         }
 
-        if ($request->prioritas == "Sangat Penting") {
-            $prioritas = "bg-danger";
-        } else if ($request->prioritas == "Penting") {
+        if ($request->prioritas == "Penting") {
             $prioritas = "bg-warning";
         } else if ($request->prioritas == "Wajib Datang") {
             $prioritas = "bg-primary";

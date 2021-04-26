@@ -57,6 +57,9 @@ Route::namespace('Superadmin')
             ->group(function () {
                 Route::get('/supersuperadmin/kalender', 'KalenderSuperadminController@index')
                     ->name('kalender.kalender');
+                    Route::post('/superadmin/kalender/tambah', 'KalenderSuperadminController@store')->name('superadmin.kalender.tambah-event');
+                    Route::post('/superadmin/kalender/update/{id}', 'KalenderSuperadminController@update')->name('superadmin.kalender.edit-event');
+                    Route::get('/superadmin/kalender/hapus/{id}', 'KalenderSuperadminController@destroy');
             });
 
         // Referensi
