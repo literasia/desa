@@ -33,9 +33,9 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <button type='button' class='ml-2 delete btn btn-mini btn-primary shadow-sm'><i class='far fa-file-audio'></i></button>
-                                    <button type='button' class='ml-2 delete btn btn-mini btn-info shadow-sm'><i class='fas fa-book'></i></button>
-                                    <button type='button' class='ml-2 delete btn btn-mini btn-danger shadow-sm'><i class='far fa-file-video'></i></button>
+                                    <button type='button' class='ml-2 delete btn btn-mini btn-primary shadow-sm' style="cursor: default;"><i class='far fa-file-audio'></i></button>
+                                    <button type='button' class='ml-2 delete btn btn-mini btn-info shadow-sm' style="cursor: default;"><i class='fas fa-book'></i></button>
+                                    <button type='button' class='ml-2 delete btn btn-mini btn-danger shadow-sm' style="cursor: default;"><i class='far fa-file-video'></i></button>
                                 </td>
                             </tbody>
                         </table>

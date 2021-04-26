@@ -130,8 +130,7 @@
 
                     <div class="row mt-3">
                         <div class="col-md-12 text-right">
-                            <button class="btn btn-success disabled px-4 py-2">Apply</button>
-                            <!-- <button class="btn btn-success">Apply</button> -->
+                            <button class="btn btn-success px-4 py-2">Apply</button>
                         </div>
                     </div>
                 </div>

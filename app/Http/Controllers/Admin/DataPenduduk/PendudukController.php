@@ -309,5 +309,6 @@ class PendudukController extends Controller
         }
 
         return view('admin.data-penduduk.penduduk');
+        // a
     }
 }
