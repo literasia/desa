@@ -25,7 +25,6 @@
                     <div class="card-body">
                         <div class="card-block p-2">
                             <div class="dt-responsive table-responsive">
-                                <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                                 <table id="order-table" class="table table-striped nowrap shadow-sm">
                                     <thead class="text-left">
                                         <tr>
