@@ -290,20 +290,15 @@
                         desa.innerHTML = `${data.desa}`;
                         alamat.innerHTML = `${data.alamat}`;
 
-                        console.log(data);
-
-                        // noKK.innerHTML = `${data.family_group[0].reginc}`;
-                        // noKK.innerHTML = `${data.family_group[0].no_kk}`;
-
                         for (let index = 0; index < data.family_group.length; index++) {
                             let familyGroupContent = ``;
                             let familyStatus = "";
                             switch (data.family_group[index].family_status) {
-                                case 'husband':
-                                    familyStatus = "Suami/Ayah";
+                                case 'father':
+                                    familyStatus = "Ayah";
                                     break;
-                                case 'wife':
-                                    familyStatus = "Istri/Ibu";
+                                case 'mother':
+                                    familyStatus = "Ibu";
                                     break;
                                 case 'son_in_law':
                                     familyStatus = "Menantu";
