@@ -274,7 +274,7 @@
                     thumb_gallery($(this))
                 });
                 $('body').on("change", "#gallery2", function(e) {
-                    // alert("kok ini");
+                    // alert("kok ini?");
                     var formData = new FormData($('#gallery-form')[0]);
 
                     $.ajax({

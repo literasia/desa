@@ -28,7 +28,7 @@
                     </div>
                     @endforeach
                 </div>
-                {{-- <div class="row">
+                {{-- <div class="row">  <!-- - -->
                     <div class="col-12 text-right mt-4">
                         <input type="submit" name="" class="btn btn-success" value="Simpan Galeri">
                     </div>
