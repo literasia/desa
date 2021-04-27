@@ -78,11 +78,11 @@
                         <h6>Pegawai</h6>
                         <h5 class="m-b-30 f-w-700">{{ $employee }}</h5>
                         <div class="progress">
-                            <div class="progress-bar bg-c-green" style="width:{{100}}%"></div>
+                            <div class="progress-bar bg-c-blue" style="width:{{100}}%"></div>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-user bg-c-green"></i>
+                        <i class="fas fa-user bg-c-blue"></i>
                     </div>                        
                 </div>
             </div>
@@ -96,11 +96,11 @@
                         <h6>Penduduk</h6>
                         <h5 class="m-b-30 f-w-700">{{ $citizen }}</h5>
                         <div class="progress">
-                            <div class="progress-bar bg-c-red" style="width:{{100}}%"></div>
+                            <div class="progress-bar bg-c-green" style="width:{{100}}%"></div>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-users bg-c-blue"></i>
+                        <i class="fas fa-users bg-c-green"></i>
                     </div>
                 </div>
             </div>
@@ -114,11 +114,11 @@
                         <h6>Kepala Keluarga</h6>
                         <h5 class="m-b-30 f-w-700">{{ $family }}</h5>
                         <div class="progress">
-                            <div class="progress-bar bg-c-red" style="width:{{100}}%"></div>
+                            <div class="progress-bar bg-c-yellow" style="width:{{100}}%"></div>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-user bg-c-blue"></i>
+                        <i class="fas fa-user bg-c-yellow"></i>
                     </div>
                 </div>
             </div>
@@ -132,11 +132,11 @@
                         <h6>Usaha</h6>
                         <h5 class="m-b-30 f-w-700">{{ $potency }}</h5>
                         <div class="progress">
-                            <div class="progress-bar bg-c-yellow" style="width:{{100}}%"></div>
+                            <div class="progress-bar bg-c-red" style="width:{{100}}%"></div>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-home bg-c-yellow"></i>
+                        <i class="fas fa-home bg-c-red"></i>
                     </div>
                 </div>
             </div>
