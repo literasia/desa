@@ -226,6 +226,13 @@
                     contentType: false,
                     cache: false,
                     processData: false,
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
                     success: function (data) {
                         var html = ''
                         // If has Errors
