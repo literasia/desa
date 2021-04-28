@@ -20,27 +20,29 @@
 @section('content')
 <div class="row">
         <div class="col-xl-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block pt-0">
-                        <div class="dt-responsive table-responsive">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>NIK</th>
-                                        <th>NIP</th>
-                                        <th>Foto</th>
-                                        <th>Username</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                            <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>NIK</th>
+                                            <th>NIP</th>
+                                            <th>Foto</th>
+                                            <th>Username</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +93,7 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
@@ -113,7 +115,6 @@
                     .val('Simpan');
                 $('#modal-pegawai').modal('show');
             });
-
             // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
@@ -122,7 +123,7 @@
                     url: "{{ route('admin.struktur.pegawai') }}",
                 },
                 columns: [
-                {
+            {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
@@ -143,8 +144,8 @@
                     name: 'photo'
                 },
                 {
-                    data: 'username',
-                    name: 'username'
+                    data: 'user_id',
+                    name: 'user_id'
                 },
                 {
                     data: 'action',
@@ -152,22 +153,17 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-pegawai').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.pegawai.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.pegawai.update') }}";
                 }
-
                 let formData = new FormData($('#form-pegawai')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -177,12 +173,24 @@
                     processData: false,
                     success: function (data) {
                         var html = ''
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
+                            data.errors.nik ? $('#nik').addClass('is-invalid') : $('#nik').removeClass('is-invalid')
+                            data.errors.nip ? $('#nip').addClass('is-invalid') : $('#nip').removeClass('is-invalid')
+                            data.errors.username ? $('#username').addClass('is-invalid') : $('#username').removeClass('is-invalid')
+                            data.errors.password ? $('#password').addClass('is-invalid') : $('#password').removeClass('is-invalid')
+                            if (data.errors.password == "The password confirmation does not match.") {
+                                $('#password_confirmation').addClass('is-invalid');
+                                $('#password-help').css('display', 'block')
+                            }else{
+                                $('#password_confirmation').removeClass('is-invalid');
+                                $('#password-help').css('display', 'none')
+                            }
+                            toastr.error(data.error);
                         }
-
+            
+                        // if passed
                         if (data.success) {
                             Swal.fire(
                             'Sukses!',
@@ -190,7 +198,12 @@
                             'success'
                             )
                             $('#modal-pegawai').modal('hide');
-                            $('#title').removeClass('is-invalid');
+                            $('#name').removeClass('is-invalid');
+                            $('#nik').removeClass('is-invalid');
+                            $('#nip').removeClass('is-invalid');
+                            $('#username').removeClass('is-invalid');
+                            $('#password').removeClass('is-invalid');
+                            $('#password_confirmation').removeClass('is-invalid');
                             $('#form-pegawai')[0].reset();
                             $('#action').val('add');
                             $('#btn')
@@ -201,7 +214,6 @@
                     }
                 });
             });
-
             // Get datas show on inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -217,6 +229,7 @@
                         $('#username').val(data.username);
                         $('#password').val(data.password);
                         $('#password-confirmation').val(data.password);
+                        $('#village_id').val(data.village_id);
                         $('#password-group').css('display', 'none');
                         $('#password-confirmation-group').css('display', 'none');
                         $('#hidden_id').val(data.id);
@@ -228,7 +241,6 @@
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -236,7 +248,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/pegawai/hapus/'+user_id,
@@ -246,7 +257,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
-                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
+                            Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
                 });

@@ -1,6 +1,6 @@
 @extends('layouts.superadmin')
 
-@section('title', 'Library')
+@section('title', 'Library | Tambah Baru')
 @section('title-2', 'Library')
 @section('title-3', 'Library')
 @section('describ')

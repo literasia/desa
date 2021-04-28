@@ -20,27 +20,29 @@
 @section('content')
 <div class="row">
         <div class="col-xl-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block pt-0">
-                        <div class="dt-responsive table-responsive">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Jabatan</th>
-                                        <th>Golongan</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                            <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Jabatan</th>
+                                            <th>Golongan</th>
+                                            <th>Status</th>
+                                            <th>Keterangan</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,6 +75,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
@@ -88,6 +91,9 @@
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -95,7 +101,6 @@
                 theme: 'leaf',
                 format: 'd-m-Y'
             });
-
             $('#end_date').dateDropper({
                 theme: 'leaf',
                 format: 'd-m-Y'
@@ -103,6 +108,7 @@
         });
     </script>
 
+    
     <script>
         $(document).ready(function () {
             // get employee Json
@@ -117,7 +123,6 @@
                     }
                 });
             }
-
             // get positions json
             function getPositionData() {
                 $.ajax({
@@ -130,14 +135,15 @@
                     }
                 });
             }
-
             // get village structures
             function getVillageStructure(){
                 $.ajax({
                     url: '/admin/struktur/get_village_structure',
                     dataType: 'JSON',
                     success: function (villageStructures) {
-                        if (villageStructures.length > 0) {
+                        if (villageStructures.length < 1) {
+                            $('#parent-id-group').css('display', 'none');
+                        }else{
                             villageStructures.forEach(villageStructure => {    
                                 $("#parent-id").append(new Option(`${villageStructure.employee.name} - ${villageStructure.position.name}`, `${villageStructure.id}`));
                             });   
@@ -145,11 +151,9 @@
                     }
                 });
             }
-
             getEmployeData();
             getVillageStructure();
             getPositionData();
-
             // Show Modal
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Struktur Desa');
@@ -166,7 +170,6 @@
                     .val('Simpan');
                 $('#modal-struktur').modal('show');
             });
-
             // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
@@ -205,22 +208,17 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-struktur').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.struktur.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.struktur.update') }}";
                 }
-
                 let formData = new FormData($('#form-struktur')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -228,22 +226,47 @@
                     contentType: false,
                     cache: false,
                     processData: false,
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
                     success: function (data) {
                         var html = ''
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.employee_id ? $('#employee-id').addClass('is-invalid') : $('#employee_id').removeClass('is-invalid')
+                            data.errors.position_id ? $('#position-id').addClass('is-invalid') : $('#position_id').removeClass('is-invalid')
+                            data.errors.level ? $('#level').addClass('is-invalid') : $('#level').removeClass('is-invalid')
+                            data.errors.status ? $('#status').addClass('is-invalid') : $('#status').removeClass('is-invalid')
+                            data.errors.description ? $('#description').addClass('is-invalid') : $('#description').removeClass('is-invalid')
+                            toastr.error(data.error);
                         }
-
                         if (data.success) {
-                             Swal.fire(
-                            'Sukses!',
-                            'Data berhasil ditambahkan!',
-                            'success'
-                            )
+                            if ($('#action').val() == 'add') {
+                                Swal.fire('Sukses!', 'Data berhasi ditambahkan!', 'success');
+                            }
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasi diupdate!', 'success');
+                            }
+                            Swal.fire('Sukses!', 'Data berhasil ditambahkan!', 'success');
                             $('#modal-struktur').modal('hide');
-                            $('#title').removeClass('is-invalid');
+                            $('#parent-id-group').css('display', 'block');
+                            $('#parent-id')
+                                .find('option')
+                                .remove()
+                                .end()
+                                .append('<option value="">Pilih</option>')
+                                .val('Pilih');
+                            getVillageStructure();
+                            $('#employee-id').removeClass("is-invalid");
+                            $('#position-id').removeClass("is-invalid");
+                            $('#status').removeClass("is-invalid");
+                            $('#level').removeClass("is-invalid");
+                            $('#parent-id').removeClass("is-invalid");
+                            $('#description').removeClass("is-invalid");
                             $('#form-struktur')[0].reset();
                             $('#action').val('add');
                             $('#btn')
@@ -253,17 +276,9 @@
                             $('#order-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
-                        $('#parent-id')
-                            .find('option')
-                            .remove()
-                            .end()
-                            .append('<option value="">Pilih</option>')
-                            .val('Pilih');
-                        getVillageStructure();
                     }
                 });
             });
-
             // Get data show to inputs
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('id');
@@ -288,7 +303,6 @@
                     }
                 });
             });
-
             // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
@@ -296,7 +310,6 @@
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/struktur/hapus/'+user_id,
@@ -313,6 +326,7 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
+                            // toastr.success('Data telah berhasil dihapus');                            
                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }

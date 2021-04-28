@@ -24,6 +24,7 @@
                 <div class="card-body">
                     <div class="card-block">
                         <form id="form-status">
+                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
@@ -37,7 +38,7 @@
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
                                     <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                                    <button type="reset" class=" reset btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -46,22 +47,24 @@
             </div>
         </div>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Kategori Kegiatan</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kategori Kegiatan</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,9 +109,126 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
     <script>
-        $(document).ready(function () {
-            $('#order-table').DataTable();
-        });
+         $(document).ready(function () {
+            $('#order-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.kalender.kategori-kegiatan') }}",
+                },
+                columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'category_name',
+                    name: 'category_name'
+                },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
+                ]
+            });
+
+        $('.reset').on('click', function(e) {
+            e.preventDefault();
+            $('#kategori_kegiatan').removeClass('is-invalid');
+                            $('#form-status')[0].reset();
+            $('#action').val('add');
+            $('#btn')
+                .removeClass('btn-info')
+                            .addClass('btn-success')
+                .val('Simpan');
+        })
+
+        $('#form-status').on('submit', function (event) {
+                event.preventDefault();
+                var url = '';
+                var text = "Data sukses ditambahkan";
+                if ($('#action').val() == 'add') {
+                    url = "{{ route('admin.kalender.kategori-kegiatan') }}";
+                    text = "Data sukses ditambahkan";
+                   
+                }
+
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('admin.kalender.kategori.update') }}";
+                    text = "Data sukses diupdate";
+                }
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        var html = '';
+                        if (data.errors) {
+                            // for (var count = 0; count <= data.errors.length; count++) {
+                            html = data.errors[0];
+                            // 
+                            $('#kategori_kegiatan').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            Swal.fire('Success!!',text,'success' );  
+                            $('#kategori_kegiatan').removeClass('is-invalid');
+                            $('#form-status')[0].reset();
+                            $('#action').val('add');
+                            $('#btn')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/kalender/kategori-kegiatan/edit/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        console.log(data.data.category_name)
+                        $('#kategori_kegiatan').val(data.data.category_name);
+                        $('#hidden_id').val(data.data.id);
+                        $('#action').val('edit');
+                        $('#btn')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
+                            .val('Update');
+                    }
+                });
+            });
+
+            var user_id;
+            $(document).on('click', '.delete', function () {
+                user_id = $(this).attr('id');
+                $('#ok_button').text('Hapus');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function () {
+                $.ajax({
+                    url: '/admin/kalender/kategori-kegiatan/hapus/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Success!!','Data berhasil dihapus','success' );
+                        }, 1000);
+                    }
+                });
+            });
+         });      
     </script>
 @endpush

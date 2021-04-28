@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\Storage;
 class PotensiDesaController extends Controller
 {
     public function index( Request $request) {
+        $status = Potency::where('village_id', auth()->user()->village->id)->get('status');
+
         if ($request->ajax()) {
-            $data = Potency::where('village_id', auth()->user()->village->id)->get();
+            $data = Potency::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('image_ktp', function ($data) {
@@ -22,13 +24,16 @@ class PotensiDesaController extends Controller
                 })
                 ->addColumn('status', function ($data) {
                     if($data->status == "active"){
-                        $class = 'btn btn-round btn-success btn-mini update';
-                        $text = 'Approved';
+                        $class = 'badge badge-success update';
+                        $text = 'Disetujui';
+                    }else if($data->status == "rejected"){
+                        $class = 'badge badge-danger update';
+                        $text = 'Ditolak';
                     }else{
-                        $class = 'btn btn-round btn-secondary btn-mini update';
-                        $text = 'Approve ?';
+                        $class = 'badge badge-secondary update';
+                        $text = 'Setuju?';
                     }
-                   $status = '<button id="' . $data->id . '" class="'.$class.'">'.$text.'</button>';
+                   $status = '<label id="' . $data->id . '" class="'.$class.'" style="cursor:pointer;">'.$text.'</label>';
                     return $status;
                 })
                 ->addColumn('action', function ($data) {
@@ -39,14 +44,21 @@ class PotensiDesaController extends Controller
                 ->make(true);
             }
 
-        return view('admin.potensi.potensi');
+        return view('admin.potensi.potensi', compact('status'));
     }
 
-    public function update($id)
+    public function update($id, Request $request)
     {
-        $update = Potency::where('id', $id)->update([
-            'status' => 'active',
-        ]);
+        if($request->reject == 'rejected'){
+            $update = Potency::where('id', $id)->update([
+                'status' => $request->reject,
+            ]);
+        }else{
+            $update = Potency::where('id', $id)->update([
+                'status' => 'active',
+            ]);
+        }
+        
 
         return response()
         ->json([

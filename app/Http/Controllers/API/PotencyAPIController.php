@@ -8,12 +8,12 @@ use App\Utils\ApiResponse;
 use Illuminate\Http\Request;
 use Validator;
 
-class PotencyAPIController
+class PotencyAPIController extends Controller
 {
 
     public function getPotency($village_id,$user_id)
     {
-        $potency = Potency::where('potencies.user_id', $user_id)->where('potencies.village_id', $village_id)->get();
+        $potency = Potency::where('potencies.user_id', $user_id)->where('potencies.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($potency, 'Success get data'));
     }
@@ -67,7 +67,7 @@ class PotencyAPIController
                 'business_address' => $request->business_address,
                 'no_phone' => $request->no_phone,
                 'no_whatsapp' => $request->no_whatsapp,
-                'image_ktp' => $data['image_ktp'],
+                'image_ktp' => $data['image_ktp'] ?? "",
                 'status' => 'inactive'
             ]);
     

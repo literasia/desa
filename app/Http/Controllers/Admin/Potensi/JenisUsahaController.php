@@ -12,15 +12,15 @@ class JenisUsahaController extends Controller
 {
     public function index(Request $request) {
         if ($request->ajax()) {
-            $data = BusinessType::where('village_id', auth()->user()->village->id)->get();
+            $data = BusinessType::where('village_id', auth()->user()->village->id)->orderByDesc('created_at')->get();
             return DataTables::of($data)
+            ->addIndexColumn()
                 ->addColumn('action', function ($data) {
                         $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
                         $button .= '&nbsp;&nbsp;&nbsp;<button type="button" id="'.$data->id.'" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>';
                         return $button;
                     })
                 ->rawColumns(['action'])
-                ->addIndexColumn()
                 ->make(true);
         }
 

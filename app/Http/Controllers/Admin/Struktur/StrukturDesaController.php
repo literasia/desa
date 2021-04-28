@@ -11,19 +11,17 @@ use App\Models\{VillageStructure, Employee, Position};
 class StrukturDesaController extends Controller
 {
     private $rules = [
-        'name' => ['required'],
-        'nik' => ['required'],
-        'nip' => ['required'],
-        'username' => ['required'],
-        'password' => ['required'],
+        'employee_id' => ['required'],
+        'position_id' => ['required'],
+        'status' => ['required'],
+        'level' => ['required'],
+        'description' => ['required'],
     ];
 
 
-    public function index(Request $request) {
-        $data = VillageStructure::where('village_id', auth()->user()->village->id)->get();
+    public function index(Request $request) {        
         if ($request->ajax()) {
             $villageStructures = VillageStructure::where('village_id', auth()->user()->village->id)->get();
-            
             return DataTables::of($villageStructures)
                 ->addColumn('action', function ($villageStructures) {
                     $button = '<button type="button" id="'.$villageStructures->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
@@ -45,10 +43,13 @@ class StrukturDesaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-        // $validator = Validator::make($data, $this->rules);
-        // if ($validator->fails()) {
-        //     return back()->withErrors($validator->errors()->all())->withInput();
-        // }
+        $validator = Validator::make($data, $this->rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
+        }
 
         VillageStructure::create([
             'village_id' => auth()->user()->village->id,
@@ -90,10 +91,13 @@ class StrukturDesaController extends Controller
     public function update(Request $request) {
         $data = $request->all();
 
-        // $validator = Validator::make($data, $this->rules);
-        // if ($validator->fails()) {
-        //     return back()->withErrors($validator->errors()->all())->withInput();
-        // }
+        $validator = Validator::make($data, $this->rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => "Data masih kosong",
+                'errors' => $validator->errors()
+            ]);
+        }
 
         $employee = VillageStructure::findOrFail($data['hidden_id']);
 

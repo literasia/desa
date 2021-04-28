@@ -61,7 +61,7 @@ class VillageTourController extends Controller
             'time_closing'  => 'required|max:30',
             'tour_type'     => 'required|max:30',
             'no_phone'      => 'required|max:13',
-            'information'   => 'required|max:50',
+            'information'   => 'nullable|max:50',
         ];
  
         $message = [
@@ -72,7 +72,6 @@ class VillageTourController extends Controller
             'time_closing.required' => 'Kolom ini tidak boleh kosong',
             'tour_type.required'    => 'Kolom ini tidak boleh kosong',
             'no_phone.required'     => 'Kolom ini tidak boleh kosong',
-            'information.nullable'
         ];
  
         $validator = Validator::make($request->all(), $rules, $message);
@@ -144,6 +143,7 @@ class VillageTourController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request) {
+        $data = $request->all();
         // validasi
         $rules = [
             'name'          => 'required|max:30',

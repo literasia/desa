@@ -20,23 +20,25 @@
 @section('content')
 <div class="row">
         <div class="col-xl-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block pt-0">
-                        <div class="dt-responsive table-responsive">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Jabatan</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                            <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Jabatan</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,15 +69,11 @@
 
 {{-- addons css --}}
 @push('css')
-    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-    <!-- Select 2 js -->
-    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
@@ -85,10 +83,14 @@
 
 {{-- addons js --}}
 @push('js')
-    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+     <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             // Show Modal
@@ -102,8 +104,7 @@
                     .val('Simpan');
                 $('#modal-jabatan').modal('show');
             });
-
-            // Show Data Tables
+            // Show DataTables
             $('#order-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -125,22 +126,18 @@
                 }
                 ]
             });
-
             // Event Submit
             $('#form-jabatan').on('submit', function (event) {
                 event.preventDefault();
-
                 let url = '';
+                
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.struktur.jabatan.store') }}";
                 }
-
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.struktur.jabatan.update') }}";
                 }
-
                 let formData = new FormData($('#form-jabatan')[0]);
-
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -149,13 +146,15 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
-                        let html = ''
+                        var html = '';
+                    
+                        // If has Errors
                         if (data.errors) {
-                            html = data.errors[0];
-                            $('#title').addClass('is-invalid');
-                            toastr.error(html);
+                            data.errors.name ? $('#name').addClass('is-invalid') : $('#name').removeClass('is-invalid')
+                            // Send message error with toastr
+                            toastr.error(data.error);
                         }
-
+                        // if passed
                         if (data.success) {
                             Swal.fire(
                             'Sukses!',
@@ -163,12 +162,10 @@
                             'success'
                             )
                             $('#modal-jabatan').modal('hide');
-                            $('#title').removeClass('is-invalid');
+                            $('#name').removeClass('is-invalid');
                             $('#form-jabatan')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .removeClass('btn-info')
-                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -176,10 +173,9 @@
                     }
                 });
             });
-
-            // Get datas
+            // Get datas show on inputs
             $(document).on('click', '.edit', function () {
-                var id = $(this).attr('id');
+                let id = $(this).attr('id');
                 $.ajax({
                     url: '/admin/struktur/jabatan/'+id,
                     dataType: 'JSON',
@@ -196,15 +192,13 @@
                     }
                 });
             });
-
-            // Event Delete
+            // Even Delete
             let user_id;
             $(document).on('click', '.delete', function () {
                 user_id = $(this).attr('id');
                 $('#ok_button').text('Hapus');
                 $('#confirmModal').modal('show');
             });
-
             $('#ok_button').click(function () {
                 $.ajax({
                     url: '/admin/struktur/jabatan/hapus/'+user_id,

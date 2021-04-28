@@ -9,7 +9,7 @@
     Ini adalah halaman Jenis Usaha untuk admin
 @endsection
 
-@section('icon-l', 'icon-chart')
+@section('icon-l', 'fa fa-chart-line')
 @section('icon-r', 'icon-home')
 
 @section('link')
@@ -38,7 +38,7 @@
                                     <input type="hidden" name="hidden_id" id="hidden_id">
                                     <input type="hidden" id="action" val="add">
                                     <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                                    <button type="reset" class="reset btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                                 </div>
                             </div>
                         </form>
@@ -47,22 +47,24 @@
             </div>
         </div>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped nowrap shadow-sm">
-                                <thead class="text-left">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Jenis Usaha</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-left">
-                                    
-                                </tbody>
-                            </table>
+            <div class="card glass-card d-flex justify-content-center align-items-center p-2">
+                <div class=" col-xl-12 card shadow mb-0 p-0">
+                    <div class="card-body">
+                        <div class="card-block p-2">
+                            <div class="dt-responsive table-responsive">
+                                <table id="order-table" class="table table-striped nowrap shadow-sm">
+                                    <thead class="text-left">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Jenis Usaha</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" name="ok_button" id="ok_button" class="btn btn-sm btn-outline-danger">Hapus</button>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="button" class=" btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
                 </div>
             </div>
         </div>
@@ -132,12 +134,14 @@
                 ]
             });
 
-        $('.reset').on('click', function(e) {
+            $('.reset').on('click', function(e) {
             e.preventDefault();
             $('#jenis_usaha').removeClass('is-invalid');
                             $('#form-status')[0].reset();
             $('#action').val('add');
             $('#btn')
+            .removeClass('btn-info')
+                            .addClass('btn-success')
                 .val('Simpan');
         })
 
@@ -147,13 +151,13 @@
                 var text = "Data sukses ditambahkan";
                 if ($('#action').val() == 'add') {
                     url = "{{ route('admin.potensi.jenis-usaha') }}";
-                     text = "Data sukses ditambahkan";
+                    text = "Data sukses ditambahkan";
                    
                 }
 
                 if ($('#action').val() == 'edit') {
                     url = "{{ route('admin.potensi.jenis-usaha.update') }}";
-                     text = "Data sukses diupdate";
+                    text = "Data sukses diupdate";
                 }
 
                 $.ajax({
@@ -177,7 +181,9 @@
                             $('#form-status')[0].reset();
                             $('#action').val('add');
                             $('#btn')
-                                .val('Simpan');
+                            .removeClass('btn-info')
+                            .addClass('btn-success')
+                            .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
                     }
@@ -222,6 +228,6 @@
                     }
                 });
             });
-         });      
+         });
     </script>
 @endpush
