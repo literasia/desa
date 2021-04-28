@@ -16,14 +16,14 @@ class KeteranganPindahController extends Controller
                 ->addColumn('status', function($data){
                     
                     switch ($data->status) {
-                        case 'Proses':
-                            return '<label class="badge badge-warning m-0">'. $data->status .'</label>';
+                        case 'processing':
+                            return "<label class='badge badge-warning m-0'>Proses</label>";
                             break;
-                        case 'Selesai':
-                            return '<lable class="badge badge-success m-0">'. $data->status .'</label>';
+                        case 'success':
+                            return "<label class='badge badge-success m-0'>Selesai</label>";
                             break;
-                        case 'Ditolak':
-                            return '<lable class="badge badge-danger m-0">'. $data->status .'</label>';
+                        case 'rejected':
+                            return "<label class='badge badge-danger m-0'>Ditolak</label>";
                             break;                        
                         default:
                             # code...
