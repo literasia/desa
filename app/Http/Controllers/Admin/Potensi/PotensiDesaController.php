@@ -33,7 +33,7 @@ class PotensiDesaController extends Controller
                         $class = 'badge badge-secondary update';
                         $text = 'Setuju?';
                     }
-                   $status = '<label id="' . $data->id . '" class="'.$class.'">'.$text.'</label>';
+                   $status = '<label id="' . $data->id . '" class="'.$class.'" style="cursor:pointer;">'.$text.'</label>';
                     return $status;
                 })
                 ->addColumn('action', function ($data) {
