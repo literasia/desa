@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
+        "@wiris/mathtype-ckeditor5": "^7.26.0",
         "toastr": "^2.1.4"
     }
 }

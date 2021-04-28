@@ -16,25 +16,61 @@ class KeteranganPindahController extends Controller
                 ->addColumn('status', function($data){
                     
                     switch ($data->status) {
-                        case 'processing':
-                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                        case 'Proses':
+                            return '<label class="badge badge-warning m-0">'. $data->status .'</label>';
                             break;
-                        case 'success':
-                            return '<lable class="label label-success">'. $data->status .'</label>';
+                        case 'Selesai':
+                            return '<lable class="badge badge-success m-0">'. $data->status .'</label>';
                             break;
-                        case 'rejected':
-                            return '<lable class="label label-danger">'. $data->status .'</label>';
+                        case 'Ditolak':
+                            return '<lable class="badge badge-danger m-0">'. $data->status .'</label>';
                             break;                        
                         default:
                             # code...
                             break;
                     }
                 })
-                ->rawColumns(['status'])
+                ->addColumn('action', function ($data) {
+                    $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" id="'.$data->id.'" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>';
+                    return $button;
+                })
+                ->rawColumns(['status', 'action'])
                 ->addIndexColumn()
                 ->make(true);
         }
 
         return view('admin.administrasi.keterangan-pindah');
+    }
+
+    public function edit($id)
+    {
+        $data = MovedInformation::find($id);
+        return response()
+            ->json([
+                'id'            => $data->id,
+                'status'        => $data->status,
+            ]);
+    }
+
+    public function update(Request $req) {
+        $data = $req->all();
+
+        MovedInformation::whereId($data['hidden_id'])->update([
+            'village_id' => auth()->user()->village->id,
+            'status' => $data['status'],
+        ]);
+
+        return response()
+            ->json([
+                'success' => 'Data berhasil di update.',
+        ]);
+
+    }
+
+    public function destroy($id)
+    {
+        $moved_information = MovedInformation::find($id);
+        $moved_information->delete();
     }
 }

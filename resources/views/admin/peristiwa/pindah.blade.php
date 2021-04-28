@@ -25,7 +25,7 @@
                     <div class="card-block p-2">
                     <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -145,26 +145,26 @@
             
 
             $('#add').on('click', function() {
-            $('#modal-pindah').modal('show');
-            $('.modal-title').html('Tambah Penduduk Pindah');
-            $('#form-pindah form').attr('action', 'add');
-            $('#nik').val('');
-            $('#name').val('');
-            $('#birthplace').val('');
-            $('#birthdate').val('');
-            $('#movedate').val('');
-            $('#gender').val('');
-            $('#religion').val('');
-            $('#status_marriage').val('');
-            $('#address_before').val('');
-            $('#address_after').val('');
-            $('#information').val('');
-            $('#hidden_id').val('');
-            $('#action').val('add');
-            $('#button')
-                .removeClass('btn-info edit')
-                .addClass('btn-success add')
-                .html('Tambah');
+                $('#modal-pindah').modal('show');
+                $('.modal-title').html('Tambah Penduduk Pindah');
+                $('#form-pindah form').attr('action', 'add');
+                $('#nik').val('');
+                $('#name').val('');
+                $('#birthplace').val('');
+                $('#birthdate').val('');
+                $('#movedate').val('');
+                $('#gender').val('');
+                $('#religion').val('');
+                $('#status_marriage').val('');
+                $('#address_before').val('');
+                $('#address_after').val('');
+                $('#information').val('');
+                $('#hidden_id').val('');
+                $('#action').val('add');
+                $('#button')
+                    .removeClass('btn-info edit')
+                    .addClass('btn-success add')
+                    .html('Tambah');
             });
 
 

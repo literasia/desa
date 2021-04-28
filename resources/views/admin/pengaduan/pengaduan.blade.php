@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Penguaduan | Pengaduan Desa')
+@section('title', 'Pengaduan | Pengaduan Desa')
 @section('title-2', 'Pengaduan Desa')
-@section('title-3', 'Pengumuman Desa')
+@section('title-3', 'Pengaduan Desa')
 
 @section('describ')
     Ini adalah halaman Pengaduan untuk admin

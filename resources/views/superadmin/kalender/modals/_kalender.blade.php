@@ -18,7 +18,7 @@
                                 <label id="label_title" class="bmd-label-floating">Event Title</label>
                                 <input type="text" name="title" id="title" class="form-control">
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                             <div class="col-md-6">
                             <div class="form-group">
                                 <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
@@ -33,7 +33,7 @@
                                 </select>
                             </div>
                             </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group bmd-form-group">
@@ -61,16 +61,6 @@
                                         <input type="text" name="end_clock" id="end_clock" class="form-control clockpicker">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control form-control-sm" data-style="btn select-with-transition" title="Prioritas" data-size="7" name="prioritas" id="prioritas">
-                                    <option selected="true" disabled>Prioritas</option>
-                                    <option value="Sangat Penting">Sangat Penting</option>
-                                    <option value="Penting">Penting</option>
-                                    <option value="Wajib Datang">Wajib Datang</option>
-                                    <option value="Tidak Diwajibkan Datang">Tidak Wajibkan Datang</option>
-                                    <option value="Diharapkan Datang">Diharapkan Datang</option>
-                                </select>
                             </div>
                         </div>
                     </div>

@@ -27,14 +27,14 @@ class CreateCitizensTable extends Migration
             $table->enum('sex', ["male", "female"])->nullable();
             $table->enum('religion', ["islam", "christian", "catholic", "hindu", "buddha", "confucianism"])->nullable();
             $table->enum("education", ["sd", "smp", "sma", "d1", "d2", "d3", "s1", "s2", "s3"])->nullable();
-            $table->enum("marital_status", ["single", "married", "divorced"])->nullable();
-            $table->enum("family_status", ["husband", 
-                                           "wife", 
+            $table->enum("marital_status", ["single", "married", "divorced", "death_divorced"])->nullable();
+            $table->enum("family_status", ["father", 
+                                           "mother", 
                                            "child", 
                                            "son_in_law",
                                            "grandchild",
                                            "in_laws",
-                                           "other family",
+                                           "other_family",
                                            "etc"])->nullable();
             $table->enum("work_type", [ "housewife",
                                         "student",
@@ -114,6 +114,7 @@ class CreateCitizensTable extends Migration
             $table->integer('village_id');
             $table->text('address')->nullable();
             $table->string('photo')->nullable();
+            $table->integer('is_head_of_family')->default(0);
             $table->timestamps();
         });
     }

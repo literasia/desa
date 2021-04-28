@@ -9,7 +9,7 @@
                         <div class="col-md-6 mb-2">
                             {{-- <label for="gallery2" class="sr-only">Tambah Galeri</label> --}}
                             <div class="input-file">
-                                <span class="btn-upload" target="#gallery2">Tambah Galeri</span>
+                                <span class="btn-upload" id="btn-galeri" target="#gallery2">Tambah Galeri</span>
                                 <span class="file-selected"></span>
                                 <input type="file" name="gallery" id="gallery2" class="gallery"/>
                             </div>
@@ -28,7 +28,7 @@
                     </div>
                     @endforeach
                 </div>
-                {{-- <div class="row">
+                {{-- <div class="row">  <!-- - -->
                     <div class="col-12 text-right mt-4">
                         <input type="submit" name="" class="btn btn-success" value="Simpan Galeri">
                     </div>
