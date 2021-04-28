@@ -25,6 +25,8 @@ Route::namespace('API')
 
         Route::get('village/search/{keyword}', 'VillageController@search');
 
+        Route::get('village-profile/{village_id}', 'VillageProfileController@getProfile');
+
         //News
         Route::get('news/{village_id}', 'NewsAPIController@index');
 
