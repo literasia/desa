@@ -17,13 +17,13 @@ class KeteranganTidakMampuController extends Controller
                 ->addColumn('status', function($data){
                     
                     switch ($data->status) {
-                        case 'processing':
-                            return '<lable class="badge badge-warning m-0">'. $data->status .'</label>';
+                       case 'Proses':
+                            return '<label class="badge badge-warning m-0">'. $data->status .'</label>';
                             break;
-                        case 'success':
+                        case 'Selesai':
                             return '<lable class="badge badge-success m-0">'. $data->status .'</label>';
                             break;
-                        case 'rejected':
+                        case 'Ditolak':
                             return '<lable class="badge badge-danger m-0">'. $data->status .'</label>';
                             break;                        
                         default:
