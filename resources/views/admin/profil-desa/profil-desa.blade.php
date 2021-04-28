@@ -99,7 +99,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 text-right">
-                                    <button type="submit" href="" class="btn btn-success">Simpan Profil</button>  
+                                    <button type="submit" href="" id="btn-profil" class="btn btn-success">Simpan Profil</button>  
                                 </div>
                             </div>
                         </div>
@@ -284,6 +284,9 @@
                         contentType: false,
                         cache: false,
                         processData: false,
+                        beforeSend: function () {
+                            $('#btn-galeri').text('Mengunggah...');
+                        }, 
                         success: function (data) {
                             if (data.error) {
                                 html = data.error;
@@ -291,9 +294,10 @@
                             }
                             Swal.fire('Sukses!', 'Berhasil menambah gallery', 'success');
                             refreshGallery();
+                            $('#btn-galeri').text('Tambah Galeri');
                         },
                         error:function(err){
-                            Swal.fire('Error!', 'Error saat menambah gallery. Coba beberapa saat lagi', 'error')
+                            Swal.fire('Error!', 'Ukuran gambar tidak boleh lebih dari 3MB', 'error')
                         }
                     });
 
@@ -364,6 +368,9 @@
                     contentType: false,
                     cache: false,
                     processData: false,
+                    beforeSend: function () {
+                        $('#btn-profil').text('Menyimpan...');
+                    },
                     success: function (data) {
                         var html = ''
                         if (data.errors) {
@@ -372,6 +379,7 @@
                         }
                         if (data.success) {
                             Swal.fire('Sukses!', 'Berhasil update profil', 'success');
+                            $('#btn-profil').text('Simpan Profil');
                         }
                     },
                     error:function(err){

@@ -31,7 +31,7 @@ class PendudukController extends Controller
                 })
                 ->editColumn('family_status', function($data){
                     switch ($data->family_status) {
-                        case 'father':
+                        case 'husband':
                             return 'Ayah';
                             break;
                         case 'mother':
@@ -319,6 +319,5 @@ class PendudukController extends Controller
         }
 
         return view('admin.data-penduduk.penduduk');
-        // a
     }
 }

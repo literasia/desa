@@ -18,13 +18,13 @@ class IzinUsahaController extends Controller
                     
                     switch ($data->status) {
                         case 'processing':
-                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            return '<lable class="badge badge-warning m-0">'. $data->status .'</label>';
                             break;
                         case 'success':
-                            return '<lable class="label label-success">'. $data->status .'</label>';
+                            return '<lable class="badge badge-success m-0">'. $data->status .'</label>';
                             break;
                         case 'rejected':
-                            return '<lable class="label label-danger">'. $data->status .'</label>';
+                            return '<lable class="badge badge-danger m-0">'. $data->status .'</label>';
                             break;                        
                         default:
                             # code...
