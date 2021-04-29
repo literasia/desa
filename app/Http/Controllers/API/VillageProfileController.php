@@ -11,7 +11,8 @@ class VillageProfileController extends Controller
 {
     public function getProfile($village_id)
     {
-        $villages = VillageProfile::where('village_id', $village_id)->get();
+        $villages = VillageProfile::join('village_galleries', 'village_galleries.village_id', 'village_profiles.village_id',)
+                                    ->get();
 
         return response()->json(ApiResponse::success($villages));
     }
