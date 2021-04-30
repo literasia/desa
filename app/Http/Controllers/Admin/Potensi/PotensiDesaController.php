@@ -24,16 +24,16 @@ class PotensiDesaController extends Controller
                 })
                 ->addColumn('status', function ($data) {
                     if($data->status == "active"){
-                        $class = 'btn btn-round btn-success btn-mini update';
+                        $class = 'badge badge-success update';
                         $text = 'Disetujui';
                     }else if($data->status == "rejected"){
-                        $class = 'btn btn-round btn-danger btn-mini update';
+                        $class = 'badge badge-danger update';
                         $text = 'Ditolak';
                     }else{
-                        $class = 'btn btn-round btn-secondary btn-mini update';
-                        $text = 'Setuju ?';
+                        $class = 'badge badge-secondary update';
+                        $text = 'Setuju?';
                     }
-                   $status = '<button id="' . $data->id . '" class="'.$class.'">'.$text.'</button>';
+                   $status = '<label id="' . $data->id . '" class="'.$class.'" style="cursor:pointer;">'.$text.'</label>';
                     return $status;
                 })
                 ->addColumn('action', function ($data) {

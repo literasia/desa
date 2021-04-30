@@ -39,20 +39,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-left">
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <label class="badge badge-danger">Baru Masuk</label>
-                                                <!-- <label class="badge badge-warning">Sedang Diproses</label>
-                                                <label class="badge badge-success">Selesai</label> -->
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -182,8 +169,8 @@
                             $('#action').val('add');
                             $('#btn').prop('disabled', false);
                             $('#btn')
-                                .removeClass('btn-outline-info')
-                                .addClass('btn-outline-success')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
                                 .val('Simpan');
                             $('#order-table').DataTable().ajax.reload();
                         }
@@ -202,8 +189,8 @@
                         $('#status').val(data.status);
                         $('#hidden_id').val(data.id);
                         $('#btn')
-                            .removeClass('btn-outline-success')
-                            .addClass('btn-outline-info')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
                             .val('Update');
                         $('#modal-domicile').modal('show');
                     }

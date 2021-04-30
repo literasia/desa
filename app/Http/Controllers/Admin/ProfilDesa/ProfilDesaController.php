@@ -14,7 +14,7 @@ class ProfilDesaController extends Controller
     public function index() {
 
     	$profile = VillageProfile::firstOrCreate(
-    		// first array = where
+    		// first_array = where
     		['village_id'=>auth()->user()->village->id],
 		);
         $galleries = auth()->user()->village->galleries()->get();

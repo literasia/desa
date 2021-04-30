@@ -226,6 +226,13 @@
                     contentType: false,
                     cache: false,
                     processData: false,
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
                     success: function (data) {
                         var html = ''
                         // If has Errors
@@ -319,7 +326,7 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            // toastr.success('Data berhasil dihapus');                            
+                            // toastr.success('Data telah berhasil dihapus');                            
                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }

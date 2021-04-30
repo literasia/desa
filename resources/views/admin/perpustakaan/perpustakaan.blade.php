@@ -23,7 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama Siswa</th>
+                                    <th>Nama Peminjam</th>
                                     <th>Judul Buku</th>
                                     <th>Tipe</th>
                                 </tr>

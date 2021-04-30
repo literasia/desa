@@ -25,7 +25,6 @@
                     <div class="card-body">
                         <div class="card-block p-2">
                             <div class="dt-responsive table-responsive">
-                                <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                                 <table id="order-table" class="table table-striped nowrap shadow-sm">
                                     <thead class="text-left">
                                         <tr>
@@ -291,20 +290,15 @@
                         desa.innerHTML = `${data.desa}`;
                         alamat.innerHTML = `${data.alamat}`;
 
-                        console.log(data);
-
-                        // noKK.innerHTML = `${data.family_group[0].reginc}`;
-                        // noKK.innerHTML = `${data.family_group[0].no_kk}`;
-
                         for (let index = 0; index < data.family_group.length; index++) {
                             let familyGroupContent = ``;
                             let familyStatus = "";
                             switch (data.family_group[index].family_status) {
-                                case 'husband':
-                                    familyStatus = "Suami/Ayah";
+                                case 'father':
+                                    familyStatus = "Ayah";
                                     break;
-                                case 'wife':
-                                    familyStatus = "Istri/Ibu";
+                                case 'mother':
+                                    familyStatus = "Ibu";
                                     break;
                                 case 'son_in_law':
                                     familyStatus = "Menantu";
