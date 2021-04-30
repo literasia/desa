@@ -10,7 +10,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form-desa" action="" method="POST" enctype="multipart/form-data">
+                <form id="form-desa" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
@@ -18,7 +19,6 @@
                                 <label for="village_list">Nama Desa</label>
                                 <select name="village_list" id="village_list" class="form-control form-control-sm">
                                     <option value="">-- Pilih --</option>
-                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
                                 <label for="password_confirmation">Konfirmasi Password</label>
-                                <input type="password_confirmation" name="password_confirmation" id="password_confirmation" class="form-control form-control-sm" placeholder="Password">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-sm" placeholder="Password">
                             </div>
                         </div>
                     </div>

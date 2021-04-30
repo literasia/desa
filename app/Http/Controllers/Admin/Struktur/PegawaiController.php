@@ -57,14 +57,14 @@ class PegawaiController extends Controller
     public function store(Request $request){
         $data = $request->all();
         $validator = Validator::make($data, $this->rules);
-
         if ($validator->fails()) {
             return response()->json([
                 'error' => "Data masih kosong",
                 'errors' => $validator->errors()
-            ]);
-        }
+                ]);
+            }
 
+        return response()->json(["data"=> $data]);
         $data['photo'] = null;
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('pegawai', 'public');

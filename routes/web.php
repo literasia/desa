@@ -45,11 +45,14 @@ Route::namespace('Superadmin')
             ->group(function () {
                 Route::get('/superadmin/list-desa/list-desa', 'ListDesaController@index')
                     ->name('list-desa.list-desa');
-                Route::post('/superadmin/list-desa/list-desa', 'ListDesaController@store');
-                Route::get('/superadmin/list-desa/list-desa/{id}', 'ListDesaController@edit');
+                Route::post('/superadmin/list-desa/list-desa', 'ListDesaController@store')
+                    ->name("list-desa.list-desa.store");
+                Route::get('/superadmin/list-desa/list-desa/{id}', 'ListDesaController@edit')
+                    ->name("list-desa.list-desa.edit");
                 Route::post('/superadmin/list-desa/list-desa/update', 'ListDesaController@update')
-                    ->name('list-desa.list-desa-update');
-                Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
+                    ->name('list-desa.list-desa.update');
+                Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy')
+                    ->name("list-desa.list-desa.delete");
         });
 
         // Kalender
