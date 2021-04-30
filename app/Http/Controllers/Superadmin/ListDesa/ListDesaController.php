@@ -20,16 +20,21 @@ class ListDesaController extends Controller
     ];
 
     public function index(Request $request) {
+        // $data = User::whereHas('roles' , function($q){
+        //     $q->whereName('admin');
+        // })->get();
+        // dd($data);
+
         if ($request->ajax()) {
-            $data = Employee::where('village_id', auth()->user()->village->id)->get();
+            $data = User::whereHas('roles' , function($q){
+                $q->whereName('admin');
+             })->get();
+
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
                     $button .= '&nbsp;&nbsp;&nbsp;<button type="button" id="'.$data->id.'" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>';
                     return $button;
-                })
-                ->editColumn('user_id', function ($data) {
-                    return $data->user->username;
                 })
                 ->addIndexColumn()
                 ->make(true);
@@ -62,7 +67,7 @@ class ListDesaController extends Controller
 
         $role = Role::where("name", "admin")->first();
 
-        $user_id->roles()->attach($role->id);
+        $user_id->roles()->attach(10);
 
         return response()
             ->json([

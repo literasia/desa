@@ -32,11 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Nama Desa</td>
-                                    <td>Actions</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -124,23 +120,23 @@
             $(document).on('keyup', '.select2-search__field', function (e) {
                 let val = e.target.value;
                 currentInput = val
-                setTimeout(() => {
-                    if(val === currentInput){
-                        let url = 'http://beta-desa.literasia.co.id/api/village/search/'+currentInput;
-                        console.log("masuk")
-                        fetch(url)
-                        .then(res=> res.json())
-                        .then(res => {
-                            tmp_html = '';
-                            $(res.data).each(function(i) {
-                                console.log(res.data[i]);
-                                tmp_html += '<option value="'+res.data[i].id+'">'+res.data[i].name+'</option>';
-                            });
-                            $('#village_list').html(tmp_html);
-                        })
-                        .catch(err => console.log(err))
-                    }
-                }, 2000);
+                // setTimeout(() => {
+                //     if(val === currentInput){
+                //         let url = 'http://beta-desa.literasia.co.id/api/village/search/'+currentInput;
+                //         console.log("masuk")
+                //         fetch(url)
+                //         .then(res=> res.json())
+                //         .then(res => {
+                //             tmp_html = '';
+                //             $(res.data).each(function(i) {
+                //                 console.log(res.data[i]);
+                //                 tmp_html += '<option value="'+res.data[i].id+'">'+res.data[i].name+'</option>';
+                //             });
+                //             $('#village_list').html(tmp_html);
+                //         })
+                //         .catch(err => console.log(err))
+                //     }
+                // }, 2000);
             });
 
             // =============== end find list desa
