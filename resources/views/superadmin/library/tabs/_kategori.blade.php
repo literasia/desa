@@ -22,7 +22,7 @@
                 <table class="table table-sm table-bordered" id="table-kategori">
                     <thead class="text-center">
                         <tr>
-                            <th>#</th>
+                            <th>No.</th>
                             <th>Kategori</th>
                             <th>Actions</th>
                         </tr>

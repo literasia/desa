@@ -16,20 +16,20 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="card shadow">
-            <div class="card-header">
-                <h5>List Desa</h5>
+            <div class="card-header pb-0">
+                <div class="card-block p-2">
+                    <h5>List Desa</h5>
+                </div>
             </div>
             <div class="card-body">
-                <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
-                <div class="card-block">
+                <div class="card-block p-2">
+                <button id="add" class="btn btn-outline-primary shadow-sm mt-1 mb-3"><i class="fa fa-plus"></i></button>
                     <div class="dt-responsive table-responsive">
                         <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>ID Desa</th>
+                                    <th>No.</th>
                                     <th>Nama Desa</th>
-                                    <th>Alamat</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -71,9 +71,33 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/css/select2.min.css') }}" />
     <style>
         .btn i {
             margin-right: 0px;
+        }
+        .select2-container {
+            width: 100% !important;
+            padding: 0;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            background-color: transparent; 
+            color: #000;
+            padding: 0px 30px 0px 10px; 
+        }
+        .checkbox {
+            position: absolute;
+            left: 15px;
+            cursor: pointer;
+        }
+        .add-ons-icon {
+            font-size: 16pt!important;
+            color: #017a48;
+        }
+        .card-hover:hover {
+            background: rgba(45,155,219,0.21);
+            color: #039f5f;
         }
     </style>
 @endpush
@@ -84,24 +108,18 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
+            $('#village_list').select2();
+
             $('#order-table').DataTable();
 
             $('#add').on('click', function () {
-                $('#modal-administrasi').modal('show');
+                $('#modal-desa').modal('show');
             });
 
-            $('#start_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
-
-            $('#end_date').dateDropper({
-                theme: 'leaf',
-                format: 'd-m-Y'
-            });
         });
     </script>
 @endpush

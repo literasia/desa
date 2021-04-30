@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Peristiwa;
+namespace App\Http\Controllers\Pegawai\Peristiwa;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kematian;

@@ -14,17 +14,10 @@ Route::namespace('Superadmin')
         Route::get('/superadmin', 'SuperadminController@index')
             ->name('index');
 
-        //Add-ons
-        Route::namespace('AddOns')
-            ->group(function () {
-                Route::get('/superadmin/add-ons/add-ons', 'AddOnsController@index')
-                    ->name('add-ons.add-ons');
-            });
-
         // Library
         Route::namespace('Library')
             ->group(function () {
-                // Tambah 
+                // Tambah
                 Route::get('/superadmin/library/tambah-baru', 'TambahController@index')
                     ->name('library.tambah-baru');
 
@@ -244,8 +237,8 @@ Route::namespace("Pegawai")
                     ->name('data-penduduk.keluarga');
                 Route::get('/pegawai/data-penduduk/penduduk', 'PendudukController@index')
                     ->name('data-penduduk.penduduk');
-                Route::get('/pegawai/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
-                    ->name('data-penduduk.penduduk.input-data-penduduk');
+                // Route::get('/pegawai/data-penduduk/input-data-penduduk', 'InputDataPendudukController@index')
+                //     ->name('data-penduduk.penduduk.input-data-penduduk');
             });
 
 
@@ -362,7 +355,7 @@ Route::namespace("Pegawai")
 
             Route::get('/pegawai/peristiwa/kematian', 'KematianController@index')
                 ->name('peristiwa.kematian');
-                
+
             Route::get('/pegawai/peristiwa/pindah', 'PindahController@index')
                 ->name('peristiwa.pindah');
         });
@@ -457,7 +450,7 @@ Route::namespace('Admin')
                 Route::post('/admin/administrasi/permohonan-pembuatan-ktp/update', 'PermohonanKTPController@update')
                     ->name('administrasi.permohonan-pembuatan-ktp.update');
                 Route::get('/admin/administrasi/permohonan-pembuatan-ktp/hapus/{id}', 'PermohonanKTPController@destroy');
-                
+
                 Route::get('/admin/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
                     ->name('administrasi.surat_keterangan_lahir');
                 Route::get('/admin/administrasi/surat-keterangan-lahir/{id}', 'SuratKeteranganLahirController@edit');
@@ -563,7 +556,7 @@ Route::namespace('Admin')
         // Data Penduduk
         Route::namespace('DataPenduduk')
         ->group(function () {
-            
+
                 Route::get('/admin/data-penduduk/keluarga/get-family/{id}', 'KeluargaController@getFamily')->name('data-penduduk.keluarga.get-family');
                 Route::get('/admin/data-penduduk/keluarga/get-citizen', 'KeluargaController@getCitizen')->name('data-penduduk.keluarga.get-citizen');
 
@@ -719,12 +712,12 @@ Route::namespace('Admin')
         // Referensi
         Route::namespace('Referensi')
             ->group(function () {
-                Route::get('/admin/referensi/bagian-pegawai', 'BagianPegawaiController@index')
-                    ->name('referensi.bagian-pegawai');
-                Route::get('/admin/referensi/status-pegawai', 'StatusPegawaiController@index')
-                    ->name('referensi.status-pegawai');
-                Route::get('/admin/referensi/golongan', 'GolonganController@index')
-                    ->name('referensi.golongan');
+                // Route::get('/admin/referensi/bagian-pegawai', 'BagianPegawaiController@index')
+                //     ->name('referensi.bagian-pegawai');
+                // Route::get('/admin/referensi/status-pegawai', 'StatusPegawaiController@index')
+                //     ->name('referensi.status-pegawai');
+                // Route::get('/admin/referensi/golongan', 'GolonganController@index')
+                //     ->name('referensi.golongan');
                 Route::get('/admin/referensi/pengaturan-hak-akses', 'PengaturanHakAksesController@index')
                     ->name('referensi.pengaturan-hak-akses');
                 Route::post('/admin/referensi/pengaturan-hak-akses-update', 'PengaturanHakAksesController@update')

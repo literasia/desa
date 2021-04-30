@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pegawai\Administrasi;
 
 use App\Models\Heir;
 use Illuminate\Http\Request;
