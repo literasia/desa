@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldIsHeadOfFamily extends Migration
+class DropVillageIdFromKalendersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddFieldIsHeadOfFamily extends Migration
      */
     public function up()
     {
-        Schema::table('citizens', function (Blueprint $table) {
-            $table->dropColumn('head_of_family_status');
-            $table->integer('is_head_of_family')->default(0);
+        Schema::table('kalenders', function (Blueprint $table) {
+            //
+            $table->dropColumn('village_id');
         });
     }
 
@@ -26,8 +26,8 @@ class AddFieldIsHeadOfFamily extends Migration
      */
     public function down()
     {
-        Schema::table('citizens', function (Blueprint $table) {
-            $table->dropColumn('is_head_of_family');
+        Schema::table('kalenders', function (Blueprint $table) {
+            //
         });
     }
 }

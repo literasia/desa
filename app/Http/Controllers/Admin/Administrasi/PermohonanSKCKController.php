@@ -28,11 +28,11 @@ class PermohonanSKCKController extends Controller
                     return $btnlink;
                 })
                 ->addColumn('status', function ($data) {
-                    if($data->status == 'Processing'){
+                    if($data->status == 'processing'){
                         $status = "<label class='badge badge-warning m-0'>Proses</label>";
-                    }elseif($data->status == 'Success'){
+                    }elseif($data->status == 'success'){
                         $status = "<label class='badge badge-success m-0'>Selesai</label>";
-                    }elseif($data->status == 'Rejected'){
+                    }elseif($data->status == 'rejected'){
                         $status = "<label class='badge badge-danger m-0'>Ditolak</label>";
                     }
                     return $status;

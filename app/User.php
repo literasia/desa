@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\Village;
+use App\Models\{Village, Borrow, Employee, Citizen};
 
 class User extends Authenticatable
 {
@@ -56,5 +56,10 @@ class User extends Authenticatable
 
     public function citizen(){
         return $this->hasMany(Citizen::class);
+    }
+
+    public function borrow()
+    {
+        return $this->hasOne(Borrow::class);
     }
 }

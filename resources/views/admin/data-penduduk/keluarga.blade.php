@@ -25,7 +25,6 @@
                     <div class="card-body">
                         <div class="card-block p-2">
                             <div class="dt-responsive table-responsive">
-                                <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                                 <table id="order-table" class="table table-striped nowrap shadow-sm">
                                     <thead class="text-left">
                                         <tr>
@@ -100,7 +99,7 @@
     <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-    <!-- Select 2 js -->
+    <!-- Select 2 js --> <!-- abc -->
     <script type="text/javascript" src="{{ asset('bower_components/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
@@ -269,39 +268,37 @@
                     success: function (data) {
                         let familyGroup = document.getElementById('family_group');
                         let provinsi = document.getElementById('provinsi');
-                        let kecamatan = document.getElementById('kecamatan');
                         let kabupaten = document.getElementById('kabupaten');
+                        let kecamatan = document.getElementById('kecamatan');
+                        let desa = document.getElementById('desa');
                         let alamat = document.getElementById('alamat');
                         let noKK = document.getElementById('no_kk');
 
                         familyGroup.innerHTML = "";
                         noKK.innerHTML = "";
                         provinsi.innerHTML = "";
-                        kecamatan.innerHTML = "";
                         kabupaten.innerHTML = "";
+                        kecamatan.innerHTML = "";
+                        desa.innerHTML = "";
                         alamat.innerHTML = "";
 
 
                         noKK.innerHTML = `${data.no_kk}`;
                         provinsi.innerHTML = `${data.provinsi}`;
-                        kecamatan.innerHTML = `${data.kecamatan}`;
                         kabupaten.innerHTML = `${data.kabupaten}`;
+                        kecamatan.innerHTML = `${data.kecamatan}`;
+                        desa.innerHTML = `${data.desa}`;
                         alamat.innerHTML = `${data.alamat}`;
-
-                        console.log(data);
-
-                        // noKK.innerHTML = `${data.family_group[0].reginc}`;
-                        // noKK.innerHTML = `${data.family_group[0].no_kk}`;
 
                         for (let index = 0; index < data.family_group.length; index++) {
                             let familyGroupContent = ``;
                             let familyStatus = "";
                             switch (data.family_group[index].family_status) {
-                                case 'husband':
-                                    familyStatus = "Suami/Ayah";
+                                case 'father':
+                                    familyStatus = "Ayah";
                                     break;
-                                case 'wife':
-                                    familyStatus = "Istri/Ibu";
+                                case 'mother':
+                                    familyStatus = "Ibu";
                                     break;
                                 case 'son_in_law':
                                     familyStatus = "Menantu";

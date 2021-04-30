@@ -67,7 +67,7 @@ class PotencyAPIController extends Controller
                 'business_address' => $request->business_address,
                 'no_phone' => $request->no_phone,
                 'no_whatsapp' => $request->no_whatsapp,
-                'image_ktp' => $data['image_ktp'],
+                'image_ktp' => $data['image_ktp'] ?? "",
                 'status' => 'inactive'
             ]);
     

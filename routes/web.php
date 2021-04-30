@@ -57,6 +57,9 @@ Route::namespace('Superadmin')
             ->group(function () {
                 Route::get('/supersuperadmin/kalender', 'KalenderSuperadminController@index')
                     ->name('kalender.kalender');
+                    Route::post('/superadmin/kalender/tambah', 'KalenderSuperadminController@store')->name('superadmin.kalender.tambah-event');
+                    Route::post('/superadmin/kalender/update/{id}', 'KalenderSuperadminController@update')->name('superadmin.kalender.edit-event');
+                    Route::get('/superadmin/kalender/hapus/{id}', 'KalenderSuperadminController@destroy');
             });
 
         // Referensi
@@ -450,8 +453,17 @@ Route::namespace('Admin')
             ->group(function () {
                 Route::get('admin/administrasi/permohonan-pembuatan-ktp', 'PermohonanKTPController@index')
                     ->name('administrasi.permohonan_pembuatan_ktp');
+                Route::get('/admin/administrasi/permohonan-pembuatan-ktp/{id}', 'PermohonanKTPController@edit');
+                Route::post('/admin/administrasi/permohonan-pembuatan-ktp/update', 'PermohonanKTPController@update')
+                    ->name('administrasi.permohonan-pembuatan-ktp.update');
+                Route::get('/admin/administrasi/permohonan-pembuatan-ktp/hapus/{id}', 'PermohonanKTPController@destroy');
+                
                 Route::get('/admin/administrasi/surat-keterangan-lahir', 'SuratKeteranganLahirController@index')
                     ->name('administrasi.surat_keterangan_lahir');
+                Route::get('/admin/administrasi/surat-keterangan-lahir/{id}', 'SuratKeteranganLahirController@edit');
+                Route::post('/admin/administrasi/surat-keterangan-lahir/update', 'SuratKeteranganLahirController@update')
+                    ->name('administrasi.surat-keterangan-lahir.update');
+                Route::get('/admin/administrasi/surat-keterangan-lahir/hapus/{id}', 'SuratKeteranganLahirController@destroy');
 
                 Route::get('/admin/administrasi/perubahan-kk', 'PerubahanKKController@index')
                     ->name('administrasi.perubahan-kk');
@@ -468,10 +480,21 @@ Route::namespace('Admin')
                     ->name('administrasi.surat-kematian.update');
                 Route::get('/admin/administrasi/surat-kematian/hapus/{id}', 'SuratKematianController@destroy');
 
+                // izin usaha
                 Route::get('/admin/administrasi/izin-usaha', 'IzinUsahaController@index')
                     ->name('administrasi.izin_usaha');
+                Route::get('/admin/administrasi/izin-usaha/{id}', 'IzinUsahaController@edit');
+                Route::post('/admin/administrasi/izin-usaha/update', 'IzinUsahaController@update')
+                    ->name('administrasi.izin-usaha.update');
+                Route::get('/admin/administrasi/izin-usaha/hapus/{id}', 'IzinUsahaController@destroy');
+
+                // SKTM
                 Route::get('/admin/administrasi/keterangan-tidak-mampu', 'KeteranganTidakMampuController@index')
                     ->name('administrasi.keterangan_tidak_mampu');
+                Route::get('/admin/administrasi/keterangan-tidak-mampu/{id}', 'KeteranganTidakMampuController@edit');
+                Route::post('/admin/administrasi/keterangan-tidak-mampu/update', 'KeteranganTidakMampuController@update')
+                    ->name('administrasi.keterangan-tidak-mampu.update');
+                Route::get('/admin/administrasi/keterangan-tidak-mampu/hapus/{id}', 'KeteranganTidakMampuController@destroy');
 
                 //SKCK
                 Route::get('/admin/administrasi/permohonan-skck', 'PermohonanSKCKController@index')
@@ -481,8 +504,13 @@ Route::namespace('Admin')
                     ->name('administrasi.permohonan-skck-update');
                 Route::get('/admin/administrasi/permohonan-skck/hapus/{id}', 'PermohonanSKCKController@destroy');
 
+                // PINDAH
                 Route::get('/admin/administrasi/keterangan-pindah', 'KeteranganPindahController@index')
                     ->name('administrasi.keterangan-pindah');
+                Route::get('/admin/administrasi/keterangan-pindah/{id}', 'KeteranganPindahController@edit');
+                Route::post('/admin/administrasi/keterangan-pindah/update', 'KeteranganPindahController@update')
+                    ->name('administrasi.keterangan-pindah.update');
+                Route::get('/admin/administrasi/keterangan-pindah/hapus/{id}', 'KeteranganPindahController@destroy');
 
                 // Domisili
                 Route::get('/admin/administrasi/keterangan-domisili', 'KeteranganDomisiliController@index')
@@ -500,9 +528,13 @@ Route::namespace('Admin')
                     ->name('administrasi.keterangan-ahli-waris-update');
                 Route::get('/admin/administrasi/keterangan-ahli-waris/hapus/{id}', 'KeteranganAhliWarisController@destroy');
 
-
+                // Keterangan Tanah
                 Route::get('/admin/administrasi/keterangan-tanah', 'KeteranganTanahController@index')
                     ->name('administrasi.keterangan-tanah');
+                Route::get('/admin/administrasi/keterangan-tanah/{id}', 'KeteranganTanahController@edit');
+                Route::post('/admin/administrasi/keterangan-tanah/update', 'KeteranganTanahController@update')
+                    ->name('administrasi.keterangan-tanah.update');
+                Route::get('/admin/administrasi/keterangan-tanah/hapus/{id}', 'KeteranganTanahController@destroy');
             });
 
         // Berita

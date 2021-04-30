@@ -21,7 +21,7 @@ class CreateSKCKSTable extends Migration
             $table->string('no_phone');
             $table->string('address');
             $table->string('image');
-            $table->enum('status', ['Processing', 'Success', 'Rejected']);
+            $table->enum('status', ['processing', 'success', 'rejected']);
             $table->timestamps();
         });
     }
