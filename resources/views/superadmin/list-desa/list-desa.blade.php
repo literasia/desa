@@ -16,12 +16,14 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="card shadow">
-            <div class="card-header">
-                <h5>List Desa</h5>
+            <div class="card-header pb-0">
+                <div class="card-block p-2">
+                    <h5>List Desa</h5>
+                </div>
             </div>
             <div class="card-body">
-                <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
-                <div class="card-block">
+                <div class="card-block p-2">
+                <button id="add" class="btn btn-outline-primary shadow-sm mt-1 mb-3"><i class="fa fa-plus"></i></button>
                     <div class="dt-responsive table-responsive">
                         <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                             <thead>
@@ -87,9 +89,15 @@
         .checkbox {
             position: absolute;
             left: 15px;
+            cursor: pointer;
         }
         .add-ons-icon {
             font-size: 16pt!important;
+            color: #017a48;
+        }
+        .card-hover:hover {
+            background: rgba(45,155,219,0.21);
+            color: #039f5f;
         }
     </style>
 @endpush

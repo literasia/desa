@@ -92,14 +92,6 @@
                         <span class="pcoded-mtext">Kalender</span>
                     </a>
                 </li>
-                <li class="{{ request()->is('superadmin/add-ons/add-ons') ? 'active' : '' }}">
-                    <a href="{{ route('superadmin.add-ons.add-ons') }}" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-puzzle-piece"></i>
-                        </span>
-                        <span class="pcoded-mtext">Add-ons</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
