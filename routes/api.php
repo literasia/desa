@@ -141,4 +141,12 @@ Route::namespace('API')
         //Attendance
         Route::get("get-village-attendance/{village_id}/{month}/{year}", "AttendanceApiController@getAttendance");
         Route::post("add-employee-attendance/{employee_id}", "AttendanceApiController@addAttendance");
+
+        //Catalog Potency
+        Route::get("get-catalog", "CatalogAPIController@getCatalog");
+        Route::post("add-catalog/{potency_id}", "CatalogAPIController@addCatalog");
+        Route::get('delete-catalog/{catalog_id}', "CatalogAPIController@delete");
+        Route::get('edit-catalog/{catalog_id}', "CatalogAPIController@edit");
+        Route::post('update-catalog', "CatalogAPIController@update");
+
     });
