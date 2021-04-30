@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Superadmin\ListDesa;
 
 use App\Role;
 use App\User;
+use App\Models\Addon;
 use Validator;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -68,6 +69,12 @@ class ListDesaController extends Controller
         $role = Role::where("name", "admin")->first();
 
         $user_id->roles()->attach(10);
+
+        // return response()->json(["aman"=>$user->id]);
+        Addon::create([
+            "village_id"=> 1231312,
+            "admin_id"=> $user->id
+        ]);
 
         return response()
             ->json([
