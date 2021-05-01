@@ -49,32 +49,32 @@
                                 <label for="add_ons">Add Ons</label>
                                 <div class="row mx-1 text-center">
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-Dashboard" checked class="d-block checkbox">
                                         <span><i class="fa fa-home add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Dasboard</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-population_data" checked class="d-block checkbox">
                                         <span><i class="fa fa-users add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Data Penduduk</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-village_structure" checked class="d-block checkbox">
                                         <span><i class="fa fa-project-diagram add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Struktur Desa</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-village_profile" checked class="d-block checkbox">
                                         <span><i class="fa fa-id-badge add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Profil Desa</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-administration" checked class="d-block checkbox">
                                         <span><i class="fa fa-archive add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Administrasi Desa</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-village_potency" checked class="d-block checkbox">
                                         <span><i class="fa fa-chart-line add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Potensi Desa</p>
                                     </div>
@@ -86,32 +86,32 @@
                                 <label for="add_ons"></label>
                                 <div class="row mx-1 text-center">
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-news" checked class="d-block checkbox">
                                         <span><i class="fa fa-newspaper add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Berita</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-slider" checked class="d-block checkbox">
                                         <span><i class="fa fa-images add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Slider</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-attendance" checked class="d-block checkbox">
                                         <span><i class="fa fa-clipboard-list add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Absensi</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-event" checked class="d-block checkbox">
                                         <span><i class="fa fa-chart-bar add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Peristiwa</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-village_tour" checked class="d-block checkbox">
                                         <span><i class="fa fa-map-marker-alt add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Wisata Desa</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-calendar" checked class="d-block checkbox">
                                         <span><i class="fa fa-calendar add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Kalender</p>
                                     </div>
@@ -123,27 +123,27 @@
                                 <label for="add_ons"></label>
                                 <div class="row mx-1 text-center">
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-announcement" checked class="d-block checkbox">
                                         <span><i class="fa fa-bell add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Pengumuman</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-campaign" checked class="d-block checkbox">
                                         <span><i class="fa fa-bullhorn add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Kampanye</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-reference" checked class="d-block checkbox">
                                         <span><i class="fa fa-list-alt add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Referensi</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-library" checked class="d-block checkbox">
                                         <span><i class="fa fa-book-open add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Perpustakaan</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="" checked="" class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-complaint" checked class="d-block checkbox">
                                         <span><i class="fa fa-comment-alt add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Pengaduan</p>
                                     </div>

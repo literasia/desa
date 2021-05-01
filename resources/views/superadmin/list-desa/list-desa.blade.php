@@ -187,6 +187,7 @@
                     url = "{{ route('superadmin.list-desa.list-desa.update') }}";
                 }
                 let formData = new FormData($('#form-desa')[0]);
+
                 $.ajax({
                     url: url,
                     method: 'POST',

@@ -21,10 +21,6 @@ class ListDesaController extends Controller
     ];
 
     public function index(Request $request) {
-        $data = User::whereHas('roles' , function($q){
-            $q->whereName('admin');
-         })->get();
-        //  dd($data);
         if ($request->ajax()) {
             $data = User::whereHas('roles' , function($q){
                 $q->whereName('admin');
@@ -48,8 +44,9 @@ class ListDesaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-
         $validator = Validator::make($data, $this->rules);
+
+
 
         if ($validator->fails()) {
             return response()->json([
@@ -57,7 +54,6 @@ class ListDesaController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-
 
         $user = User::create([
             "name" => "Admin Desa",
@@ -73,11 +69,15 @@ class ListDesaController extends Controller
 
         $user_id->roles()->attach($role->id);
 
-        // return response()->json(["aman"=>$user->id]);
-        Addon::create([
-            "village_id"=> 1101010001,
-            "admin_id"=> $user->id
-        ]);
+        $addon = ["village_id"=> 1101010001, "admin_id"=> $user->id];
+        foreach ($data as $key => $value ) {
+            if(strpos($key,"addon")){
+                $pisah = explode("-",$key);
+                $addon[$pisah[2]] = 1;
+            }
+        }
+
+        Addon::create($addon);
 
         return response()
             ->json([
