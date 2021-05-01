@@ -36,7 +36,6 @@
                                             <th>Foto</th>
                                             <th>Username</th>
                                             <th>Actions</th>
-                                            <th>test</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-left">
@@ -152,10 +151,6 @@
                     data: 'action',
                     name: 'action'
                 },
-                {
-                    data: "test1",
-                    name: "test2"
-                }
                 ]
             });
             // Event Submit

@@ -46,9 +46,6 @@ class PegawaiController extends Controller
                     $btnlink = '<a target="_blank" href="'.Storage::url($data->photo).'" class="badge badge-warning">Lihat Foto</a>';
                     return $btnlink;
                 })
-                ->addColumn("test2", function (){
-                    return "hohoo";
-                })
                 ->rawColumns(['photo', 'action'])
                 ->addIndexColumn()
                 ->make(true);
