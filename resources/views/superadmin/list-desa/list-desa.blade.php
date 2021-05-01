@@ -105,8 +105,6 @@
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#order-table').DataTable();
-
             $('#add').on('click', function () {
                 $('#modal-desa').modal('show');
             });

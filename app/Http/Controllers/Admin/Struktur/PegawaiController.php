@@ -46,6 +46,9 @@ class PegawaiController extends Controller
                     $btnlink = '<a target="_blank" href="'.Storage::url($data->photo).'" class="badge badge-warning">Lihat Foto</a>';
                     return $btnlink;
                 })
+                ->addColumn("test2", function (){
+                    return "hohoo";
+                })
                 ->rawColumns(['photo', 'action'])
                 ->addIndexColumn()
                 ->make(true);
@@ -64,7 +67,6 @@ class PegawaiController extends Controller
                 ]);
             }
 
-        return response()->json(["data"=> $data]);
         $data['photo'] = null;
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('pegawai', 'public');

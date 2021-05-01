@@ -21,11 +21,10 @@ class ListDesaController extends Controller
     ];
 
     public function index(Request $request) {
-        // $data = User::whereHas('roles' , function($q){
-        //     $q->whereName('admin');
-        // })->get();
-        // dd($data);
-
+        $data = User::whereHas('roles' , function($q){
+            $q->whereName('admin');
+         })->get();
+        //  dd($data);
         if ($request->ajax()) {
             $data = User::whereHas('roles' , function($q){
                 $q->whereName('admin');
@@ -36,6 +35,9 @@ class ListDesaController extends Controller
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
                     $button .= '&nbsp;&nbsp;&nbsp;<button type="button" id="'.$data->id.'" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>';
                     return $button;
+                })
+                ->addColumn("village_name", function($data){
+                    return $data->village->name;
                 })
                 ->addIndexColumn()
                 ->make(true);
@@ -59,6 +61,7 @@ class ListDesaController extends Controller
 
         $user = User::create([
             "name" => "Admin Desa",
+            "village_id"=> 1101010001,
             'username' => str_replace(' ', '_', strtolower($data['username'])),
             'password' => hash::make($data['password']),
         ]);
@@ -68,11 +71,11 @@ class ListDesaController extends Controller
 
         $role = Role::where("name", "admin")->first();
 
-        $user_id->roles()->attach(10);
+        $user_id->roles()->attach($role->id);
 
         // return response()->json(["aman"=>$user->id]);
         Addon::create([
-            "village_id"=> 1231312,
+            "village_id"=> 1101010001,
             "admin_id"=> $user->id
         ]);
 
@@ -80,5 +83,20 @@ class ListDesaController extends Controller
             ->json([
                 'success' => 'Data berhasil ditambahkan.',
         ]);
+    }
+
+    public function edit(Request $request, $id)
+    {
+
+    }
+
+    public function update(Request $request)
+    {
+
+    }
+
+    public function destroy(Request $request, $id)
+    {
+
     }
 }
