@@ -144,6 +144,7 @@
                 $('.modal-title').html('Tambah Desa dan Admin');
                 $('#action').val('add');
                 $('#username').val('');
+                $('#username').prop("disabled", false);
                 $('#password').val('');
                 $('#password-confirmation').val('');
                 $('#password-group').css('display', 'block');

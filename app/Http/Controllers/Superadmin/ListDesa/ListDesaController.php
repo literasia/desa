@@ -19,6 +19,10 @@ class ListDesaController extends Controller
         'password' => 'required|confirmed',
     ];
 
+    private $updaterules = [
+        'password' => 'confirmed'
+    ];
+
     public function index(Request $request) {
         if ($request->ajax()) {
             $data = User::whereHas('roles' , function($q){
@@ -44,8 +48,6 @@ class ListDesaController extends Controller
     public function store(Request $request){
         $data = $request->all();
         $validator = Validator::make($data, $this->rules);
-
-
 
         if ($validator->fails()) {
             return response()->json([
@@ -94,6 +96,15 @@ class ListDesaController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
+
+        $validator = Validator::make($data, $this->updaterules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ]);
+        }
+
         $addon = Addon::where("admin_id",$data['hidden_id'])->first();
         $update = [
             "administration"=>0,
@@ -118,6 +129,13 @@ class ListDesaController extends Controller
             "village_structure"=>0,
             "village_tour"=>0,
         ];
+
+        if($data["password"] !== null){
+            $user = User::findOrFail($data["hidden_id"]);
+            $user->update([
+             'password' => hash::make($data['password'])
+            ]);
+        }
 
         foreach ($data as $key => $value ) {
             if(strpos($key,"addon")){
