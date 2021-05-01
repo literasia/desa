@@ -131,8 +131,15 @@ class ListDesaController extends Controller
         return response()->json(["success" => $succes]);
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
+        $user = User::findOrFail($id);
+        $role = Role::where('name', 'admin')->first();
+        $addon = Addon::where("admin_id",$id);
+        $user->roles()->detach($role->id);
+        $user->delete();
+        $addon->delete();
+        return response()->json(["success" => true]);
 
     }
 }

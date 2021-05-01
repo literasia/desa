@@ -65,6 +65,18 @@ Route::namespace('Superadmin')
                     Route::get('/superadmin/kalender/hapus/{id}', 'KalenderSuperadminController@destroy');
             });
 
+        // Pengumuman
+        Route::namespace('Pengumuman')
+        ->group(function () {
+        Route::get('/superadmin/pengumuman', 'PengumumanDesaController@index')
+            ->name('pengumuman.pengumuman');
+        Route::post('/superadmin/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+        Route::get('/superadmin/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+        Route::post('/superadmin/pengumuman/pesan/update', 'PengumumanDesaController@update')
+            ->name('pengumuman.pesan-update');
+        Route::get('/superadmin/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
+        });
+
         // Referensi
         Route::namespace('Referensi')
             ->group(function () {
