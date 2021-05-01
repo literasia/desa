@@ -152,4 +152,64 @@ class CitizenAPIController extends Controller
 
         return response()->json(ApiResponse::success($citizen, 'Success add data'));
     }
+
+
+    public function update($citizen_id, Request $request)
+    {
+        // $rules = [
+        //     'email' => 'required',
+        //     'phone' => 'required',
+        //     'citizenship' => 'required',
+        //     'place_of_birth' => 'required',
+        //     'date_of_birth' => 'required',
+        //     'sex' => 'required',
+        //     'religion' => 'required',
+        //     'education' => 'required',
+        //     'marital_status' => 'required',
+        //     'family_status' => 'required',
+        //     'work_type' => 'required',
+        //     'address' => 'required',
+        // ];
+
+
+        // $validator = Validator::make($request->all(), $rules);
+
+        // if ($validator->fails()) {
+        //     return response()
+        //         ->json([
+        //             'errors' => $validator->errors()->all()
+        //         ]);
+        // }
+
+        $citizen = Citizen::findOrFail($citizen_id);
+
+        $data['photo'] = null;
+        if ($request->file('photo')) {
+            $data['photo'] = $request->file('photo')->store('penduduk', 'public');
+        }
+
+        $citizenData = Citizen::whereId($citizen_id)->update([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'citizenship' => $request->citizenship,
+            'place_of_birth' => $request->place_of_birth,
+            'date_of_birth' => $request->date_of_birth,
+            'sex' => $request->sex,
+            'religion' => $request->religion,
+            'education' => $request->education,
+            'marital_status' => $request->marital_status,
+            'family_status' => $request->family_status,
+            'work_type' => $request->work_type,
+            'address' => $request->address,
+            'photo' => $data['photo']
+        ]);
+
+
+        if ($request->file('photo') && $citizen->photo && Storage::disk('public')->exists($citizen->photo)) {
+            Storage::disk('public')->delete($citizen->photo);
+        }
+
+        return response()->json(ApiResponse::success($citizenData, 'Success update data'));
+
+    }
 }
