@@ -154,7 +154,15 @@ class CitizenAPIController extends Controller
     }
 
 
-    public function update($citizen_id, Request $request)
+    public function edit($user_id)
+    {
+        $citizen = Citizen::where('user_id', $user_id)->get();
+
+        return response()->json(ApiResponse::success($citizen,'Success get data'));
+    }
+
+
+    public function update($user_id, Request $request)
     {
         // $rules = [
         //     'email' => 'required',
@@ -181,14 +189,14 @@ class CitizenAPIController extends Controller
         //         ]);
         // }
 
-        $citizen = Citizen::findOrFail($citizen_id);
+        $citizen = Citizen::findOrFail($user_id);
 
         $data['photo'] = null;
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('penduduk', 'public');
         }
 
-        $citizenData = Citizen::whereId($citizen_id)->update([
+        $citizenData = Citizen::where('user_id',$user_id)->update([
             'email' => $request->email,
             'phone' => $request->phone,
             'citizenship' => $request->citizenship,
