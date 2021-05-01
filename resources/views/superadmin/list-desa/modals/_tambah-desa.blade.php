@@ -25,20 +25,20 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-                            <div class="form-group">
+                            <div class="form-group" id="username_group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" id="username" class="form-control form-control-sm" placeholder="Username">
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password" id="label_password">Password</label>
                                 <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="Password">
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
-                                <label for="password_confirmation">Konfirmasi Password</label>
+                                <label for="password_confirmation" id="label_password2">Konfirmasi Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-sm" placeholder="Password">
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <label for="add_ons">Add Ons</label>
                                 <div class="row mx-1 text-center">
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
-                                        <input type="checkbox" name="x-addon-Dashboard" checked class="d-block checkbox">
+                                        <input type="checkbox" name="x-addon-dashboard" checked class="d-block checkbox" >
                                         <span><i class="fa fa-home add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Dasboard</p>
                                     </div>

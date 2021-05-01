@@ -240,15 +240,29 @@
                     url: '/superadmin/list-desa/list-desa/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        console.log(data)
                         $('.modal-title').html('Edit Admin Desa');
                         $('#action').val('edit');
-                        $('#username').val(data.username);
-                        $('#password').val(data.password);
-                        $('#password-confirmation').val(data.password);
-                        $('#village_id').val(data.village_id);
-                        $('#password-group').css('display', 'none');
-                        $('#password-confirmation-group').css('display', 'none');
-                        $('#hidden_id').val(data.id);
+                        $('#username').prop("disabled", true);
+                        $('#username').val(data?.user?.username);
+                        for (const d in data?.addon) {
+                           if(d.indexOf("_id") === -1 && d.indexOf("_at") === -1 && d !== "id"){
+                               if(data.addon[d]){
+                                $(`input[name='x-addon-${d}']`).each( function () {
+                                    $(this).attr("checked", true);;
+                                });
+                               }else{
+                                $(`input[name='x-addon-${d}']`).each( function () {
+                                    $(this).attr("checked", false);;
+                                });
+                               }
+                           }
+                        }
+
+                        $('#label_password').text("Password Baru");
+                        $('#label_password2').text("Konfirmasi Password Baru");
+                        $('#village_id').val(data.user.village_id);
+                        $('#hidden_id').val(data.user.id);
                         $('#btn')
                             .removeClass('btn-success')
                             .addClass('btn-info')

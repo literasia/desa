@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-
 class ListDesaController extends Controller
 {
     private $rules = [
@@ -87,12 +86,49 @@ class ListDesaController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $data = User::findOrFail($id);
 
+        return response()->json(["user" => $data, "addon" =>$data->addon]);
     }
 
     public function update(Request $request)
     {
+        $data = $request->all();
+        $addon = Addon::where("admin_id",$data['hidden_id'])->first();
+        $update = [
+            "administration"=>0,
+            "announcement"=>0,
+            "attendance"=>0,
+            "calendar"=>0,
+            "campaign"=>0,
+            "complaint"=>0,
+            "dashboard"=>0,
+            "event"=> 0,
+            "finance"=>0,
+            "guest_book"=>0,
+            "library"=>0,
+            "log_user"=>0,
+            "news"=>0,
+            "population_data"=>0,
+            "reference"=>0,
+            "slider"=>0,
+            "template"=>0,
+            "village_potency"=>0,
+            "village_profile"=>0,
+            "village_structure"=>0,
+            "village_tour"=>0,
+        ];
 
+        foreach ($data as $key => $value ) {
+            if(strpos($key,"addon")){
+                $pisah = explode("-",$key);
+                $update[$pisah[2]] = 1;
+            }
+        }
+
+        $succes = $addon->update($update);
+
+        return response()->json(["success" => $succes]);
     }
 
     public function destroy(Request $request, $id)
