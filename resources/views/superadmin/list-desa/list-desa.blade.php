@@ -118,13 +118,6 @@
                     delay: 250,
 
                     processResults: function (data, params) {
-                        console.log("data", data);
-                        console.log("params", params);
-                        // parse the results into the format expected by Select2
-                        // since we are using custom formatting functions we do not need to
-                        // alter the remote JSON data, except to indicate that infinite
-                        // scrolling can be used
-
                         return {
                             results: data.data,
                         };
@@ -147,7 +140,6 @@
                     return repo.text;
                 }
 
-                console.log("repo", repo);
 
                 var $container = $(
                     "<div class='select2-result-repository clearfix'>" +
@@ -229,7 +221,6 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
-                        console.log(data)
                         var html = ''
                         // If has Errors
                         if (data.errors) {
@@ -273,7 +264,6 @@
                     url: '/superadmin/list-desa/list-desa/'+id,
                     dataType: 'JSON',
                     success: function (data) {
-                        console.log(data)
                         $('.modal-title').html('Edit Admin Desa');
                         $('#action').val('edit');
                         $('#username').prop("disabled", true);
@@ -317,7 +307,6 @@
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
-                        console.log(data)
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#order-table').DataTable().ajax.reload();
