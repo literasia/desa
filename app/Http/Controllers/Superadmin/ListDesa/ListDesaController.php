@@ -17,6 +17,7 @@ class ListDesaController extends Controller
     private $rules = [
         'username' => 'required',
         'password' => 'required|confirmed',
+        'village_id' => 'required',
     ];
 
     private $updaterules = [
@@ -58,7 +59,7 @@ class ListDesaController extends Controller
 
         $user = User::create([
             "name" => "Admin Desa",
-            "village_id"=> 1101010001,
+            "village_id"=> $data["village_id"],
             'username' => str_replace(' ', '_', strtolower($data['username'])),
             'password' => hash::make($data['password']),
         ]);
@@ -70,7 +71,7 @@ class ListDesaController extends Controller
 
         $user_id->roles()->attach($role->id);
 
-        $addon = ["village_id"=> 1101010001, "admin_id"=> $user->id];
+        $addon = ["village_id"=> $data["village_id"], "admin_id"=> $user->id];
         foreach ($data as $key => $value ) {
             if(strpos($key,"addon")){
                 $pisah = explode("-",$key);

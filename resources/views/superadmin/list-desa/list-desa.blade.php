@@ -109,51 +109,83 @@
                 $('#modal-desa').modal('show');
             });
 
+            $('#village_list').select2({
+                ajax: {
+                    url: function(params){
+                        return "http://beta-desa.literasia.co.id/api/village/search/"+params.term
+                    },
+                    dataType: 'json',
+                    delay: 250,
 
-            $("#village_list").select2({
-                minimumInputLength: 1,
+                    processResults: function (data, params) {
+                        console.log("data", data);
+                        console.log("params", params);
+                        // parse the results into the format expected by Select2
+                        // since we are using custom formatting functions we do not need to
+                        // alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+
+                        return {
+                            results: data.data,
+                        };
+                    },
+                    cache: true
+                },
+                placeholder: 'Cari Desa',
+                minimumInputLength: 5,
+                language: {
+                    inputTooShort: function() {
+                        return 'Masukan minimal 5 karakter';
+                    }
+                },
+                templateResult: formatRepo,
+                templateSelection: formatRepoSelection
             });
 
-            let currentInput;
-            $(document).on('keyup', '.select2-search__field', function (e) {
-                let val = e.target.value;
-                currentInput = val
-                // setTimeout(() => {
-                //     if(val === currentInput){
-                //         let url = 'http://beta-desa.literasia.co.id/api/village/search/'+currentInput;
-                //         console.log("masuk")
-                //         fetch(url)
-                //         .then(res=> res.json())
-                //         .then(res => {
-                //             tmp_html = '';
-                //             $(res.data).each(function(i) {
-                //                 console.log(res.data[i]);
-                //                 tmp_html += '<option value="'+res.data[i].id+'">'+res.data[i].name+'</option>';
-                //             });
-                //             $('#village_list').html(tmp_html);
-                //         })
-                //         .catch(err => console.log(err))
-                //     }
-                // }, 2000);
-            });
+            function formatRepo (repo) {
+                if (repo.loading) {
+                    return repo.text;
+                }
 
-            // =============== end find list desa
+                console.log("repo", repo);
 
-               // Show Modal
-               $('#add').on('click', function () {
-                $('.modal-title').html('Tambah Desa dan Admin');
-                $('#action').val('add');
-                $('#username').val('');
-                $('#username').prop("disabled", false);
-                $('#password').val('');
-                $('#password-confirmation').val('');
-                $('#password-group').css('display', 'block');
-                $('#password-confirmation-group').css('display', 'block');
-                $('#btn')
-                    .removeClass('btn-info')
-                    .addClass('btn-success')
-                    .val('Simpan');
-                $('#modal-desa').modal('show');
+                var $container = $(
+                    "<div class='select2-result-repository clearfix'>" +
+                    "<div class='select2-result-repository__meta'>" +
+                        "<div class='select2-result-repository__title'></div>" +
+                        "<div class='select2-result-repository__kec'></div>" +
+                        "<div class='select2-result-repository__kab'></div>" +
+                    "</div>" +
+                    "</div>"
+                );
+
+                $container.find(".select2-result-repository__title").text(repo.name);
+                $container.find(".select2-result-repository__kec").text(repo.district.name);
+                $container.find(".select2-result-repository__kab").text(repo.district.regency.name);
+
+                return $container;
+            }
+
+            function formatRepoSelection (repo) {
+                return repo.name || repo.text;
+            }
+
+            // Show Modal
+            $('#add').on('click', function () {
+            $('.modal-title').html('Tambah Desa dan Admin');
+            $('#action').val('add');
+            $('#username').val('');
+            $('#username').prop("disabled", false);
+            $('#password').val('');
+            $('#password-confirmation').val('');
+            $('#password-group').css('display', 'block');
+            $('#password-confirmation-group').css('display', 'block');
+            $('#btn')
+                .removeClass('btn-info')
+                .addClass('btn-success')
+                .val('Simpan');
+            $('#modal-desa').modal('show');
+
             });
             // Show DataTables
             $('#order-table').DataTable({

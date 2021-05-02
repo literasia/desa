@@ -15,10 +15,9 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
-                                <input type="hidden" name="village_name" id="village_name" placeholder="">
                                 <label for="village_list">Nama Desa</label>
-                                <select name="village_list" id="village_list" class="form-control form-control-sm">
-                                    <option value="">-- Pilih --</option>
+                                <select name="village_id" id="village_list" class="form-control form-control-sm">
+                                    <option value="">-- Pilih Desa --</option>
                                 </select>
                             </div>
                         </div>
