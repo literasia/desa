@@ -19,7 +19,7 @@
                         <span class="pcoded-mtext">List Desa</span>
                     </a>
                 </li>
-                <li class="@if (request()->is('superadmin/library/tambah-baru') || request()->is('superadmin/library/setting')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                {{-- <li class="@if (request()->is('superadmin/library/tambah-baru') || request()->is('superadmin/library/setting')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="icon-book-open"></i>
@@ -38,8 +38,8 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="@if (request()->is('superadmin/referensi/jenis-kelamin') || request()->is('superadmin/referensi/agama') || request()->is('superadmin/referensi/status-nikah') || request()->is('superadmin/referensi/provinsi') || request()->is('superadmin/referensi/kabupaten-kota') || request()->is('superadmin/referensi/kecamatan') || request()->is('superadmin/referensi/suku')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                </li> --}}
+                {{-- <li class="@if (request()->is('superadmin/referensi/jenis-kelamin') || request()->is('superadmin/referensi/agama') || request()->is('superadmin/referensi/status-nikah') || request()->is('superadmin/referensi/provinsi') || request()->is('superadmin/referensi/kabupaten-kota') || request()->is('superadmin/referensi/kecamatan') || request()->is('superadmin/referensi/suku')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="icon-list"></i>
@@ -83,8 +83,8 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="{{ request()->is('superadmin/kalender/kalender') ? 'active' : '' }}">
+                </li> --}}
+                <li class="{{ request()->is('superadmin/kalender') ? 'active' : '' }}">
                     <a href="{{ route('superadmin.kalender.kalender') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-calendar"></i>
@@ -92,6 +92,22 @@
                         <span class="pcoded-mtext">Kalender</span>
                     </a>
                 </li>
+                {{-- <li class="{{ request()->is('superadmin/add-ons/add-ons') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.add-ons.add-ons') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-puzzle-piece"></i>
+                        </span>
+                        <span class="pcoded-mtext">Add-ons</span>
+                    </a>
+                </li> --}}
+                <li class="{{ request()->is('superadmin/pengumuman') ? 'active' : '' }}">
+                    <a href="{{ route('superadmin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
+                       <span class="pcoded-micon">
+                           <i class="fa fa-bell"></i>
+                       </span>
+                       <span class="pcoded-mtext">Pengumuman</span>
+                   </a>
+               </li>
             </ul>
         </div>
     </div>
