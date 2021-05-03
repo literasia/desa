@@ -189,15 +189,15 @@ class CitizenAPIController extends Controller
         //         ]);
         // }
 
-        $citizen = Citizen::findOrFail($user_id);
+        $citizen = Citizen::where('user_id',$user_id)->get();
 
         $data['photo'] = null;
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('penduduk', 'public');
         }
+       
 
         $citizenData = Citizen::where('user_id',$user_id)->update([
-            'email' => $request->email,
             'phone' => $request->phone,
             'citizenship' => $request->citizenship,
             'place_of_birth' => $request->place_of_birth,
@@ -213,11 +213,22 @@ class CitizenAPIController extends Controller
         ]);
 
 
-        if ($request->file('photo') && $citizen->photo && Storage::disk('public')->exists($citizen->photo)) {
-            Storage::disk('public')->delete($citizen->photo);
+        if ($request->file('photo') && $citizen[0]->photo && Storage::disk('public')->exists($citizen[0]->photo)) {
+            Storage::disk('public')->delete($citizen[0]->photo);
         }
 
         return response()->json(ApiResponse::success($citizenData, 'Success update data'));
+
+    }
+
+    public function changePass($user_id, Request $request)
+    {
+
+        $user = User::whereId($user_id)->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return response()->json(ApiResponse::success($user, 'Success update password'));
 
     }
 }

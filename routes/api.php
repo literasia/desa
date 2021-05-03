@@ -118,6 +118,7 @@ Route::namespace('API')
         Route::post('add-citizen', 'CitizenAPIController@addCitizen');
         Route::post('update-citizen/{user_id}', 'CitizenAPIController@update');
         Route::get('get-citizen/{user_id}', 'CitizenAPIController@edit');
+        Route::post('change-password/{user_id}', 'CitizenAPIController@changePass');
 
         // Family
         Route::get('family/{village_id}', 'FamilyAPIController@index');
