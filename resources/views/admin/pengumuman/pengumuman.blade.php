@@ -182,7 +182,7 @@ Ini adalah halaman Pengumuman untuk admin
             format: 'Y-m-d'
         });
 
-        $('input:radio[name="message_time"]').change(function() {
+        $('input:radio[id="message_time"]').change(function() {
             if ($(this).is(':checked') && $(this).val() == 'Using Time') {
                 $("#start_date").removeAttr('disabled', '');
                 $("#end_date").removeAttr('disabled', '');
