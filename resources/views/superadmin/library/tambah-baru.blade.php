@@ -25,10 +25,10 @@
                 <div class="card-block p-2">
                 <button id="add" class="btn btn-outline-primary shadow-sm mt-1 mb-3"><i class="fa fa-plus"></i></button>
                     <div class="dt-responsive table-responsive">
-                        <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                        <table id="order-table" class="table table-striped nowrap shadow-sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No.</th>
                                     <th>Judul</th>
                                     <th>Deskripsi</th>
                                     <th>Penulis</th>
