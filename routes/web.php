@@ -38,22 +38,37 @@ Route::namespace('Superadmin')
             ->group(function () {
                 Route::get('/superadmin/list-desa/list-desa', 'ListDesaController@index')
                     ->name('list-desa.list-desa');
-                Route::post('/superadmin/list-desa/list-desa', 'ListDesaController@store');
-                Route::get('/superadmin/list-desa/list-desa/{id}', 'ListDesaController@edit');
+                Route::post('/superadmin/list-desa/list-desa', 'ListDesaController@store')
+                    ->name("list-desa.list-desa.store");
+                Route::get('/superadmin/list-desa/list-desa/{id}', 'ListDesaController@edit')
+                    ->name("list-desa.list-desa.edit");
                 Route::post('/superadmin/list-desa/list-desa/update', 'ListDesaController@update')
-                    ->name('list-desa.list-desa-update');
-                Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy');
+                    ->name('list-desa.list-desa.update');
+                Route::get('/superadmin/list-desa/list-desa/hapus/{id}', 'ListDesaController@destroy')
+                    ->name("list-desa.list-desa.delete");
         });
 
         // Kalender
         Route::namespace('Kalender')
             ->group(function () {
-                Route::get('/supersuperadmin/kalender', 'KalenderSuperadminController@index')
+                Route::get('/superadmin/kalender', 'KalenderSuperadminController@index')
                     ->name('kalender.kalender');
                     Route::post('/superadmin/kalender/tambah', 'KalenderSuperadminController@store')->name('superadmin.kalender.tambah-event');
                     Route::post('/superadmin/kalender/update/{id}', 'KalenderSuperadminController@update')->name('superadmin.kalender.edit-event');
                     Route::get('/superadmin/kalender/hapus/{id}', 'KalenderSuperadminController@destroy');
             });
+
+        // Pengumuman
+        Route::namespace('Pengumuman')
+        ->group(function () {
+        Route::get('/superadmin/pengumuman', 'PengumumanDesaController@index')
+            ->name('pengumuman.pengumuman');
+        Route::post('/superadmin/pengumuman/pesan/add', 'PengumumanDesaController@store')->name('pengumuman.pesan-add');
+        Route::get('/superadmin/pengumuman/pesan/{id}', 'PengumumanDesaController@edit');
+        Route::post('/superadmin/pengumuman/pesan/update', 'PengumumanDesaController@update')
+            ->name('pengumuman.pesan-update');
+        Route::get('/superadmin/pengumuman/pesan/hapus/{id}', 'PengumumanDesaController@destroy');
+        });
 
         // Referensi
         Route::namespace('Referensi')

@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\{Village, Borrow, Employee, Citizen};
+use App\Models\{Village, Borrow, Employee, Citizen, Addon};
 
 class User extends Authenticatable
 {
@@ -61,5 +61,9 @@ class User extends Authenticatable
     public function borrow()
     {
         return $this->hasOne(Borrow::class);
+    }
+
+    public function addon(){
+        return $this->belongsTo(Addon::class,"village_id", "village_id");
     }
 }
