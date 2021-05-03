@@ -196,8 +196,12 @@ class CitizenAPIController extends Controller
             $data['photo'] = $request->file('photo')->store('penduduk', 'public');
         }
        
+        $user = User::whereId($user_id)->update([
+            'email' => $request->email
+        ]);
 
         $citizenData = Citizen::where('user_id',$user_id)->update([
+            'email' => $request->email,
             'phone' => $request->phone,
             'citizenship' => $request->citizenship,
             'place_of_birth' => $request->place_of_birth,
@@ -221,14 +225,12 @@ class CitizenAPIController extends Controller
 
     }
 
-    public function changePass($user_id, Request $request)
+    public function changePass($user_id)
     {
-
         $user = User::whereId($user_id)->update([
             'password' => Hash::make($request->password),
         ]);
 
         return response()->json(ApiResponse::success($user, 'Success update password'));
-
     }
 }
