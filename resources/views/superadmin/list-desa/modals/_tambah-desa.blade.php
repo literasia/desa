@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="form-group">
-                                <label for="add_ons">Add Ons</label>
+                                <label for="add_ons">Add-ons</label>
                                 <div class="row mx-1 text-center">
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
                                         <input type="checkbox" name="x-addon-dashboard" checked class="d-block checkbox" >
@@ -69,11 +69,13 @@
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
                                         <input type="checkbox" name="x-addon-administration" checked class="d-block checkbox">
+
                                         <span><i class="fa fa-archive add-ons-icon mb-2"></i></span>
-                                        <p class="m-0">Administrasi Desa</p>
+                                        <p class="m-0">Administrasi</p>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
                                         <input type="checkbox" name="x-addon-village_potency" checked class="d-block checkbox">
+
                                         <span><i class="fa fa-chart-line add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Potensi Desa</p>
                                     </div>
@@ -111,6 +113,7 @@
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
                                         <input type="checkbox" name="x-addon-calendar" checked class="d-block checkbox">
+
                                         <span><i class="fa fa-calendar add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Kalender</p>
                                     </div>
@@ -143,6 +146,7 @@
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
                                         <input type="checkbox" name="x-addon-complaint" checked class="d-block checkbox">
+
                                         <span><i class="fa fa-comment-alt add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Pengaduan</p>
                                     </div>
@@ -150,17 +154,19 @@
                             </div>
                         </div>
                     </div>
+                <div class="modal-footer">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-right">
                                 <input type="hidden" name="hidden_id" id="hidden_id">
                                 <input type="hidden" id="action">
+                                <button type="submit" id="btn" class="btn btn-sm btn-success">Simpan</button>
                                 <button type="button" id="rest" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
-                                <button type="submit" id="btn" class="btn btn-sm btn-outline-success">Simpan</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     </div>

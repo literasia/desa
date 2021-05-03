@@ -14,13 +14,6 @@ Route::namespace('Superadmin')
         Route::get('/superadmin', 'SuperadminController@index')
             ->name('index');
 
-        //Add-ons
-        Route::namespace('AddOns')
-            ->group(function () {
-                Route::get('/superadmin/add-ons/add-ons', 'AddOnsController@index')
-                    ->name('add-ons.add-ons');
-            });
-
         // Library
         Route::namespace('Library')
             ->group(function () {

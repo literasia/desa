@@ -84,7 +84,7 @@
                         </li>
                     </ul>
                 </li> --}}
-                <li class="{{ request()->is('superadmin/kalender/kalender') ? 'active' : '' }}">
+                <li class="{{ request()->is('superadmin/kalender') ? 'active' : '' }}">
                     <a href="{{ route('superadmin.kalender.kalender') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-calendar"></i>
