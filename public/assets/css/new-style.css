@@ -38,3 +38,7 @@
 	left: 20px; 
 	background: #fff;
 }
+
+.slimScrollBar {
+	background: rgb(143, 214, 178)!important;
+}

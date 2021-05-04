@@ -18,13 +18,13 @@ class KeteranganTanahController extends Controller
                     
                     switch ($data->status) {
                         case 'processing':
-                            return '<lable class="label label-warning">'. $data->status .'</label>';
+                            return "<label class='badge badge-warning m-0'>Proses</label>";
                             break;
                         case 'success':
-                            return '<lable class="label label-success">'. $data->status .'</label>';
+                            return "<label class='badge badge-success m-0'>Selesai</label>";
                             break;
                         case 'rejected':
-                            return '<lable class="label label-danger">'. $data->status .'</label>';
+                            return "<label class='badge badge-danger m-0'>Ditolak</label>";
                             break;                        
                         default:
                             # code...

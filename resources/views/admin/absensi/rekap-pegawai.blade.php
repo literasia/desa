@@ -26,13 +26,8 @@
                         <h6>Pilih Desa</h6>
                         <form action="{{route("admin.absensi.rekap-pegawai")}}">
                             <input type="hidden" name="req" value="table">
+                            <input type="hidden" name="village_id" value="{{$village->village_id }}">
                             <div class="row">
-                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
-                                    <select name="village_id" id="pilih" class="form-control form-control-sm" required>
-                                        <option value="">-- Desa --</option>
-                                        <option value="{{$village->village_id}}" {{ request()->village_id == $village->village_id ? 'selected' : '' }} >{{$village->address}}}</option>
-                                    </select>
-                                </div>
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
                                     <input type="text" name="tanggal_mulai" id="tanggal_mulai" class="form-control form-control-sm" placeholder="Start Date" readonly value="{{ request()->tanggal_mulai ?? '' }}"">
                                 </div>

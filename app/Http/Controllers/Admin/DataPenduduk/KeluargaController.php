@@ -123,6 +123,7 @@ class KeluargaController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * abc
      *
      * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response

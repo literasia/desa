@@ -39,7 +39,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-left">
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- Modal --}}
     <div id="confirmModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -123,7 +123,7 @@
                     url: "{{ route('admin.struktur.pegawai') }}",
                 },
                 columns: [
-            {
+                {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
@@ -150,7 +150,7 @@
                 {
                     data: 'action',
                     name: 'action'
-                }
+                },
                 ]
             });
             // Event Submit
@@ -164,6 +164,7 @@
                     url = "{{ route('admin.struktur.pegawai.update') }}";
                 }
                 let formData = new FormData($('#form-pegawai')[0]);
+
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -172,6 +173,7 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
+                        console.log(data)
                         var html = ''
                         // If has Errors
                         if (data.errors) {
@@ -189,7 +191,7 @@
                             }
                             toastr.error(data.error);
                         }
-            
+
                         // if passed
                         if (data.success) {
                             Swal.fire(

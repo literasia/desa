@@ -25,6 +25,8 @@ Route::namespace('API')
 
         Route::get('village/search/{keyword}', 'VillageController@search');
 
+        Route::get('village-profile/{village_id}', 'VillageProfileController@getProfile');
+
         //News
         Route::get('news/{village_id}', 'NewsAPIController@index');
 
@@ -114,6 +116,9 @@ Route::namespace('API')
         // Citizen
         Route::get('citizen', 'CitizenAPIController@index');
         Route::post('add-citizen', 'CitizenAPIController@addCitizen');
+        Route::post('update-citizen/{user_id}', 'CitizenAPIController@update');
+        Route::get('get-citizen/{user_id}', 'CitizenAPIController@edit');
+        Route::post('change-password/{user_id}', 'CitizenAPIController@changePass');
 
         // Family
         Route::get('family/{village_id}', 'FamilyAPIController@index');
@@ -128,8 +133,23 @@ Route::namespace('API')
 
         //Immigrate
         Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
+        Route::post('add-citizen-immigrate/{village_id}', 'ImmigrateAPIController@addImmigrate');
 
+        // Borrow
+        Route::get('get-borrow/{id}', 'LibraryController@getBorrow');
+        Route::post('add-borrow/{id}', 'LibraryController@addBorrow');
+
+        // Like
+        Route::post('like-library/{id}', 'LibraryController@like');
         //Attendance
         Route::get("get-village-attendance/{village_id}/{month}/{year}", "AttendanceApiController@getAttendance");
         Route::post("add-employee-attendance/{employee_id}", "AttendanceApiController@addAttendance");
+
+        //Catalog Potency
+        Route::get("get-catalog", "CatalogAPIController@getCatalog");
+        Route::post("add-catalog/{potency_id}", "CatalogAPIController@addCatalog");
+        Route::get('delete-catalog/{catalog_id}', "CatalogAPIController@delete");
+        Route::get('edit-catalog/{catalog_id}', "CatalogAPIController@edit");
+        Route::post('update-catalog', "CatalogAPIController@update");
+
     });

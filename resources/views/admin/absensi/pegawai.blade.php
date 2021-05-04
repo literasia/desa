@@ -23,16 +23,10 @@
             <div class="card shadow-sm mb-4">
                 <div class="card-body">
                     <div class="card-block">
-                        <h6>Pilih Desa</h6>
                         <form id="form-absensi" action="{{route("admin.absensi.pegawai")}}" method="get">
                             <input type="hidden" name="req" value="table">
+                            <input type="hidden" name="village_id" value="{{request()->village_id}}">
                             <div class="row">
-                                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
-                                    <select name="village_id" id="pilih" class="form-control form-control-sm" required>
-                                        <option value="">-- Desa --</option>
-                                            <option value="{{$village->village_id}}" {{ request()->village_id == $village->village_id ? "selected" : ""}} >{{$village->address}}</option>
-                                    </select>
-                                </div>
                                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
                                     <input type="text" name="tanggal" id="tanggal" class="form-control form-control-sm" placeholder="Tanggal" readonly required value="{{request()->tanggal ?? ''}}">
                                 </div>

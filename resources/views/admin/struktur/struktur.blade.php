@@ -326,7 +326,7 @@
                                 .append('<option value="">Pilih</option>')
                                 .val('Pilih');
                             getVillageStructure();
-                            // toastr.success('Data berhasil dihapus');                            
+                            // toastr.success('Data telah berhasil dihapus');                            
                             Swal.fire('Sukses!', 'Data berhasil dihapus!', 'success');
                         }, 1000);
                     }
