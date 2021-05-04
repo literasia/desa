@@ -30,7 +30,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <li>
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">Ab</label></span>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">AB</label></span>
                                                 <span> : Absensi</span>
                                             </li>
                                             <li>
@@ -88,7 +88,6 @@
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PD</label></span>
                                                 <span> : Potensi Desa</span>
                                             </li>
-
                                         </div>
                                         <div class="col-md-4">
                                             <li>
