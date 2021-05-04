@@ -133,10 +133,10 @@
                     cache: true
                 },
                 placeholder: 'Cari Desa',
-                minimumInputLength: 5,
+                minimumInputLength: 3,
                 language: {
                     inputTooShort: function() {
-                        return 'Masukan minimal 5 karakter';
+                        return 'Masukan minimal 3 karakter';
                     }
                 },
                 templateResult: formatRepo,
