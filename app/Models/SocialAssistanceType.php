@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Family extends Model
+class SocialAssistanceType extends Model
 {
     protected $guarded = ['id'];
 
-    public function citizen(){
-        return $this->belongsTo(Citizen::class);
-    }
-
     public function socialAssistanceFamily(){
         return $this->hasMany(SocialAssistanceFamily::class);
+    }
+
+    public function socialAssistanceIndividu(){
+        return $this->hasMany(SocialAssistanceIndividu::class);
     }
 }

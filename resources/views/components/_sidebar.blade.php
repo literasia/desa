@@ -210,6 +210,31 @@
                         </li>
                     </ul>
                 </li>
+                <li class="@if (request()->is('admin/bantuan-sosial/bantuan-sosial-individu') || request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('admin/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="#" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fas fa-hands-helping"></i>
+                        </span>
+                        <span class="pcoded-mtext">Bantuan Sosial</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/bantuan-sosial/jenis-bantuan-sosial') ? 'active' : '' }}">
+                            <a href="{{ route('admin.bantuan-sosial.jenis-bantuan-sosial') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Bantuan</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') ? 'active' : '' }}">
+                            <a href="{{ route('admin.bantuan-sosial.bantuan-sosial-keluarga') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Keluarga</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/bantuan-sosial/bantuan-sosial-individu') ? 'active' : '' }}">
+                            <a href="{{ route('admin.bantuan-sosial.bantuan-sosial-individu') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Individu</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="{{ request()->is('admin/slider/slider') ? 'active' : '' }}">
                     <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">

@@ -31,4 +31,8 @@ class Citizen extends Model
     public function family(){
         return $this->hasMany(Family::class);
     }
+
+    public function socialAssistanceIndividu(){
+        return $this->hasMany(SocialAssistanceIndividu::class);
+    }
 }

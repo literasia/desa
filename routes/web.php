@@ -568,6 +568,34 @@ Route::namespace('Admin')
                 Route::get('/admin/berita/kategori-berita/hapus/{id}', 'NewsCategoryController@destroy');
             });
 
+        // Bantuan Sosial
+        Route::namespace('BantuanSosial')
+            ->group(function () {
+
+                // Bantuan Sosial Keluarga
+                Route::get('/admin/bantuan-sosial/bantuan-sosial-keluarga', 'BantuanSosialKeluargaController@index')->name('bantuan-sosial.bantuan-sosial-keluarga');
+                Route::post('/admin/bantuan-sosial/bantuan-sosial-keluarga', 'BantuanSosialKeluargaController@store')->name('bantuan-sosial.bantuan-sosial-keluarga.store');
+                Route::get('/admin/bantuan-sosial/bantuan-sosial-keluarga/{id}', 'BantuanSosialKeluargaController@edit')->name('bantuan-sosial.bantuan-sosial-keluarga.edit');
+                Route::post('/admin/bantuan-sosial/bantuan-sosial-keluarga/update', 'BantuanSosialKeluargaController@update')->name('bantuan-sosial.bantuan-sosial-keluarga.update');
+                Route::post('/admin/bantuan-sosial/bantuan-sosial-keluarga/update-status', 'BantuanSosialKeluargaController@updateStatus')->name('bantuan-sosial.bantuan-sosial-keluarga.update-status');
+                Route::get('/admin/bantuan-sosial/bantuan-sosial-keluarga/hapus/{id}', 'BantuanSosialKeluargaController@destroy')->name('bantuan-sosial.bantuan-sosial-keluarga.destroy');
+
+                // Bantuan Sosial Individu
+                Route::get('/admin/bantuan-sosial/bantuan-sosial-individu', 'BantuanSosialIndividuController@index')->name('bantuan-sosial.bantuan-sosial-individu');
+                Route::post('/admin/bantuan-sosial/bantuan-sosial-individu', 'BantuanSosialIndividuController@store')->name('bantuan-sosial.bantuan-sosial-individu.store');
+                Route::get('/admin/bantuan-sosial/bantuan-sosial-individu/{id}', 'BantuanSosialIndividuController@edit')->name('bantuan-sosial.bantuan-sosial-individu.edit');
+                Route::post('/admin/bantuan-sosial/bantuan-sosial-individu/update', 'BantuanSosialIndividuController@update')->name('bantuan-sosial.bantuan-sosial-individu.update');
+                Route::post('/admin/bantuan-sosial/bantuan-sosial-individu/update-status', 'BantuanSosialIndividuController@updateStatus')->name('bantuan-sosial.bantuan-sosial-individu.update-status');
+                Route::get('/admin/bantuan-sosial/bantuan-sosial-individu/hapus/{id}', 'BantuanSosialIndividuController@destroy')->name('bantuan-sosial.bantuan-sosial-individu.destroy');
+
+                // Jenis Bantuan Sosial
+                Route::get('/admin/bantuan-sosial/jenis-bantuan-sosial', 'JenisBantuanSosialController@index')->name('bantuan-sosial.jenis-bantuan-sosial');
+                Route::post('/admin/bantuan-sosial/jenis-bantuan-sosial', 'JenisBantuanSosialController@store')->name('bantuan-sosial.jenis-bantuan-sosial.store');
+                Route::get('/admin/bantuan-sosial/jenis-bantuan-sosial/{id}', 'JenisBantuanSosialController@edit')->name('bantuan-sosial.jenis-bantuan-sosial.edit');
+                Route::post('/admin/bantuan-sosial/jenis-bantuan-sosial/update', 'JenisBantuanSosialController@update')->name('bantuan-sosial.jenis-bantuan-sosial.update');
+                Route::get('/admin/bantuan-sosial/jenis-bantuan-sosial/hapus/{id}', 'JenisBantuanSosialController@destroy')->name('bantuan-sosial.jenis-bantuan-sosial.destroy');
+            });
+
         // Data Penduduk
         Route::namespace('DataPenduduk')
         ->group(function () {
