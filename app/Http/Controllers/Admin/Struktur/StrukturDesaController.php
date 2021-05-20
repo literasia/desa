@@ -130,7 +130,7 @@ class StrukturDesaController extends Controller
     }
 
     public function getEmployee(){
-        $employee = Employee::get();
+        $employee = Employee::where('village_id', auth()->user()->village->id)->get();
 
         return response()->json($employee);
     }
@@ -144,6 +144,7 @@ class StrukturDesaController extends Controller
     public function getVillageStructure(){
         $villageStructure = VillageStructure::with('position')
                                             ->with('employee')
+                                            ->where('village_id', auth()->user()->village->id)
                                             ->get();
 
         return response()->json($villageStructure);

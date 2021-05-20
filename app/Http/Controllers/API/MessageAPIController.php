@@ -11,7 +11,7 @@ class MessageAPIController extends Controller
 {
     public function getMessage($village_id)
     {
-        $pesan = Message::join('users', 'users.village_id', 'messages.village_id')->where('users.village_id', $village_id)->orderByDesc('created_at')->get('messages.*');
+        $pesan = Message::where('village_id', $village_id)->orderByDesc('created_at')->get('messages.*');
 
         return response()->json(ApiResponse::success($pesan, 'Success get data'));
     }
