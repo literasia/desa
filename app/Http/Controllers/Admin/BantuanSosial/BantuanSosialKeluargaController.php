@@ -112,8 +112,8 @@ class BantuanSosialKeluargaController extends Controller
      */
     public function edit($id)
     {
-        $data = SocialAssistanceFamily::find($id);
-        $social_assistance_types = SocialAssistanceType::find($data['social_assistance_type_id']);
+        $data = SocialAssistanceFamily::findOrFail($id);
+        $social_assistance_types = SocialAssistanceType::findOrFail($data['social_assistance_type_id']);
         return response()
             ->json([
                 'id' => $data->id,
@@ -122,7 +122,7 @@ class BantuanSosialKeluargaController extends Controller
                 'number_of_stages' => $social_assistance_types['number_of_stages'],
                 'id_art' => $data['id_art'],
                 'id_dtks' => $data['id_dtks'],
-                'status_penerimaan' => 'belum',
+                'status_penerimaan' => $data['status_penerimaan'],
                 'village_id' => auth()->user()->village_id,
             ]);
     }

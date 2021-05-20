@@ -152,4 +152,6 @@ Route::namespace('API')
         Route::get('edit-catalog/{catalog_id}', "CatalogAPIController@edit");
         Route::post('update-catalog', "CatalogAPIController@update");
 
+        // Greeting
+        Route::get('greeting/{village_id}', 'GreetingAPIController@getGreeting');
     });

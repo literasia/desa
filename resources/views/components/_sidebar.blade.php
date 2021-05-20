@@ -11,6 +11,15 @@
                         <span class="pcoded-mtext">Dashboard</span>
                     </a>
                 </li>
+                <li class="{{ request()->is('admin/sambutan-kepala-desa') ? 'active' : '' }}">
+                    <a href="{{ route('admin.sambutan-kepala-desa') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-home
+                            "></i>
+                        </span>
+                        <span class="pcoded-mtext">Sambutan Kepala Desa</span>
+                    </a>
+                </li>
                 <li class="@if (request()->is('admin/data-penduduk/keluarga') || request()->is('admin/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-users"></i></span>

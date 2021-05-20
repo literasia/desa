@@ -125,7 +125,7 @@ class BantuanSosialIndividuController extends Controller
                 'number_of_stages' => $social_assistance_types['number_of_stages'],
                 'id_art' => $data['id_art'],
                 'id_dtks' => $data['id_dtks'],
-                'status_penerimaan' => 'belum',
+                'status_penerimaan' => $data['status_penerimaan'],
                 'village_id' => auth()->user()->village_id,
             ]);
     }

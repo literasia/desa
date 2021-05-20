@@ -596,6 +596,14 @@ Route::namespace('Admin')
                 Route::get('/admin/bantuan-sosial/jenis-bantuan-sosial/hapus/{id}', 'JenisBantuanSosialController@destroy')->name('bantuan-sosial.jenis-bantuan-sosial.destroy');
             });
 
+        // Sambutan Kepala Desa
+        Route::namespace('SambutanKepalaDesa')
+            ->group(function () {
+                // Sambutan
+                Route::get('/admin/sambutan-kepala-desa', 'SambutanKepalaDesaController@index')->name('sambutan-kepala-desa');
+                Route::post('/admin/sambutan-kepala-desa/update', 'SambutanKepalaDesaController@update')->name('sambutan-kepala-desa.update');
+            });
+
         // Data Penduduk
         Route::namespace('DataPenduduk')
         ->group(function () {

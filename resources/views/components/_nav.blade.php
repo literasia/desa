@@ -49,16 +49,6 @@
                             </li>
                             <li>
                                 <div class="media">
-                                    <img class="img-radius" src="{{ asset('assets/images/avatar-4.jpg') }}" alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <h5 class="notification-user">John Doe</h5>
-                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                        <span class="notification-time">30 minutes ago</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media">
                                     <img class="img-radius" src="{{ asset('assets/images/avatar-3.jpg') }}" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="notification-user">Joseph William</h5>
@@ -85,7 +75,7 @@
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('assets/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                            <span>John Doe</span>
+                            <span>{{ auth()->user()->username }}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">

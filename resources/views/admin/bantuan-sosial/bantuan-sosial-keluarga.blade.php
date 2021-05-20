@@ -185,7 +185,7 @@
                             }
                         }
                         $("#status").append(new Option(`Selesai`, `selesai`));
-
+                        console.log(data);
                         $('#status').val(data.status_penerimaan);
                         $('.hidden_id').val(data.id);
                         $('#btn')
