@@ -605,6 +605,22 @@ Route::namespace('Admin')
                     Route::get('/admin/kalender/kategori-kegiatan/hapus/{id}', 'KategoriKegiatanController@destroy');
             });
 
+            // Lembaga Desa
+            Route::namespace('LembagaDesa')
+            ->group(function () {
+                Route::get('/admin/lembagadesa/lembagadesa', 'LembagaDesaController@index')
+                ->name('lembagadesa.lembagadesa');
+                Route::post('/admin/lembagadesa/lembagadesa', 'LembagaDesaController@store');
+                Route::get('/admin/lembagadesa/lembagadesa/{id}', 'LembagaDesaController@edit');
+                Route::post('/admin/lembagadesa/lembagadesa/update', 'LembagaDesaController@update')
+                    ->name('lembagadesa.lembagadesa-update');
+                Route::get('/admin/lembagadesa/lembagadesa/hapus/{id}', 'LembagaDesaController@destroy');
+                //Jenis Lembaga
+                Route::get('/admin/lembagadesa/jenislembaga', 'JenisLembagaController@index')
+                ->name('lembagadesa.jenislembaga');
+            });
+
+
         // Kampanye
         Route::namespace('Kampanye')
             ->group(function () {

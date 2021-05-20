@@ -292,6 +292,28 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="@if (request()->is('admin/lembagadesa/lembagadesa') ||  request()->is('admin/lembagadesa/jenislembaga')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-building"></i>
+                        </span>
+                        <span class="pcoded-mtext">Lembaga Desa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/lembagadesa/lembagadesa') ? 'active' : '' }}">
+                            <a href="{{ route('admin.lembagadesa.lembagadesa') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Lembaga</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/lembagadesa/jenislembaga') ? 'active' : '' }}">
+                            <a href="{{ route('admin.lembagadesa.jenislembaga') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Lembaga</span>
+                            </a>
+                        </li>                        
+                    </ul>
+                </li>
+
                 <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
                      <a href="{{ route('admin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
