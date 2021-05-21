@@ -26,7 +26,7 @@
                         <h6>Pilih Desa</h6>
                         <form action="{{route("pegawai.absensi.rekap-pegawai")}}">
                             <input type="hidden" name="req" value="table">
-                            <input type="hidden" name="village_id" value="{{$village->village_id }}">
+                            <input type="hidden" name="village_id" value="{{$admin->village_id }}">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
                                     <input type="text" name="tanggal_mulai" id="tanggal_mulai" class="form-control form-control-sm" placeholder="Start Date" readonly value="{{ request()->tanggal_mulai ?? '' }}"">
@@ -65,7 +65,7 @@
                                         @if (count($d->attendances))
                                         <tr>
                                             <td>{{$d->name}}</td>
-                                            <td>{{$village->address}}</td>
+                                            <td>{{$admin->village->name}}</td>
                                             <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'H']) </td>
                                             <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'A']) </td>
                                             <td>@include('pegawai.absensi.rekap-pegawai-table-cell-status', ['attendance' => $d->attendances, 'status' => 'S']) </td>
@@ -76,8 +76,8 @@
                                         @else
                                         <tr>
                                             <td>{{$d->name}}</td>
-                                            <td>{{$village->address}}</td>
-                                            <td colspan="8">Data Absensi kosong</td>
+                                            <td>{{$admin->village->name}}</td>
+                                            <td colspan="8" style="font-weight:bold;color:red;font-size:22px">Data Absensi kosong</td>
                                         </tr>
                                         @endif
                                     @endforeach

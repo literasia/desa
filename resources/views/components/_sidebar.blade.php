@@ -1,3 +1,7 @@
+<?php
+    use Illuminate\Support\Facades\Auth;
+    $addon = App\Models\Addon::where("admin_id",auth()->user()->id)->first();
+?>
 <nav class="pcoded-navbar">
     <div class="nav-list">
         <div class="pcoded-inner-navbar main-menu">
@@ -20,6 +24,7 @@
                         <span class="pcoded-mtext">Sambutan Kepala Desa</span>
                     </a>
                 </li>
+                @if ($addon->population_data)
                 <li class="@if (request()->is('admin/data-penduduk/keluarga') || request()->is('admin/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-users"></i></span>
@@ -38,6 +43,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->village_structure)
                 <li class="@if (request()->is('admin/struktur/struktur') || request()->is('admin/struktur/pegawai') || request()->is('admin/struktur/jabatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-project-diagram"></i></span>
@@ -61,6 +69,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->village_profile)
                 <li class="{{ request()->is('admin/profil-desa') ? 'active' : '' }}">
                      <a href="{{ route('admin.profil-desa.profil-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -69,6 +80,9 @@
                         <span class="pcoded-mtext">Profil Desa</span>
                     </a>
                 </li>
+                @endif
+
+                @if ($addon->administration)
                 <li class="@if (request()->is('admin/administrasi/permohonan-pembuatan-ktp') || request()->is('admin/administrasi/surat-keterangan-lahir') || request()->is('admin/administrasi/perubahan-kk') || request()->is('admin/administrasi/surat-kematian') || request()->is('admin/administrasi/izin-usaha') || request()->is('admin/administrasi/keterangan-tidak-mampu') || request()->is('admin/administrasi/permohonan-skck') || request()->is('admin/administrasi/keterangan-pindah') || request()->is('admin/administrasi/keterangan-domisili') || request()->is('admin/administrasi/keterangan-ahli-waris') || request()->is('admin/administrasi/keterangan-tanah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-archive"></i></span>
@@ -176,6 +190,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->village_potency)
                 <li class="@if (request()->is('admin/potensi/potensi') || request()->is('admin/potensi/jenis-usaha') || request()->is('admin/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-chart-line"></i></span>
@@ -199,6 +216,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->news)
                 <li class="@if (request()->is('admin/berita/berita') || request()->is('admin/berita/kategori-berita')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -244,6 +264,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->slider)
                 <li class="{{ request()->is('admin/slider/slider') ? 'active' : '' }}">
                     <a href="{{ route('admin.slider.slider') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -252,6 +275,9 @@
                         <span class="pcoded-mtext">Slider</span>
                     </a>
                 </li>
+                @endif
+
+                @if ($addon->attendance)
                 <li class="@if (request()->is('admin/absensi/pegawai') || request()->is('admin/absensi/rekap-pegawai')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-clipboard-list"></i></span>
@@ -270,6 +296,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->event)
                 <li class="@if (request()->is('admin/peristiwa/kelahiran') || request()->is('admin/peristiwa/kematian') || request()->is('admin/peristiwa/pindah')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-chart-bar"></i></span>
@@ -293,6 +322,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->village_tour)
                 <li class="{{ request()->is('admin/wisata-desa') ? 'active' : '' }}">
                      <a href="{{ route('admin.wisata-desa.wisata-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -301,6 +333,9 @@
                         <span class="pcoded-mtext">Wisata Desa</span>
                     </a>
                 </li>
+                @endif
+
+                @if ($addon->calendar)
                 <li class="@if (request()->is('admin/kalender/kalender') ||  request()->is('admin/kalender/kategori-kegiatan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -326,6 +361,31 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+            <li class="@if (request()->is('admin/lembagadesa/lembagadesa') ||  request()->is('admin/lembagadesa/jenislembaga')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-building"></i>
+                        </span>
+                        <span class="pcoded-mtext">Lembaga Desa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/lembagadesa/lembagadesa') ? 'active' : '' }}">
+                            <a href="{{ route('admin.lembagadesa.lembagadesa') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Lembaga</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/lembagadesa/jenislembaga') ? 'active' : '' }}">
+                            <a href="{{ route('admin.lembagadesa.jenislembaga') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Lembaga</span>
+                            </a>
+                        </li>                        
+                    </ul>
+                </li>     
+
+                @if ($addon->announcement)
+
                 <li class="{{ request()->is('admin/pengumuman') ? 'active' : '' }}">
                      <a href="{{ route('admin.pengumuman.pengumuman') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -334,6 +394,9 @@
                         <span class="pcoded-mtext">Pengumuman</span>
                     </a>
                 </li>
+                @endif
+
+                @if ($addon->campaign)
                 <li class="{{ request()->is('admin/kampanye') ? 'active' : '' }}">
                      <a href="{{ route('admin.kampanye.kampanye') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -342,6 +405,9 @@
                         <span class="pcoded-mtext">Kampanye</span>
                     </a>
                 </li>
+                @endif
+
+                @if ($addon->reference)
                 <li class="@if (request()->is('admin/referensi/pengaturan-hak-akses')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="fa fa-list-alt"></i></span>
@@ -355,6 +421,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if ($addon->library)
                 <li class="{{ request()->is('admin/perpustakaan') ? 'active' : '' }}">
                     <a href="{{ route('admin.perpustakaan.perpustakaan') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -363,6 +432,9 @@
                         <span class="pcoded-mtext">Perpustakaan</span>
                     </a>
                 </li>
+                @endif
+
+                @if ($addon->complaint)
                 <li class="{{ request()->is('admin/pengaduan') ? 'active' : '' }}">
                     <a href="{{ route('admin.pengaduan.pengaduan') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -371,6 +443,7 @@
                         <span class="pcoded-mtext">Pengaduan</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>

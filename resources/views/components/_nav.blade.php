@@ -1,3 +1,6 @@
+<?php
+$notif = App\Models\AdminMessage::all();
+?>
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
         <div class="navbar-logo">
@@ -33,22 +36,24 @@
                 </a>
                 </li>
             </ul>
-            
+
             {{-- Nav Right --}}
             <ul class="nav-right">
                 <li class="header-notification">
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-bell"></i>
-                            <span class="badge bg-c-red">5</span>
+                            <span class="badge bg-c-red">{{count($notif)}}</span>
                         </div>
                         <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                             <li>
                                 <h6>Notifications</h6>
                                 <label class="label label-danger">New</label>
                             </li>
+                            @foreach ($notif as $n)
                             <li>
                                 <div class="media">
+<<<<<<< HEAD
                                     <img class="img-radius" src="{{ asset('assets/images/avatar-3.jpg') }}" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="notification-user">Joseph William</h5>
@@ -60,13 +65,15 @@
                             <li>
                                 <div class="media">
                                     <img class="img-radius" src="{{ asset('assets/images/avatar-4.jpg') }}" alt="Generic placeholder image">
+=======
+>>>>>>> 0abc8110d50f25ee8e166f6c999be4a3ec4518bb
                                     <div class="media-body">
-                                        <h5 class="notification-user">Sara Soudein</h5>
-                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                        <span class="notification-time">30 minutes ago</span>
+                                        <h5 class="notification-user">{{$n->title}}</h5>
+                                        <p class="notification-msg">{{$n->message}}</p>
                                     </div>
                                 </div>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>

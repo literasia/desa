@@ -34,6 +34,7 @@
                                             <th>Alamat</th>
                                             <th>Jenis Pengaduan</th>
                                             <th>Isi Pengaduan</th>
+                                            <th>Foto</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -125,6 +126,10 @@
                 {
                     data: 'complaint_message',
                     name: 'complaint_message'
+                },
+                {
+                    data: 'image',
+                    name: 'image'
                 },
                 {
                     data: 'action',

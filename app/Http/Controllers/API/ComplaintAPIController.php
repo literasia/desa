@@ -30,12 +30,12 @@ class ComplaintAPIController extends Controller
         ];
 
         $message = [
-            'name.required' => 'This column cannot be empty',
-            'nik.required' => 'This column cannot be empty',
-            'no_phone.required' => 'This column cannot be empty',
-            'address.required' => 'This column cannot be empty',
-            'complaint_type.required' => 'This column cannot be empty',
-            'complaint_message.required' => 'This column cannot be empty',
+            'name.required' => 'This name column cannot be empty',
+            'nik.required' => 'This column nik cannot be empty',
+            'no_phone.required' => 'This column no_phone cannot be empty',
+            'address.required' => 'This column address cannot be empty',
+            'complaint_type.required' => 'This column complaint type cannot be empty',
+            'complaint_message.required' => 'This column complaint message cannot be empty',
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -47,6 +47,11 @@ class ComplaintAPIController extends Controller
                 ]);
         }
 
+        $data['image'] = null;
+        if ($request->file('image')) {
+            $data['image'] = $request->file('image')->store('complaint_image', 'public');
+        }
+
         $complaint = Complaint::create([
             "user_id" => $user_id,
             "village_id" => $village_id,
@@ -55,7 +60,9 @@ class ComplaintAPIController extends Controller
             "no_phone" => $request->no_phone,
             "address" => $request->address,
             "complaint_type" => $request->complaint_type,
-            "complaint_message" => $request->complaint_message
+            "complaint_message" => $request->complaint_message,
+            "image" => $data['image'] ?? ""
+            
         ]);
 
         return response()->json(ApiResponse::success($complaint, 'Success add data'));

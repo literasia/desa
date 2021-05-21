@@ -18,6 +18,7 @@ class PengaturanHakAksesController extends Controller
         	"employees"	=> $employees,
             "accessFields"=>$accessFields
         ]);
+
     }
 
     public function update(Request $request)

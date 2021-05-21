@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Complaint;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class PengaduanDesaController extends Controller
 {
@@ -17,11 +18,19 @@ class PengaduanDesaController extends Controller
             $data = Complaint::where('village_id', auth()->user()->village->id)->orderByDesc('created_at');
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('image', function ($data) {
+                    if($data->image){
+                        $image = '<a href="'. Storage::url($data->image).'" class="text-success"><i class="fa fa-check-circle mr-2"></i>Uploaded</a>';
+                    }else{
+                        $image = " - ";
+                    }
+                    return $image;
+                })
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="' . $data->id . '" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>';
                     return $button;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'image'])
                 ->make(true);
         }
 
