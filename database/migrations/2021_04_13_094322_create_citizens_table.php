@@ -16,8 +16,8 @@ class CreateCitizensTable extends Migration
         Schema::create('citizens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('no_kk');
-            $table->integer('nik');
+            $table->string('no_kk');
+            $table->string('nik');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
