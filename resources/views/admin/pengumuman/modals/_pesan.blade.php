@@ -50,7 +50,7 @@
               <label>Set Waktu</label>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="message_time" value="Permanen" checked>Permanen
+                  <input class="form-check-input" type="radio" id="message_time" name="message_time" value="Permanen" >Permanen
                   <span class="circle">
                     <span class="check"></span>
                   </span>
@@ -59,7 +59,7 @@
 
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="message_time" value="Using Time">Jangka Waktu
+                  <input class="form-check-input" type="radio" id="message_time" name="message_time" value="Using Time" checked>Jangka Waktu
                   <span class="circle">
                     <span class="check"></span>
                   </span>

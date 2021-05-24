@@ -13,7 +13,7 @@ use App\Models\VillageProfile;
 class AbsensiPegawaiController extends Controller
 {
     public function index(Request $request) {
-        $village = VillageProfile::where("village_id", auth()->user()->village_id)->first();
+        $admin = auth()->user();
         $data = [];
         if($request->req == "table"){
             $data = Employee::with(["attendance" => function($q) use($request) {
@@ -25,8 +25,7 @@ class AbsensiPegawaiController extends Controller
 
             $employees = Employee::where("village_id", $request->village_id)->get();
         }
-
-        return view('admin.absensi.pegawai', compact("village","data"));
+        return view('admin.absensi.pegawai', compact("admin","data"));
     }
 
     public function write(Request $request) {

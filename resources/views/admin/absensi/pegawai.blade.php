@@ -25,7 +25,7 @@
                     <div class="card-block">
                         <form id="form-absensi" action="{{route("admin.absensi.pegawai")}}" method="get">
                             <input type="hidden" name="req" value="table">
-                            <input type="hidden" name="village_id" value="{{request()->village_id}}">
+                            <input type="hidden" name="village_id" value="{{ $admin->village_id }}">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12">
                                     <input type="text" name="tanggal" id="tanggal" class="form-control form-control-sm" placeholder="Tanggal" readonly required value="{{request()->tanggal ?? ''}}">
@@ -65,7 +65,7 @@
                                             <input type="hidden" name="tanggal" value="{{request()->tanggal}}">
                                             <tr>
                                                 <td>{{$d->name}}</td>
-                                                <td class="text-center">{{$village->address}}</td>
+                                                <td class="text-center">{{$admin->village->name}}</td>
                                                 <td class="text-center"><input type="radio" name="status" value="H" {{$d->attendance && $d->attendance->status == "H" ? "checked" : ""}} required ></td>
                                                 <td class="text-center"><input type="radio" name="status" value="A" {{$d->attendance && $d->attendance->status == "A" ? "checked" : ""}} required ></td>
                                                 <td class="text-center"><input type="radio" name="status" value="S" {{$d->attendance && $d->attendance->status == "S" ? "checked" : ""}} required ></td>

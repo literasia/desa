@@ -12,7 +12,7 @@ use App\Models\VillageProfile;
 class RekapPegawaiController extends Controller
 {
     public function index(Request $request) {
-        $village = VillageProfile::where("village_id", auth()->user()->village_id)->first();
+        $admin = auth()->user();
         $data = [];
         if($request->req == "table"){
             $data = Employee::with(["attendances" => function($q) use($request) {
@@ -25,6 +25,6 @@ class RekapPegawaiController extends Controller
             ->get();
 
         }
-        return view('admin.absensi.rekap-pegawai', compact("village","data"));
+        return view('admin.absensi.rekap-pegawai', compact("admin","data"));
     }
 }

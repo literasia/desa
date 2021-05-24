@@ -39,7 +39,6 @@ class pegawai
         ];
 
         if (Auth::user()->hasRole('employee')) {
-            // dd($request->path(), $access_data );
             foreach ($access_data as $key => $value) {
                 if(strrpos($request->path(), $key)){
                     if($emp->access[$value]){

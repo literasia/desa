@@ -11,7 +11,6 @@ use App\{User, Role};
 use App\Models\Admin\Access;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Employee;
 
 class PegawaiController extends Controller
 {

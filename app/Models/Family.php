@@ -11,4 +11,8 @@ class Family extends Model
     public function citizen(){
         return $this->belongsTo(Citizen::class);
     }
+
+    public function socialAssistanceFamily(){
+        return $this->hasMany(SocialAssistanceFamily::class);
+    }
 }

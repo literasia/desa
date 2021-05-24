@@ -30,9 +30,40 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">AB</label></span>
+                                                <span> : Absensi</span>
+                                            </li>
+                                            <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KA</label></span>
                                                 <span> : Kalender</span>
                                             </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">TE</label></span>
+                                                <span> : Template</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">LU</label></span>
+                                                <span> : Log User</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PER</label></span>
+                                                <span> : Perpustakaan</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BT</label></span>
+                                                <span> : Buku Tamu</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KE</label></span>
+                                                <span> : Keuangan</span>
+                                            </li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PT</label></span>
+                                                <span> : Peristiwa</span>
+                                            </li>
+
                                             <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">DP</label></span>
                                                 <span> : Data Penduduk</span>
@@ -54,77 +85,31 @@
                                                 <span> : Administrasi Desa</span>
                                             </li>
                                             <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">R</label></span>
-                                                <span> : Referensi</span>
-                                            </li>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PD</label></span>
                                                 <span> : Potensi Desa</span>
                                             </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">TE</label></span>
-                                                <span> : Template</span>
-                                            </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">LU</label></span>
-                                                <span> : Log User</span>
-                                            </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">R</label></span>
-                                                <span> : Referensi</span>
-                                            </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BT</label></span>
-                                                <span> : Buku Tamu</span>
-                                            </li>
+                                        </div>
+                                        <div class="col-md-4">
                                             <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SD</label></span>
                                                 <span> : Slider</span>
                                             </li>
                                             <li>
-                                            <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">P</label></span>
-                                                <span> : Pengaduan</span>
-                                            </li>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PER</label></span>
-                                                <span> : Perpustakaan</span>
-                                            </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KE</label></span>
-                                                <span> : Keuangan</span>
-                                            </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">S&P</label></span>
-                                                <span> : Sarana & Prasarana</span>
-                                            </li>
-                                            <li>
-
-                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PT</label></span>
-                                                <span> : Peristiwa</span>
-                                            </li>
-                                            <li>
-
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">WD</label></span>
                                                 <span> : Wisata Desa</span>
                                             </li>
                                             <li>
-
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PE</label></span>
+                                                <span> : Pengumuman</span>
+                                            </li>
+                                            <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">K</label></span>
                                                 <span> : Kampanye</span>
                                             </li>
-
-
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">P</label></span>
+                                                    <span> : Pengaduan</span>
+                                            </li>
                                         </div>
                                     </div>
                                 </ol>

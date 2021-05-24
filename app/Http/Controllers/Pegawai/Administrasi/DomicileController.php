@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pegawai\Administrasi;
 
 use App\Models\Domicile;
 use Illuminate\Http\Request;

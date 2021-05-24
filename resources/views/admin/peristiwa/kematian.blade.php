@@ -28,7 +28,7 @@
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>No.</th>
                                         <th>NIK</th>
                                         <th>Penduduk Meninggal</th>
                                         <th>Tanggal Kematian</th>
