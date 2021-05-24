@@ -114,7 +114,7 @@ Route::namespace('API')
         Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
 
         // Citizen
-        Route::get('citizen', 'CitizenAPIController@index');
+        Route::get('citizen/{village_id}', 'CitizenAPIController@index');
         Route::post('add-citizen', 'CitizenAPIController@addCitizen');
         Route::post('update-citizen/{user_id}', 'CitizenAPIController@update');
         Route::get('get-citizen/{user_id}', 'CitizenAPIController@edit');
@@ -152,4 +152,6 @@ Route::namespace('API')
         Route::get('edit-catalog/{catalog_id}', "CatalogAPIController@edit");
         Route::post('update-catalog', "CatalogAPIController@update");
 
+        // Greeting
+        Route::get('greeting/{village_id}', 'GreetingAPIController@getGreeting');
     });
