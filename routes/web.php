@@ -620,12 +620,21 @@ Route::namespace('Admin')
                 ->name('lembagadesa.lembagadesa');
                 Route::post('/admin/lembagadesa/lembagadesa', 'LembagaDesaController@store');
                 Route::get('/admin/lembagadesa/lembagadesa/{id}', 'LembagaDesaController@edit');
+                Route::get('/admin/lembagadesa/lembagadesa/view-lembaga/{id}', 'LembagaDesaController@view');
                 Route::post('/admin/lembagadesa/lembagadesa/update', 'LembagaDesaController@update')
                     ->name('lembagadesa.lembagadesa-update');
+                Route::post('/admin/lembagadesa/lembagadesa/penduduk', 'LembagaDesaController@addCitizen')
+                    ->name('lembagadesa.lembagadesa-penduduk');
                 Route::get('/admin/lembagadesa/lembagadesa/hapus/{id}', 'LembagaDesaController@destroy');
+
                 //Jenis Lembaga
                 Route::get('/admin/lembagadesa/jenislembaga', 'JenisLembagaController@index')
                 ->name('lembagadesa.jenislembaga');
+                Route::post('/admin/lembagadesa/jenislembaga', 'JenisLembagaController@store');
+                Route::get('/admin/lembagadesa/jenislembaga/{id}', 'JenisLembagaController@edit');
+                Route::post('/admin/lembagadesa/jenislembaga/update', 'JenisLembagaController@update')
+                    ->name('lembagadesa.jenislembaga-update');
+                Route::get('/admin/lembagadesa/jenislembaga/hapus/{id}', 'JenisLembagaController@destroy');
             });
 
 

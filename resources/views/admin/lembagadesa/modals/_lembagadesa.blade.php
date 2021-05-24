@@ -3,34 +3,34 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Tambah Berita
+                    Tambah Anggota Lembaga
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form-news" enctype="multipart/form-data">
+                <form id="form_lembagadesa" >
                     @csrf
-                    <div class="row">
+                    <div class="row mb-2">
                         <div class="col">
-                            <div class="form-group">
-                                <label for="title">Jenis Lembaga</label>
-                                <input type="text" name="title" id="title" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="title">Nama Lengkap</label>
-                                <input type="text" name="title" id="title" class="form-control form-control-sm">
+                            <div class="form-group name">
+                                <label for="name">Nama Anggota</label>
+                                <select class="basic-single form-control form-control-sm" name="name" id="name" style="width: 100%;">
+                                        <option value="" disabled>Pilih</option>
+                                        @foreach($citizen as $ct)
+                                        <option value="{{$ct->user_id}}">{{$ct->name}}</option>
+                                        @endforeach
+                                </select>
+                                <!-- <p>Nama tidak ditemukan ? <a href="#" style="color: blue" id="daftar">Daftar Disini !</a></p> -->
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="religion">Jabatan</label>
-                                <select name="religion" id="religion" class="form-control form-control-sm">
+                                <label for="position">Jabatan</label>
+                                <select name="position" id="position" class="form-control form-control-sm">
                                     <option value="Ketua">Ketua</option>
                                     <option value="Wakil Ketua">Wakil Ketua</option>
                                     <option value="Sekretaris">Sekretaris</option>
@@ -39,6 +39,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col">
+                                <div class="form-group">
+                                    <label for="lembaga">Jenis Lembaga</label>
+                                    <select name="lembaga" id="jenis-lembaga" class="form-control form-control-sm">
+                                        <option value="">Pilih</option>
+                                        @foreach($type as $t)
+                                        <option value="{{$t->id}}">{{$t->community_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="start_date" class="bmd-label-floating">Tanggal Masuk</label>
