@@ -10,21 +10,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form_pindah" action="">
+                <form id="form_jenislembaga" action="">
                 @csrf                    
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="Jensi Lembaga">Jenis Lembaga</label>
-                                <input type="text" name="Jensi Lembaga" id="Jensi Lembaga" class="form-control form-control-sm" placeholder="Jenis Lembaga">
+                                <label for="community_name">Nama Lembaga</label>
+                                <input type="text" name="community_name" id="community_name" class="form-control form-control-sm" placeholder="Jenis Lembaga">
                             </div>
                         </div>                        
                     </div>                         
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="visi misi">Visi Misi</label>
-                                <textarea name="visi misi" id="visi misi" cols="10" rows="3" class="form-control form-control-sm" placeholder="Visi Misi"></textarea>
+                                <label for="vm">Visi Misi</label>
+                                <textarea name="vm" id="vm" cols="10" rows="3" class="form-control form-control-sm" placeholder="Visi Misi"></textarea>
                             </div>
                         </div>    
                     </div>                    
@@ -40,7 +40,9 @@
                         </div>
                     </div>                
             <div class="modal-footer">
-                <button type="submit" id="button" class="btn btn-sm btn-success">Simpan</button>
+                <input type="hidden" name="hidden_id" id="hidden_id">
+                <input type="hidden" id="action" val="add">
+                <button type="submit" id="button" class="btn btn-boy btn-sm btn-success">Simpan</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
             </div>
             </form>

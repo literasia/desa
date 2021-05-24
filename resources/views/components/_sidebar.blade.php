@@ -362,8 +362,8 @@
                     </ul>
                 </li>
                 @endif
-
-            <li class="@if (request()->is('admin/lembagadesa/lembagadesa') ||  request()->is('admin/lembagadesa/jenislembaga')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                
+                <li class="@if (request()->is('admin/lembagadesa/lembagadesa') ||  request()->is('admin/lembagadesa/jenislembaga')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fa fa-building"></i>
