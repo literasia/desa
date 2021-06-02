@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\{Route, Auth};
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Superadmin route
