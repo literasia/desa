@@ -154,4 +154,9 @@ Route::namespace('API')
 
         // Greeting
         Route::get('greeting/{village_id}', 'GreetingAPIController@getGreeting');
+
+        //Village Community
+        Route::get('community/{village_id}', 'CommunityAPIController@getCommunity');
+        Route::get('community-filter/{village_id}/{types_id}', 'CommunityAPIController@getCommunityFilter');
+        Route::get('community-types/{village_id}', 'CommunityTypesAPIController@getTypes');
     });
