@@ -35,4 +35,4 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 {{-- add ons JS --}}
-@stack('js')
+@stack('js')    
