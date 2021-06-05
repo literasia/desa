@@ -18,8 +18,7 @@
                 <li class="{{ request()->is('admin/sambutan-kepala-desa') ? 'active' : '' }}">
                     <a href="{{ route('admin.sambutan-kepala-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
-                            <i class="fa fa-home
-                            "></i>
+                            <i class="fas fa-user"></i>
                         </span>
                         <span class="pcoded-mtext">Sambutan Kepala Desa</span>
                     </a>

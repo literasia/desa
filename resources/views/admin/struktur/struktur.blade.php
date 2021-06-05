@@ -336,12 +336,3 @@
     </script>
 @endpush
 
-<div class="row">
-    <div class="col-md-7">
-        nhjkj
-    </div>
-
-    <div class="col-md-5">
-        hhj
-    </div>
-</div>
