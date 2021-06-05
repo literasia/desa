@@ -21,6 +21,7 @@ class CommunityAPIController extends Controller
     public function getCommunityFilter($village_id, $types_id)
     {
         $community = Community::join('community_types', 'communities.community_type_id', 'community_types.id')
+                                ->join('citizens', 'citizens.user_id', 'communities.user_id')
                                 ->where('communities.community_type_id', $types_id)
                                 ->where('communities.village_id', $village_id)->orderByDesc('community_types.created_at')->get();
 

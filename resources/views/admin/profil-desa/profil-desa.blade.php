@@ -94,7 +94,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <p>Bagaimana cara mendapatkan latitude dan longitude desa? Klik link dibawah</p>
-                                    <a href="#" target="_blank" class="h6 btn-link">Cara mendapatkan latitude dan longitude dari Google Maps <i class="fa fa-external-link-alt"></i></a>
+                                    <a href="https://www.google.co.id/maps" target="_blank" class="h6 btn-link">Cara mendapatkan latitude dan longitude dari Google Maps <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                             <div class="row">
