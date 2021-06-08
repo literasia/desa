@@ -880,6 +880,29 @@ Route::namespace('Admin')
 
             });
 
+        // Penerima Bantuan
+        Route::namespace('Pembangunan')
+        ->group(function () {
+
+            //pembangunan
+            Route::get('/admin/pembangunan/pembangunan', 'PembangunanController@index')
+                ->name('pembangunan.pembangunan');
+            Route::post('/admin/pembangunan/pembangunan', 'PembangunanController@store');
+            Route::get('/admin/pembangunan/pembangunan/{id}', 'pembangunanController@edit');
+            Route::post('/admin/pembangunan/pembangunan/update', 'PembangunanController@update')
+                ->name('pembangunan.pembangunan-update');
+            Route::get('/admin/pembangunan/pembangunan/hapus/{id}', 'PembangunanController@destroy');
+
+            //jenis pembangunan
+            Route::get('/admin/pembangunan/jenispembangunan', 'JenisPembangunanController@index')
+                ->name('pembangunan.jenispembangunan');
+            Route::post('/admin/pembangunan/jenispembangunan', 'JenisPembangunan@store');
+            Route::get('/admin/pembangunan/jenispembangunan/{id}', 'JenisPembangunanController@edit');
+            Route::post('/admin/pembangunan/jenispembangunan/update', 'JenisPembangunanController@update')
+                ->name('pembangunan.jenispembangunan-update');
+            Route::get('/admin/pembangunan/jenispembangunan/hapus/{id}', 'JenisPembangunanController@destroy');
+        });
+
         // Wisata Desa
         Route::namespace('WisataDesa')
             ->group(function () {

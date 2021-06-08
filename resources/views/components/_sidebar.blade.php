@@ -381,7 +381,30 @@
                             </a>
                         </li>                        
                     </ul>
-                </li>     
+                </li> 
+
+                
+                <li class="@if (request()->is('admin/pembangunan/pembangunan') ||  request()->is('admin/pembangunan/jenispembangunan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-tasks"></i>
+                        </span>
+                        <span class="pcoded-mtext">Program Desa</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/pembangunan/pembangunan') ? 'active' : '' }}">
+                            <a href="{{ route('admin.pembangunan.pembangunan') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Perogram Desa</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/pembangunan/jenispembangunan') ? 'active' : '' }}">
+                            <a href="{{ route('admin.pembangunan.jenispembangunan') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Pembangunan</span>
+                            </a>
+                        </li>                        
+                    </ul>
+                </li>
+    
 
                 @if ($addon->announcement)
 
