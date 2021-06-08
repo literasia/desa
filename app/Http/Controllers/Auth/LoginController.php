@@ -40,7 +40,7 @@ class LoginController extends Controller
             $this->redirectTo = route('pegawai.index');
             return $this->redirectTo;
         } else {
-            $this->redirectTo = route('home');
+            $this->redirectTo = route('auth.login');
             return $this->redirectTo;
         }
     }

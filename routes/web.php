@@ -2,9 +2,27 @@
 
 use Illuminate\Support\Facades\{Route, Auth};
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+    Route::get('/', function () {
+        if(Auth::check()){
+            if ( Auth::user()->hasRole('admin')) {
+                return redirect(route('admin.index'));
+            }else if (Auth::user()->hasRole('superadmin')) {
+                return redirect(route('superadmin.index'));
+            }else if(Auth::user()->hasRole('employee')){
+                return redirect(route('pegawai.index'));
+            }else{
+                    return view('auth/login');
+            }
+        }else{
+        
+              return view('auth/login');
+       
+        }
+    });
+
+   
+
+
 
 // Superadmin route
 Route::namespace('Superadmin')
