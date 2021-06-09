@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form-news" enctype="multipart/form-data">
+                <form id="form-pembangunan" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -24,9 +24,12 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="jenis-pembangunan">Jenis Pembangunan</label>
-                                <select name="jenis-pembangunan" id="jenis-pembangunan" class="form-control form-control-sm">
-                                    <option value="">Pilih</option>
+                                <label for="type_id">Jenis Pembangunan</label>
+                                <select name="type_id" id="type_id" class="form-control form-control-sm">
+                                    <option value="" disabled>Pilih</option>
+                                    @foreach($type as $t)
+                                    <option value="{{$t->id}}">{{$t->types_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>                       
@@ -34,8 +37,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <textarea name="deskripsi" id="deskripsi" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
+                                <label for="description">Deskripsi</label>
+                                <textarea name="description" id="description" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
                             </div>
                         </div>
                     </div>
