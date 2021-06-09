@@ -896,7 +896,7 @@ Route::namespace('Admin')
             //jenis pembangunan
             Route::get('/admin/pembangunan/jenispembangunan', 'JenisPembangunanController@index')
                 ->name('pembangunan.jenispembangunan');
-            Route::post('/admin/pembangunan/jenispembangunan', 'JenisPembangunan@store');
+            Route::post('/admin/pembangunan/jenispembangunan', 'JenisPembangunanController@store');
             Route::get('/admin/pembangunan/jenispembangunan/{id}', 'JenisPembangunanController@edit');
             Route::post('/admin/pembangunan/jenispembangunan/update', 'JenisPembangunanController@update')
                 ->name('pembangunan.jenispembangunan-update');

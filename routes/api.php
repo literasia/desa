@@ -159,4 +159,8 @@ Route::namespace('API')
         Route::get('community/{village_id}', 'CommunityAPIController@getCommunity');
         Route::get('community-filter/{village_id}/{types_id}', 'CommunityAPIController@getCommunityFilter');
         Route::get('community-types/{village_id}', 'CommunityTypesAPIController@getTypes');
+
+        //Development Village
+        Route::get('development/{village_id}', 'DevelopmentAPIController@getDevelopment');
+    
     });
