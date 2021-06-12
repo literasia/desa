@@ -23,6 +23,7 @@
 <script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
 <script src="{{ asset('assets/js/vertical/vertical-layout.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/script.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -33,6 +34,42 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
+
+$(document).on('click', '.profile', function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: '/admin/profile/change-profile',
+            dataType: 'JSON',
+            success: function (data, username) {
+                $('#username').val(data.username);
+                $('#profile_name').val(data.data.desa);
+                $('#profile_provinsi').val(data.data.provinsi);
+                $('#profile_kabupaten').val(data.data.kabupaten);
+                $('#profile_kecamatan').val(data.data.kecamatan);
+                
+                $('#modal-setting').modal('show');
+            }
+        });
+    });
+
+$('#form-profile').on('submit', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: `{{ route('admin.change-profile.update') }}`,
+                method: 'POST',
+                dataType: 'JSON',
+                data: $(this).serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        Swal.fire("Berhasil", data.success, "success");
+                        $('#form-profile')[0].reset();
+                        $('#modal-setting').modal('hide');
+                    }else{
+                        Swal.fire("Gagal", data.message, "error");
+                    }
+                },
+            });
+        });
 </script>
 <script>
     $(document).on('click', '.profile-employee', function () {
