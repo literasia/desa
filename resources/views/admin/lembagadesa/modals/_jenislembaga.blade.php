@@ -19,7 +19,15 @@
                                 <input type="text" name="community_name" id="community_name" class="form-control form-control-sm" placeholder="Jenis Lembaga">
                             </div>
                         </div>                        
-                    </div>                         
+                    </div> 
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="description">Deskripsi</label>
+                                <textarea name="description" id="description" cols="10" rows="3" class="form-control form-control-sm" placeholder="Visi Misi"></textarea>
+                            </div>
+                        </div>    
+                    </div>                      
                     <div class="row">
                         <div class="col">
                             <div class="form-group">

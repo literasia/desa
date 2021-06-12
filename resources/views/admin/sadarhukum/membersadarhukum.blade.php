@@ -1,20 +1,20 @@
 @extends('layouts.admin')
 
 {{-- config 1 --}}
-@section('title', 'Jenis Lembaga')
-@section('title-1', 'Jenis Lembaga')
-@section('title-2', 'Jenis Lembaga')
-@section('title-3', 'Jenis Lembaga')
+@section('title', 'Member Sadar Hukum')
+@section('title-1', 'Member Sadar Hukum')
+@section('title-2', 'Member Sadar Hukum')
+@section('title-3', 'Member Sadar Hukum')
 
 @section('describ')
-    Ini adalah halaman Jenis Lembaga untuk admin
+    Ini adalah halaman Member sadar Hukum untuk admin
 @endsection
 
 @section('icon-l', 'icon-people')
 @section('icon-r', 'icon-home')
 
 @section('link')
-    {{ route('admin.lembagadesa.jenislembaga') }}
+    {{ route('admin.sadarhukum.membersadarhukum') }}
 @endsection
 
 {{-- main content --}}
@@ -25,15 +25,16 @@
                 <div class="card-body">
                     <div class="card-block">
                         <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
+
+                       
                         <div class="dt-responsive table-responsive">
-                            <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
+                            <table id="membersadarhukum-table" class="table table-striped table-bordered nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Jenis Lembaga</th>
-                                        <th>Visi Misi</th>
-                                        <th>Keterangan</th>
-                                        <th>Logo</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Jabatan</th>                                        
+                                        <th>Tanggal Masuk</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -47,7 +48,7 @@
             </div>
         </div>
     </div>
-
+    {{-- Modal --}}
     {{-- Modal --}}
     <div iv id="confirmModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -65,22 +66,36 @@
         </div>
     </div>
 </div>
-    @include('admin.lembagadesa.modals._jenislembaga')
+   
+    @include('admin.sadarhukum.modals._membersadarhukum')
+    
+    
 @endsection
 
 {{-- addons css --}}
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/data-table/css/buttons.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/select2/css/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link href="{{ asset('assets/pages/jquery.filer/css/jquery.filer.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css') }}" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/datedropper/css/datedropper.min.css') }}" />
-    <!--<link rel="stylesheet" type="text/css" href="{{ asset('bower_components/switchery/css/switchery.min.css') }}">-->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/switchery/css/switchery.min.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <style>
         .btn i {
             margin-right: 0px;
+        }
+
+        .select2-container {
+            width: 100%;
+            
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            background-color: transparent;
+            padding-top: 0px;
         }
     </style>
 @endpush
@@ -93,39 +108,17 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/pages/file-upload/dropzone-amd-module.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('bower_components/select2/js/select2.full.min.js')}}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}" ></script>
-    <!--
-    <script src="{{ asset('bower_components/switchery/js/switchery.min.js') }}"></script>
-    <script src="{{ asset('ass ets/pages/advance-elements/swithces.js') }} "></script1>
-    -->
+
     <script>
         $(document).ready(function () {
-
-            $('#add').on('click', function () {
-               
-                $('#modal-jenislembaga').modal('show');
-                        $('#action').val('add');
-                        $('.btn-boy')
-                            .removeClass('btn-info')
-                            .addClass('btn-success')
-                            .html('Simpan');
-                            $('#form_jenislembaga')[0].reset();
-
-            });
-
-            // $('#create_date').dateDropper({
-            //     theme: 'leaf',
-            //     format: 'd-m-Y'
-            // });
-
-            // $('#order-table').DataTable();
-
-            $('#order-table').DataTable({
+            $('#membersadarhukum-table').DataTable({
                 processing: true,
                 serverSide: true,
                 
                 ajax: {
-                    url: "{{ route('admin.lembagadesa.jenislembaga') }}",
+                    url: "{{ route('admin.sadarhukum.membersadarhukum') }}",
                 },
                 columns: [
                 {
@@ -133,20 +126,16 @@
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'community_name',
-                    name: 'community_name'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'visionandmission',
-                    name: 'visionandmission'
+                    data: 'position',
+                    name: 'position'
                 },
                 {
-                    data: 'description',
-                    name: 'description'
-                },
-                {
-                    data: 'logo',
-                    name: 'logo'
+                    data: 'entrydate',
+                    name: 'entrydate'
                 },
                 {
                     data: 'action',
@@ -155,27 +144,41 @@
                 ]
             });
 
-            $('#form_jenislembaga').on('submit', function (event) {
+
+            $('#add').on('click', function(){
+                $('#modal-membersadarhukum').modal('show');
+                $('#form_membersadarhukum')[0].reset();
+            });
+
+
+            $('.basic-single').select2();
+
+            $('#start_date').dateDropper({
+            theme: 'leaf',
+            format: 'Y-m-d'
+             });
+
+             $('#form_membersadarhukum').on('submit', function (event) {
                 event.preventDefault();
 
                 var url = '';
                 var text ='';
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.lembagadesa.jenislembaga') }}";
+                    url = "{{ route('admin.sadarhukum.membersadarhukum') }}";
                     text = "Data berhasil ditambah";
 
                 }
 
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.lembagadesa.jenislembaga-update') }}";
+                    url = "{{ route('admin.sadarhukum.membersadarhukum-update') }}";
                     text = "Data berhasil diupdate";
 
                 }
 
-                var formData = new FormData($('#form_jenislembaga')[0]);
+                var formData = new FormData($('#form_membersadarhukum')[0]);
                 console.log(formData);
 
-                $('#btn').prop('disabled', true);
+               
 
                 $.ajax({
                     url: url,
@@ -188,51 +191,59 @@
                         var html = ''
                         if (data.errors) {
                             html = data.errors[0];
-                            $('#community_name').addClass('is-invalid');
-                            $('#vm').addClass('is-invalid');
+                            $('#name').addClass('is-invalid');
+                            $('#position').addClass('is-invalid');
+                            $('#lembaga').addClass('is-invalid');
+                            $('#start_date').addClass('is-invalid');
                             toastr.error(html);
-                            $('#button').prop('disabled', false);
+                            
                         }
 
                         if (data.success) {
                         Swal.fire('Success!!',text,'success' );
-                        $('#modal-jenislembaga').modal('hide');
-                        $('#form_jenislembaga')[0].reset();
+                        $('#modal-membersadarhukum').modal('hide');
+                        $('#form_membersadarhukum')[0].reset();
                         $('#action').val('add');
                         $('.btn-boy')
                             .removeClass('btn-info')
                             .addClass('btn-success')
                             .val('Simpan');
-                        $('#order-table').DataTable().ajax.reload();
+                        $('#membersadarhukum-table').DataTable().ajax.reload();
                         }
                         $('#form_result').html(html);
                     },
                     error: function(errors){
                         toastr.error(errors);
-                        $('#button').prop('disabled', false);
+                       
                     }
                 });
             });
 
+           
+
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/lembagadesa/jenislembaga/'+id,
+                    url: '/admin/sadarhukum/membersadarhukum/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        
                         $('#action').val('edit');
-                        $('#community_name').val(data.type.community_name);
-                        $('#vm').val(data.type.visionandmission);
-                        $('#description').val(data.type.description);
-                        $('#hidden_id').val(data.type.id);
+                    
+                        $('#name').val(data.hukum[0].user_id);
+                        $('#position').val(data.hukum[0].position);
+                        $('#start_date').val(data.hukum[0].entrydate);
+                        $('#hidden_id').val(data.hukum[0].id);
                         $('.btn-boy')
                             .removeClass('btn-success')
-                            .addClass('btn-info')
+                            .addClass('btn-danger')
                             .val('Update');
-                        $('#modal-jenislembaga').modal('show');
+                        $('#modal-membersadarhukum').modal('show');
                     }
                 });
             });
+
+            
 
             var user_id;
             $(document).on('click', '.delete', function () {
@@ -243,20 +254,19 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/lembagadesa/jenislembaga/hapus/'+user_id,
+                    url: '/admin/sadarhukum/membersadarhukum/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
-                            $('#order-table').DataTable().ajax.reload();
+                            $('#membersadarhukum-table').DataTable().ajax.reload();
                             // toastr.success('Data berhasil dihapus');
                             Swal.fire('Sukses!', 'Data berhasi dihapus!', 'success');
                         }, 1000);
                     }
                 });
             });
-
-        });
+        })
     </script>
 @endpush

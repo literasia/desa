@@ -75,7 +75,7 @@ $foto = $profile[0]->photo;
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                             <li>
-                                <a href="{{route('admin.profil-desa.profil-desa')}}">
+                                <a href="#" class="profile">
                                     <i class="icon-user"></i> Profile
                                 </a>
                             </li>
@@ -95,3 +95,4 @@ $foto = $profile[0]->photo;
         </div>
     </div>
 </nav>
+@include('components.modals._profile-setting')
