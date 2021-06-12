@@ -34,5 +34,45 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+<script>
+    $(document).on('click', '.profile-employee', function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url: '/pegawai/profile',
+            dataType: 'JSON',
+            success: function (data) {
+                $('.modal-title').html('Ganti Passwords');
+                $('#btnUpdate')
+                    .removeClass('btn-success')
+                    .addClass('btn-info')
+                    .text('Update');
+                $('#btnCancel')
+                    .removeClass('btn-outline-success')
+                    .addClass('btn-outline-info')
+                    .text('Batal');
+                $('#modal-profile-employee').modal('show');
+            }
+        });
+    });
+    $('#form-profile-employee').on('submit', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: `{{ route('pegawai.profile.change-profile') }}`,
+                method: 'POST',
+                dataType: 'JSON',
+                data: $(this).serialize(),
+                success: function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        Swal.fire("Berhasil", data.message, "success");
+                        $('#form-profile-employee')[0].reset();
+                        $('#modal-profile-employee').modal('hide');
+                    }else{
+                        Swal.fire("Gagal", data.message, "error");
+                    }
+                },
+            });
+        });
+</script>
 {{-- add ons JS --}}
 @stack('js')    

@@ -164,6 +164,12 @@ Route::namespace("Pegawai")
         Route::get('/pegawai', 'PegawaiController@index')
             ->name('index');
 
+        // Profile Pegawai
+        Route::namespace('Profile')->group(function(){
+            Route::get('/pegawai/profile', 'ProfileController@index')->name('profile.profile');
+            Route::post('/pegawai/profile/update', 'ProfileController@changeProfile')->name('profile.change-profile');
+        });
+
         // Rekap Absensi : pegawai
         Route::namespace('Absensi')
             ->group(function () {
