@@ -462,6 +462,14 @@ Route::namespace('Admin')
     ->group(function () {
         Route::get('/admin', 'AdminController@index')
             ->name('index');
+        
+        //Profile Admin
+        Route::namespace('Profile')
+            ->group(function () {
+                Route::get('/admin/profile/change-profile', 'ChangeProfileAdminController@edit');
+                Route::post('/admin/profile/change-profile/update', 'ChangeProfileAdminController@update')
+                    ->name('change-profile.update');
+            });
 
         // Absensi
         Route::namespace('Absensi')
@@ -691,6 +699,28 @@ Route::namespace('Admin')
                 Route::get('/admin/lembagadesa/jenislembaga/hapus/{id}', 'JenisLembagaController@destroy');
             });
 
+             // Sadar Hukum Desa
+             Route::namespace('SadarHukum')
+             ->group(function () {
+                Route::get('/admin/sadarhukum/sadarhukum', 'SadarHukumController@index')
+                ->name('sadarhukum.sadarhukum');
+                Route::post('/admin/sadarhukum/sadarhukum', 'SadarHukumController@store');
+                Route::get('/admin/sadarhukum/sadarhukum/{id}', 'SadarHukumController@edit');
+                Route::post('/admin/sadarhukum/sadarhukum/update', 'SadarHukumController@update')
+                    ->name('sadarhukum.sadarhukum.update');
+                Route::get('/admin/sadarhukum/sadarhukum/hapus/{id}', 'SadarHukumController@destroy');
+ 
+                 //Member Sadar Hukum
+                 Route::get('/admin/sadarhukum/membersadarhukum', 'MemberSadarHukumController@index')
+                ->name('sadarhukum.membersadarhukum');
+                Route::post('/admin/sadarhukum/membersadarhukum', 'MemberSadarHukumController@store');
+                Route::get('/admin/sadarhukum/membersadarhukum/{id}', 'MemberSadarHukumController@edit');
+                Route::post('/admin/sadarhukum/membersadarhukum/update', 'MemberSadarHukumController@update')
+                    ->name('sadarhukum.membersadarhukum-update');
+                Route::get('/admin/sadarhukum/membersadarhukum/hapus/{id}', 'MemberSadarHukumController@destroy');
+             });
+ 
+
 
         // Kampanye
         Route::namespace('Kampanye')
@@ -888,7 +918,7 @@ Route::namespace('Admin')
             Route::get('/admin/pembangunan/pembangunan', 'PembangunanController@index')
                 ->name('pembangunan.pembangunan');
             Route::post('/admin/pembangunan/pembangunan', 'PembangunanController@store');
-            Route::get('/admin/pembangunan/pembangunan/{id}', 'pembangunanController@edit');
+            Route::get('/admin/pembangunan/pembangunan/{id}', 'PembangunanController@edit');
             Route::post('/admin/pembangunan/pembangunan/update', 'PembangunanController@update')
                 ->name('pembangunan.pembangunan-update');
             Route::get('/admin/pembangunan/pembangunan/hapus/{id}', 'PembangunanController@destroy');

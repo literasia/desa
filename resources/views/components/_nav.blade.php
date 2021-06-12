@@ -53,20 +53,6 @@ $notif = App\Models\AdminMessage::all();
                             @foreach ($notif as $n)
                             <li>
                                 <div class="media">
-<<<<<<< HEAD
-                                    <img class="img-radius" src="{{ asset('assets/images/avatar-3.jpg') }}" alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <h5 class="notification-user">Joseph William</h5>
-                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                        <span class="notification-time">30 minutes ago</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media">
-                                    <img class="img-radius" src="{{ asset('assets/images/avatar-4.jpg') }}" alt="Generic placeholder image">
-=======
->>>>>>> 0abc8110d50f25ee8e166f6c999be4a3ec4518bb
                                     <div class="media-body">
                                         <h5 class="notification-user">{{$n->title}}</h5>
                                         <p class="notification-msg">{{$n->message}}</p>
@@ -87,7 +73,7 @@ $notif = App\Models\AdminMessage::all();
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                             <li>
-                                <a href="#!">
+                                <a href="#" class="profile">
                                     <i class="icon-user"></i> Profile
                                 </a>
                             </li>
@@ -107,3 +93,4 @@ $notif = App\Models\AdminMessage::all();
         </div>
     </div>
 </nav>
+@include('components.modals._profile-setting')
