@@ -162,5 +162,9 @@ Route::namespace('API')
 
         //Development Village
         Route::get('development/{village_id}', 'DevelopmentAPIController@getDevelopment');
+
+        //Awareness Law
+        Route::get('awareness-law/{village_id}', 'AwarenessLawAPIController@getLaw');
+        Route::get('awareness-member/{village_id}', 'MemberAwarenessLawAPIController@getMember');
     
     });

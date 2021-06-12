@@ -40,15 +40,18 @@ class JenisLembagaController extends Controller
 
     public function store(Request $request)
     {
-        // validasi
-        $rules = [
+         // validasi
+         $rules = [
             'community_name'  => 'required',
             'vm' => 'required',
+            'description' => 'required'
         ];
 
         $message = [
-            'community_name.required' => 'Kolom ini tidak boleh kosong',
-            'vm.required' => 'Kolom ini tidak boleh kosong',
+            'community_name.required' => 'Kolom name ini tidak boleh kosong',
+            'vm.required' => 'Kolom visi misi ini tidak boleh kosong',
+            'description.required' => 'Kolom deskripsi ini tidak boleh kosong',
+
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -68,6 +71,7 @@ class JenisLembagaController extends Controller
         CommunityType::create([
             'community_name' => $request->community_name,
             'visionandmission' => $request->vm,
+            'description' => $request->description,
             'logo' => $data['image'],
             'village_id' => auth()->user()->village->id
         ]);
@@ -95,11 +99,14 @@ class JenisLembagaController extends Controller
          $rules = [
             'community_name'  => 'required',
             'vm' => 'required',
+            'description' => 'required'
         ];
 
         $message = [
-            'community_name.required' => 'Kolom ini tidak boleh kosong',
-            'vm.required' => 'Kolom ini tidak boleh kosong',
+            'community_name.required' => 'Kolom name ini tidak boleh kosong',
+            'vm.required' => 'Kolom visi misi ini tidak boleh kosong',
+            'description.required' => 'Kolom deskripsi ini tidak boleh kosong',
+
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -120,6 +127,7 @@ class JenisLembagaController extends Controller
         $update = CommunityType::where('id', $request->hidden_id)->update([
             'community_name' => $request->community_name,
             'visionandmission' => $request->vm,
+            'description' => $request->description,
             'logo' => $data['image'],
         ]);
 
