@@ -96,13 +96,13 @@ class SadarhukumController extends Controller
         $hukum = AwarenessLaw::findOrFail($data['hidden_id']);
         $data['image'] = null;
         if ($req->file('image')) {
-            $data['image'] = $req->file('image')->store('berita', 'public');
+            $data['image'] = $req->file('image')->store('sadar-hukum', 'public');
         }
 
         AwarenessLaw::whereId($data['hidden_id'])->update([
             'title' => $data['title'],
             'description' => $data['description'],
-            'file' => $data['image'] ?? $hukum->image
+            'file' => $data['image'] ?? $hukum->file
         ]);
 
         if ($req->file('image') && $hukum->image && Storage::disk('public')->exists($hukum->image)) {
