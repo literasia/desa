@@ -69,7 +69,7 @@ $profile = App\Models\VillageProfile::where('village_id', auth()->user()->villag
 
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('storage/'.$foto) }}" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ asset('img/avatar.png') }}" class="img-radius" alt="User-Profile-Image">
                             <span>{{ auth()->user()->name }}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
