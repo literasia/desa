@@ -120,7 +120,7 @@
             $('#village_list').select2({
                 ajax: {
                     url: function(params){
-                        return "http://beta-desa.literasia.co.id/api/village/search/"+params.term
+                        return "https://beta.literasiadesa.co.id/api/village/search/"+params.term
                     },
                     dataType: 'json',
                     delay: 250,

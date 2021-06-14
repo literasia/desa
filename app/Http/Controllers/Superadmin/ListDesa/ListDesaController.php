@@ -129,6 +129,11 @@ class ListDesaController extends Controller
             "village_profile"=>0,
             "village_structure"=>0,
             "village_tour"=>0,
+            "social_assistance"=>0,
+            "greeting"=>0,
+            "community"=>0,
+            "awareness"=>0,
+            "development"=>0
         ];
 
         if($data["password"] !== null){
@@ -144,6 +149,7 @@ class ListDesaController extends Controller
                 $update[$pisah[2]] = 1;
             }
         }
+        dd($update);
 
         $succes = $addon->update($update);
 
