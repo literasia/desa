@@ -15,6 +15,8 @@
                         <span class="pcoded-mtext">Dashboard</span>
                     </a>
                 </li>
+                
+                @if($addon->greeting)
                 <li class="{{ request()->is('admin/sambutan-kepala-desa') ? 'active' : '' }}">
                     <a href="{{ route('admin.sambutan-kepala-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -23,6 +25,8 @@
                         <span class="pcoded-mtext">Sambutan Kepala Desa</span>
                     </a>
                 </li>
+                @endif
+
                 @if ($addon->population_data)
                 <li class="@if (request()->is('admin/data-penduduk/keluarga') || request()->is('admin/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -238,6 +242,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if($addon->social_assistance)
                 <li class="@if (request()->is('admin/bantuan-sosial/bantuan-sosial-individu') || request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('admin/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -362,6 +369,7 @@
                 </li>
                 @endif
                 
+                @if($addon->community)
                 <li class="@if (request()->is('admin/lembagadesa/lembagadesa') ||  request()->is('admin/lembagadesa/jenislembaga')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -382,7 +390,9 @@
                         </li>                        
                     </ul>
                 </li> 
+                @endif
 
+                @if($addon->awareness)
                 <li class="@if (request()->is('admin/sadarhukum/sadarhukum') ||  request()->is('admin/sadarhukum/membersadarhukum')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -403,8 +413,9 @@
                         </li>                        
                     </ul>
                 </li>
+                @endif
 
-                
+                @if($addon->development)
                 <li class="@if (request()->is('admin/pembangunan/pembangunan') ||  request()->is('admin/pembangunan/jenispembangunan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -425,7 +436,7 @@
                         </li>                        
                     </ul>
                 </li>
-    
+                @endif
 
                 @if ($addon->announcement)
 
