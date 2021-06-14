@@ -1,7 +1,7 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
-$foto = $profile[0]->photo;
+// $foto = $profile[0]->photo;
 ?>
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
