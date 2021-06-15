@@ -120,7 +120,7 @@
             $('#village_list').select2({
                 ajax: {
                     url: function(params){
-                        return "https://beta.literasiadesa.co.id/api/village/search/"+params.term
+                        return "http://127.0.0.1:8000/api/village/search/"+params.term
                     },
                     dataType: 'json',
                     delay: 250,
@@ -172,6 +172,7 @@
 
             // Show Modal
             $('#add').on('click', function () {
+                $('#form-desa')[0].reset();
             $('.modal-title').html('Tambah Desa dan Admin');
             $('#action').val('add');
             $('#username').val('');

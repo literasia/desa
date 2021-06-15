@@ -149,7 +149,6 @@ class ListDesaController extends Controller
                 $update[$pisah[2]] = 1;
             }
         }
-        dd($update);
 
         $succes = $addon->update($update);
 
