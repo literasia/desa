@@ -6,7 +6,7 @@ use App\Models\Employee;
 
 use Closure;
 
-class pegawai
+class Pegawai
 {
     /**
      * Handle an incoming request.

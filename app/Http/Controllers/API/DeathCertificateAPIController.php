@@ -11,14 +11,16 @@ use Validator;
 
 class DeathCertificateAPIController extends Controller
 {
-    public function getDeathCertificate($village_id)
+    public function getDeathCertificate($village_id, $user_id)
     {
-        $certificate = DeathCertificate::where('death_certificates.village_id', $village_id)->orderByDesc('created_at')->get();
+        $certificate = DeathCertificate::where('death_certificates.village_id', $village_id)
+                        ->where('user_id', $user_id)
+                        ->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($certificate, 'Success get data'));
     }
     
-    public function addDeathCertificate(Request $request, $village_id)
+    public function addDeathCertificate(Request $request, $village_id, $user_id)
     {
         $rules = [
             'name'  => 'required|max:100',
@@ -45,10 +47,11 @@ class DeathCertificateAPIController extends Controller
 
         $data['image_ktp'] = null;
         if ($request->file('image_ktp')) {
-            $data['image_ktp'] = $request->file('image_ktp')->store('potensi_ktp', 'public');
+            $data['image_ktp'] = $request->file('image_ktp')->store('death_certificate_ktp', 'public');
         }
 
         $certificate = DeathCertificate::create([
+            "user_id" => $user_id,
             "village_id" => $village_id,
             "name" => $request->name,
             "no_phone" => $request->no_phone,

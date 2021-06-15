@@ -10,35 +10,38 @@ use App\Models\BirthCertificate;
 
 class BirthCertificateAPIController extends Controller
 {
-    public function index($village_id, Request $request) {
-        $data = $request->all();
+    public function index($village_id, Request $request, $user_id) {
+        // $data = $request->all();
 
-        $birth_certificate = BirthCertificate::query();
+        // $birth_certificate = BirthCertificate::query();
 
-        $q = $request->query('q');
+        // $q = $request->query('q');
 
-        $birth_certificate->when($q, function($query) use ($q) {
-            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
-        });
+        // $birth_certificate->when($q, function($query) use ($q) {
+        //     return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        // });
 
-        $birth_certificate = $birth_certificate->where('village_id', $village_id)->orderBy('created_at', 'desc')->limit(30)->get();
+        $birth_certificate = BirthCertificate::where('village_id', $village_id)
+                            ->where('user_id', $user_id)
+                            ->orderBy('created_at', 'desc')->get();
+
         return response()->json(ApiResponse::success($birth_certificate));
     }
 
-    public function addBirthCertificate(Request $request, $village_id)
+    public function addBirthCertificate(Request $request, $village_id, $user_id)
     {
         $rules = [
             'name'  => 'required|max:100',
             'phone_number' => 'required|max:16',
             'address' => 'required',
-            'status' => 'required',
+            'image_ktp' => ['nullable', 'mimes:jpeg,jpg,png', 'max:3000'],
         ];
 
         $message = [
-            'name.required' => 'This column cannot be empty',
-            'phone_number.required' => 'This column cannot be empty',
-            'address.required' => 'This column cannot be empty',
-            'status.required' => 'This column cannot be empty',
+            'name.required' => 'This name column cannot be empty',
+            'phone_number.required' => 'This phone column cannot be empty',
+            'address.required' => 'This address column cannot be empty',
+            'image_ktp.required' => 'This image column cannot be empty'
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -50,12 +53,19 @@ class BirthCertificateAPIController extends Controller
                 ]);
         }
 
+        $data['image_ktp'] = null;
+        if ($request->file('image_ktp')) {
+            $data['image_ktp'] = $request->file('image_ktp')->store('birth_certificate_ktp', 'public');
+        }
+
         $birth_certificate = BirthCertificate::create([
+            "user_id" => $user_id,
             "village_id" => $village_id,
             "name" => $request->name,
             "phone_number" => $request->phone_number,
             "address" => $request->address,
-            "status" => $request->status,
+            "image_ktp" => $data['image_ktp'] ?? "",
+            "status" => 'processing',
         ]);
 
         return response()->json(ApiResponse::success($birth_certificate, 'Success add data'));

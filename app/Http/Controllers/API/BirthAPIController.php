@@ -11,9 +11,20 @@ use Validator;
 class BirthAPIController extends Controller
 {
 
-    public function getBirth($village_id)
+    public function getBirth($village_id, Request $request)
     {
-        $birth = Birth::where('births.village_id', $village_id)->orderByDesc('created_at')->get();
+         $data = $request->all();
+
+        $birth = Birth::query();
+
+        $q = $request->query('q');
+
+        $birth->when($q, function($query) use ($q) {
+            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        });
+
+
+        $birth = $birth->where('births.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($birth, 'Success get data'));
     }
