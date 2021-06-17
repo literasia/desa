@@ -11,17 +11,17 @@ use App\Models\BirthCertificate;
 class BirthCertificateAPIController extends Controller
 {
     public function index($village_id, Request $request, $user_id) {
-        // $data = $request->all();
+        $data = $request->all();
 
-        // $birth_certificate = BirthCertificate::query();
+        $birth_certificate = BirthCertificate::query();
 
-        // $q = $request->query('q');
+        $q = $request->query('q');
 
-        // $birth_certificate->when($q, function($query) use ($q) {
-        //     return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
-        // });
+        $birth_certificate->when($q, function($query) use ($q) {
+            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        });
 
-        $birth_certificate = BirthCertificate::where('village_id', $village_id)
+        $birth_certificate = $birth_certificate->where('village_id', $village_id)
                             ->where('user_id', $user_id)
                             ->orderBy('created_at', 'desc')->get();
 

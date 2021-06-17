@@ -75,27 +75,27 @@ Route::namespace('API')
 
         //Domisili
         Route::post('add-domicile/{village_id}/{user_id}', 'DomicileAPIController@addDomicile');
-        Route::get('get-domicile/{village_id}', 'DomicileAPIController@getDomicile');
+        Route::get('get-domicile/{village_id}/{user_id}', 'DomicileAPIController@getDomicile');
 
         // KTP
-        Route::get('ktp/{village_id}', 'KtpAPIController@index');
-        Route::post('add-ktp/{village_id}', 'KtpAPIController@addKtp');
+        Route::get('ktp/{village_id}/{user_d}', 'KtpAPIController@index');
+        Route::post('add-ktp/{village_id}/{user_id}', 'KtpAPIController@addKtp');
 
         // birth Certificare
         Route::get('birth-certificate/{village_id}/{user_id}', 'BirthCertificateAPIController@index');
         Route::post('add-birth-certificate/{village_id}/{user_id}', 'BirthCertificateAPIController@addBirthCertificate');
 
         // SKTM
-        Route::get('sktm/{village_id}', 'SktmAPIController@index');
-        Route::post('add-sktm/{village_id}', 'SktmAPIController@addSktm');
+        Route::get('sktm/{village_id}/{user_id}', 'SktmAPIController@index');
+        Route::post('add-sktm/{village_id}/{user_id}', 'SktmAPIController@addSktm');
 
         // Business Permits
-        Route::get('business-permits/{village_id}', 'BusinessPermitsAPIController@index');
-        Route::post('add-business-permits/{village_id}', 'BusinessPermitsAPIController@addBusinessPermits');
+        Route::get('business-permits/{village_id}/{user_id}', 'BusinessPermitsAPIController@index');
+        Route::post('add-business-permits/{village_id}/{user_id}', 'BusinessPermitsAPIController@addBusinessPermits');
 
         // Land Certificate
-        Route::get('land-certificate/{village_id}', 'LandCertificateAPIController@index');
-        Route::post('add-land-certificate/{village_id}', 'LandCertificateAPIController@addLandCertificate');
+        Route::get('land-certificate/{village_id}/{user_id}', 'LandCertificateAPIController@index');
+        Route::post('add-land-certificate/{village_id}/{user_id}', 'LandCertificateAPIController@addLandCertificate');
 
         // Employee
         Route::get('employee/{village_id}', 'EmployeeAPIController@index');
@@ -110,8 +110,8 @@ Route::namespace('API')
         Route::post('add-village-structure/{village_id}', 'VillageStructureAPIController@addVillageStructure');
 
         // Moved Information
-        Route::get('moved-information/{village_id}', 'MovedInformationAPIController@index');
-        Route::post('add-moved-information/{village_id}', 'MovedInformationAPIController@addMovedInformation');
+        Route::get('moved-information/{village_id}/{user_id}', 'MovedInformationAPIController@index');
+        Route::post('add-moved-information/{village_id}/{user_id}', 'MovedInformationAPIController@addMovedInformation');
 
         // Citizen
         Route::get('citizen/{village_id}', 'CitizenAPIController@index');
