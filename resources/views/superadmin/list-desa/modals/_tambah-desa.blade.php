@@ -117,6 +117,7 @@
                                         <span><i class="fa fa-calendar add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Kalender</p>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -149,6 +150,39 @@
 
                                         <span><i class="fa fa-comment-alt add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Pengaduan</p>
+                                    </div>
+                                    <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
+                                        <input type="checkbox" name="x-addon-greeting" checked class="d-block checkbox">
+                                        <span><i class="fa fa-bell add-ons-icon mb-2"></i></span>
+                                        <p class="m-0">Sambutan Kepala Desa</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="add_ons"></label>
+                                <div class="row mx-1 text-center">
+                                    <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
+                                        <input type="checkbox" name="x-addon-social_assistance" checked class="d-block checkbox">
+                                        <span><i class="fa fa-hands-helping add-ons-icon mb-2"></i></span>
+                                        <p class="m-0">Bantuan Sosial</p>
+                                    </div>
+                                    <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
+                                        <input type="checkbox" name="x-addon-community" checked class="d-block checkbox">
+                                        <span><i class="fa fa-university add-ons-icon mb-2"></i></span>
+                                        <p class="m-0">Lembaga Desa</p>
+                                    </div>
+                                    <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
+                                        <input type="checkbox" name="x-addon-awareness" checked class="d-block checkbox">
+                                        <span><i class="fa fa-gavel add-ons-icon mb-2"></i></span>
+                                        <p class="m-0">Sadar Hukum</p>
+                                    </div>
+                                    <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
+                                        <input type="checkbox" name="x-addon-development" checked class="d-block checkbox">
+
+                                        <span><i class="fa fa-database add-ons-icon mb-2"></i></span>
+                                        <p class="m-0">Program Desa</p>
                                     </div>
                                 </div>
                             </div>

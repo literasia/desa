@@ -11,9 +11,20 @@ use Validator;
 class DeathAPIController extends Controller
 {
 
-    public function getDeath($village_id)
+    public function getDeath($village_id,  Request $request)
     {
-        $death = Death::where('deaths.village_id', $village_id)->orderByDesc('created_at')->get();
+         $data = $request->all();
+
+        $death = Death::query();
+
+        $q = $request->query('q');
+
+        $death->when($q, function($query) use ($q) {
+            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        });
+
+
+        $death = $death->where('deaths.village_id', $village_id)->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($death, 'Success get data'));
     }

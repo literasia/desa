@@ -11,9 +11,20 @@ use Validator;
 class ImmigrateAPIController extends Controller
 {
 
-    public function getImmigrate($village_id)
+    public function getImmigrate($village_id, Request $request)
     {
-        $immigrate = Immigrate::where('immigrates.village_id', $village_id)->get();
+         $data = $request->all();
+
+        $immigrate = BirthCertificate::query();
+
+        $q = $request->query('q');
+
+        $immigrate->when($q, function($query) use ($q) {
+            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
+        });
+
+
+        $immigrate = $immigrate->where('immigrates.village_id', $village_id)->get();
 
         return response()->json(ApiResponse::success($immigrate, 'Success get data'));
     }

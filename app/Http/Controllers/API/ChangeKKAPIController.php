@@ -11,14 +11,17 @@ use Validator;
 
 class ChangeKKAPIController extends Controller
 {
-    public function getChangeKK($village_id)
+    public function getChangeKK($village_id, $user_id)
     {
-        $certificate = ChangeKK::where('change_k_k_s.village_id', $village_id)->orderByDesc('created_at')->get();
+        $certificate = ChangeKK::where('change_k_k_s.village_id', $village_id)
+                        ->where('user_id', $user_id)
+                        ->orderByDesc('created_at')->get();
 
         return response()->json(ApiResponse::success($certificate, 'Success get data'));
     }
-    
-    public function addChangeKK(Request $request, $village_id)
+
+
+    public function addChangeKK(Request $request, $village_id, $user_id)
     {
         $rules = [
             'name'  => 'required|max:100',
@@ -49,6 +52,7 @@ class ChangeKKAPIController extends Controller
         }
 
         $certificate = ChangeKK::create([
+            "user_id" => $user_id,
             "village_id" => $village_id,
             "name" => $request->name,
             "no_phone" => $request->no_phone,

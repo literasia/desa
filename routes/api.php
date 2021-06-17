@@ -47,12 +47,12 @@ Route::namespace('API')
         Route::get('get-types/{village_id}', 'BusinessTypeAPIController@getBusinessType');
 
         //Death Certificate
-        Route::post('add-death/{village_id}', 'DeathCertificateAPIController@addDeathCertificate');
-        Route::get('get-death/{village_id}', 'DeathCertificateAPIController@getDeathCertificate');
+        Route::post('add-death/{village_id}/{user_id}', 'DeathCertificateAPIController@addDeathCertificate');
+        Route::get('get-death/{village_id}/{user_id}', 'DeathCertificateAPIController@getDeathCertificate');
 
         //Change KK
-        Route::post('add-kk/{village_id}', 'ChangeKKAPIController@addChangeKK');
-        Route::get('get-kk/{village_id}', 'ChangeKKAPIController@getChangeKK');
+        Route::post('add-kk/{village_id}/{user_id}', 'ChangeKKAPIController@addChangeKK');
+        Route::get('get-kk/{village_id}/{user_id}', 'ChangeKKAPIController@getChangeKK');
 
         //Campaign
         Route::get('campaign/{village_id}','CampaignAPIController@getCampaign');
@@ -82,8 +82,8 @@ Route::namespace('API')
         Route::post('add-ktp/{village_id}', 'KtpAPIController@addKtp');
 
         // birth Certificare
-        Route::get('birth-certificate/{village_id}', 'BirthCertificateAPIController@index');
-        Route::post('add-birth-certificate/{village_id}', 'BirthCertificateAPIController@addBirthCertificate');
+        Route::get('birth-certificate/{village_id}/{user_id}', 'BirthCertificateAPIController@index');
+        Route::post('add-birth-certificate/{village_id}/{user_id}', 'BirthCertificateAPIController@addBirthCertificate');
 
         // SKTM
         Route::get('sktm/{village_id}', 'SktmAPIController@index');
@@ -132,7 +132,6 @@ Route::namespace('API')
 
         //Immigrate
         Route::get('get-citizen-immigrate/{village_id}', 'ImmigrateAPIController@getImmigrate');
-        Route::post('add-citizen-immigrate/{village_id}', 'ImmigrateAPIController@addImmigrate');
 
         Route::get('library', 'LibraryController@getLibraries');
         // Borrow
