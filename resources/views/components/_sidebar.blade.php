@@ -15,6 +15,8 @@
                         <span class="pcoded-mtext">Dashboard</span>
                     </a>
                 </li>
+                
+                @if($addon->greeting)
                 <li class="{{ request()->is('admin/sambutan-kepala-desa') ? 'active' : '' }}">
                     <a href="{{ route('admin.sambutan-kepala-desa') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -23,6 +25,8 @@
                         <span class="pcoded-mtext">Sambutan Kepala Desa</span>
                     </a>
                 </li>
+                @endif
+
                 @if ($addon->population_data)
                 <li class="@if (request()->is('admin/data-penduduk/keluarga') || request()->is('admin/data-penduduk/penduduk')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
@@ -191,74 +195,26 @@
                 </li>
                 @endif
 
-
-                <li class="@if (request()->is('admin/potensidesa/dashboard') || request()->is('admin/potensidesa/vendor') || request()->is('admin/potensidesa/pengumuman') || request()->is('admin/potensidesa/laporan') || request()->is('admin/potensidesa/modul') || request()->is('admin/potensidesa/pengaturan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-newspaper"></i>
-                        </span>
+                @if ($addon->village_potency)
+                <li class="@if (request()->is('admin/potensi/potensi') || request()->is('admin/potensi/jenis-usaha') || request()->is('admin/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-chart-line"></i></span>
                         <span class="pcoded-mtext">Potensi Desa</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/potensidesa/vendor') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensidesa.vendor') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Vendor</span>
+                        <li class="{{ request()->is('admin/potensi/potensi') ? 'active' : '' }}">
+                            <a href="{{ route('admin.potensi.potensi') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Potensi Desa</span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('admin/potensidesa/pengumuman') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensidesa.pengumuman') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengumuman</span>
+                        <li class="{{ request()->is('admin/potensi/jenis-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('admin.potensi.jenis-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Jenis Usaha</span>
                             </a>
                         </li>
-                        
-                        <li class="{{ request()->is('admin/potensidesa/laporan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensidesa.laporan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Laporan</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/potensidesa/modul') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensidesa.modul') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Modul</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/potensidesa/pengaturan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.potensidesa.pengaturan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengaturan</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                @if ($addon->village_potency)
-                <li class="@if (request()->is('admin/produk/potensi') || request()->is('admin/potensi/jenis-usaha') || request()->is('admin/potensi/kategori-usaha')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="javascript:void(0);" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="fa fa-chart-line"></i></span>
-                        <span class="pcoded-mtext">Produk</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/produk/potensi') ? 'active' : '' }}">
-                            <a href="{{ route('admin.produk.produk') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Semua Produk</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/produk/jenis-kategori') ? 'active' : '' }}">
-                            <a href="{{ route('admin.produk.jenis-kategori') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Kategori</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/produk/tautan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.produk.tautan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Tautan</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/produk/merek') ? 'active' : '' }}">
-                            <a href="{{ route('admin.produk.merek') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Merek</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/produk/attribute') ? 'active' : '' }}">
-                            <a href="{{ route('admin.produk.atribute') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Attribute</span>
+                        <li class="{{ request()->is('admin/potensi/kategori-usaha') ? 'active' : '' }}">
+                            <a href="{{ route('admin.potensi.kategori-usaha') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Kategori Usaha</span>
                             </a>
                         </li>
                     </ul>
@@ -286,42 +242,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/pengaturan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/topik')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fa fa-newspaper"></i>
-                        </span>
-                        <span class="pcoded-mtext">Forum</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/forum/dashboard') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.dashboard') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/topik') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.topik') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Topik</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/balasan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.balasan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Balasan</span>
-                            </a>
-                        </li>
-                        
-                        <li class="{{ request()->is('admin/forum/tautan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.tautan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Tautan</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/pengguna') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.pengguna') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengguna</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @endif
+
+                @if($addon->social_assistance)
                 <li class="@if (request()->is('admin/bantuan-sosial/bantuan-sosial-individu') || request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('admin/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -446,6 +369,7 @@
                 </li>
                 @endif
                 
+                @if($addon->community)
                 <li class="@if (request()->is('admin/lembagadesa/lembagadesa') ||  request()->is('admin/lembagadesa/jenislembaga')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -466,8 +390,32 @@
                         </li>                        
                     </ul>
                 </li> 
+                @endif
 
-                
+                @if($addon->awareness)
+                <li class="@if (request()->is('admin/sadarhukum/sadarhukum') ||  request()->is('admin/sadarhukum/membersadarhukum')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                    <a href="javascript:void(0);" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-building"></i>
+                        </span>
+                        <span class="pcoded-mtext">Sadar Hukum</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="{{ request()->is('admin/sadarhukum/sadarhukum') ? 'active' : '' }}">
+                            <a href="{{ route('admin.sadarhukum.sadarhukum') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Sadar Hukum</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('admin/sadarhukum/membersadarhukum') ? 'active' : '' }}">
+                            <a href="{{ route('admin.sadarhukum.membersadarhukum') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Member Sadar Hukum</span>
+                            </a>
+                        </li>                        
+                    </ul>
+                </li>
+                @endif
+
+                @if($addon->development)
                 <li class="@if (request()->is('admin/pembangunan/pembangunan') ||  request()->is('admin/pembangunan/jenispembangunan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="javascript:void(0);" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -488,7 +436,7 @@
                         </li>                        
                     </ul>
                 </li>
-    
+                @endif
 
                 @if ($addon->announcement)
 
