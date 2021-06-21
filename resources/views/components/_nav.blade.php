@@ -1,7 +1,7 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
-$foto = $profile[0]->photo;
+// $foto = $profile[0]->photo;
 ?>
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
@@ -69,7 +69,7 @@ $foto = $profile[0]->photo;
 
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('storage/'.$foto) }}" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ asset('img/icon-desa.png') }}" class="img-radius" alt="User-Profile-Image">
                             <span>{{ auth()->user()->name }}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>

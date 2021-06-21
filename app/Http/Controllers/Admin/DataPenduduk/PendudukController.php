@@ -61,9 +61,11 @@ class PendudukController extends Controller
                     }
                 })
                 ->editColumn('sex', function($data){
-                    if($data->sex == "male"){
+                    if ($data->sex == null) {
+                        return "-";
+                    }elseif ($data->sex == "male") {
                         return "Laki - laki";
-                    }else{
+                    }elseif ($data->sex == "female") {
                         return "Perempuan";
                     }
                 })
