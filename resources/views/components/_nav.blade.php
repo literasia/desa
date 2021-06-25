@@ -1,6 +1,10 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
+$potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->where('status' ,'inactive')->orderByDesc('created_at')->get();
+
+$count = count($notif) + count($potensi);
+
 // $foto = $profile[0]->photo;
 ?>
 <nav class="navbar header-navbar pcoded-header">
@@ -45,13 +49,14 @@ $profile = App\Models\VillageProfile::where('village_id', auth()->user()->villag
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-bell"></i>
-                            <span class="badge bg-c-red">{{count($notif)}}</span>
+                            <span class="badge bg-c-red">{{$count}}</span>
                         </div>
                         <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                            <li>
+                             <li>
                                 <h6>Notifications</h6>
                                 <label class="label label-danger">New</label>
                             </li>
+                              
                             @foreach ($notif as $n)
                             <li>
                                 <div class="media">
@@ -59,6 +64,18 @@ $profile = App\Models\VillageProfile::where('village_id', auth()->user()->villag
                                         <h5 class="notification-user">{{$n->title}}</h5>
                                         <p class="notification-msg">{{$n->message}}</p>
                                     </div>
+                                </div>
+                            </li>
+                            @endforeach
+                            @foreach ($potensi as $p)
+                            <li>
+                                <div class="media">
+                                    <a style="background-color:inherit" href="{{route('admin.potensi.potensi')}}">
+                                    <div class="media-body">
+                                        <h5 class="notification-user">{{$p->business_name}}</h5>
+                                        <p class="notification-msg">{{$p->status}}</p>
+                                    </div>
+                                    </a>
                                 </div>
                             </li>
                             @endforeach

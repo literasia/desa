@@ -40,7 +40,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control form-control-sm">
+                                <input type="text" name="username" id="usernames" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col" id="password-group">

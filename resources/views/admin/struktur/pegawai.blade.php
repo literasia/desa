@@ -223,12 +223,13 @@
                     url: '/admin/struktur/pegawai/'+id,
                     dataType: 'JSON',
                     success: function (data) {
+                        console.log(data);
                         $('.modal-title').html('Edit Pegawai');
                         $('#action').val('edit');
                         $('#name').val(data.name);
                         $('#nik').val(data.nik);
                         $('#nip').val(data.nip);
-                        $('#username').val(data.username);
+                        $('#usernames').val(data.username);
                         $('#password').val(data.password);
                         $('#password-confirmation').val(data.password);
                         $('#village_id').val(data.village_id);
