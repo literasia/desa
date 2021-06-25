@@ -89,7 +89,7 @@ $count = count($notif) + count($potensi);
 
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('img/avatar.png') }}" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ asset('img/icon-desa.png') }}" class="img-radius" alt="User-Profile-Image">
                             <span>{{ auth()->user()->name }}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
