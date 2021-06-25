@@ -1,18 +1,10 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/syafri
 $potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->where('status' ,'inactive')->orderByDesc('created_at')->get();
 
 $count = count($notif) + count($potensi);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/syafri
 // $foto = $profile[0]->photo;
 ?>
 <nav class="navbar header-navbar pcoded-header">
