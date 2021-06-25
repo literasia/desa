@@ -165,5 +165,9 @@ Route::namespace('API')
         //Awareness Law
         Route::get('awareness-law/{village_id}', 'AwarenessLawAPIController@getLaw');
         Route::get('awareness-member/{village_id}', 'MemberAwarenessLawAPIController@getMember');
+        
+        // BANSOS
+        Route::get('bansos/{village_id}/family', 'BansosAPIController@bansosFamily');
+        Route::get('bansos/{village_id}/individu', 'BansosAPIController@bansosIndividu');
     
     });
