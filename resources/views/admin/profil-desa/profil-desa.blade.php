@@ -80,21 +80,15 @@
                             </div>
                             <hr>
                             <div class="form-group row">
-                                <label for="phone_number" class="col-sm-4 col-form-label">Latitude</label>
+                                <label for="phone_number" class="col-sm-4 col-form-label">Embed Maps</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Masukkan Latitude Desa disini" value="{{ $profile->latitude }}">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="phone_number" class="col-sm-4 col-form-label">Longitude</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Masukkan Longitude Desa disini" value="{{ $profile->longitude }}">
+                                    <input type="text" class="form-control" id="embed_maps" name="embed_maps" placeholder="Masukkan Embed Maps Desa disini" value="{{ $profile->embed_maps }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <p>Bagaimana cara mendapatkan latitude dan longitude desa? Klik link dibawah</p>
-                                    <a href="https://www.google.com/maps" target="_blank" class="h6 btn-link">Cara mendapatkan latitude dan longitude dari Google Maps <i class="fa fa-external-link-alt"></i></a>
+                                    <p>Bagaimana cara mendapatkan Embed Maps desa? Klik link dibawah</p>
+                                    <a href="https://www.ramadhanwaliqram.my.id/2021/06/cara-mendapatkan-kode-embed-google-maps.html" target="_blank" class="h6 btn-link">Cara mendapatkan Embed Maps dari Google Maps <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                             <div class="row">
