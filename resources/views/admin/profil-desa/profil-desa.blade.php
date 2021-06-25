@@ -88,7 +88,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <p>Bagaimana cara mendapatkan Embed Maps desa? Klik link dibawah</p>
-                                    <a href="https://www.google.com/maps" target="_blank" class="h6 btn-link">Cara mendapatkan Embed Maps dari Google Maps <i class="fa fa-external-link-alt"></i></a>
+                                    <a href="https://www.ramadhanwaliqram.my.id/2021/06/cara-mendapatkan-kode-embed-google-maps.html" target="_blank" class="h6 btn-link">Cara mendapatkan Embed Maps dari Google Maps <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                             <div class="row">
