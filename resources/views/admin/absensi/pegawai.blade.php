@@ -57,9 +57,9 @@
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-left">
-                                        @foreach ($data as $d)
-                                        <form class="form-absensi">
+                                        <tbody class="text-left">
+                                            @foreach ($data as $d)
+                                            <form class="form-absensi">
                                             <input type="hidden" name="employee_id" value="{{$d->id}}">
                                             <input type="hidden" name="village_id" value="{{request()->village_id}}">
                                             <input type="hidden" name="tanggal" value="{{request()->tanggal}}">
