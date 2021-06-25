@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
-use App\Models\{Citizen, UserAccess};
+use App\Models\{Citizen, UserAccess, Family};
 use App\Utils\ApiResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -79,6 +79,14 @@ class AuthController extends Controller
             ]);
         } catch(QueryException $exception){
             return response()->json(ApiResponse::error($exception));
+        }
+
+         // jika status kepala keluarga
+        if ($request->is_head_of_family) {
+            Family::create([
+                'village_id' => $request->village_id,
+                'citizen_id' => $citizen->id
+            ]);
         }
 
         try{
