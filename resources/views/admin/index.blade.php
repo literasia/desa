@@ -24,7 +24,7 @@
                 <div id="sales-analytics" class="chart-shadow" style="height:320px"></div>
             </div> --}}
             <div class="col-md-12 text-center google-maps mt-2 mb-2">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15927.860122700129!2d98.72589717678544!3d3.5954904581368505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30313139834532ad%3A0x3525a16ce231639b!2sTembung%2C%20Medan%20Tembung%2C%20Medan%20City%2C%20North%20Sumatra!5e0!3m2!1sen!2sid!4v1619078697909!5m2!1sen!2sid" width="100%" height="340px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                       
+                {!! $maps['embed_maps'] ?? "-" !!}                     
             </div>
         </div>
     </div>
