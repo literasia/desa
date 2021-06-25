@@ -462,14 +462,6 @@ Route::namespace('Admin')
     ->group(function () {
         Route::get('/admin', 'AdminController@index')
             ->name('index');
-        
-        //Profile Admin
-        Route::namespace('Profile')
-            ->group(function () {
-                Route::get('/admin/profile/change-profile', 'ChangeProfileAdminController@edit');
-                Route::post('/admin/profile/change-profile/update', 'ChangeProfileAdminController@update')
-                    ->name('change-profile.update');
-            });
 
         // Absensi
         Route::namespace('Absensi')
@@ -594,6 +586,64 @@ Route::namespace('Admin')
                 Route::get('/admin/berita/kategori-berita/hapus/{id}', 'NewsCategoryController@destroy');
             });
 
+        // Forum
+        Route::namespace('Forum')
+        ->group(function () {
+
+                // Forum Diskusi
+                Route::get('/admin/forum/forum', 'ForumController@index')->name('forum.forum');
+                Route::post('/admin/forum/forum', 'ForumController@store');
+                Route::get('/admin/forum/forum/{id}', 'ForumController@edit');
+                Route::post('/admin/forum/forum/update', 'ForumController@update')
+                    ->name('forum.forum-update');
+                Route::get('/admin/forum/forum/hapus/{id}', 'ForumController@destroy');
+
+                // Dashboard
+                Route::get('/admin/forum/dashboard', 'DashboardController@index')
+                        ->name('forum.dashboard');
+                Route::post('/admin/forum/dashboard', 'DashboardController@store');
+                Route::get('/admin/forum/dashboard/{id}', 'DashboardController@edit');
+                Route::post('/admin/forum/dashboard/update', 'DashboardController@update')
+                        ->name('forum.dashboard');
+                Route::get('/admin/forum/dashboard/hapus/{id}', 'DashboardController@destroy');
+
+                // Balasan
+                Route::get('/admin/forum/balasan', 'BalasanController@index')
+                        ->name('forum.balasan');
+                Route::post('/admin/forum/balasan', 'BalasanController@store');
+                Route::get('/admin/forum/balasan/{id}', 'BalasanController@edit');
+                Route::post('/admin/forum/balasan/update', 'BalasanController@update')
+                        ->name('forum.balasan');
+                Route::get('/admin/forum/balasan/hapus/{id}', 'BalasanController@destroy');
+                
+                // Topik
+                Route::get('/admin/forum/topik', 'TopikController@index')
+                        ->name('forum.topik');
+                Route::post('/admin/forum/topik', 'TopikController@store');
+                Route::get('/admin/forum/topik/{id}', 'TopikController@edit');
+                Route::post('/admin/forum/topik/update', 'TopikController@update')
+                      ->name('forum.topik-update');
+                 Route::get('/admin/forum/topik/hapus/{id}', 'TopikController@destroy');
+
+                // Tautan
+                Route::get('/admin/forum/tautan', 'TautanController@index')
+                     ->name('forum.tautan');
+                Route::post('/admin/forum/tautan', 'TautanController@store');
+                Route::get('/admin/forum/tautan/{id}', 'TautanController@edit');
+                Route::post('/admin/forum/tautan/update', 'TautanController@update')
+                     ->name('forum.tautan-update');
+                Route::get('/admin/forum/topik/hapus/{id}', 'TautanController@destroy');
+
+                // Pengguna
+                Route::get('/admin/forum/pengguna', 'PenggunaController@index')
+                     ->name('forum.pengguna');
+                Route::post('/admin/forum/pengguna', 'PenggunaController@store');
+                Route::get('/admin/forum/pengguna/{id}', 'PenggunaController@edit');
+                Route::post('/admin/forum/pengguna/update', 'PenggunaController@update')
+                     ->name('forum.pengguna.update');
+                Route::get('/admin/forum/pengguna/hapus/{id}', 'PenggunaController@destroy');
+
+             });
         // Bantuan Sosial
         Route::namespace('BantuanSosial')
             ->group(function () {
@@ -699,28 +749,6 @@ Route::namespace('Admin')
                 Route::get('/admin/lembagadesa/jenislembaga/hapus/{id}', 'JenisLembagaController@destroy');
             });
 
-             // Sadar Hukum Desa
-             Route::namespace('SadarHukum')
-             ->group(function () {
-                Route::get('/admin/sadarhukum/sadarhukum', 'SadarHukumController@index')
-                ->name('sadarhukum.sadarhukum');
-                Route::post('/admin/sadarhukum/sadarhukum', 'SadarHukumController@store');
-                Route::get('/admin/sadarhukum/sadarhukum/{id}', 'SadarHukumController@edit');
-                Route::post('/admin/sadarhukum/sadarhukum/update', 'SadarHukumController@update')
-                    ->name('sadarhukum.sadarhukum.update');
-                Route::get('/admin/sadarhukum/sadarhukum/hapus/{id}', 'SadarHukumController@destroy');
- 
-                 //Member Sadar Hukum
-                 Route::get('/admin/sadarhukum/membersadarhukum', 'MemberSadarHukumController@index')
-                ->name('sadarhukum.membersadarhukum');
-                Route::post('/admin/sadarhukum/membersadarhukum', 'MemberSadarHukumController@store');
-                Route::get('/admin/sadarhukum/membersadarhukum/{id}', 'MemberSadarHukumController@edit');
-                Route::post('/admin/sadarhukum/membersadarhukum/update', 'MemberSadarHukumController@update')
-                    ->name('sadarhukum.membersadarhukum-update');
-                Route::get('/admin/sadarhukum/membersadarhukum/hapus/{id}', 'MemberSadarHukumController@destroy');
-             });
- 
-
 
         // Kampanye
         Route::namespace('Kampanye')
@@ -790,34 +818,27 @@ Route::namespace('Admin')
                 Route::post('/admin/peristiwa/pindah/update', 'PindahController@update')->name('pindah.update');
             });
 
-        // Potensi
-        Route::namespace('Potensi')
+        // Potensi Desa
+        Route::namespace('Potensidesa')
             ->group(function () {
-                Route::get('/admin/potensi/potensi', 'PotensiDesaController@index')
-                    ->name('potensi.potensi');
-                Route::get('/admin/potensi/hapus/{id}', 'PotensiDesaController@destroy');
-                Route::post('/admin/potensi/potensi/update/{id}', 'PotensiDesaController@update');
-
-                //Jenis Usaha
-                Route::get('/admin/potensi/jenis-usaha', 'JenisUsahaController@index')
-                    ->name('potensi.jenis-usaha');
-                Route::post('/admin/potensi/jenis-usaha', 'JenisUsahaController@store');
-                Route::post('/admin/potensi/jenis-usaha/update', 'JenisUsahaController@update')
-                    ->name('potensi.jenis-usaha.update');
-                Route::get('/admin/potensi/jenis-usaha/edit/{id}', 'JenisUsahaController@edit');
-                Route::get('/admin/potensi/jenis-usaha/hapus/{id}', 'JenisUsahaController@destroy');
-
-
-                //Kategori Usaha
-                Route::get('/admin/potensi/kategori-usaha', 'KategoriUsahaController@index')
-                ->name('potensi.kategori-usaha');
-                Route::post('/admin/potensi/kategori-usaha', 'KategoriUsahaController@store');
-                Route::post('/admin/potensi/kategori-usaha/update', 'KategoriUsahaController@update')
-                ->name('potensi.category.update');
-                Route::get('/admin/potensi/kategori-usaha/edit/{id}', 'KategoriUsahaController@edit');
-                Route::get('/admin/potensi/kategori-usaha/hapus/{id}', 'KategoriUsahaController@destroy');
+                 
+                // Vendor
+                Route::get('/admin/potensidesa/vendor', 'VendorController@index')
+                ->name('potensidesa.vendor');
+                Route::post('/admin/potensidesa/vendor', 'VendorController@store');
+                Route::get('/admin/potensidesa/vendor/{id}', 'VendorController@edit');
+                Route::post('/admin/potensidesavendor/update', 'VendorController@update')
+                    ->name('potensidesa.vendor-update');
+                Route::get('/admin/potensidesa/vendor/hapus/{id}', 'VendorController@destroy');
             });
-
+                // Dashboard
+                Route::get('/admin/potensidesa/dashboard', 'DashboardController@index')
+                        ->name('potensidesa.dashboard');
+                Route::post('/admin/potensidesa/dashboard', 'DashboardController@store');
+                Route::get('/admin/potensidesa/dashboard/{id}', 'DashboardController@edit');
+                Route::post('/admin/potensidesa/dashboard/update', 'DashboardController@update')
+                        ->name('potensidesa.dashboard');
+                Route::get('/admin/potensidesa/dashboard/hapus/{id}', 'DashboardController@destroy');
         // Profil Desa
         Route::namespace('ProfilDesa')
             ->group(function () {
@@ -918,7 +939,7 @@ Route::namespace('Admin')
             Route::get('/admin/pembangunan/pembangunan', 'PembangunanController@index')
                 ->name('pembangunan.pembangunan');
             Route::post('/admin/pembangunan/pembangunan', 'PembangunanController@store');
-            Route::get('/admin/pembangunan/pembangunan/{id}', 'PembangunanController@edit');
+            Route::get('/admin/pembangunan/pembangunan/{id}', 'pembangunanController@edit');
             Route::post('/admin/pembangunan/pembangunan/update', 'PembangunanController@update')
                 ->name('pembangunan.pembangunan-update');
             Route::get('/admin/pembangunan/pembangunan/hapus/{id}', 'PembangunanController@destroy');
@@ -926,7 +947,7 @@ Route::namespace('Admin')
             //jenis pembangunan
             Route::get('/admin/pembangunan/jenispembangunan', 'JenisPembangunanController@index')
                 ->name('pembangunan.jenispembangunan');
-            Route::post('/admin/pembangunan/jenispembangunan', 'JenisPembangunanController@store');
+            Route::post('/admin/pembangunan/jenispembangunan', 'JenisPembangunan@store');
             Route::get('/admin/pembangunan/jenispembangunan/{id}', 'JenisPembangunanController@edit');
             Route::post('/admin/pembangunan/jenispembangunan/update', 'JenisPembangunanController@update')
                 ->name('pembangunan.jenispembangunan-update');

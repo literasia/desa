@@ -6,7 +6,7 @@
 @section('title-3', 'Keluarga')
 
 @section('describ')
-    Ini adalah halaman Keluarga untuk admin
+Ini adalah halaman Keluarga untuk admin
 @endsection
 
 @section('icon-l', 'fa fa-users')
@@ -18,7 +18,7 @@
 
 {{-- main content --}}
 @section('content')
-    <div class="row">
+    <div class="row">er
         <div class="col-xl-12">
             <div class="card glass-card d-flex justify-content-center align-items-center p-2">
                 <div class=" col-xl-12 card shadow mb-0 p-0">
