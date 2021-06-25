@@ -73,6 +73,7 @@ class AuthController extends Controller
                 'email'         => $request->email,
                 'phone'         => $request->phone,
                 'sex'           => $request->sex,
+                'is_head_of_family'           => $request->is_head_of_family,
                 'province_id'   => $user->village->district->regency->province->id,
                 'regency_id'    => $user->village->district->regency->id,
                 'district_id'   => $user->village->district->id,
