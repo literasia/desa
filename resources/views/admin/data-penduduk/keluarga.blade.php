@@ -18,7 +18,7 @@ Ini adalah halaman Keluarga untuk admin
 
 {{-- main content --}}
 @section('content')
-    <div class="row">er
+    <div class="row">
         <div class="col-xl-12">
             <div class="card glass-card d-flex justify-content-center align-items-center p-2">
                 <div class=" col-xl-12 card shadow mb-0 p-0">

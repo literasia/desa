@@ -1,10 +1,18 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/syafri
 $potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->where('status' ,'inactive')->orderByDesc('created_at')->get();
 
 $count = count($notif) + count($potensi);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/syafri
 // $foto = $profile[0]->photo;
 ?>
 <nav class="navbar header-navbar pcoded-header">
@@ -67,6 +75,10 @@ $count = count($notif) + count($potensi);
                                 </div>
                             </li>
                             @endforeach
+<<<<<<< HEAD
+=======
+                        
+>>>>>>> origin/syafri
                             @foreach ($potensi as $p)
                             <li>
                                 <div class="media">
@@ -86,7 +98,7 @@ $count = count($notif) + count($potensi);
 
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('img/avatar.png') }}" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{ asset('img/icon-desa.png') }}" class="img-radius" alt="User-Profile-Image">
                             <span>{{ auth()->user()->name }}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
