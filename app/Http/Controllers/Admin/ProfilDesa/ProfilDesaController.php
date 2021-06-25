@@ -45,8 +45,7 @@ class ProfilDesaController extends Controller
             'address'       => $request->address,
             'description'   => $request->description,
             'photo'         => $photo ?? $profile->photo,
-            'latitude'      => $request->latitude,
-            'longitude'     => $request->longitude
+            'embed_maps'      => $request->embed_maps
             ])
         ){
             return response()->json(CRUDResponse::successUpdate('Profil Desa'));
