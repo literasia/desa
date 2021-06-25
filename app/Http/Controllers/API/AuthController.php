@@ -65,7 +65,7 @@ class AuthController extends Controller
         }
         
         try{
-            Citizen::create([
+           $citizen = Citizen::create([
                 'user_id'       => $user->id,
                 'no_kk'         => $request->no_kk,
                 'nik'           => $request->nik,
