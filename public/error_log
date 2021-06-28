@@ -1,0 +1,1 @@
+[23-Jun-2021 13:00:42 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 20480 bytes) in /home/literasiadesaco/repositories/desa/vendor/laravel/framework/src/Illuminate/Events/Dispatcher.php on line 208

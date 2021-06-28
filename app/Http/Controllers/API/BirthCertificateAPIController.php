@@ -53,7 +53,7 @@ class BirthCertificateAPIController extends Controller
                 ]);
         }
 
-        $data['image_ktp'] = null;
+        $data['image_ktp'] = "";
         if ($request->file('image_ktp')) {
             $data['image_ktp'] = $request->file('image_ktp')->store('birth_certificate_ktp', 'public');
         }

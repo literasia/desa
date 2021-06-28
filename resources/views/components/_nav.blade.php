@@ -1,10 +1,10 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
-
 $potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->where('status' ,'inactive')->orderByDesc('created_at')->get();
 
 $count = count($notif) + count($potensi);
+
 
 ?>
 <nav class="navbar header-navbar pcoded-header">
@@ -67,7 +67,7 @@ $count = count($notif) + count($potensi);
                                 </div>
                             </li>
                             @endforeach
-                        
+
                             @foreach ($potensi as $p)
                             <li>
                                 <div class="media">
