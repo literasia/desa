@@ -56,7 +56,7 @@ class CatalogAPIController extends Controller
         }
 
         
-        $data['product_image'] = null;
+        $data['product_image'] = "";
         if ($request->file('product_image')) {
             $data['product_image'] = $request->file('product_image')->store('catalog', 'public');
         }

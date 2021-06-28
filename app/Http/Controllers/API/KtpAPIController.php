@@ -54,7 +54,7 @@ class KtpAPIController extends Controller
                 ]);
         }
         
-        $data['kk_image'] = null;
+        $data['kk_image'] = "";
         if ($request->file('kk_image')) {
             $data['kk_image'] = $request->file('kk_image')->store('add_ktp', 'public');
         }
