@@ -16,7 +16,7 @@ class AdminController extends Controller
                     ->join('indoregion_regencies', 'indoregion_regencies.id', 'indoregion_districts.regency_id')
                     ->join('indoregion_provinces', 'indoregion_provinces.id','indoregion_regencies.province_id')->get()[0];
         
-        $maps = VillageProfile::where('village_id', auth()->user()->village->id)->get()[0];
+        $maps = VillageProfile::where('village_id', auth()->user()->village->id)->get()[0]??"";
         // dd($maps);
         $employee = Employee::where('village_id', auth()->user()->village->id)->count();
         $citizen = Citizen::where('village_id', auth()->user()->village->id)->count();

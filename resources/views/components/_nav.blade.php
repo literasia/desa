@@ -5,7 +5,7 @@ $potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->
 
 $count = count($notif) + count($potensi);
 
-// $foto = $profile[0]->photo;
+
 ?>
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
@@ -67,10 +67,7 @@ $count = count($notif) + count($potensi);
                                 </div>
                             </li>
                             @endforeach
-<<<<<<< HEAD
-=======
-                        
->>>>>>> origin/syafri
+
                             @foreach ($potensi as $p)
                             <li>
                                 <div class="media">

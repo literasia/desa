@@ -73,11 +73,7 @@ class AuthController extends Controller
                 'email'         => $request->email,
                 'phone'         => $request->phone,
                 'sex'           => $request->sex,
-<<<<<<< HEAD
-                'is_head_of_family' => $request->is_head_of_family,
-=======
                 'is_head_of_family'           => $request->is_head_of_family,
->>>>>>> origin/syafri
                 'province_id'   => $user->village->district->regency->province->id,
                 'regency_id'    => $user->village->district->regency->id,
                 'district_id'   => $user->village->district->id,
