@@ -234,6 +234,7 @@
                         $('#identity_number_status').val(data.identity_number_status);
                         $('#number_of_stages').val(data.number_of_stages);
                         $('#total').val(data.total);
+                        $('#month').val(data.month);
                         $('#hidden_id').val(data.id);
                         $('#btn')
                             .removeClass('btn-success')

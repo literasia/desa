@@ -93,6 +93,7 @@ class JenisBantuanSosialController extends Controller
                 'identity_number_status' => $data['identity_number_status'],
                 'number_of_stages' => $data['number_of_stages'],
                 'total' => $data['total'],
+                'month'=> $data['month'],
                 'village_id' => auth()->user()->village_id,
             ]);
     }
@@ -123,6 +124,7 @@ class JenisBantuanSosialController extends Controller
             'identity_number_status' => $data['identity_number_status'],
             'number_of_stages' => $data['number_of_stages'],
             'total' => $data['total'],
+            'month' => $data['month'],
             'village_id' => auth()->user()->village_id,
         ]);
 
