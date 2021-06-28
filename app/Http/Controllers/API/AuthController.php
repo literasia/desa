@@ -44,7 +44,7 @@ class AuthController extends Controller
             'no_kk'     => 'required',
             'email'     => 'required|email',
             'phone'     => 'required|numeric',
-            'password'  => 'required|confirmed',
+            'password'  => 'required',
             'village_id'=> 'required',
         ]);
         
@@ -62,6 +62,12 @@ class AuthController extends Controller
             ]);
         } catch(QueryException $exception){
             return response()->json(ApiResponse::error($exception));
+        }
+
+        $check = Citizen::where('nik', $request->nik)->get();
+
+        if($check->count()){
+            return response()->json(ApiResponse::error("Nik Sudah digunakan!!"));
         }
         
         try{
