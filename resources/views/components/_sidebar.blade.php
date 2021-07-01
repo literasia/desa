@@ -279,7 +279,11 @@
                                 <span class="pcoded-mtext">Pengguna</span>
                             </a>
                         </li>
-                        
+                        <li class="{{ request()->is('admin/forum/pengaturan') ? 'active' : '' }}">
+                            <a href="{{ route('admin.forum.pengaturan') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Pengaturan</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
