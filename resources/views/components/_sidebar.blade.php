@@ -244,49 +244,6 @@
                 </li>
                 @endif
 
-                // FORUM
-                <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/pengaturan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/topik')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon">
-                            <i class="fas fa-comments"></i>
-                        </span>
-                        <span class="pcoded-mtext">Forum</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="{{ request()->is('admin/forum/dashboard') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.dashboard') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/topik') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.topik') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Topik</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/balasan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.balasan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Balasan</span>
-                            </a>
-                        </li>
-                        
-                        <li class="{{ request()->is('admin/forum/tautan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.tautan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Tautan</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/pengguna') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.pengguna') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengguna</span>
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('admin/forum/pengaturan') ? 'active' : '' }}">
-                            <a href="{{ route('admin.forum.pengaturan') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Pengaturan</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
                 @if($addon->social_assistance)
                 <li class="@if (request()->is('admin/bantuan-sosial/bantuan-sosial-individu') || request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('admin/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
