@@ -802,8 +802,12 @@ Route::namespace('Admin')
         // Pengaduan
         Route::namespace('Pengaduan')
             ->group(function () {
+            
             Route::get('/admin/pengaduan', 'PengaduanDesaController@index')
                  ->name('pengaduan.pengaduan');
+            Route::get('/admin/pengaduan/pengaduan/{id}', 'PengaduanDesaController@edit');
+            Route::post('/admin/pengaduan/pengaduan/update', 'PengaduanDesaController@update')
+                     ->name('pengaduan.update');
             Route::get('/admin/pengaduan/hapus/{id}', 'PengaduanDesaController@destroy');
             });
 
