@@ -12,7 +12,7 @@ use Validator;
 class DomicileAPIController extends Controller
 {
 
-    public function getDomicile($village_id,Request $req) {
+    public function getDomicile($village_id,Request $req, $user_id) {
         $data = $req->all();
 
         $domisili =Domicile::query();
@@ -22,7 +22,7 @@ class DomicileAPIController extends Controller
             return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
         });
 
-        $domisili = $domisili->where('village_id', $village_id)->get();
+        $domisili = $domisili->where('village_id', $village_id)->where('user_id', $user_id)->get();
         return response()->json(ApiResponse::success($domisili));
     }
 
@@ -34,7 +34,6 @@ class DomicileAPIController extends Controller
             'no_phone' => 'required',
             'address' => 'required',
             'image' => ['required', 'mimes:jpeg,jpg,png', 'max:3000'],
-            'status' => 'required'
         ];
 
         $message = [
@@ -43,7 +42,6 @@ class DomicileAPIController extends Controller
             'no_phone.required' => 'This column no_phone cannot be empty',
             'address.required' => 'This column address cannot be empty',
             'image.required' => 'This column image cannot be empty',
-            'status.required' => 'This column status cannot be empty',
         ];
 
         $data = $request->all();
@@ -57,20 +55,21 @@ class DomicileAPIController extends Controller
                 ]);
         }
 
-        $data['image'] = null;
+        $data['image'] = "";
         if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('domisili', 'public');
         }
 
         $domisili = Domicile::create([
-            "user_id" => $user_id,
+         
             "village_id" => $village_id,
+            "user_id" => $user_id,
             "name" => $request->name,
             "nik" => $request->nik,
             "no_phone" => $request->no_phone,
             "address" => $request->address,
             "image" => $data['image'],
-            "status" => $request->status
+            "status" => "processing"
         ]);
 
         return response()->json(ApiResponse::success($domisili, 'Success add data'));

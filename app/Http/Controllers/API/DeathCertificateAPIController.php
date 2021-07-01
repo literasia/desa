@@ -45,7 +45,7 @@ class DeathCertificateAPIController extends Controller
                 ]);
         }
 
-        $data['image_ktp'] = null;
+        $data['image_ktp'] = "";
         if ($request->file('image_ktp')) {
             $data['image_ktp'] = $request->file('image_ktp')->store('death_certificate_ktp', 'public');
         }
@@ -56,7 +56,7 @@ class DeathCertificateAPIController extends Controller
             "name" => $request->name,
             "no_phone" => $request->no_phone,
             "address" => $request->address,
-            "image_ktp" => $data['image_ktp'],
+            "image_ktp" => $data['image_ktp'] ?? "",
             "status" => 'processing'
         ]);
 

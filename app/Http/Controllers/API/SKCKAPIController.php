@@ -57,7 +57,7 @@ class SKCKAPIController extends Controller
                 ]);
         }
 
-        $data['image'] = null;
+        $data['image'] = "";
         if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('skck', 'public');
         }

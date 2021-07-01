@@ -57,7 +57,7 @@ class HeirAPIController extends Controller
                 ]);
         }
 
-        $data['image'] = null;
+        $data['image'] = "";
         if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('ahli waris', 'public');
         }

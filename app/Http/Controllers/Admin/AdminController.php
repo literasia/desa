@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Employee, Citizen, Family, Potency, Village};
+use App\Models\{Employee, Citizen, Family, Potency, Village, VillageProfile};
 
 class AdminController extends Controller
 {
@@ -16,7 +16,8 @@ class AdminController extends Controller
                     ->join('indoregion_regencies', 'indoregion_regencies.id', 'indoregion_districts.regency_id')
                     ->join('indoregion_provinces', 'indoregion_provinces.id','indoregion_regencies.province_id')->get()[0];
         
-
+        $maps = VillageProfile::where('village_id', auth()->user()->village->id)->get()[0]??"";
+        // dd($maps);
         $employee = Employee::where('village_id', auth()->user()->village->id)->count();
         $citizen = Citizen::where('village_id', auth()->user()->village->id)->count();
         $family = Family::where('village_id', auth()->user()->village->id)->count();
@@ -27,7 +28,8 @@ class AdminController extends Controller
             'citizen',
             'family',
             'potency',
-            'data'
+            'data',
+            'maps'
         ));
     }
 }

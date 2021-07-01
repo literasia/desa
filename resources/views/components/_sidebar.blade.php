@@ -184,7 +184,7 @@
                         </li>
                         <li class="{{ request()->is('admin/administrasi/keterangan-tanah') ? 'active' : '' }}">
                             <a href="{{ route('admin.administrasi.keterangan-tanah') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">
+                                <span class="pcoded-mtext ">
                                     Keterangan Tanah
                                     <label class="notification-label-danger ml-2" style="height: 5px; background-color: #FF5370; border-radius: 50%; padding: 3px;"></label>
                                     <label class="notification-label-warning" style="height: 5px; background-color: #FFB64D; border-radius: 50%; padding: 3px;"></label>

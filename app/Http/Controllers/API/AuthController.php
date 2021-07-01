@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
-use App\Models\{Citizen, UserAccess};
+use App\Models\{Citizen, UserAccess, Family};
 use App\Utils\ApiResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -44,7 +44,7 @@ class AuthController extends Controller
             'no_kk'     => 'required',
             'email'     => 'required|email',
             'phone'     => 'required|numeric',
-            'password'  => 'required|confirmed',
+            'password'  => 'required',
             'village_id'=> 'required',
         ]);
         
@@ -63,15 +63,23 @@ class AuthController extends Controller
         } catch(QueryException $exception){
             return response()->json(ApiResponse::error($exception));
         }
+
+        $check = Citizen::where('nik', $request->nik)->get();
+
+        if($check->count()){
+            return response()->json(ApiResponse::error("Nik Sudah digunakan!!"));
+        }
         
         try{
-            Citizen::create([
+           $citizen = Citizen::create([
                 'user_id'       => $user->id,
                 'no_kk'         => $request->no_kk,
                 'nik'           => $request->nik,
                 'name'          => $request->name,
                 'email'         => $request->email,
                 'phone'         => $request->phone,
+                'sex'           => $request->sex,
+                'is_head_of_family'           => $request->is_head_of_family,
                 'province_id'   => $user->village->district->regency->province->id,
                 'regency_id'    => $user->village->district->regency->id,
                 'district_id'   => $user->village->district->id,
@@ -79,6 +87,14 @@ class AuthController extends Controller
             ]);
         } catch(QueryException $exception){
             return response()->json(ApiResponse::error($exception));
+        }
+
+         // jika status kepala keluarga
+        if ($request->is_head_of_family) {
+            Family::create([
+                'village_id' => $request->village_id,
+                'citizen_id' => $citizen->id
+            ]);
         }
 
         try{
