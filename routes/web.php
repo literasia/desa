@@ -657,6 +657,15 @@ Route::namespace('Admin')
                      ->name('forum.pengguna.update');
                 Route::get('/admin/forum/pengguna/hapus/{id}', 'PenggunaController@destroy');
 
+                // Pengaturan
+                Route::get('/admin/forum/pengaturan', 'PengaturanController@index')
+                     ->name('forum.pengaturan');
+                Route::post('/admin/forum/pengaturan', 'PengaturanController@store');
+                Route::get('/admin/forum/pengaturan/{id}', 'PengaturanController@edit');
+                Route::post('/admin/forum/pengaturan/update', 'PengaturanController@update')
+                     ->name('forum.pengaturan.update');
+                Route::get('/admin/forum/pengaturan/hapus/{id}', 'PengaturanController@destroy');
+
              });
              
         // Bantuan Sosial
