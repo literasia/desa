@@ -48,6 +48,7 @@
 												</div>
 											</div>														
 										</div>
+									</div>
 									<div class="row mt-4 mb-2">
 										<div class="col-md-12">
 											<h6 class="font-weight-bold">Flooding</h6>
@@ -204,9 +205,8 @@
     <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script> 
-@endpush
 
-<style>
+	<style>
 	.forum-modal-wrapper {
         position: relative;
     }
@@ -226,3 +226,4 @@
         border-radius: 10px;border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
 </style>
+@endpush
