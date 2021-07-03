@@ -245,7 +245,7 @@
                 @endif
 
                 // FORUM
-                <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/pengaturan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/topik')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/pengguna') ||  request()->is('admin/forum/pengaturan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fas fa-comments"></i>

@@ -27,25 +27,27 @@
 								<h5 class="d-inline-block forum-modal-caption mt-4 px-2 text-info">Pengaturan Pengguna Forum</h5>
 									<div class="border rounded p-3">
 										<small class="d-block mb-2">Menetapkan batas waktu dan kemampuan posting pengguna lainnya</small>
-											<div class="row mt-4 mb-2">
-												<div class="col-md-12">
-													<h6 class="font-weight-bold">Peran Forum</h6>
-														<label class="form-check-label" for="peran_forum">															
-															<input type="checkbox" class="peran_forum" small class="d-block mt-2" name="hide_peran_forum" id="peran_forum"> 
-															Secara otomatis memberikan pengunjung terdaftar sebagai peran forum peserta
-														</label>
-														<div class="mt-2 form-group">																		
-																<select name="type" id="type" class="form-control form-control-sm col-md-6" >
-																<option value="">--Pilih--</option>
-																<option value="">Keymaster</option>
-																<option value="">Moderator</option>
-																<option value="">Peserta</option>
-																<option value="">Blokir Pengguna</option>
-																</select>
-														</div>
-														<small class="d-block mt-2">Hapus centang ini untuk menetapkan secara manual semua akses pengguna ke forum Anda</small>													
+										<div class="row mt-4 mb-2">
+										<div class="col-md-12">
+											<h6 class="font-weight-bold">Peran Forum</h6>
+											<div class="form-group form-check mb-2" action="/action_page.php">
+												<div class="form-row">
+													<div class="col-auto mt-2">
+														<input class="form-check-input" type="checkbox" name="reply" id="">
+														<label class="form-check-label"> Secara otomatis memberikan pengunjung terdaftar sebagai peran forum</label>
+													</div>
+													<div class="col-auto">
+														<select name="type" id="type" class="form-control-sm">
+															<option value="">--Pilih Peserta--</option>
+															<option value="keymaster">Keymaster</option>
+															<option value="moderator">Moderator</option>
+															<option value="peserta">Peserta</option>
+															<option value="blokir_pengguna">Blokir Pengguna</option>
+														</select>
+													</div>
 												</div>
-											</div>
+											</div>														
+										</div>
 									<div class="row mt-4 mb-2">
 										<div class="col-md-12">
 											<h6 class="font-weight-bold">Flooding</h6>
@@ -194,6 +196,16 @@
 </div>
 @endsection   
 
+{{-- addons js --}}
+@push('js')
+    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script> 
+@endpush
+
 <style>
 	.forum-modal-wrapper {
         position: relative;
@@ -214,13 +226,3 @@
         border-radius: 10px;border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
 </style>
-
-{{-- addons js --}}
-@push('js')
-    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
-    <script src="{{ asset('js/sweetalert2.min.js') }}"></script> 
-	
