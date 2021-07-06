@@ -33,7 +33,7 @@ class DomicileAPIController extends Controller
             'nik' => 'required|min:16|max:16',
             'no_phone' => 'required',
             'address' => 'required',
-            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:3000'],
+            'image' => ['nullable', 'mimes:jpeg,jpg,png', 'max:3000'],
         ];
 
         $message = [
@@ -41,7 +41,6 @@ class DomicileAPIController extends Controller
             'nik.required' => 'This column nik cannot be empty',
             'no_phone.required' => 'This column no_phone cannot be empty',
             'address.required' => 'This column address cannot be empty',
-            'image.required' => 'This column image cannot be empty',
         ];
 
         $data = $request->all();
@@ -55,7 +54,7 @@ class DomicileAPIController extends Controller
                 ]);
         }
 
-        $data['image'] = "";
+        $data['image'] = '';
         if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('domisili', 'public');
         }
