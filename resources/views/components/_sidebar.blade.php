@@ -1,4 +1,3 @@
-
 <?php
     use Illuminate\Support\Facades\Auth;
     $addon = App\Models\Addon::where("admin_id",auth()->user()->id)->first();
