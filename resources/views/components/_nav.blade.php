@@ -2,8 +2,9 @@
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
 $potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->where('status' ,'inactive')->orderByDesc('created_at')->get();
+$pengaduan = App\Models\Admin\Complaint::where('village_id', auth()->user()->village_id)->where('status' ,'accepted')->orderByDesc('created_at')->get();
 
-$count = count($notif) + count($potensi);
+$count = count($notif) + count($potensi) + count($pengaduan);
 
 
 ?>
@@ -75,6 +76,19 @@ $count = count($notif) + count($potensi);
                                     <div class="media-body">
                                         <h5 class="notification-user">{{$p->business_name}}</h5>
                                         <p class="notification-msg">{{$p->status}}</p>
+                                    </div>
+                                    </a>
+                                </div>
+                            </li>
+                            @endforeach
+
+                            @foreach ($pengaduan as $p)
+                            <li>
+                                <div class="media">
+                                    <a style="background-color:inherit" href="{{route('admin.pengaduan.pengaduan')}}">
+                                    <div class="media-body">
+                                        <h5 class="notification-user">{{$p->name}}</h5>
+                                        <p class="notification-msg">{{$p->complaint_type}}</p>
                                     </div>
                                     </a>
                                 </div>

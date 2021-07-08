@@ -11,7 +11,7 @@ class PendudukController extends Controller
 {
     public function index(Request $request) {
         if ($request->ajax()) {
-            $data = Citizen::latest()->get();
+            $data = Citizen::where('village_id', auth()->user()->village_id)->latest()->get();
             return DataTables::of($data)
                 ->editColumn('regency_id', function($data){
                     $regency = Regency::where('id', $data->regency_id)->first();
@@ -61,11 +61,9 @@ class PendudukController extends Controller
                     }
                 })
                 ->editColumn('sex', function($data){
-                    if ($data->sex == null) {
-                        return "-";
-                    }elseif ($data->sex == "male") {
+                    if($data->sex == "male"){
                         return "Laki - laki";
-                    }elseif ($data->sex == "female") {
+                    }else{
                         return "Perempuan";
                     }
                 })

@@ -44,7 +44,7 @@ class AuthController extends Controller
             'no_kk'     => 'required',
             'email'     => 'required|email',
             'phone'     => 'required|numeric',
-            'password'  => 'required',
+            'password'  => 'required|confirmed',
             'village_id'=> 'required',
         ]);
         
@@ -63,15 +63,10 @@ class AuthController extends Controller
         } catch(QueryException $exception){
             return response()->json(ApiResponse::error($exception));
         }
-
-        $check = Citizen::where('nik', $request->nik)->get();
-
-        if($check->count()){
-            return response()->json(ApiResponse::error("Nik Sudah digunakan!!"));
-        }
+        $id = 0;
         
         try{
-           $citizen = Citizen::create([
+            $citizen = Citizen::create([
                 'user_id'       => $user->id,
                 'no_kk'         => $request->no_kk,
                 'nik'           => $request->nik,
@@ -79,16 +74,18 @@ class AuthController extends Controller
                 'email'         => $request->email,
                 'phone'         => $request->phone,
                 'sex'           => $request->sex,
-                'is_head_of_family'           => $request->is_head_of_family,
+                'is_head_of_family' => $request->is_head_of_family,
                 'province_id'   => $user->village->district->regency->province->id,
                 'regency_id'    => $user->village->district->regency->id,
                 'district_id'   => $user->village->district->id,
                 'village_id'    => $user->village->id,
             ]);
+            
+            
         } catch(QueryException $exception){
             return response()->json(ApiResponse::error($exception));
         }
-
+        
          // jika status kepala keluarga
         if ($request->is_head_of_family) {
             Family::create([
