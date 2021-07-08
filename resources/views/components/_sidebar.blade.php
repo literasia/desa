@@ -287,6 +287,17 @@
                     </ul>
                 </li>
 
+                <!-- BUMDes -->
+                <li class="{{ request()->is('admin/bumdes') ? 'active' : '' }}">
+                     <a href="{{ route('admin.bumdes.bumdes') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                        <i class="fas fa-fax"></i>                        
+                        </span>
+                        <span class="pcoded-mtext">BUMDes</span>
+                    </a>
+                </li>
+                <!-- BUMDes -->
+
                 @if($addon->social_assistance)
                 <li class="@if (request()->is('admin/bantuan-sosial/bantuan-sosial-individu') || request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('admin/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">

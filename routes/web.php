@@ -667,6 +667,18 @@ Route::namespace('Admin')
                 Route::get('/admin/forum/pengaturan/hapus/{id}', 'PengaturanController@destroy');
 
              });
+
+        // Badan Usaha Milik Desa
+        Route::namespace('BUMDes')
+        ->group(function () {
+                Route::get('/admin/bumdes', 'BumdesController@index')
+                    ->name('bumdes.bumdes');
+                Route::post('/admin/bumdes', 'BumdesController@store');
+                Route::get('/admin/bumdes/bumdes/{id}', 'BumdesController@edit');
+                Route::post('/admin/bumdes/bumdes/update', 'BumdesController@update')
+                    ->name('bumdes.bumdes.update');
+                Route::get('/admin/bumdes/bumdes/hapus/{id}', 'BumdesController@destroy');
+            });
              
         // Bantuan Sosial
         Route::namespace('BantuanSosial')
