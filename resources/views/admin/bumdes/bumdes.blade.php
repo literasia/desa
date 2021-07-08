@@ -1,20 +1,19 @@
 @extends('layouts.admin')
 
-@section('title', 'Forum | Topik')
-@section('title-2', 'Topik')
-@section('title-3', 'Topik')
+@section('title', 'Badan Usaha Milik Desa')
+@section('title-2', 'Badan Usaha Milik Desa')
+@section('title-3', 'Badan Usaha Milik Desa')
 
 @section('describ')
-    Ini adalah halaman Topik untuk admin
+    Ini adalah halaman Badan Usaha Milik Desa untuk admin
 @endsection
 
 @section('icon-l', 'icon-home')
 @section('icon-r', 'icon-home')
 @section('link')
-    {{ route('admin.forum.topik') }}
+    {{ route('admin.bumdes.bumdes') }}
 @endsection
 
-{{-- main content --}}
 @section('content')
 <div class="row">
     <div class="col-xl-12">
@@ -26,16 +25,15 @@
                        <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                             <thead>
                                 <tr>
-                                    <th>Topik</th>
-                                    <th>Forum</th>
-                                    <th>Balasan</th>
-                                    <th>Penulis</th>
-                                    <th>Dibuat Pada</th>
-                                    <th>Postingan Terakhir</th>
+                                    <th>Nama BUMDes</th>
+                                    <th>Pengelola</th>
+                                    <th>No. HP</th>
+                                    <th>Tahun Berdiri</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-left">
                                 
                             </tbody>
                         </table>
@@ -45,7 +43,9 @@
         </div>
     </div>
 </div>
-@include('admin.forum.modals._tambah-topik')
+
+{{-- Modal --}}
+@include('admin.bumdes.modals._bumdes')
 <div id="confirmModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -62,7 +62,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 
@@ -95,43 +94,37 @@
 <script src="{{ asset('bower_components/datedropper/js/datedropper.min.js') }}"></script>
 <script type="text/javascript">
 
-
     $('document').ready(function() {
+
+        $('#order-table').DataTable();
+
         $('#order-table').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('admin.forum.topik') }}",
+                url: "{{ route('admin.bumdes.bumdes') }}",
             },
             columns: [
             {
-                data: 'DT_RowIndex',
-                name: 'DT_RowIndex'
+                data: 'nama_bumdes',
+                name: 'nama_bumdes'
             },
             {
-                data: 'judul_topik',
-                name: 'judul_topik'
+                data: 'pengelola',
+                name: 'pengelola'
             },
             {
-                data: 'forum',
-                name: 'forum'
+                data: 'no_hp',
+                name: 'no_hp'
             },
             {
-                data: 'balasan',
-                name: 'balasan'
+                data: 'tahun_berdiri',
+                name: 'tahun_berdiri'
             },
             {
-                data: 'penulis',
-                name: 'penulis'
-            },
-            {
-                data: 'dibuat_pada',
-                name: 'dibuat_pada'
-            },
-            {
-                data: 'postingan_terakhir',
-                name: 'postingan_terakhir'
-            },
+                data: 'status',
+                name: 'status'
+            },            
             {
                 data: 'action',
                 name: 'action'
@@ -140,47 +133,67 @@
         });
 
         $('#add').on('click', function() {
-            $('.modal-title').html('Tambah Topik');
+            $('.modal-bumdes').html('Tambah BUMDes');
             $('.form-control').val('');
             $('#action').val('add');
             $('#hidden_id').val('');
-            $('#judul_topik').val('');
-            $('#forum_id').val('');
-            $('#balasan').val('');
-            $('#penulis_id').val('');
-            $('#dibuat_pada').val('');
+            $('#nama_bumdes').val('');
+            $('#pengelola').val('');
+            $('#no_hp').val('');
+            $('#tahun_berdiri').val('');
             $('#status').val('');
             $('#btn')
                 .removeClass('btn-info')
                 .addClass('btn-success')
-                .val('Tambah');
+                .val('Simpan');
             $('#btn-cancel')
                 .removeClass('btn-outline-info')
                 .addClass('btn-outline-success')
                 .val('Batal');
-            $('#modal-soal').modal('show');
+            $('#modal-bumdes').modal('show');
         });
-    });
 
-          
+        $('#show').on('click', function() {
+            $('.modal-bumdes').html('Lihat BUMDes');
+            $('.form-control').val('');
+            $('#action').val('show');
+            $('#hidden_id').val('');
+            $('#nama_bumdes').val('');
+            $('#pengelola').val('');
+            $('#no_hp').val('');
+            $('#tahun_berdiri').val('');
+            $('#status').val('');
+            $('#foto').val('');           
+            $('#btn')
+                .removeClass('btn-info')
+                .addClass('btn-success')
+                .val('Show');
+            $('#btn-cancel')
+                .removeClass('btn-outline-info')
+                .addClass('btn-outline-success')
+                .val('Show');
+            $('#modal-bumdes').modal('show');
+        });
 
-    $(document).on('click', '.edit', function () {
+        $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: '/admin/forum/topik/edit/'+id,
-                    dataType: 'JSON',
+                    url: "/admin/bumdes/"+id,
                     success: function (data) {
-//                        $('#action').val('edit');
-//                        $('#title').val(data.name);
-//                        $('#category').val(data.category);
-//                        $('#content').val(data.content);
-//                        $('#create_date').val(data.create_date);
-//                        $('#hidden_id').val(data.id);
+                        $('.modal-title').html('Edit BUMDes');
+                        $('.form-control').val('');
+                        $('#action').val('edit');
+                        $('#hidden_id').val('');
+                        $('#nama_bumdes').val('');
+                        $('#pengelola').val('');
+                        $('#no_hp').val('');
+                        $('#tahun_berdiri').val('');
+                        $('#status').val('');
                         $('#btn')
                             .removeClass('btn-success')
                             .addClass('btn-info')
                             .val('Update');
-                        $('#modal-topik').modal('show');
+                        $('#modal-bumdes').modal('show');
                     }
                 });
             });
@@ -194,18 +207,18 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/forum/topik/hapus/'+user_id,
+                    url: '/admin/bumdes/destroy/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
-                            $('#topik-table').DataTable().ajax.reload();
-                            // toastr.success('Data berhasil dihapus');
-                            Swal.fire('Sukses!', 'Data berhasi dihapus!', 'success');
+                            $('#order-table').DataTable().ajax.reload();
+                            Swal.fire('Sukses!', "BUMDes Berhasil Dihapus", 'success');
                         }, 1000);
                     }
                 });
             });
+    });
 </script>
 @endpush
