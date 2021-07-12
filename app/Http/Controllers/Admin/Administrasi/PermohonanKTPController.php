@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Models\Ktp;
+use Illuminate\Support\Facades\Storage;
+
 
 class PermohonanKTPController extends Controller
 {
@@ -30,12 +32,20 @@ class PermohonanKTPController extends Controller
                             break;
                     }
                 })
+                ->addColumn('kk_image', function ($data) {
+                    if($data->kk_image){
+                        $image = '<a href="'. Storage::url($data->kk_image).'" class="text-success"><i class="fa fa-check-circle mr-2"></i>Uploaded</a>';
+                    }else{
+                        $image = " - ";
+                    }
+                    return $image;
+                })
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
                     $button .= '&nbsp;&nbsp;&nbsp;<button type="button" id="'.$data->id.'" class="delete btn btn-mini btn-danger shadow-sm">Delete</button>';
                     return $button;
                 })
-                ->rawColumns(['status', 'action'])
+                ->rawColumns(['status', 'action', 'kk_image'])
                 ->addIndexColumn()
                 ->make(true);
         }

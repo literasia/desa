@@ -131,12 +131,12 @@ class StrukturDesaController extends Controller
 
     public function getEmployee(){
         $employee = Employee::where('village_id', auth()->user()->village->id)->get();
-
+        
         return response()->json($employee);
     }
 
     public function getPosition(){
-        $position = Position::get();
+        $position = Position::where('village_id', auth()->user()->village_id)->get();
 
         return response()->json($position);
     }

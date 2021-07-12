@@ -19,7 +19,7 @@
 {{-- main content --}}
 @section('content')
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+        <!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
@@ -45,8 +45,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+        </div> -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
@@ -56,7 +56,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Kategori</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -126,10 +125,7 @@
                     data: 'name',
                     name: 'name'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
+               
                 ]
             });
 

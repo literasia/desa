@@ -1,7 +1,12 @@
 <?php
 $notif = App\Models\AdminMessage::all();
 $profile = App\Models\VillageProfile::where('village_id', auth()->user()->village->id)->get();
-// $foto = $profile[0]->photo;
+$potensi = App\Models\Potency::where('village_id', auth()->user()->village_id)->where('status' ,'inactive')->orderByDesc('created_at')->get();
+$pengaduan = App\Models\Admin\Complaint::where('village_id', auth()->user()->village_id)->where('status' ,'accepted')->orderByDesc('created_at')->get();
+
+$count = count($notif) + count($potensi) + count($pengaduan);
+
+
 ?>
 <nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">

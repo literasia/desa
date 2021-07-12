@@ -117,7 +117,7 @@
                     url: '/admin/struktur/get_employee',
                     dataType: 'JSON',
                     success: function (employees) {
-                        employees.forEach(employee => {    
+                        employees.forEach(employee => {  
                             $("#employee-id").append(new Option(`${employee.name}`, `${employee.id}`));
                         });
                     }

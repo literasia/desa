@@ -26,8 +26,12 @@ class KeteranganDomisiliController extends Controller
                     return $button;
                 })
                 ->addColumn('image', function ($data) {
-                    $btnlink = '<a target="_blank" href="'.Storage::url($data->image).'">Lihat Foto</a>';
-                    return $btnlink;
+                    if($data->image){
+                        $image = '<a href="'. Storage::url($data->image).'" class="text-success"><i class="fa fa-check-circle mr-2"></i>Lihat Foto</a>';
+                    }else{
+                        $image = " - ";
+                    }
+                    return $image;
                 })
                 ->addColumn('status', function ($data) {
                     if($data->status == 'processing'){

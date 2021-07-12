@@ -26,7 +26,7 @@ class JenisUsahaController extends Controller
         }
         $employee = Employee::where("user_id",auth()->user()->id)->first();
 
-        return view('admin.potensi.jenis-usaha', ["employee"=>$employee]);
+        return view('pegawai.potensi.jenis-usaha', ["employee"=>$employee]);
     }
 
     public function store(Request $request)

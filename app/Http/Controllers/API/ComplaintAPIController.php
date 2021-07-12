@@ -61,6 +61,7 @@ class ComplaintAPIController extends Controller
             "address" => $request->address,
             "complaint_type" => $request->complaint_type,
             "complaint_message" => $request->complaint_message,
+            "status" => "accepted",
             "image" => $data['image'] ?? ""
             
         ]);

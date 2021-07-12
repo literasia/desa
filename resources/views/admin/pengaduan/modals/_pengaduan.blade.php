@@ -16,6 +16,12 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="feedback">Pesan Pemberitahuan</label>
+                                <textarea name="feedback" id="feedback" cols="10" rows="3" class="form-control form-control-sm" placeholder="Feedback Message"></textarea>
+                            </div>
+                        </div>    
                     </div>
                     <div class="modal-footer" style="margin-bottom: -20px; border-top: none;">
                         <input type="hidden" name="hidden_id" id="hidden_id">

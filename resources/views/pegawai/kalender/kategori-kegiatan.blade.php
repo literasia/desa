@@ -19,34 +19,8 @@
 {{-- main content --}}
 @section('content')
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="card-block">
-                        <form id="form-status">
-                            @csrf
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="form-group">
-                                        <label for="kategori_kegiatan">Kategori Kegiatan</label>
-                                        <input type="text" name="kategori_kegiatan" id="kategori_kegiatan" class="form-control form-control-sm" placeholder="Kategori Kegiatan Desa">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="hidden" name="hidden_id" id="hidden_id">
-                                    <input type="hidden" id="action" val="add">
-                                    <input type="submit" class="btn btn-sm btn-success" value="Simpan" id="btn">
-                                    <button type="reset" class=" reset btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+      
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
@@ -56,7 +30,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Kategori Kegiatan</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -125,10 +98,7 @@
                     data: 'category_name',
                     name: 'category_name'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
+              
                 ]
             });
 

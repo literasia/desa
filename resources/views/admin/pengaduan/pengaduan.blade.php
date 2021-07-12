@@ -35,6 +35,7 @@
                                             <th>Jenis Pengaduan</th>
                                             <th>Isi Pengaduan</th>
                                             <th>Foto</th>
+                                            <th>Pesan Pemberitahuan</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -135,6 +136,10 @@
                     name: 'image'
                 },
                 {
+                    data: 'feedback',
+                    name: 'feedback'
+                },
+                {
                     data: 'status',
                     name: 'status'
                 },
@@ -197,6 +202,7 @@
                     success: function (data) {
                         $('#action').val('edit');
                         $('#status').val(data.status);
+                        $('#feedback').val(data.feedback);
                         $('#hidden_id').val(data.id);
                         $('#btn')
                             .removeClass('btn-success')

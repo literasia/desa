@@ -23,7 +23,6 @@ Ini adalah halaman Pengumuman untuk pegawai
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="card-block pt-0">
-                    <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                     <div class="dt-responsive table-responsive">
                         <table id="order-table" class="table table-striped nowrap shadow-sm">
                             <thead class="text-left">
@@ -34,7 +33,6 @@ Ini adalah halaman Pengumuman untuk pegawai
                                     <th>Tanggal Upload</th>
                                     <th>Tampil Pada</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="text-left">
@@ -147,10 +145,7 @@ Ini adalah halaman Pengumuman untuk pegawai
                     data: 'status',
                     name: 'status'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
+                
             ]
         });
 

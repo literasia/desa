@@ -24,7 +24,6 @@
                 <div class="card-body">
                     <div class="card-block pt-0">
                         <div class="dt-responsive table-responsive">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
                                     <tr>
@@ -34,7 +33,6 @@
                                         <th>Golongan</th>
                                         <th>Status</th>
                                         <th>Keterangan</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -200,10 +198,7 @@
                     data: 'description',
                     name: 'description'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
+         
                 ]
             });
             // Event Submit

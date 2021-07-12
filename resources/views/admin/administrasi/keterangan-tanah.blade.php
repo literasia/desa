@@ -32,6 +32,7 @@
                                             <th>Nama</th>
                                             <th>No. Telepon</th>
                                             <th>Alamat</th>
+                                            <th>Foto KTP</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -113,6 +114,10 @@
                 {
                     data: 'address',
                     name: 'address'
+                },
+                {
+                    data: 'image_ktp',
+                    name: 'image_ktp'
                 },
                 {
                     data: 'status',

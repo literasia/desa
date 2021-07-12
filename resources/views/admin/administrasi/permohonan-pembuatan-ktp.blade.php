@@ -32,6 +32,7 @@
                                             <th>Nama</th>
                                             <th>No. Telepon</th>
                                             <th>Alamat</th>
+                                            <th>Foto KK</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -114,6 +115,10 @@
                 {
                     data: 'address',
                     name: 'address'
+                },
+                {
+                    data: 'kk_image',
+                    name: 'kk_image'
                 },
                 {
                     data: 'status',
