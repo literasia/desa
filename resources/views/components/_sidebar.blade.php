@@ -245,7 +245,7 @@
                 @endif
 
                 // FORUM
-                <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/pengaturan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/topik')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
+                <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/pengguna') ||  request()->is('admin/forum/pengaturan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
                             <i class="fas fa-comments"></i>
@@ -286,6 +286,17 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- BUMDes -->
+                <li class="{{ request()->is('admin/bumdes') ? 'active' : '' }}">
+                     <a href="{{ route('admin.bumdes.bumdes') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                        <i class="fas fa-fax"></i>                        
+                        </span>
+                        <span class="pcoded-mtext">BUMDes</span>
+                    </a>
+                </li>
+                <!-- BUMDes -->
 
                 @if($addon->social_assistance)
                 <li class="@if (request()->is('admin/bantuan-sosial/bantuan-sosial-individu') || request()->is('admin/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('admin/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
