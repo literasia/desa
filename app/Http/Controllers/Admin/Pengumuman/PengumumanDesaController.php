@@ -43,14 +43,14 @@ class PengumumanDesaController extends Controller
         ];
 
         $notifikasi = "";
-        if ($request->input('notifikasi') == 'Yes') {
+        if (in_array('notifikasi', $request->message_option)) {
             $notifikasi = 'Yes';
         } else {
             $notifikasi = 'No';
         }
 
         $dashboard = "";
-        if ($request->input('dashboard') == 'Yes') {
+        if (in_array('dashboard', $request->message_option)) {
             $dashboard = 'Yes';
         } else {
             $dashboard = 'No';

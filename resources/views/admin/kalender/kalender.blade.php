@@ -167,6 +167,7 @@ Ini adalah halaman kalender untuk desa
                 $("#addEvent form").attr("action", "update");
                 $("#addEvent #btnEvent").text("Update");
                 $("#addEvent #title").val(event.title);
+                $("#addEvent #jenis_kegiatan").val(event.category);
                 $("#addEvent #description").val(event.description);
                 $("#addEvent #location").val(event.location);
                 $("#addEvent #start_date").val($.fullCalendar.formatDate(event.start, 'YYYY-MM-DD'));

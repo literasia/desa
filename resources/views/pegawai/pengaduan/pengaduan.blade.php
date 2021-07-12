@@ -33,6 +33,8 @@
                                         <th>Alamat</th>
                                         <th>Jenis Pengaduan</th>
                                         <th>Isi Pengaduan</th>
+                                        <th>Foto</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -63,6 +65,8 @@
         </div>
     </div>
 </div>
+@include('admin.pengaduan.modals._pengaduan')
+
 @endsection
 
 {{-- addons css --}}
@@ -125,11 +129,81 @@
                     name: 'complaint_message'
                 },
                 {
+                    data: 'image',
+                    name: 'image'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 }
             ]
         });
+
+        $('#form-pengaduan').on('submit', function (event) {
+                event.preventDefault();
+
+                var url = '';
+                if ($('#action').val() == 'edit') {
+                    url = "{{ route('pegawai.pengaduan.update') }}";
+                }
+
+                $('#btn').prop('disabled', true);
+
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        var html = ''
+                        if (data.errors) {
+                            html = data.errors[0];
+                            $('#status').addClass('is-invalid');
+                            toastr.error(html);
+                        }
+
+                        if (data.success) {
+                            // toastr.success('Sukses!');
+                            if ($('#action').val() == 'edit') {
+                                Swal.fire('Sukses!', 'Data berhasil diupdate!', 'success');
+                            }
+                            $('#modal-pengaduan').modal('hide');
+                            $('#status').removeClass('is-invalid');
+                            $('#form-pengaduan')[0].reset();
+                            $('#action').val('add');
+                            $('#btn').prop('disabled', false);
+                            $('#btn')
+                                .removeClass('btn-info')
+                                .addClass('btn-success')
+                                .val('Simpan');
+                            $('#order-table').DataTable().ajax.reload();
+                        }
+                        $('#form_result').html(html);
+                    }
+                });
+            });
+
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/pegawai/pengaduan/pengaduan/'+id,
+                    dataType: 'JSON',
+                    success: function (data) {
+                        $('#action').val('edit');
+                        $('#status').val(data.status);
+                        $('#hidden_id').val(data.id);
+                        $('#btn')
+                            .removeClass('btn-success')
+                            .addClass('btn-info')
+                            .val('Update');
+                        $('#modal-pengaduan').modal('show');
+                    }
+                });
+            });
 
         var user_id;
         $(document).on('click', '.delete', function() {

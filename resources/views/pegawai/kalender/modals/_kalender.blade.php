@@ -89,9 +89,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-sm btn-success" id="btnEvent">Simpan</button>
-                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
-                    <div id="deleteEvent" class="text-left"></div>
+                    <!-- <button type="submit" class="btn btn-sm btn-success" id="btnEvent">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button> -->
+                    <!-- <div id="deleteEvent" class="text-left"></div> -->
                 </div>
             </div>
         </div>

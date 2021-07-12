@@ -34,8 +34,24 @@
                                                 <span> : Absensi</span>
                                             </li>
                                             <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SKD</label></span>
+                                                <span> : Sambutan Kepala Desa</span>
+                                            </li>
+                                            <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KA</label></span>
                                                 <span> : Kalender</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">LD</label></span>
+                                                <span> : Lembaga Desa</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PMD</label></span>
+                                                <span> : Pembangunan Desa</span>
+                                            </li>
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SH</label></span>
+                                                <span> : Sadar Hukum</span>
                                             </li>
                                             <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">TE</label></span>
@@ -49,6 +65,11 @@
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PER</label></span>
                                                 <span> : Perpustakaan</span>
                                             </li>
+                                            
+                                            
+                                           
+                                        </div>
+                                        <div class="col-md-4">
                                             <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BT</label></span>
                                                 <span> : Buku Tamu</span>
@@ -57,9 +78,6 @@
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">KE</label></span>
                                                 <span> : Keuangan</span>
                                             </li>
-                                           
-                                        </div>
-                                        <div class="col-md-4">
                                             <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">PT</label></span>
                                                 <span> : Peristiwa</span>
@@ -82,6 +100,14 @@
                                                 <span> : Berita</span>
                                             </li>
                                             <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BS</label></span>
+                                                <span> : Bansos</span>
+                                            </li>
+                                           
+                                            
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">AD</label></span>
                                                 <span> : Administrasi Desa</span>
                                             </li>
@@ -89,8 +115,6 @@
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">POD</label></span>
                                                 <span> : Potensi Desa</span>
                                             </li>
-                                        </div>
-                                        <div class="col-md-4">
                                             <li>
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">SLD</label></span>
                                                 <span> : Slider</span>
@@ -134,7 +158,6 @@
                                     <th title="Perpustakaan">PER</th>
                                     <th title="Buku Tamu">BT</th>
                                     <th title="Keuangan">KE</th>
-                                    <th title="Peristiwa">PT</th>
                                     <th title="Data Penduduk">DP</th>
                                     <th title="Struktur Desa">SD</th>
                                     <th title="Profil Desa">PD</th>
@@ -142,11 +165,17 @@
                                     <th title="Administrasi">AD</th>
                                     <th title="Potensi Desa">POD</th>
                                     <th title="Slider">SLD</th>
+                                    <th title="Peristiwa">PT</th>
                                     <th title="Wisata Desa">WD</th>
                                     <th title="Pengumuman">PM</th>
                                     <th title="Kampanye">K</th>
                                     <th title="Referensi">R</th>
                                     <th title="Pengaduan">P</th>
+                                    <th title="Bantuan Sosial">BS</th>
+                                    <th title="Sambutan Kepala Desa">SKD</th>
+                                    <th title="Lembaga Desa">LD</th>
+                                    <th title="Sadar Hukum">SH</th>
+                                    <th title="Pembangunan Desa">PMD</th>
                                 </tr>
                                 </thead>
                                 <tbody  class="text-left">

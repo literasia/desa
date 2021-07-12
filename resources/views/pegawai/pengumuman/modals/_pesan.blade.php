@@ -29,7 +29,7 @@
               <label><b>Pengaturan Pesan</b></label>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="Notification Message" name="message_option[]" checked>Notifikasi Pesan
+                  <input class="form-check-input" type="checkbox" value="notifikasi" name="message_option[]" checked>Notifikasi Pesan
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
@@ -38,7 +38,7 @@
 
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="Dashboard Notification" name="message_option[]">Dashboard Notifikasi
+                  <input class="form-check-input" type="checkbox" value="dashboard" name="message_option[]">Dashboard Notifikasi
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>

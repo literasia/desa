@@ -53,6 +53,7 @@ class PengaduanDesaController extends Controller
             ->json([
                 'id'            => $data->id,
                 'status'        => $data->status,
+                'feedback'      => $data->feedback
             ]);
     }
 
@@ -60,6 +61,7 @@ class PengaduanDesaController extends Controller
         $data = $req->all();
 
         Complaint::whereId($data['hidden_id'])->update([
+            'feedback' => $data['feedback'],
             'status' => $data['status'],
         ]);
 

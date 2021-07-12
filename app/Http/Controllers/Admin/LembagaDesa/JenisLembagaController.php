@@ -118,7 +118,7 @@ class JenisLembagaController extends Controller
                 ]);
         }
 
-        $berita = CommunityType::findOrFail($request->hidden_id);
+        $lembaga = CommunityType::findOrFail($request->hidden_id);
         $data['image'] = null;
         if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('lembaga', 'public');
@@ -128,7 +128,7 @@ class JenisLembagaController extends Controller
             'community_name' => $request->community_name,
             'visionandmission' => $request->vm,
             'description' => $request->description,
-            'logo' => $data['image'],
+            'logo' => $data['image'] ?? $lembaga->logo,
         ]);
 
         return response()

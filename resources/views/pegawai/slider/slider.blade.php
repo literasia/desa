@@ -23,7 +23,6 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block">
-                        <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
                         <div class="dt-responsive table-responsive mt-3">
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
@@ -34,7 +33,6 @@
                                         <th>Keterangan</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -132,10 +130,7 @@
                     data: 'end_date',
                     name: 'end_date'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
+              
                 ]
             });
 

@@ -23,7 +23,6 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="card-block pt-0">
-                        <button id="add" class="btn btn-outline-primary shadow-sm my-3"><i class="fa fa-plus"></i></button>
                         <div class="dt-responsive table-responsive">
                             <table id="order-table" class="table table-striped nowrap shadow-sm">
                                 <thead class="text-left">
@@ -37,7 +36,6 @@
                                         <th>Jenis Wisata</th>
                                         <th>Nomor Telepon</th>
                                         <th>Keterangan</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-left">
@@ -166,10 +164,7 @@
                     data: 'information',
                     name: 'information'
                 },
-                {
-                    data: 'action',
-                    name: 'action'
-                }
+            
                 ]
             });
 
