@@ -1,17 +1,17 @@
-@extends('layouts.admin')
+@extends('layouts.pegawai')
 
 @section('title', 'BUMDes | Badan Usaha Milik Desa')
 @section('title-2', 'Badan Usaha Milik Desa')
 @section('title-3', 'Badan Usaha Milik Desa')
 
 @section('describ')
-    Ini adalah halaman Badan Usaha Milik Desa untuk admin
+    Ini adalah halaman Badan Usaha Milik Desa untuk pegawai
 @endsection
 
 @section('icon-l', 'icon-home')
 @section('icon-r', 'icon-home')
 @section('link')
-    {{ route('admin.bumdes.bumdes') }}
+    {{ route('pegawai.bumdes.bumdes') }}
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="card-block">
-                    <!-- <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button> -->
+                    <button id="add" class="btn btn-outline-primary shadow-sm"><i class="fa fa-plus"></i></button>
                     <div class="dt-responsive table-responsive mt-3">
                        <table id="order-table" class="table table-striped table-bordered nowrap shadow-sm">
                             <thead>
@@ -39,7 +39,9 @@
                                     <th>Kode Registrasi</th>
                                     <th>Status</th>
                                     <th>Foto Bumdes</th>
-                                    <th>Laporan Keuangan Akhir Tahun</th>                                </tr>
+                                    <th>Laporan Keuangan Akhir Tahun</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody class="text-left">
                                 
@@ -53,7 +55,7 @@
 </div>
 
 {{-- Modal --}}
-@include('admin.bumdes.modals._bumdes')
+@include('pegawai.bumdes.modals._bumdes')
 <div id="confirmModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -114,7 +116,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('admin.bumdes.bumdes') }}",
+                url: "{{ route('pegawai.bumdes.bumdes') }}",
             },
             columns: [
             {
@@ -177,7 +179,10 @@
                 data: 'financial_report',
                 name: 'financial_report'
             },
-            
+            {
+                data: 'action',
+                name: 'action'
+            }
             ]
         });
         
@@ -188,7 +193,7 @@
             $('#action').val('add');
             $('#hidden_id').val('');
             $('#nama_bumdes').val('');
-            $('#pengelola').val('');
+            $('#citizen').val('{{$name}}');
             $('#no_hp').val('');
             $('#tahun_berdiri').val('');
             $('#status').val('');
@@ -232,12 +237,12 @@
             var text = '';
 
             if ($('#action').val() == 'add') {
-                url = "{{ route('admin.bumdes.bumdes') }}";
+                url = "{{ route('pegawai.bumdes.bumdes') }}";
                 text = "Data berhasil ditambahkan";
             }
 
             if ($('#action').val() == 'edit') {
-                url = "{{ route('admin.bumdes.update') }}";
+                url = "{{ route('pegawai.bumdes.update') }}";
                 text = "Data berhasil diupdate";
             }
 
@@ -276,13 +281,14 @@
         $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: "/admin/bumdes/edit/"+id,
+                    url: "/pegawai/bumdes/edit/"+id,
                     success: function (data) {
+                        console.log(data)
                         $('.modal-title').html('Edit BUMDes');
                         $('#action').val('edit');
                         $('#hidden_id').val(data[0].id);
                         $('#bumdes_name').val(data[0].bumdes_name);
-                        $('#citizen').val(data[0].employee_id);
+                        $('#citizen').val(data[0].employee.name);
                         $('#no_whatsapp').val(data[0].no_whatsapp);
                         $('#since_year').val(data[0].since_year);
                         $('#status').val(data[0].status);
@@ -312,7 +318,7 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: '/admin/bumdes/hapus/'+user_id,
+                    url: '/pegawai/bumdes/hapus/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

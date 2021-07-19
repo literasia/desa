@@ -600,6 +600,18 @@ Route::namespace("Pegawai")
             Route::get('/pegawai/administrasi/keterangan-tanah/hapus/{id}', 'KeteranganTanahController@destroy');
         });
 
+        // Badan Usaha Milik Desa
+        Route::namespace('BUMDes')
+        ->group(function () {
+                Route::get('/pegawai/bumdes', 'BumdesController@index')
+                    ->name('bumdes.bumdes');
+                Route::post('/pegawai/bumdes', 'BumdesController@store');
+                Route::get('/pegawai/bumdes/edit/{id}', 'BumdesController@edit');
+                Route::post('/pegawai/bumdes/update', 'BumdesController@update')
+                    ->name('bumdes.update');
+                Route::get('/pegawai/bumdes/hapus/{id}', 'BumdesController@destroy');
+            });
+
         Route::namespace('BantuanSosial')
         ->group(function () {
 
@@ -851,10 +863,10 @@ Route::namespace('Admin')
                 Route::get('/admin/bumdes', 'BumdesController@index')
                     ->name('bumdes.bumdes');
                 Route::post('/admin/bumdes', 'BumdesController@store');
-                Route::get('/admin/bumdes/bumdes/{id}', 'BumdesController@edit');
-                Route::post('/admin/bumdes/bumdes/update', 'BumdesController@update')
-                    ->name('bumdes.bumdes.update');
-                Route::get('/admin/bumdes/bumdes/hapus/{id}', 'BumdesController@destroy');
+                Route::get('/admin/bumdes/edit/{id}', 'BumdesController@edit');
+                Route::post('/admin/bumdes/update', 'BumdesController@update')
+                    ->name('bumdes.update');
+                Route::get('/admin/bumdes/hapus/{id}', 'BumdesController@destroy');
             });
              
         // Bantuan Sosial

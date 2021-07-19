@@ -103,7 +103,10 @@
                                                 <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BS</label></span>
                                                 <span> : Bansos</span>
                                             </li>
-                                           
+                                            <li>
+                                                <span class="d-inline-block ml-2 access-label"><label class="badge badge-primary badge-lg">BMD</label></span>
+                                                <span> : BUMDes</span>
+                                            </li>
                                             
                                         </div>
                                         <div class="col-md-4">
@@ -176,6 +179,7 @@
                                     <th title="Lembaga Desa">LD</th>
                                     <th title="Sadar Hukum">SH</th>
                                     <th title="Pembangunan Desa">PMD</th>
+                                    <th title="BUMDes">BMD</th>
                                 </tr>
                                 </thead>
                                 <tbody  class="text-left">

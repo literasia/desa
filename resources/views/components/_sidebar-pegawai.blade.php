@@ -246,6 +246,19 @@
                 </li>
                 @endif
 
+                 <!-- BUMDes -->
+                 @if ($employee->access->bumdes)
+                 <li class="{{ request()->is('pegawai/bumdes') ? 'active' : '' }}">
+                     <a href="{{ route('pegawai.bumdes.bumdes') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon">
+                        <i class="fas fa-fax"></i>                        
+                        </span>
+                        <span class="pcoded-mtext">BUMDes</span>
+                    </a>
+                </li>
+                @endif
+                <!-- BUMDes -->
+
                 
                 @if ($employee->access->social_assistance)
                 <li class="@if (request()->is('pegawai/bantuan-sosial/bantuan-sosial-individu') || request()->is('pegawai/bantuan-sosial/bantuan-sosial-keluarga') || request()->is('pegawai/bantuan-sosial/jenis-bantuan-sosial')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">

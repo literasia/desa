@@ -151,6 +151,7 @@ Ini adalah halaman Pengumuman untuk pegawai
 
         $('#add').on('click', function() {
             $('.modal-title').html('Tambah Pesan');
+            $('#form-pesan')[0].reset();
             $('#title').val('');
             $('#message').val('');
             $('#start_date').val('');
