@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Bumdes;
+namespace App\Http\Controllers\Pegawai\Bumdes;
 
 use Validator;
 use Illuminate\Http\Request;
@@ -8,6 +8,7 @@ use Yajra\DataTables\DataTables;
 use App\Models\{Bumdes,Citizen, Employee};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+
 
 
 class BumdesController extends Controller
@@ -19,9 +20,10 @@ class BumdesController extends Controller
      */
     public function index(Request $request)
     {
+        $name = auth()->user()->employee[0]->name;
         $citizen = Employee::where('village_id', auth()->user()->village->id)->get();
         if ($request->ajax()) {
-            $data = Bumdes::where('village_id',auth()->user()->village->id)->latest()->get();
+            $data = Bumdes::where('employee_id', auth()->user()->employee[0]->id)->where('village_id',auth()->user()->village->id)->latest()->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" id="'.$data->id.'" class="edit btn btn-mini btn-info shadow-sm">Edit</button>';
@@ -44,7 +46,7 @@ class BumdesController extends Controller
                 ->make(true);
         }
 
-        return view('admin.bumdes.bumdes', compact('citizen'));
+        return view('pegawai.bumdes.bumdes', compact('citizen','name'));
     }
 
   
@@ -56,7 +58,7 @@ class BumdesController extends Controller
             'bumdes_name'  => 'required|max:100',
             'description' => 'required',
             'citizen' => 'required',
-            'no_whatsapp' => 'required|max:13',
+            'no_whatsapp' => 'required|max:13|min:11',
             'bumdes_address' => 'required',
             'since_year' => 'required',
             'number_of_employee' => 'required',
@@ -90,7 +92,7 @@ class BumdesController extends Controller
         Bumdes::create([
             'bumdes_name'  => $request->bumdes_name,
             'description' => $request->description,
-            'employee_id' => $request->citizen,
+            'employee_id' => auth()->user()->employee[0]->id,
             'registration_code' => $request->registration_code,
             'status' => $request->status,
             'no_whatsapp' => $request->no_whatsapp,
@@ -117,8 +119,8 @@ class BumdesController extends Controller
     public function edit($id) 
     {        
         //
-        $data = Bumdes::find($id);
-
+        $data = Bumdes::with('employee')->find($id);
+        
         return response()
             ->json([
                 $data,
@@ -177,7 +179,6 @@ class BumdesController extends Controller
          Bumdes::where('id', $request->hidden_id)->update([
              'bumdes_name'  => $request->bumdes_name,
              'description' => $request->description,
-             'employee_id' => $request->citizen,
              'registration_code' => $request->registration_code,
              'status' => $request->status,
              'no_whatsapp' => $request->no_whatsapp,

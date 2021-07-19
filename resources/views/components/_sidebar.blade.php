@@ -244,7 +244,7 @@
                 </li>
                 @endif
 
-                // FORUM
+                <!-- // FORUM
                 <li class="@if (request()->is('admin/forum/dashboard') || request()->is('admin/forum/topik') || request()->is('admin/forum/balasan') || request()->is('admin/forum/tautan') || request()->is('admin/forum/pengguna') ||  request()->is('admin/forum/pengaturan')) pcoded-hasmenu active pcoded-trigger @else pcoded-hasmenu @endif">
                     <a href="#" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -285,9 +285,10 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
                 <!-- BUMDes -->
+                @if($addon->bumdes)
                 <li class="{{ request()->is('admin/bumdes') ? 'active' : '' }}">
                      <a href="{{ route('admin.bumdes.bumdes') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon">
@@ -296,6 +297,7 @@
                         <span class="pcoded-mtext">BUMDes</span>
                     </a>
                 </li>
+                @endif
                 <!-- BUMDes -->
 
                 @if($addon->social_assistance)

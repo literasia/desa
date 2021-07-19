@@ -162,6 +162,8 @@
 
             $('#add').on('click', function(){
                 $('#modal-lembagadesa').modal('show');
+                $('#action').val('add');
+
                 $('#form_lembagadesa')[0].reset();
             });
 

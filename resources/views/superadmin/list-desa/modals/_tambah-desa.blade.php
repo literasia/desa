@@ -184,6 +184,12 @@
                                         <span><i class="fa fa-database add-ons-icon mb-2"></i></span>
                                         <p class="m-0">Program Desa</p>
                                     </div>
+                                    <div class="col-2 col-sm-2 col-md-2 my-2 p-2 card rounded">
+                                        <input type="checkbox" name="x-addon-bumdes" checked class="d-block checkbox">
+
+                                        <span><i class="fa fa-warehouse add-ons-icon mb-2"></i></span>
+                                        <p class="m-0">BUMDes</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

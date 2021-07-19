@@ -32,13 +32,8 @@
                         <div class="col">
                             <div class="form-group">
                             <label for="citizen">Pengelola*</label>
-                            <br>
-                                <select name="citizen" id="citizen" class="form-control  basic-single" style="width: 100%">
-                                <option value="" disabled>Pilih</option>
-                                        @foreach($citizen as $ct)
-                                        <option value="{{$ct->id}}">{{$ct->name}}</option>
-                                        @endforeach
-                                </select>
+                            <input type="text" name="citizen" id="citizen" class="form-control form-control-sm" value="{{$name}}" readonly>
+
                             </div>
                         </div>
                         <div class="col">

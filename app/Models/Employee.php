@@ -17,6 +17,10 @@ class Employee extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function bumdes(){
+        return $this->belongsTo(Bumdes::class, 'employee_id');
+    }
+
     public function access(){
         return $this->hasOne(Admin\Access::class);
     }

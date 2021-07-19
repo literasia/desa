@@ -94,6 +94,7 @@
 
             $('#add').on('click', function () {
                 $('.modal-title').html('Tambah Berita');
+                
                 $('#action').val('add');
                 $('#title').val('');
                 $('#category').val('');
